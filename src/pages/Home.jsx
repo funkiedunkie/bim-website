@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom'
 import heroImg from '../assets/hero.png'
+import openPlayImg from '../assets/open-play.jpg'
+import values1Img from '../assets/values1.jpg'
+import values2Img from '../assets/values2.jpg'
+import values3Img from '../assets/values3.jpg'
+import strip1Img from '../assets/strip1.jpg'
+import strip2Img from '../assets/strip2.jpg'
+import strip3Img from '../assets/strip3.jpg'
 import './Home.css'
 
 const tickerItems = [
@@ -51,6 +58,7 @@ const activities = [
   },
   {
     icon: '🎪',
+    img: openPlayImg,
     name: 'Open Play',
     desc: 'Unlimited access to all open-play zones for the whole family.',
     to: '/open-play',
@@ -68,16 +76,19 @@ const valueCards = [
     label: 'Core Values',
     title: 'Movement is medicine.',
     text: 'We believe active bodies spark curious minds. Every program is designed with purpose — to move, challenge, and connect.',
+    img: values1Img,
   },
   {
     label: 'Purpose',
     title: 'Built for every body.',
     text: 'From crawlers to seniors, our 50,000 sq ft facility was built so that no age, size, or skill level is left out.',
+    img: values2Img,
   },
   {
     label: 'Promise',
     title: 'Safe. Fun. Unforgettable.',
     text: 'We promise a clean, safe, and expertly staffed environment where families can trust us with what matters most.',
+    img: values3Img,
   },
 ]
 
@@ -196,8 +207,11 @@ export default function Home() {
           </div>
           <div className="activities__grid">
             {activities.map((a) => (
-              <Link key={a.name} to={a.to} className="activity-card">
-                <div className="activity-card__icon">{a.icon}</div>
+              <Link key={a.name} to={a.to} className={`activity-card${a.img ? ' activity-card--photo' : ''}`}>
+                {a.img
+                  ? <img className="activity-card__photo" src={a.img} alt={a.name} loading="lazy" />
+                  : <div className="activity-card__icon">{a.icon}</div>
+                }
                 <div className="activity-card__name">{a.name}</div>
                 <div className="activity-card__desc">{a.desc}</div>
                 <span className="activity-card__arrow">
@@ -222,7 +236,7 @@ export default function Home() {
           <div className="values__grid">
             {valueCards.map((v) => (
               <div key={v.label} className="value-card">
-                <div className="value-card__bg" />
+                <div className="value-card__bg" style={{ backgroundImage: `url(${v.img})` }} />
                 <div className="value-card__overlay" />
                 <div className="value-card__content">
                   <p className="value-card__label">{v.label}</p>
@@ -238,13 +252,13 @@ export default function Home() {
       {/* ── 5. Photo Strip ── */}
       <div className="photo-strip" aria-hidden="true">
         <div className="photo-strip__item">
-          <img src="/strip1.jpg" alt="Ninja warrior course" loading="lazy" />
+          <img src={strip1Img} alt="Toddler play area" loading="lazy" />
         </div>
         <div className="photo-strip__item">
-          <img src="/strip2.jpg" alt="Open play area" loading="lazy" />
+          <img src={strip2Img} alt="Preschool program" loading="lazy" />
         </div>
         <div className="photo-strip__item">
-          <img src="/strip3.jpg" alt="Fitness classes" loading="lazy" />
+          <img src={strip3Img} alt="Summer camps" loading="lazy" />
         </div>
       </div>
 
