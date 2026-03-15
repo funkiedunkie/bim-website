@@ -29,7 +29,7 @@
 .nav__logo img {
   height: 44px;
   width: auto;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
 }
 
 .nav__links {
