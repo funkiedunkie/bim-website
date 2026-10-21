@@ -1,6 +1,7 @@
 ---
 import Stub from '../layouts/Stub.astro'
 import { NAP } from '../lib/site'
+import ContactForm from '../components/ContactForm.astro'
 ---
 
 <Stub
@@ -16,5 +17,6 @@ import { NAP } from '../lib/site'
     <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>. No Pickup Hotline: <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>
     Ext. 5.
   </p>
-  <!-- TODO(Duncan): the contact email was obfuscated in the crawl ("[email protected]"). Add the real address, and a contact form if you want one (the Weebly form posted to Weebly). -->
+  <p>Email: <a href={`mailto:${NAP.email}`}>{NAP.email}</a></p>
+  <ContactForm />
 </Stub>

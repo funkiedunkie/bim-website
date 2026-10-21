@@ -4,6 +4,7 @@
 export const SITE_URL = 'https://www.bodiesinmotionidaho.com'
 
 export const NAP = {
+  email: 'help@bodiesinmotionidaho.com',
   name: 'Bodies in Motion',
   street: '729 W. Diamond St',
   city: 'Boise',
@@ -46,7 +47,7 @@ export const LINKS = {
 } as const
 
 // Social profiles linked from every page of the Weebly site.
-// TODO(Duncan): confirm these are the accounts you want promoted (no TikTok link exists in the crawl).
+// Confirmed by Duncan (2026-10-21).
 export const SOCIAL = [
   { label: 'Facebook', href: 'https://www.facebook.com/bodiesinmotion/' },
   { label: 'Instagram', href: 'https://www.instagram.com/bodies_in_motion_idaho/' },

@@ -8,22 +8,18 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 
 ## Licensing, hours and structured data
 - [ ] **Childcare license number** — the infant & toddler page says "Licensed" but gives no number. (`src/pages/infant-toddler-care.astro`)
-- [ ] **Before/after school hours** — the Weebly page states none, so the after-school page has no `openingHours` in its JSON-LD. (`src/pages/after-school-care.astro`)
-- [ ] **After-school tour link** — the Weebly page embeds a Calendly widget without exposing its URL; `https://calendly.com/bodiesinmotion1/30min` is used as instructed. Confirm it is the right event. (`src/pages/after-school-care.astro`)
 - [ ] **Holiday closures** — the old Hours page lists only 2025 closures (Thanksgiving, Christmas); none are shown. Add current ones. (`src/pages/hours.astro`)
 - [ ] **Seasonal hours** — Open Play shows "summer hours" on the old Open Play page but fall/winter hours on the old Hours page (used). Pickleball hours also differ between those pages (Hours page used). Confirm. (`src/pages/open-play.astro`, `hours.astro`, `pickleball.astro`)
 - [ ] **Pre-camp end time** — the old Hours page says pre-camp is "7:30 am - 9 pm" (probably 9 am). (`src/pages/camps.astro`, `hours.astro`)
 
 ## Conflicting prices on the old site
-- [ ] **Open Play prices** — old Open Play page: $8.25 / $10.50 / $12.50. Old Pickleball page: $6 / $9.60 / $12 (+tax). The Open Play page values are shown. (`src/pages/open-play.astro`)
 - [ ] **Kickboxing trial price** — $19.99 on `/kickboxing` vs $29 on `/kickboxing-trial`. No price is shown. (`src/pages/fitness-classes.astro`)
 - [ ] Re-check prices/dates copied into stubs (ninja tuition, team building, Parents' Night Out Oct 24 event, pickleball). (`src/pages/*.astro`)
 
 ## Links and forms
+- [ ] **Contact form delivery** — `/api/contact` (Vercel Function, `api/contact.js`) sends to help@bodiesinmotionidaho.com via Resend's free tier. Set `RESEND_API_KEY` and `CONTACT_FROM` (a sender on a domain verified in Resend, e.g. `website@bodiesinmotionidaho.com`; needs DNS records at GoDaddy/Cloudflare) in Vercel; optional `CONTACT_TO`. Until set, the form shows a mailto fallback. Infant/toddler info-request and job application forms can reuse this endpoint later.
+- [ ] **Team building booking email** — the old Hours page had a separate (obfuscated) booking email; confirm whether it's help@ or another address. (`src/pages/team-building.astro`)
 - [ ] **Sawyer birthday links** — three unlabeled ages 10–16 links; confirm which is Super / Cosmic / Lock-in. (`src/pages/birthday-parties.astro`)
-- [ ] **Social URLs** — Facebook, Instagram, X/Twitter and YouTube links come from the footer of the Weebly site. There is no TikTok link anywhere in the crawl. Confirm these are the accounts you want promoted. (`src/lib/site.ts`)
-- [ ] **Contact email** — emails were obfuscated in the crawl (`[email protected]`). Add one to Contact, Privacy and Team Building. (`src/pages/contact.astro`)
-- [ ] **Forms** — the Weebly contact / information-request / Motioneer application / "Ask a Question" forms posted to Weebly and are not migrated. Decide on a replacement (e.g. Formspree, Vercel function, or Calendly/phone only). (`src/pages/contact.astro`, `jobs.astro`)
 
 ## Content still to migrate (stubs are `noindex`)
 - [ ] Camps details (ages, pricing, descriptions). (`camps.astro`)
@@ -38,3 +34,10 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 - "Second location very soon" from the old About page (Boise is the only location).
 - Any Meridian or Garden City location/address; they appear only as `areaServed` and "families from Boise, Meridian and Garden City".
 - Old Weebly seasonal items (Trunk or Treat RSVP banner, holiday challenge, etc.).
+
+## Resolved (2026-10-21)
+- Before/after school hours (7:30 am until school; school pickup until 6 pm) added to copy, FAQ and schema (`Mo-Fr 07:30-18:00` with description).
+- `/30min` confirmed as the after-school tour link.
+- Open play prices: $8.25 / $10.50 / $12.50.
+- Contact email help@bodiesinmotionidaho.com on Contact, footer and Privacy; contact form added.
+- Social links confirmed.

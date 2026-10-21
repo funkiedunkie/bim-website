@@ -8,6 +8,8 @@ const title = 'Before & After School Care in Boise, ID | Bodies in Motion'
 const description =
   'Before & after school care in Boise, ID with clubs, homework help and transportation from Boise schools. After school K–6, before school 1st–6th. Book a tour.'
 
+const hoursNote =
+  'Before school care runs from 7:30 am until children are taken to school; after school care runs from school pickup until 6:00 pm, Monday through Friday.'
 const best = 'Best deal'
 
 const afterRows = [
@@ -58,6 +60,10 @@ const day = [
 
 const faq: FaqItem[] = [
   {
+    q: 'What are the before and after school care hours?',
+    a: 'Before school care runs from 7:30 am until we take the kids to school. After school care runs from school pickup until 6:00 pm.',
+  },
+  {
     q: 'What grades is after school care for?',
     a: 'After school care is for kindergarten through 6th grade. Before school care and combined before & after school care are for 1st through 6th grade.',
   },
@@ -104,8 +110,6 @@ const faq: FaqItem[] = [
 ]
 ---
 
-<!-- TODO(Duncan): the Weebly page states no before/after school hours of operation, so no openingHours
-     is included in this page's JSON-LD. Add them if you want them in the structured data. -->
 <CarePage
   title={title}
   description={description}
@@ -118,9 +122,16 @@ const faq: FaqItem[] = [
   tourUrl={LINKS.calendly30}
   tourLabel="Book a Tour Today"
   faq={faq}
+  openingHours={['Mo-Fr 07:30-18:00']}
+  schemaDescription={description + ' ' + hoursNote}
 >
   <section class="section">
     <div class="section__inner section__inner--read prose">
+      <h2>Hours</h2>
+      <p>
+        <strong>Before school care:</strong> 7:30 am until we take the kids to school.<br />
+        <strong>After school care:</strong> from school pickup until 6:00 pm.
+      </p>
       <h2>This isn’t just childcare. It’s a place to play, grow, and belong.</h2>
       <p>
         When school ends, kids don’t need more sitting—they need a place to move, explore, and feel like they belong.
@@ -169,7 +180,6 @@ const faq: FaqItem[] = [
       <p>
         Want to experience Bodies in Motion in person before deciding? We’ll show you around, introduce you to our team,
         and answer all your questions.
-        <!-- TODO(Duncan): the Weebly page embeds a Calendly widget without exposing its URL; the /30min link is used as instructed. Confirm. -->
         <a href={LINKS.calendly30} target="_blank" rel="noopener noreferrer">Book a tour</a>.
       </p>
     </div>

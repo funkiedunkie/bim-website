@@ -21,10 +21,11 @@ interface Props {
   tourLabel: string
   faq: FaqItem[]
   openingHours?: string[]
+  schemaDescription?: string
 }
 
-const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, tourUrl, tourLabel, faq, openingHours } = Astro.props
-const jsonLd = [childCareSchema({ description, openingHours }), faqSchema(faq)]
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, tourUrl, tourLabel, faq, openingHours, schemaDescription } = Astro.props
+const jsonLd = [childCareSchema({ description: schemaDescription ?? description, openingHours }), faqSchema(faq)]
 ---
 
 <Base title={title} description={description} path={path} jsonLd={jsonLd}>

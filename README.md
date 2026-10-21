@@ -54,3 +54,8 @@ scripts/           redirect generator/checker, dist verifier
 1. Create `src/pages/<slug>.astro` using `Base` (indexable) or `Stub` (noindex).
 2. For an indexable page, add its path to the `indexable` list in `astro.config.mjs` and to `scripts/verify-dist.mjs`.
 3. Use the constants in `src/lib/site.ts` for name/address/phone so NAP stays consistent.
+
+## Contact form
+`src/components/ContactForm.astro` posts to `/api/contact` (`api/contact.js`, a Vercel Function) which emails help@bodiesinmotionidaho.com through Resend. Env vars: `RESEND_API_KEY`, `CONTACT_FROM` (verified sender), optional `CONTACT_TO`. If they're unset or delivery fails, the form offers a pre-filled mailto link instead.
+
+Requires Node >= 22.22 (Astro 7).
