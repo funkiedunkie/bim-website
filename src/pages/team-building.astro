@@ -1,25 +1,144 @@
 ---
-import Stub from '../layouts/Stub.astro'
-import { NAP } from '../lib/site'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/values1.jpg'
+
+const title = 'Team Building in Boise, ID: Ropes Course & Ninja Warrior | Bodies in Motion'
+const description =
+  'Team building workshops in Boise, ID for groups of 4 to 60: Mission Possible, Team Building Express and Ninja Warrior vs Ropes Course at Bodies in Motion.'
+
+// TODO(Duncan): the old Hours page had a separate (obfuscated in the crawl) team building booking email. help@ and the
+// phone number are shown as contact for now; confirm whether team building uses another address.
+// TODO(Duncan): confirm these workshop prices (copied from the old page). The source gives "$57 to $73 (tax included)
+// depending on group size" without saying per person; shown exactly as sourced. Say "per person" if that is the case.
+// TODO(Duncan): old reviews mention axe throwing team building (Scentsy, Trane); it is not listed as a current workshop
+// on the old page, so it is not offered here and those reviews are not shown.
+
+const faq: FaqItem[] = [
+  {
+    q: 'What team building workshops do you offer?',
+    a: 'Three: Mission Possible Team Building (6 to 60 participants, about 3 hours), Team Building Express (4 to 20 participants, about 1 hour) and Ninja Warrior vs Ropes Course (4 to 40 participants, about 2 hours).',
+  },
+  {
+    q: 'How much does team building cost?',
+    a: 'Mission Possible is $57 to $73 (tax included) depending on group size. Team Building Express is $21 to $26 (tax included) depending on the size of your group. Ninja Warrior vs Ropes Course is $38 to $43 (tax included) depending on group size.',
+  },
+  {
+    q: 'How big can our group be?',
+    a: 'We work with companies of all sizes, from a large company of 150 people to a small firm of 4. Each workshop has its own range: 4 to 20 (Express), 4 to 40 (Ninja Warrior vs Ropes) and 6 to 60 (Mission Possible).',
+  },
+  {
+    q: 'What is Mission Possible Team Building?',
+    a: 'Your team becomes special agents on a mission to crack the code of a foreign king pin. Field training includes tactical ground initiatives, self-defense training and high ropes training intermixed with cryptology, with facilitators who make it ultra fun in a safe environment.',
+  },
+  {
+    q: 'What is the Ninja Warrior vs Ropes Course workshop?',
+    a: 'One of our most popular workshops. We split your group into two teams: one takes the High Ropes Course earning points on tasks laid out by our instructors while the other learns parkour and Ninja Warrior skills and earns points for obstacles completed. After 1 hour the teams switch, then we announce the champion team. There are ways to earn points through camaraderie, so nobody has to be a Ninja Warrior.',
+  },
+  {
+    q: 'What is Team Building Express?',
+    a: 'A quick one-hour high ropes aerial adventure to kick-start the workday, liven up a lunch hour, reward your team or remind them their company rocks.',
+  },
+  {
+    q: 'Is there a size or weight restriction on the ropes?',
+    a: 'Weight is not a concern on the course, but our harnesses may not accommodate all guests. Our harnesses are Adult Large (waist 46 inches, thighs 30 inches), and we have 2 Adult X-Large harnesses (waist 51 inches, thighs 34 inches).',
+  },
+  {
+    q: 'How do I book team building?',
+    a: 'Team building is by appointment only. Call (208) 381-0587 or email help@bodiesinmotionidaho.com.',
+  },
+]
+
+const reviews = [
+  { quote: 'My expectations were met!! Duncan did an awesome job of setting the stage based on our needs. He then brought it full circle at the end. The team was engaged the entire time.', name: 'Dr. Sherawn Reberry', source: 'Idaho Digital Learning Alliance' },
+  { quote: 'I have been utilizing Bodies in Motion for both my Leadership class and AP Psychology class for over 6 years. The team building and high rope activities we do are monumental in the learning of specific Units and curriculum and provides for a wonderful way to apply theory in these subjects to the real world.', name: 'Kelly Gosner', source: 'Timberline' },
+  { quote: 'We used Bodies in Motion for a conference team-building activity, and I could not recommend them enough! … The staff is incredible knowledgeable, supportive and enthusiastic.', name: 'Kirstin Mann', source: 'Serve Idaho, Idaho Department of Labor' },
+  { quote: 'We had a group of about 30-40 people come in for a fun team building night! The owner and staff were amazing, keeping the entire night so much fun for us all. There was never a moment of feeling unsafe.', name: 'Andrew Randall', source: 'Dutch Bros' },
+  { quote: 'The Bodies in Motion Ninja Warrior experience set the stage for our classes to work together through communication and teamwork. The ropes course was challenging for all students and the staff helped them feel success no matter how far they made it on the course.', name: 'Kelly Selvage', source: '2/3 Teacher, Anser Public Charter School' },
+]
 ---
 
-<Stub
-  title="Team Building in Boise, ID | Bodies in Motion"
-  description="Team building workshops at Bodies in Motion in Boise, Idaho for groups of 4 to 60: Mission Possible, Team Building Express, and Ninja Warrior vs Ropes Course."
+<ActivityPage
+  title={title}
+  description={description}
   path="/team-building"
-  h1="Team Building at Bodies in Motion"
   eyebrow="Igniting activity and empowering teams"
+  h1="Team Building in Boise at Bodies in Motion"
+  lead="Experiential team building on our high ropes course and Ninja Warrior course, for groups of 4 to 60."
+  heroImg={heroImg}
+  heroAlt="Two smiling people in red shirts giving thumbs up indoors"
+  ctaUrl="/contact"
+  ctaLabel="Contact us about team building"
+  ctaExternal={false}
+  ctaHeading="Plan your team’s next adventure"
+  ctaText="Team building is by appointment: call (208) 381-0587 or email help@bodiesinmotionidaho.com."
+  faq={faq}
+  reviews={reviews}
 >
-  <p>
-    Our team building division delivers experiential programs to companies of all sizes, from a large company with 150
-    people to a small firm of 4. Three workshops are offered: Mission Possible Team Building (6 to 60 participants,
-    about 3 hours, $57 to $73 tax included depending on group size), Team Building Express (4 to 20 participants, about
-    1 hour, $21 to $26 tax included) and Ninja Warrior vs Ropes Course (4 to 40 participants, about 2 hours, $38 to $43
-    tax included). Team building is by appointment only: call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
-  </p>
-  <!-- TODO(Duncan): confirm these prices, which were copied from the old page at crawl time. The booking email on the old Hours page was obfuscated in the crawl; add it here. -->
-  <div class="stub-actions">
-    <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
-    <a class="btn-outline" href="/contact">Contact us</a>
-  </div>
-</Stub>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Empowering teams every day</h2>
+      <p>
+        Our team building division delivers top-notch, professional and effective experiential programs to companies of
+        all sizes. Whether you’re a large company with 150 people or a small firm of 4, we can help empower your team and
+        build trust and communication. Teams come to us from across the Treasure Valley, including Boise, Meridian and
+        Garden City, and our team building is beyond normal.
+      </p>
+
+      <h2 id="mission-possible">Mission Possible Team Building</h2>
+      <p>
+        Transform your team into special agents on a mission to crack the code of a foreign king pin who threatens to
+        steal something dear to all Americans. Field training involves tactical ground initiatives, self-defense
+        training and, last but not least, high ropes training intermixed with cryptology. Your facilitators will make
+        this experience ultra fun and exciting, in a safe environment.
+      </p>
+      <ul class="bullets">
+        <li><strong>Participants:</strong> 6 to 60</li>
+        <li><strong>Cost:</strong> $57 to $73 (tax included) depending on group size</li>
+        <li><strong>Estimated time:</strong> 3 hours</li>
+      </ul>
+
+      <h2 id="express">Team Building Express</h2>
+      <p>
+        For the team that needs a quick adventure to enhance the work day. Nothing gets the mind and body going better
+        than a high ropes aerial adventure. Use it to kick-start the workday, bring excitement to a lunch hour, reward
+        your team, or remind them that their company rocks.
+      </p>
+      <ul class="bullets">
+        <li><strong>Participants:</strong> 4 to 20</li>
+        <li><strong>Cost:</strong> $21 to $26 (tax included) depending on group size</li>
+        <li><strong>Estimated time:</strong> 1 hour</li>
+      </ul>
+
+      <h2 id="ninja-vs-ropes">Ninja Warrior vs Ropes Course</h2>
+      <p>
+        One of our most popular workshops. We create two teams within your group. One takes the High Ropes Course,
+        accumulating points on tasks laid out by our instructors. The other hits the Ninja Warrior room, learns parkour
+        and Ninja Warrior skills, then earns points for the obstacles they complete. After 1 hour the teams switch, and
+        when both have earned points we announce the champion team. Don’t worry about not being a Ninja Warrior: there
+        are ways to earn points through camaraderie.
+      </p>
+      <ul class="bullets">
+        <li><strong>Participants:</strong> 4 to 40</li>
+        <li><strong>Cost:</strong> $38 to $43 (tax included) depending on group size</li>
+        <li><strong>Estimated time:</strong> 2 hours</li>
+      </ul>
+      <p>
+        <strong>Size restriction:</strong> weight is not a concern on the course, but our harnesses may not accommodate
+        all guests. All our harnesses are Adult Large (waist 46 inches, thighs 30 inches). We have 2 Adult X-Large
+        harnesses (waist 51 inches, thighs 34 inches).
+      </p>
+
+      <h2 id="book">Book team building</h2>
+      <p>
+        Team building is by appointment only. Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
+        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a>. Learn more about the
+        <a href="/ropes-course">ropes course</a> and <a href="/ninja-warrior">Ninja Warrior</a> programs.
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
+        <a class="btn-outline" href="/contact">Contact us</a>
+      </div>
+    </div>
+  </section>
+</ActivityPage>

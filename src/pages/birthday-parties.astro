@@ -1,19 +1,15 @@
 ---
 import ActivityPage from '../layouts/ActivityPage.astro'
 import PriceTable from '../components/PriceTable.astro'
-import { LINKS, type FaqItem } from '../lib/site'
+import { LINKS, NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/values1.jpg'
 
 const title = 'Birthday Parties in Boise, ID: Kids, Teens & Adults | Bodies in Motion'
 const description =
-  'Birthday parties in Boise, ID at Bodies in Motion: 1½-hour kids parties, ages 10–16 super and lock-in parties, and adult parties. See pricing and book online.'
+  'Birthday parties in Boise, ID at Bodies in Motion: 1½-hour kids parties, ages 10–16 super, cosmic and lock-in parties, and adult parties. See pricing and book.'
 
-// TODO(Duncan): all party prices, sizes and times below were copied from the old Weebly party pages
-// (kids-birthday-parties, birthdayparties10-16, adult-parties); confirm they are current.
-// TODO(Duncan): confirm which Sawyer link maps to which ages 10–16 package (Super / Cosmic / Lock-in).
-// The crawl lists three links without labels, so they are shown neutrally and NOT labeled with package names.
-// TODO(Duncan): Cosmic party is marked "PROGRAM CURRENTLY ON HOLD" on the old page; its prices ($323 Nova up to
-// 16 kids, $251 Dwarf Star up to 8 kids) are intentionally left off. Confirm whether it is back.
+// Prices/packages (incl. Cosmic) confirmed current by Duncan (2026-10-21). Booking: kids parties via the Calendly RSVP
+// scheduler; ages 10–16 and adult parties by phone, email or /contact.
 // TODO(Duncan): the old Lock-in text says "With the Super Party, all of your food is taken care" (dinner, late-night
 // snacks, continental breakfast). It reads like a typo for Lock-in; food is not stated on this page until confirmed.
 // TODO(Duncan): the old kids page says the Ropes Course add-on (+$50) is for ages 10+ and includes two free adult
@@ -30,6 +26,11 @@ const superRows = [
   { label: 'Small Party (up to 8 kids)', price: '$299' },
   { label: 'Big Party (up to 16 kids)', price: '$399' },
   { label: 'Huge Party (up to 20 kids)', price: '$450' },
+]
+
+const cosmicRows = [
+  { label: 'Dwarf Star Party (up to 8 kids)', price: '$251' },
+  { label: 'Nova Party (up to 16 kids)', price: '$323' },
 ]
 
 const lockInRows = [
@@ -79,6 +80,10 @@ const faq: FaqItem[] = [
     a: 'A Small Party (up to 8 kids) is $299, a Big Party (up to 16 kids) is $399 and a Huge Party (up to 20 kids) is $450.',
   },
   {
+    q: 'What is the Cosmic Birthday Party?',
+    a: 'It is a party for ages 10 to 16 where the entire facility is lit by colored lights, disco lights and blacklights, with louder music, Cosmic Z Tag and a Cosmic Ropes Course experience. Guests get a room to eat flatbread and cake or just socialize. It is only offered at 5:30 pm on Fridays. A Dwarf Star Party (up to 8 kids) is $251 and a Nova Party (up to 16 kids) is $323.',
+  },
+  {
     q: 'What is an All Night Lock-In Party?',
     a: 'It is a 12-hour party at Bodies in Motion with multiple hosts, with Z Tag throughout the entire facility, an unlimited Cosmic Ropes Course, dance competitions, games and group challenges. It runs Friday evenings from 8 pm to 8 am Saturday morning and all participants must be at least 10 years old. Parents may stay all night but are not required to; the overnight host is a licensed child care Motioneer who is registered through the state of Idaho and background checked.',
   },
@@ -100,7 +105,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'How do I book a party?',
-    a: 'Book a kids party with the birthday party RSVP scheduler, book ages 10–16 and adult parties on Sawyer, or call (208) 381-0587.',
+    a: 'Book a kids party with the birthday party RSVP scheduler. For ages 10–16 parties and adult parties, call (208) 381-0587, email help@bodiesinmotionidaho.com or use our contact page.',
   },
 ]
 
@@ -123,7 +128,7 @@ const reviews = [
   ctaUrl={LINKS.calendlyBirthday}
   ctaLabel="Birthday party RSVP"
   ctaHeading="Ready to book a party?"
-  ctaText="RSVP online or call us at (208) 381-0587. Families come to us from Boise, Meridian and Garden City."
+  ctaText="RSVP for a kids party online, or call us at (208) 381-0587 for ages 10–16 and adult parties. Families come to us from Boise, Meridian and Garden City."
   faq={faq}
   reviews={reviews}
 >
@@ -188,9 +193,10 @@ const reviews = [
       <h3>Cosmic Birthday Party</h3>
       <p>
         Lights out, music up and disco in full effect: a Cosmic Z Tag and Ropes Course experience with the whole
-        facility lit by colored lights, disco lights and blacklights. It is offered at 5:30 pm on Fridays.
-        <strong>This program is currently on hold.</strong> Call us to ask about availability.
+        facility lit by colored lights, disco lights and blacklights, and the music is louder. Guests get a room to eat
+        flatbread and cake or just socialize. Because of the extreme ambiance, it is only offered at 5:30 pm on Fridays.
       </p>
+      <PriceTable caption="Cosmic Birthday pricing" rows={cosmicRows} priceHeading="Price" rowHeading="Party size" />
 
       <h3>All Night Lock-In Party</h3>
       <p>
@@ -203,11 +209,10 @@ const reviews = [
       <PriceTable caption="All Night Lock-In pricing" rows={lockInRows} priceHeading="Price" rowHeading="Party size" />
 
       <h3>Book ages 10–16 parties</h3>
-      <ul class="bullets">
-        <li><a href={LINKS.sawyerParty1016a} target="_blank" rel="noopener noreferrer">Book ages 10–16 parties on Sawyer (option 1)</a></li>
-        <li><a href={LINKS.sawyerParty1016b} target="_blank" rel="noopener noreferrer">Book ages 10–16 parties on Sawyer (option 2)</a></li>
-        <li><a href={LINKS.sawyerParty1016c} target="_blank" rel="noopener noreferrer">Book ages 10–16 parties on Sawyer (option 3)</a></li>
-      </ul>
+      <p>
+        To book a Super, Cosmic or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
+        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a>.
+      </p>
     </div>
   </section>
 
@@ -228,7 +233,8 @@ const reviews = [
       <PriceTable caption="Private party pricing" rows={adultPrivateRows} priceHeading="Price" rowHeading="Party size" />
       <PriceTable caption="Semi-private party pricing" rows={adultSemiRows} priceHeading="Price" rowHeading="Party size" />
       <div class="stub-actions">
-        <a class="btn-primary" href={LINKS.sawyerAdultParty} target="_blank" rel="noopener noreferrer">Book an adult party on Sawyer</a>
+        <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay} to book</a>
+        <a class="btn-outline" href="/contact">Email or contact us</a>
       </div>
     </div>
   </section>

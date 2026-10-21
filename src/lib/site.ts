@@ -32,18 +32,6 @@ export const LINKS = {
   camps: 'https://www.campsforkidsidaho.com/camp',
   pnoRegister: 'https://www.campsforkidsidaho.com/camp/41',
   waiverPortal: 'https://bodiesinmotion.gymmasteronline.com/portal/enquiry',
-  sawyerRopes:
-    'https://www.hisawyer.com/bodies-in-motion-1/schedules?slug=bodies-in-motion-1&activity_id%5B%5D=438035&activity_id%5B%5D=473767&activity_id%5B%5D=543594',
-  sawyerPickleball:
-    'https://www.hisawyer.com/bodies-in-motion-1/schedules?schedule_id=drop-ins&activity_name%5B%5D=Pickleball+%28Friday%29&activity_name%5B%5D=Pickleball+%28Monday%29&activity_name%5B%5D=Pickleball+%28Thursday%29&activity_name%5B%5D=Pickleball+%28Tuesday%29&activity_name%5B%5D=Pickleball+%28Wednesday%29&ageGradeFilterTab=age_ranges%5B%5D',
-  sawyerParty1016a:
-    'https://www.hisawyer.com/bodies-in-motion-1/schedules?slug=bodies-in-motion-1&activity_id%5B%5D=438034',
-  sawyerParty1016b:
-    'https://www.hisawyer.com/bodies-in-motion-1/schedules?slug=bodies-in-motion-1&activity_id%5B%5D=438035&activity_id%5B%5D=473767',
-  sawyerParty1016c:
-    'https://www.hisawyer.com/bodies-in-motion-1/schedules?slug=bodies-in-motion-1&activity_id%5B%5D=438036',
-  sawyerAdultParty:
-    'https://www.hisawyer.com/bodies-in-motion-1/schedules?slug=bodies-in-motion-1&activity_id%5B%5D=473763&activity_id%5B%5D=473762',
 } as const
 
 // Social profiles linked from every page of the Weebly site.
@@ -169,6 +157,43 @@ export function eventSchema({ name, description, startDate, endDate, url, price,
     },
     organizer: { '@type': 'Organization', name: NAP.name, url: SITE_URL + '/' },
     offers: { '@type': 'Offer', url, price, priceCurrency: 'USD' },
+  }
+}
+
+/** AboutPage node for /about; the founders and founding date come from the old About page. */
+export function aboutPageSchema({ description }: ActivityOptions) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': `${SITE_URL}/about#aboutpage`,
+    url: `${SITE_URL}/about`,
+    name: `About ${NAP.name}`,
+    description,
+    mainEntity: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: NAP.name,
+      url: SITE_URL + '/',
+      logo: `${SITE_URL}/logo.png`,
+      telephone: NAP.phoneE164,
+      email: NAP.email,
+      // "In January of 2011, Duncan and Rachel closed their martial art school ... and re-opened it in Bodies in Motion."
+      foundingDate: '2011-01',
+      founder: [
+        { '@type': 'Person', name: 'Duncan Richardson', jobTitle: 'Owner' },
+        { '@type': 'Person', name: 'Rachel Richardson', jobTitle: 'Owner' },
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: NAP.street,
+        addressLocality: NAP.city,
+        addressRegion: NAP.state,
+        postalCode: NAP.zip,
+        addressCountry: 'US',
+      },
+      areaServed: AREA_SERVED.map((name) => ({ '@type': 'City', name })),
+      sameAs: SOCIAL.map((s) => s.href),
+    },
   }
 }
 

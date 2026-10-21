@@ -7,18 +7,17 @@ const title = 'Parents’ Night Out in Boise, ID | Bodies in Motion'
 const description =
   'Parents’ Night Out at Bodies in Motion in Boise, ID: drop the kids off for a fun-filled evening. Cosmic Glow Party (ages 5–12) and Family Night Out.'
 
-// TODO(Duncan): the only dated event in the source is "Oct 24th, 5:00–9:00 PM" with no year. 2026 is inferred
-// (the old Open Play page lists October dates whose weekdays match 2026). Confirm the year, then update this
-// page (and the Event schema) once the date passes. After this cutoff the build drops the Event schema and
-// shows "next date to be announced" instead of an upcoming-event block.
+// Oct 24, 2026 (year confirmed by Duncan; matches the Camps for Kids app). After the cutoff below the build drops the
+// Event schema and shows "next date to be announced", so rebuild/update this page once the date passes.
 const glowStart = '2026-10-24T17:00:00-06:00'
 const glowEnd = '2026-10-24T21:00:00-06:00'
 const glowUpcoming = Date.now() < Date.parse(glowEnd)
 
-// TODO(Duncan): confirm Cosmic Glow ($51 / $40.80) and Family Night Out ($49 / $39.20) prices are current.
+// Cosmic Glow ($51, 20% sibling discount = $40.80, ages 5–12) matches the Camps for Kids app.
+// TODO(Duncan): confirm Family Night Out prices ($49 / $39.20) are current.
 // TODO(Duncan): Family Night Out date is "TBA" on the old page; add the date and an Event schema when known.
 const glowFacts =
-  'The Cosmic Glow Party – Parents’ Night Out includes a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza and a sweet treat. It is for ages 5–12, 5:00–9:00 PM, at $51 per adventurer and $40.80 for additional siblings (dinner included).'
+  'The Cosmic Glow Party – Parents’ Night Out includes a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza and a sweet treat. It is for ages 5–12, 5:00–9:00 PM, at $51 per child, with a 20% sibling discount ($40.80 for additional siblings) and dinner included.'
 
 const faq: FaqItem[] = [
   {
@@ -32,7 +31,7 @@ const faq: FaqItem[] = [
   glowUpcoming
     ? {
         q: 'When is the next Parents’ Night Out?',
-        a: 'The Cosmic Glow Party is on Oct 24th from 5:00 to 9:00 PM. Register through Camps for Kids Idaho or call (208) 381-0587.',
+        a: 'The Cosmic Glow Party is on Saturday, October 24, 2026 from 5:00 to 9:00 PM. Register through Camps for Kids Idaho or call (208) 381-0587.',
       }
     : {
         q: 'When is the next Parents’ Night Out?',
@@ -110,11 +109,11 @@ const extraJsonLd = glowUpcoming
       </p>
       <ul class="bullets">
         {glowUpcoming
-          ? <li><strong>Date:</strong> Oct 24th</li>
+          ? <li><strong>Date:</strong> Saturday, October 24, 2026</li>
           : <li><strong>Date:</strong> the next date is to be announced. Call us or check the registration link.</li>}
         <li><strong>Time:</strong> 5:00–9:00 PM</li>
         <li><strong>For:</strong> ages 5–12</li>
-        <li><strong>Cost:</strong> $51 per adventurer, additional siblings $40.80 (dinner included)</li>
+        <li><strong>Cost:</strong> $51 per child; 20% sibling discount ($40.80 per additional sibling); dinner included</li>
       </ul>
       <div class="stub-actions">
         <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Cosmic Glow Party</a>

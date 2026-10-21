@@ -17,9 +17,26 @@ const full = {
   'birthday-parties': '/birthday-parties',
   'parents-night-out': '/parents-night-out',
   'open-play': '/open-play',
+  'ninja-warrior': '/ninja-warrior',
+  'fitness-classes': '/fitness-classes',
+  'ropes-course': '/ropes-course',
+  pickleball: '/pickleball',
+  'team-building': '/team-building',
+  about: '/about',
 }
 // Care pages carry ChildCare JSON-LD; the activity pages carry the EntertainmentBusiness node instead.
-const activity = new Set(['camps', 'birthday-parties', 'parents-night-out', 'open-play'])
+const activity = new Set([
+  'camps',
+  'birthday-parties',
+  'parents-night-out',
+  'open-play',
+  'ninja-warrior',
+  'fitness-classes',
+  'ropes-course',
+  'pickleball',
+  'team-building',
+  'about',
+])
 const errors = []
 
 const count = (s, re) => (s.match(re) ?? []).length
@@ -54,6 +71,7 @@ for (const file of readdirSync(dist).filter((f) => f.endsWith('.html'))) {
     if (!noindex) errors.push(`${file}: stub page missing noindex,follow`)
     console.log(`stub  ${file.padEnd(26)} h1=${h1} noindex=${noindex} title="${title}"`)
   }
+  if (/hisawyer\.com|sawyer/i.test(html)) errors.push(`${file}: contains a Sawyer link`)
   if (/555|50,000|Now open|Jessica M|Tyler R|Amanda S|Meridian, ID/.test(html.replace(/areaServed[\s\S]*?\]/g, ''))) {
     errors.push(`${file}: contains a banned/invented string`)
   }

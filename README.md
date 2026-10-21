@@ -34,12 +34,15 @@ scripts/           redirect generator/checker, dist verifier
 
 ## SEO notes
 - **Full, indexable pages:** `/`, `/infant-toddler-care`, `/preschool`, `/after-school-care` (`ChildCare` JSON-LD) and
-  `/camps`, `/birthday-parties`, `/parents-night-out`, `/open-play` (`ActivityPage` layout, `EntertainmentBusiness` JSON-LD;
-  `Event` JSON-LD only for the dated Cosmic Glow Party, dropped automatically once its date passes). Each has a unique title and
+  `/camps`, `/birthday-parties`, `/parents-night-out`, `/open-play`, `/ninja-warrior`, `/fitness-classes`, `/ropes-course`,
+  `/pickleball`, `/team-building`, `/about` (`ActivityPage` layout, `EntertainmentBusiness` JSON-LD; `/about` adds `AboutPage` +
+  `Organization`; `Event` JSON-LD only for upcoming dated events: camp days on `/camps` and the Cosmic Glow Party, dropped
+  automatically at build time once their date passes). Camp dates/prices come from the Camps for Kids app and must be refreshed
+  each season (see [TODO.md](TODO.md)). Each has a unique title and
   description, one H1, a canonical URL, `ChildCare` JSON-LD (name, address, phone, `areaServed`: Boise, Meridian, Garden City)
   and `FAQPage` JSON-LD. The visible FAQ is rendered from the same list as the JSON-LD so they always match.
   `openingHours` is only included where the source states it (7:30am–6pm Mon–Fri on infant/toddler and preschool).
-- **Stub pages** (`/hours`, `/pickleball`, …) use `src/layouts/Stub.astro`: `noindex,follow`, one real
+- **Stub pages** (`/hours`, `/reviews`, …) use `src/layouts/Stub.astro`: `noindex,follow`, one real
   paragraph from the old site, and links to the live booking tools. They are excluded from the sitemap.
 - `robots.txt` allows everything and points to `https://www.bodiesinmotionidaho.com/sitemap-index.xml`.
 - Meridian and Garden City appear only as service areas, never as locations.

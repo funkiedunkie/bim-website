@@ -15,6 +15,12 @@ const indexable = new Set(
     '/birthday-parties',
     '/parents-night-out',
     '/open-play',
+    '/ninja-warrior',
+    '/fitness-classes',
+    '/ropes-course',
+    '/pickleball',
+    '/team-building',
+    '/about',
   ].map((p) =>
     strip('https://www.bodiesinmotionidaho.com' + p),
   ),

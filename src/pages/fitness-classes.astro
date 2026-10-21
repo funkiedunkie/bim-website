@@ -1,36 +1,181 @@
 ---
-import Stub from '../layouts/Stub.astro'
-import { NAP, LINKS } from '../lib/site'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { LINKS, NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/values1.jpg'
+
+const title = 'Kickboxing & Bootcamp Fitness Classes in Boise, ID | Bodies in Motion'
+const description =
+  'Fitness kickboxing and SGX bootcamp classes in Boise, ID at Bodies in Motion: 60-minute classes for all levels, MyZone heart-rate tracking and a family-friendly gym.'
+
+// TODO(Duncan): the old pages disagree on the kickboxing trial price ($19.99 on /kickboxing, $29 on /kickboxing-trial),
+// so no kickboxing trial price is shown. Add the correct one.
+// TODO(Duncan): SGX details from the old bootcamp page: "For $29, we'll give you 3 classes to test drive" and "Classes start
+// at $109/mo". Confirm both are current and add an SGX trial sign-up link (the old page used an external
+// events.membersolutions.com registration link that is not used here).
+// TODO(Duncan): the "Happy New Rear Challenge" (10-week fitness challenge) is dated/seasonal on the old site. It is shown
+// as a past/seasonal program; add the next start date, price and registration link when a new challenge is scheduled.
+
+const faq: FaqItem[] = [
+  {
+    q: 'What fitness classes does Bodies in Motion offer?',
+    a: 'We offer fitness kickboxing and SGX (Spartan Group Exercise), a bootcamp-style strength and conditioning class. Classes are for men and women of all experience levels.',
+  },
+  {
+    q: 'What is the kickboxing class schedule?',
+    a: 'Kickboxing is Monday, Wednesday and Friday at 5:45 am, 7:00 am, 12:15 pm and 6:15 pm, and Saturday at 9 am. Classes are 60 minutes.',
+  },
+  {
+    q: 'When is SGX?',
+    a: 'SGX is Tuesday and Thursday at 12:15 pm.',
+  },
+  {
+    q: 'What is SGX?',
+    a: 'SGX stands for Spartan Group Exercise. It started as training for Spartan Race athletes and became popular with non-racers too. It is a conditioning class designed to increase strength, mobility, flexibility and cardiovascular endurance, in three one-month phases: core development and stability, strength and stamina, and power. You work with the camaraderie of a group but exercise independently at your own pace and ability.',
+  },
+  {
+    q: 'Is there a trial offer?',
+    a: 'Yes. The kickboxing trial includes 3 high-energy classes and a brand-new pair of boxing gloves, and you can book it online. SGX has a 3-class trial as well; call (208) 381-0587 to get started.',
+  },
+  {
+    q: 'I haven’t worked out in a long time. Is kickboxing right for me?',
+    a: 'Yes. You are in control of your intensity, and the more conditioned you become, the more you can ramp it up. Classes include students just starting out, students who are halfway there and students who are maintaining. About 70% of our students first signed up after not having worked out in a long time.',
+  },
+  {
+    q: 'How many people are in a class?',
+    a: 'It varies by class time, but classes average 5 to 15 people. We intentionally keep classes smaller to create a community feel and give each student attention.',
+  },
+  {
+    q: 'What should I wear?',
+    a: 'Wear what is comfortable for you. Many students wear shoes, but bare feet are also fine. If you wear shoes, please make sure the bottoms are clean.',
+  },
+  {
+    q: 'How often should I come to class?',
+    a: 'It depends on how active you already are and how fast you want results. For fast results, come up to 5 days a week; if you don’t have the time, 2 to 3 times a week is good.',
+  },
+  {
+    q: 'What is MyZone?',
+    a: 'Bodies in Motion is a MyZone enabled facility, so at no extra monthly charge you can track your heart rate, zone and calorie expenditure in real time. We see calorie burns as high as 1,100 in a single class, with an average of about 700.',
+  },
+  {
+    q: 'Can my kids play while I work out?',
+    a: 'Yes. Many of our members work out while their kids play on our indoor play structure. See the open play page for details and pricing.',
+  },
+]
+
+const reviews = [
+  { quote: 'I enjoy Kickboxing because it’s something new every single time I come. I feel like it’s a good workout. I feel like I have camaraderie with some friends that I’m competing with.', name: 'Anna M.', source: 'Kickboxing student' },
+  { quote: 'I like coming to Kickboxing because it makes me feel better for the whole day. When I’m in my office, I’m not sore from sitting all day. And, I just feel energized!', name: 'Kristin B.', source: 'Kickboxing student' },
+  { quote: 'Bodies in Motion is awesome - The best instructors in Boise and the place to come to succeed with your goals.', name: 'Rick Wold', source: '5 stars, Facebook' },
+  { quote: 'A win win for the whole family... I get to work out while the kids get to play.', name: 'Chris Gaines', source: '5 stars, Facebook' },
+  { quote: 'I highly recommend BIM because they are serious about your health and overall fitness.', name: 'Sheila Moore', source: '5 stars, Facebook' },
+]
 ---
 
-<Stub
-  title="Kickboxing & Fitness Classes in Boise, ID | Bodies in Motion"
-  description="Kickboxing and strength training (SGX) classes at Bodies in Motion in Boise, Idaho. Try a trial offer of 3 kickboxing classes."
+<ActivityPage
+  title={title}
+  description={description}
   path="/fitness-classes"
-  h1="Boise Kickboxing & Fitness Classes"
   eyebrow="Empowered"
+  h1="Kickboxing & Bootcamp Fitness Classes in Boise"
+  lead="Effective, motivating workouts for all experience levels, at a gym where your kids can play while you train."
+  heroImg={heroImg}
+  heroAlt="Two smiling people in red shirts giving thumbs up indoors"
+  ctaUrl={LINKS.calendlyKickboxing}
+  ctaLabel="Book kickboxing trial"
+  ctaHeading="Ready to try a class?"
+  ctaText="Book a kickboxing trial online, or call us at (208) 381-0587 to get started with SGX."
+  faq={faq}
+  reviews={reviews}
 >
-  <p>
-    Bodies in Motion offers fitness kickboxing and strength training (SGX) classes for men and women of all experience
-    levels. Kickboxing classes are 60 minutes, and the skills taught are designed to be fun and easy to grasp. Bodies
-    in Motion is also a MyZone enabled facility, so you can track your heart rate, zone, and calorie expenditure in
-    real time at no extra monthly charge.
-  </p>
-  <!-- TODO(Duncan): the old pages disagree on the kickboxing trial price ($19.99 on /kickboxing, $29 on /kickboxing-trial), so no price is shown. Add the correct one. -->
-  <p>
-    The kickboxing trial offer includes 3 high-energy classes and a brand-new pair of boxing gloves. To sign up for the
-    trial, <a href={LINKS.calendlyKickboxing}>book on Calendly</a> or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
-  </p>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2 id="kickboxing">Boise fitness kickboxing</h2>
+      <p>
+        Want an effective, fat-burning, muscle-building workout that relieves stress? Each time you strap on the gloves,
+        life takes a backseat for the next 60 minutes while our instructors take you through a kickboxing journey. The
+        skills are designed to be fun and easy to grasp, and are perfect for men and women of all experience levels. Set
+        the pace to the beat of the music and the cadence of the instructor, and punish a 6-foot, 270-pound punching bag
+        in 14-ounce gloves.
+      </p>
+      <ul class="bullets">
+        <li>Improved strength and muscle toning</li>
+        <li>Boosted cardiovascular health</li>
+        <li>Unwavering confidence in your newfound abilities</li>
+      </ul>
+      <p>
+        <strong>Kickboxing trial:</strong> 3 high-energy classes and a brand-new pair of boxing gloves.
+        <a href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book your trial on Calendly</a> or
+        call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book kickboxing trial</a>
+      </div>
 
-  <h2>Class times</h2>
-  <ul class="bullets">
-    <li>Monday, Wednesday, Friday: Kickboxing at 5:45 am, 7:00 am, 12:15 pm and 6:15 pm</li>
-    <li>Tuesday and Thursday: Strength Training (SGX) at 12:15 pm</li>
-    <li>Saturday: Kickboxing at 9 am</li>
-  </ul>
-  <p>Open play is free for your kids while you exercise. <a href="/open-play">See open play</a>.</p>
-  <div class="stub-actions">
-    <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
-    <a class="btn-outline" href="/hours">See all hours</a>
-  </div>
-</Stub>
+      <h2 id="sgx">SGX bootcamp fitness, without the yelling</h2>
+      <p>
+        SGX is short for Spartan Group Exercise. Originally intended to train Spartan Race athletes, it became popular
+        with all of our non-racing athletes too. It is a conditioning class designed to increase strength, mobility,
+        flexibility and cardiovascular endurance. Total body conditioning is broken into three phases of one month each,
+        so workouts never get mundane:
+      </p>
+      <ul class="bullets">
+        <li><strong>Phase 1:</strong> core development and stability training</li>
+        <li><strong>Phase 2:</strong> strength and stamina</li>
+        <li><strong>Phase 3:</strong> power</li>
+      </ul>
+      <p>
+        We’ve attracted racers, non-racers and people who haven’t exercised in years. You work with the camaraderie of a
+        group, but exercise independently, at your own pace and ability. To start, call
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or <a href="/contact">contact us</a> and our Membership Director
+        will help you schedule your first class.
+      </p>
+
+      <h2 id="class-times">Class times</h2>
+      <ul class="bullets">
+        <li><strong>Kickboxing:</strong> Monday, Wednesday and Friday at 5:45 am, 7:00 am, 12:15 pm and 6:15 pm; Saturday at 9 am</li>
+        <li><strong>SGX:</strong> Tuesday and Thursday at 12:15 pm</li>
+      </ul>
+      <p>See the <a href="/hours">full hours page</a> for everything else we offer.</p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="section__inner section__inner--read prose">
+      <h2 id="myzone">MyZone heart-rate tracking</h2>
+      <p>
+        Bodies in Motion is a MyZone enabled facility. For no extra monthly charge, you can track your heart rate, zone
+        and calorie expenditure in real time. Depending on the class and the person wearing the band, we see calorie
+        burns as high as 1,100 in a single class, with an average of about 700. It’s a fun way to motivate yourself to
+        train, and to train harder.
+      </p>
+
+      <h2 id="family">Work out while your kids play</h2>
+      <p>
+        Bodies in Motion is a family fitness venue: parents take class while kids play on the indoor play structure. Open play is free for your kids while you exercise;
+        <a href="/open-play">see open play</a>.
+      </p>
+
+      <h2 id="fitness-challenge">Fitness challenges (seasonal)</h2>
+      <p class="camp-note">
+        <strong>Seasonal program, not currently scheduled on this page.</strong> We run a 10-week fitness challenge
+        (past editions included the “Happy New Rear Challenge”). Start dates, prices and registration change with each
+        edition, so call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> to ask when the next one begins.
+      </p>
+      <p>
+        The challenge combines four principles: nutrition coaching and accountability, strength training, cardio training
+        and the camaraderie of doing it with others. It includes 10 weeks of coaching, 10 weeks of fitness classes
+        (cardio kickboxing and muscle-stimulating resistance training), three check-ins that assess body composition,
+        strength and flexibility, a pair of 14 oz boxing gloves and a guide book. Duncan and Rachel Richardson have been
+        refining the formula for over 20 years.
+      </p>
+    </div>
+  </section>
+</ActivityPage>
+
+<style>
+  .camp-note {
+    border-left: 3px solid #e05c4e;
+    padding: 4px 0 4px 16px;
+    color: var(--muted);
+  }
+</style>

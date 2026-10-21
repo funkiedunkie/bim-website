@@ -1,29 +1,106 @@
 ---
-import Stub from '../layouts/Stub.astro'
-import { LINKS } from '../lib/site'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/open-play.jpg'
+
+const title = 'Indoor Pickleball in Boise, ID | Bodies in Motion'
+const description =
+  'Indoor pickleball court in Boise, ID at Bodies in Motion: all skill levels, $12 per player, group rates and a $59 monthly membership. Kids play indoors while you play.'
+
+// TODO(Duncan): hours conflict on the old site. This page follows the old Hours page (Mon–Thu 9 am–3 pm and 5:30–7 pm,
+// Fri 9 am–6 pm, Sat/Sun 9:30 am–1 pm). The old Pickleball page listed different slots (Mon–Fri 10–11:30, 11:30–1,
+// 1–2:30 and 5:30–7; Sat/Sun 9:30–11). Confirm.
+// TODO(Duncan): the old Pickleball page also listed open play prices ($6 / $9.60 / $12) that differ from the confirmed
+// /open-play prices ($8.25 / $10.50 / $12.50); this page links to /open-play instead of repeating either set.
+// Booking: Monday–Friday court times are reserved by phone/email (confirmed by Duncan, 2026-10-21).
+
+const faq: FaqItem[] = [
+  {
+    q: 'How much does indoor pickleball cost?',
+    a: 'Pickleball is $12 per individual (+ tax) or $10 per person for groups of 2–5. Private groups of 6–12 people are $9 per person. Monthly memberships are $59 per month.',
+  },
+  {
+    q: 'What are the pickleball hours?',
+    a: 'Monday through Thursday 9:00 am–3 pm and 5:30–7 pm, Friday 9:00 am–6:00 pm, and Saturday and Sunday 9:30 am–1 pm.',
+  },
+  {
+    q: 'Do I need to reserve a court time?',
+    a: 'Monday through Friday times are by appointment only: call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve a spot. Saturday and Sunday court times are first come, first served and cannot be reserved in advance, because other activities and events, such as birthday parties, may be using the court.',
+  },
+  {
+    q: 'What skill levels are welcome?',
+    a: 'All skill levels. Whether you are a seasoned player or a beginner, the court offers a welcoming environment for casual play and making new friends. Games are posted courtside for 6 and 12 person play.',
+  },
+  {
+    q: 'Can my kids play while I play pickleball?',
+    a: 'Yes. Parents can enjoy friendly matches while the kids explore our indoor playground. See the open play page for kids’ pricing.',
+  },
+  {
+    q: 'Is there food and drink?',
+    a: 'Yes. Take a break between games at our Flatbread Cafe for flatbreads, coffee and more, or unwind with a canned cocktail or a beer.',
+  },
+  {
+    q: 'Where is the pickleball court?',
+    a: 'At Bodies in Motion, 729 W. Diamond St, Boise, ID 83705.',
+  },
+]
 ---
 
-<Stub
-  title="Indoor Pickleball in Boise, ID | Bodies in Motion"
-  description="Indoor pickleball at Bodies in Motion in Boise, Idaho. All skill levels welcome. Book your court time online."
+<ActivityPage
+  title={title}
+  description={description}
   path="/pickleball"
-  h1="Indoor Pickleball at Bodies in Motion"
   eyebrow="Where fun meets family"
+  h1="Indoor Pickleball in Boise"
+  lead="Friendly matches for parents, an indoor playground for the kids, and a Flatbread Cafe for the break between games."
+  heroImg={heroImg}
+  heroAlt="Three children laughing as they slide down orange and blue indoor slides"
+  ctaUrl={NAP.phoneTel}
+  ctaLabel={`Call ${NAP.phoneDisplay} to book`}
+  ctaExternal={false}
+  ctaHeading="Ready to hit the court?"
+  ctaText="Call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve your court time."
+  faq={faq}
 >
-  <p>
-    Bodies in Motion has an indoor pickleball court where parents can enjoy friendly matches while the kids explore our
-    indoor playground. All skill levels are welcome, and our Flatbread Cafe is there for a break between games. Pickleball
-    costs $12 per individual or $10 per person for groups of 2–5; private groups of 6–12 people are $9 per person.
-    Monthly memberships are $59 per month.
-  </p>
-  <!-- TODO(Duncan): the old Pickleball page's own schedule differs from the Hours page (e.g. weekday slots vs 9 am-3 pm / 5:30-7 pm). Hours below follow the Hours page; confirm. -->
-  <p>
-    Pickleball hours: Monday–Thursday 9:00 am–3 pm and 5:30 pm–7 pm, Friday 9:00 am–6:00 pm, Saturday and Sunday
-    9:30 am–1 pm. Monday through Friday times are by appointment only and must be booked online. Saturday and Sunday
-    court times are first come first serve and cannot be reserved in advance.
-  </p>
-  <div class="stub-actions">
-    <a class="btn-primary" href={LINKS.sawyerPickleball} target="_blank" rel="noopener noreferrer">Book a court time</a>
-    <a class="btn-outline" href="/hours">See all hours</a>
-  </div>
-</Stub>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Where fun meets family</h2>
+      <p>
+        Bodies in Motion is a family recreation center with an indoor playground, ropes course, childcare, camps,
+        fitness and ninja warrior classes, and an exclusive pickleball court. Our court is a blend of friendly
+        competition and family bonding: parents enjoy exciting matches while the kids explore our indoor wonderland.
+      </p>
+      <p>
+        All skill levels are welcome. Whether you’re a seasoned player or a beginner, it’s a welcoming place for casual
+        play and making new friends. Take a break at our Flatbread Cafe for artisanal flatbreads, coffee and more, or
+        unwind after a game with a canned cocktail or a beer.
+      </p>
+
+      <h2 id="rates">Pickleball rates</h2>
+      <ul class="bullets">
+        <li><strong>Individual:</strong> $12 per person (+ tax)</li>
+        <li><strong>Groups of 2–5:</strong> $10 per person</li>
+        <li><strong>Private groups of 6–12:</strong> $9 per person</li>
+        <li><strong>Monthly membership:</strong> $59 per month</li>
+      </ul>
+      <p>Games are posted courtside for 6 and 12 person play. Kids’ play pricing is on the <a href="/open-play">open play page</a>.</p>
+
+      <h2 id="hours">Hours and reservations</h2>
+      <ul class="bullets">
+        <li><strong>Monday–Thursday:</strong> 9:00 am–3 pm and 5:30–7 pm</li>
+        <li><strong>Friday:</strong> 9:00 am–6:00 pm</li>
+        <li><strong>Saturday and Sunday:</strong> 9:30 am–1 pm</li>
+      </ul>
+      <p>
+        Monday through Friday times are by appointment only. Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
+        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a> to reserve. Saturday
+        and Sunday court times are first come, first served and cannot be reserved in advance, because other activities
+        and events, such as birthday parties, may be using the court.
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={NAP.phoneTel}>Call to book a court</a>
+        <a class="btn-outline" href="/hours">See all hours</a>
+      </div>
+    </div>
+  </section>
+</ActivityPage>
