@@ -1,9 +1,9 @@
 // Vercel Function: POST /api/contact
-// Delivers contact / info-request submissions to help@bodiesinmotionidaho.com via Resend's REST API (free tier).
+// Delivers contact / info-request submissions to help@bodiesinmotionidaho.com via Mailjet's Send API v3.1.
 // Env vars (set in Vercel project settings; TODO(Duncan)):
-//   RESEND_API_KEY  - required; without it the endpoint returns 503 and the page falls back to mailto.
-//   CONTACT_FROM    - verified sender, e.g. "Bodies in Motion Website <website@bodiesinmotionidaho.com>"
-//   CONTACT_TO      - optional, defaults to help@bodiesinmotionidaho.com
+//   MAILJET_API_KEY, MAILJET_SECRET_KEY - required; without them the endpoint returns 503 and the page falls back to mailto.
+//   CONTACT_FROM - sender already validated in Mailjet, e.g. "Bodies in Motion Website <website@bodiesinmotionidaho.com>" or a bare address
+//   CONTACT_TO   - optional, defaults to help@bodiesinmotionidaho.com
 const TO_DEFAULT = 'help@bodiesinmotionidaho.com'
 const PROGRAMS = ['Infant & Toddler Care', 'Preschool', 'Before & After School Care', 'Camps', 'Birthday Parties', 'Other']
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
@@ -38,18 +38,31 @@ export default async function handler(req, res) {
   const message = String(b.message || '').trim().slice(0, 5000)
   if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !message) return done(400, false, 'Please fill in name, a valid email and a message.')
 
-  const key = process.env.RESEND_API_KEY
-  const from = process.env.CONTACT_FROM
-  if (!key || !from) return done(503, false, 'Form delivery is not configured yet.')
+  const key = process.env.MAILJET_API_KEY
+  const secret = process.env.MAILJET_SECRET_KEY
+  const fromRaw = process.env.CONTACT_FROM
+  if (!key || !secret || !fromRaw) return done(503, false, 'Form delivery is not configured yet.')
+  const m = fromRaw.match(/^\s*(?:"?([^"<]*?)"?\s*)?<([^>]+)>\s*$/)
+  const from = m ? { Email: m[2].trim(), Name: (m[1] || 'Bodies in Motion Website').trim() } : { Email: fromRaw.trim(), Name: 'Bodies in Motion Website' }
 
   const html = `<p><b>Name:</b> ${esc(name)}<br><b>Email:</b> ${esc(email)}<br><b>Phone:</b> ${esc(phone || '-')}<br><b>Program:</b> ${esc(program)}</p><p>${esc(message).replace(/\n/g, '<br>')}</p>`
+  const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || '-'}\nProgram: ${program}\n\n${message}`
   try {
-    const r = await fetch('https://api.resend.com/emails', {
+    const r = await fetch('https://api.mailjet.com/v3.1/send', {
       method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from, to: [process.env.CONTACT_TO || TO_DEFAULT], reply_to: email, subject: `Website inquiry: ${program} (${name})`, html }),
+      headers: { Authorization: 'Basic ' + Buffer.from(`${key}:${secret}`).toString('base64'), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ Messages: [{
+        From: from,
+        To: [{ Email: process.env.CONTACT_TO || TO_DEFAULT }],
+        ReplyTo: { Email: email, Name: name },
+        Subject: `Website inquiry: ${program} (${name})`,
+        TextPart: text,
+        HTMLPart: html,
+        CustomID: 'bim-website-contact',
+      }] }),
     })
-    if (!r.ok) return done(502, false, 'Delivery failed.')
+    const j = await r.json().catch(() => ({}))
+    if (!r.ok || j?.Messages?.[0]?.Status !== 'success') return done(502, false, 'Delivery failed.')
   } catch { return done(502, false, 'Delivery failed.') }
   return done(200, true, 'Thanks! We will get back to you soon.')
 }

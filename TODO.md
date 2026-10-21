@@ -32,7 +32,7 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 - [ ] **Open play** — monthly specials calendar (October-specific) not migrated; confirm how "open play free when you exercise" works. (`open-play.astro`)
 
 ## Links and forms
-- [ ] **Contact form delivery** — `/api/contact` (Vercel Function, `api/contact.js`) sends to help@bodiesinmotionidaho.com via Resend's free tier. Set `RESEND_API_KEY` and `CONTACT_FROM` (a sender on a domain verified in Resend; needs DNS records) in Vercel; optional `CONTACT_TO`. Until set, the form shows a mailto fallback. Infant/toddler info-request and job application forms can reuse this endpoint later.
+- [ ] **Contact form delivery** — `/api/contact` (`api/contact.js`, Vercel Function) sends to help@bodiesinmotionidaho.com via Mailjet Send API v3.1 (Duncan chose Mailjet over Resend 2026-10-21; no DNS changes needed since Mailjet is already in the domain's SPF). Set `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM` (a bodiesinmotionidaho.com sender already validated in Mailjet) and optional `CONTACT_TO` in Vercel (Preview first), then send a test from the preview. Until set, the form shows a mailto fallback.
 - [ ] **Motioneer job application form** — not migrated (it posted to Weebly); `/jobs` tells applicants to email help@ or call. Add a form (can reuse `/api/contact`) or link. No `JobPosting` schema until there is a concrete opening (title, description, date posted, pay, employment type); pay, hours and benefits are not on the old page, so none are listed. (`src/pages/jobs.astro`)
 
 ## Content still to migrate

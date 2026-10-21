@@ -79,6 +79,6 @@ scripts/           redirect generator/checker, dist verifier, blog-map.json (app
 3. Use the constants in `src/lib/site.ts` for name/address/phone so NAP stays consistent.
 
 ## Contact form
-`src/components/ContactForm.astro` posts to `/api/contact` (`api/contact.js`, a Vercel Function) which emails help@bodiesinmotionidaho.com through Resend. Env vars: `RESEND_API_KEY`, `CONTACT_FROM` (verified sender), optional `CONTACT_TO`. If they're unset or delivery fails, the form offers a pre-filled mailto link instead.
+`src/components/ContactForm.astro` posts to `/api/contact` (`api/contact.js`, a Vercel Function) which emails help@bodiesinmotionidaho.com through Mailjet. Env vars: `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM` (sender already validated in Mailjet), optional `CONTACT_TO` (default help@bodiesinmotionidaho.com). If they're unset or delivery fails, the form offers a pre-filled mailto link instead.
 
 Requires Node >= 22.22 (Astro 7).
