@@ -9,14 +9,14 @@ heroAlt: "A group of people stacking their hands together in a team huddle outdo
 relatedPages:
   - "/camps"
   - "/contact"
-reviewNotes: "REWRITTEN to current facts. Removed 2019 specifics: the \"this year\" camp list (Mountain Biking, Learn to Ride and a Martial Arts camp were dropped: Bodies in Motion may not offer martial arts or biking camps now, please confirm), ages 3-13, 7:00 am pre-camp, hot lunches, \"campers placed in groups by age\", guest Ninja Warrior athletes, Mountain Bike levels, Splash Camp inflatables and the Adventure sessions, and the line about chatting with the Activities Director. Now uses ages 4-12, 9-3 with 7:30 am-6 pm care, optional lunch and Motioneer certifications from /camps. The remaining theme names are listed as past camps only; confirm you are happy to keep them."
+reviewNotes: "Rewritten to current facts (Duncan confirmed 2026-10-21: summer Learn to Ride camp and winter-break camps run; no martial arts camps and no other biking camps). Removed 2019 specifics: ages 3-13, 7:00 am pre-camp, hot lunches."
 ---
 
 When it comes to summer camps, there is certainly no shortage of options. From the YMCA to local churches to university-sponsored youth camps, kids could be in a different place every week of the summer. With all of that competition, what sets camps at Bodies in Motion apart? What makes us special?
 
 ## Unique Camps
 
-Our camps are themed, and the themes change from year to year. Over the years our lineup has included Ninja, Secret Agent, Treasure Hunters, Hollywood, Splash, Ninja Warrior, Adventure, Myth Busters, Super Hero, Kid vs. Wild and Bugs camps.
+Our camps are themed, and the themes change from year to year. Over the years our lineup has included Ninja, Secret Agent, Treasure Hunters, Hollywood, Splash, Ninja Warrior, Adventure, Myth Busters, Super Hero, Kid vs. Wild and Bugs camps, plus our summer Learn to Ride camp.
 
 Where else can you find such a wide variety of experiences?! Even when a popular camp comes back, each version has its own unique twist, so no two weeks are ever the same. For that matter, no two summers are the same, since camps are updated and changed out every year.
 
@@ -30,7 +30,7 @@ At Bodies in Motion, employees are referred to as “Motioneers.” They are the
 
 ## Camps All Year Long
 
-Camps are not only for summer. We also run one-day camps on no-school days, plus holiday and break camps such as Spring Break and Thanksgiving-week camp days. Not sure when school breaks fit? Our guide on [whether camps are only for summer](/blog/are-camps-only-for-summer) explains what to expect.
+Camps are not only for summer. We also run one-day camps on no-school days, plus holiday and break camps such as Spring Break, winter break and Thanksgiving-week camp days. Not sure when school breaks fit? Our guide on [whether camps are only for summer](/blog/are-camps-only-for-summer) explains what to expect.
 
 ## Summer Camp Central
 

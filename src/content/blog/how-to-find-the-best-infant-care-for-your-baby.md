@@ -8,7 +8,7 @@ relatedPages:
   - "/infant-toddler-care"
   - "/preschool"
   - "/contact"
-reviewNotes: "Generic advice kept as written (2023). Check: the Idaho STARS mention and the \"recommended ratios\" advice are the original author's and unverified. The Bodies in Motion section uses only facts from /infant-toddler-care. The childcare license number is still not on the site (see TODO). This post has no photo (none in the original)."
+reviewNotes: "Generic advice kept as written (2023). Idaho STARS provider status confirmed by Duncan (2026-10-21). The general \"recommended ratios\" advice is the original author's. The childcare license number is still not on the site (see TODO.md)."
 ---
 
 Taking proper care of your infant child is a significant task for every parent. This means finding the most suitable infant care option that offers an ideal blend of comfort, security, and development opportunities. With that in mind, how can you confidently identify and select the best care facility for your baby? In this comprehensive guide, we'll discuss various infant daycare options, baby daycare tips, and how to vet potential providers located in your area.
@@ -31,7 +31,7 @@ Now that you're acquainted with the basics of infant care, it's time to dig deep
 
 **Flexibility and Convenience**: What is the provider’s proximity to your home or workplace? Are their hours compatible with your work schedule? It’s also helpful to investigate if they offer early or late pick-ups and how they handle absences.
 
-**Accreditation and Licensing**: Verify that the selected provider has the appropriate licenses (including background checks for all staff) and accreditations from recognized authorities. For example, one of those authorities in our area is Idaho STARS.
+**Accreditation and Licensing**: Verify that the selected provider has the appropriate licenses (including background checks for all staff) and accreditations from recognized authorities. For example, one of those authorities in our area is Idaho STARS, and Bodies in Motion is an Idaho STARS provider.
 
 **Curriculum**: Look into the daycare’s curriculum, with a focus on stimulating activities for infants, socialization opportunities, and age-appropriate learning experiences. A well-rounded curriculum helps prepare your child for future development milestones.
 

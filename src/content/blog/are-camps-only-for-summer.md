@@ -10,12 +10,12 @@ relatedPages:
   - "/camps"
   - "/after-school-care"
   - "/contact"
-reviewNotes: "General advice kept as written (2019). Bodies in Motion sentences use only facts from /camps (no-school day camps, Spring Break and Thanksgiving-week camp days). The \"winter break\" paragraph is generic: confirm whether Bodies in Motion runs winter-break camps before saying so."
+reviewNotes: "General advice kept as written (2019). Winter-break camps confirmed by Duncan (2026-10-21); no dates or prices stated."
 ---
 
 As the school year starts, you and your children might wonder if camps are something that you can only attend during the summer break. As it turns out, camp is not just for the summer months! Camps are for children all year round! Breaks in the school year make it easy to get your kid into a day-long or week-long program so that they can have fun and you can work like normal.
 
-Today, we’re talking a bit about what non-summer camps are, how to find them, and what to expect. At Bodies in Motion, we run one-day [camps on no-school days](/camps) plus holiday and break camps, such as Spring Break and Thanksgiving-week camp days. Check our [camps page](/camps) for upcoming dates.
+Today, we’re talking a bit about what non-summer camps are, how to find them, and what to expect. At Bodies in Motion, we run one-day [camps on no-school days](/camps) plus holiday and break camps, such as Spring Break, winter break and Thanksgiving-week camp days. Check our [camps page](/camps) for upcoming dates.
 
 ## What Can You Expect?
 
@@ -31,7 +31,7 @@ The first break that your children will commonly get is fall break. This week-lo
 
 ### Winter Break
 
-Though not as many are available, winter break is another time when camps are typical due to the long break in between semesters. Day camps and overnight camps, as well as short and long sessions, are available if you look in the right places. Keep in mind; these camps will fill up fast and often take place during the time before or after Christmas.
+Though not as many are available, winter break is another time when camps are typical due to the long break in between semesters. Day camps and overnight camps, as well as short and long sessions, are available if you look in the right places. Keep in mind; these camps will fill up fast and often take place during the time before or after Christmas. At Bodies in Motion, we run winter-break camps too; check our [camps page](/camps) for current dates.
 
 ### Spring Break
 
