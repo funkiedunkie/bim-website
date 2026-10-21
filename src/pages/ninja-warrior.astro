@@ -1,0 +1,40 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { LINKS } from '../lib/site'
+---
+
+<Stub
+  title="Kids Ninja Warrior Classes in Boise, ID | Bodies in Motion"
+  description="Kids Ninja Warrior classes for ages 5–13 and Ninja Warrior open gym at Bodies in Motion in Boise, Idaho. Book a free ninja trial."
+  path="/ninja-warrior"
+  h1="Ninja Warrior: Train Like a Ninja"
+  eyebrow="Encourage. Empower."
+>
+  <p>
+    Our Ninja Warrior classes are designed to build strength, agility, and confidence for ages 5–13, with one age group
+    for ages 5–8 and another for kids 9 and up. The Kids Ninja Warrior program is built on the structure of our former
+    junior martial arts classes, with a clear rank progression and a focus on character traits like Focus,
+    Self-Discipline, and Confidence. Ninja Warrior open gym lets more experienced ninjas adjust the equipment and
+    create their own course.
+  </p>
+
+  <h2>Schedule &amp; tuition</h2>
+  <ul class="bullets">
+    <li>Monday &amp; Wednesday: 4:30–5:15 pm ages 5–8, 5:30–6:15 pm ages 9+</li>
+    <li>Tuesday &amp; Thursday: 4:30–5:15 pm ages 9+, 5:30–6:15 pm ages 5–8</li>
+    <li>Tuition: $149/mo (2 days/wk), $189/mo (3 days/wk), $219/mo (4 days/wk). Sibling discounts available.</li>
+    <li>Open gym: Monday–Friday 10:30 AM–12:00 PM and 1:30–4:00 PM, Saturday and Sunday 10 AM–5:00 PM. Cost: $14.</li>
+  </ul>
+  <!-- TODO(Duncan): confirm the class schedule/tuition, copied at crawl time. -->
+
+  <h2>Free ninja trial</h2>
+  <p>
+    The free private trial is a 30-minute one-on-one session where your child meets a coach and tries beginner parkour
+    and obstacle skills. Parents must stay to watch, and siblings can come along: register one child and we’ll include
+    the rest.
+  </p>
+  <div class="stub-actions">
+    <a class="btn-primary" href={LINKS.calendlyNinja58} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 5–8)</a>
+    <a class="btn-primary" href={LINKS.calendlyNinja9} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 9+)</a>
+  </div>
+</Stub>

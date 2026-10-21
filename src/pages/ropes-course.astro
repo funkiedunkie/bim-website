@@ -1,0 +1,29 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { LINKS, NAP } from '../lib/site'
+---
+
+<Stub
+  title="Ropes Course in Boise, ID | Bodies in Motion"
+  description="High aerial ropes course at Bodies in Motion in Boise, Idaho: Open Ropes, Cosmic Ropes adventures and ropes birthday parties."
+  path="/ropes-course"
+  h1="Ropes Course at Bodies in Motion"
+  eyebrow="Encourage. Empower."
+>
+  <p>
+    There are three ways to enjoy the Ropes Course at Bodies in Motion: Cosmic Ropes Adventure, Cosmic Ropes Birthday
+    Party, and Open Ropes. Open Ropes is a 45 minute high aerial ropes adventure with free range swinging and hanging.
+    Participants must be 10 years old with an adult, or 10 years old and 5 feet tall to go up without an adult. Open
+    Ropes is $16 (+ tax) per person, and a reservation is required: call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>
+    to RSVP.
+  </p>
+  <!-- TODO(Duncan): the old page marks Cosmic Ropes Adventure and Cosmic Ropes Birthdays as "currently on hold", and lists Open Ropes slots Mon-Fri 4-5 and 5-6 PM. Confirm current availability before expanding this page. -->
+  <p>
+    The old page lists the Cosmic Ropes Adventure (in the dark with blacklights, disco lights and music) and Cosmic Ropes
+    Birthday Parties as currently on hold. Weight is not a concern on the course, but harnesses may not fit all guests.
+  </p>
+  <div class="stub-actions">
+    <a class="btn-primary" href={LINKS.sawyerRopes} target="_blank" rel="noopener noreferrer">Book ropes online</a>
+    <a class="btn-outline" href="/birthday-parties">Birthday parties</a>
+  </div>
+</Stub>

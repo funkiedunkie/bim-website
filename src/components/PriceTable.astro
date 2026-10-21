@@ -1,0 +1,127 @@
+---
+interface Row {
+  label: string
+  price: string
+  note?: string
+}
+
+interface Props {
+  caption: string
+  subtitle?: string
+  rows: Row[]
+  footnote?: string
+  /** Column heading for the price column, e.g. "Monthly tuition". */
+  priceHeading?: string
+}
+
+const { caption, subtitle, rows, footnote, priceHeading = 'Monthly tuition' } = Astro.props
+---
+
+<div class="price">
+  <table>
+    <caption>
+      <span class="price__caption">{caption}</span>
+      {subtitle && <span class="price__subtitle">{subtitle}</span>}
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">Schedule</th>
+        <th scope="col">{priceHeading}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          <th scope="row">{r.label}</th>
+          <td>
+            {r.price}
+            {r.note && <span class="price__note">{r.note}</span>}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  {footnote && <p class="price__foot">{footnote}</p>}
+</div>
+
+<style>
+  .price {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 8px 24px 16px;
+    margin: 20px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  caption {
+    text-align: left;
+    padding: 16px 0 12px;
+  }
+
+  .price__caption {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .price__subtitle {
+    display: block;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 2px;
+  }
+
+  thead th {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 236, 228, 0.55);
+    text-align: left;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  thead th:last-child,
+  td {
+    text-align: right;
+  }
+
+  tbody th,
+  td {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-weight: 500;
+    text-align: left;
+  }
+
+  td {
+    text-align: right;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  tbody tr:last-child th,
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .price__note {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #e8806f;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .price__foot {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { LINKS } from '../lib/site'
+---
+
+<Stub
+  title="Camps in Boise, ID | Bodies in Motion"
+  description="Summer camps and holiday camps at Bodies in Motion in Boise, Idaho. Register for camps at campsforkidsidaho.com."
+  path="/camps"
+  h1="Camps at Bodies in Motion"
+  eyebrow="Summer Camps · Holiday Camps"
+>
+  <p>
+    Bodies in Motion runs Summer Camps and Holiday Camps at our Boise facility. Camp days run Monday through Friday,
+    9 am to 3 pm, with pre-camp starting at 7:30 am and post-camp from 3 pm to 6 pm. Camp registration is handled
+    through Camps for Kids Idaho.
+  </p>
+  <!-- TODO(Duncan): the old Hours page lists pre-camp as "7:30 am - 9 pm" (likely a typo for 9 am). Confirm the pre-camp end time. -->
+  <!-- TODO(Duncan): the old Camps page only lists "Summer Camps" and "Holiday Camps" with links; migrate camp descriptions, ages and pricing. -->
+  <div class="stub-actions">
+    <a class="btn-primary" href={LINKS.camps} target="_blank" rel="noopener noreferrer">Register for camps</a>
+    <a class="btn-outline" href="/hours">See camp hours</a>
+  </div>
+</Stub>

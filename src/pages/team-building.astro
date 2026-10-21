@@ -1,0 +1,25 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { NAP } from '../lib/site'
+---
+
+<Stub
+  title="Team Building in Boise, ID | Bodies in Motion"
+  description="Team building workshops at Bodies in Motion in Boise, Idaho for groups of 4 to 60: Mission Possible, Team Building Express, and Ninja Warrior vs Ropes Course."
+  path="/team-building"
+  h1="Team Building at Bodies in Motion"
+  eyebrow="Igniting activity and empowering teams"
+>
+  <p>
+    Our team building division delivers experiential programs to companies of all sizes, from a large company with 150
+    people to a small firm of 4. Three workshops are offered: Mission Possible Team Building (6 to 60 participants,
+    about 3 hours, $57 to $73 tax included depending on group size), Team Building Express (4 to 20 participants, about
+    1 hour, $21 to $26 tax included) and Ninja Warrior vs Ropes Course (4 to 40 participants, about 2 hours, $38 to $43
+    tax included). Team building is by appointment only: call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
+  </p>
+  <!-- TODO(Duncan): confirm these prices, which were copied from the old page at crawl time. The booking email on the old Hours page was obfuscated in the crawl; add it here. -->
+  <div class="stub-actions">
+    <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
+    <a class="btn-outline" href="/contact">Contact us</a>
+  </div>
+</Stub>

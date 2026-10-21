@@ -1,16 +1,56 @@
-# React + Vite
+# Bodies in Motion website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Static [Astro](https://astro.build) site for Bodies in Motion, 729 W. Diamond St, Boise, ID 83705 · (208) 381-0587.
+Replaces the Weebly site at https://www.bodiesinmotionidaho.com. Boise is the only location.
 
-Currently, two official plugins are available:
+## Stack
+- Astro 5, static output, plain `.astro` components (no React, router or Supabase)
+- `@astrojs/sitemap`, `astro:assets` for image optimization
+- Deployed on Vercel (`vercel.json` holds redirects). **Nothing here deploys automatically.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Commands
+| Command | Action |
+| --- | --- |
+| `npm install` | Install dependencies |
+| `npm run dev` | Dev server at http://localhost:4321 |
+| `npm run build` | Build to `dist/` |
+| `npm run preview` | Preview the build |
+| `npm run check:redirects` | Verify every legacy URL in `/workspace/urls.txt` is redirected (pass another path as an argument) |
+| `node scripts/verify-dist.mjs` | After a build: check H1, canonical, JSON-LD, noindex and the sitemap |
+| `node scripts/generate-vercel-json.mjs` | Regenerate `vercel.json` from the redirect map in the script |
 
-## React Compiler
+## Structure
+```
+src/
+  assets/          photos and logo (optimized at build time)
+  components/      Nav, Footer, Faq, PriceTable, Location
+  layouts/         Base (head/SEO), CarePage (full care pages), Stub (noindex pages)
+  lib/site.ts      NAP, external links, JSON-LD builders
+  pages/           one file per route
+  styles/          global.css, home.css
+public/            robots.txt, favicon, logo.png (used in JSON-LD)
+scripts/           redirect generator/checker, dist verifier
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## SEO notes
+- **Full, indexable pages:** `/`, `/infant-toddler-care`, `/preschool`, `/after-school-care`. Each has a unique title and
+  description, one H1, a canonical URL, `ChildCare` JSON-LD (name, address, phone, `areaServed`: Boise, Meridian, Garden City)
+  and `FAQPage` JSON-LD. The visible FAQ is rendered from the same list as the JSON-LD so they always match.
+  `openingHours` is only included where the source states it (7:30am–6pm Mon–Fri on infant/toddler and preschool).
+- **Stub pages** (`/camps`, `/birthday-parties`, `/hours`, …) use `src/layouts/Stub.astro`: `noindex,follow`, one real
+  paragraph from the old site, and links to the live booking tools. They are excluded from the sitemap.
+- `robots.txt` allows everything and points to `https://www.bodiesinmotionidaho.com/sitemap-index.xml`.
+- Meridian and Garden City appear only as service areas, never as locations.
+- Every fact comes from the crawl of the old site; anything missing is a `TODO(Duncan)` listed in [TODO.md](TODO.md).
 
-## Expanding the ESLint configuration
+## Redirect notes
+- `vercel.json` sets `cleanUrls: true`, `trailingSlash: false` and 301 redirects from the old Weebly `.html` URLs to the new routes.
+- First match wins; duplicate sources are dropped by the generator. Obstacle tutorial pages, ninja pages, fitness pages and
+  the review pages redirect to their parent topic.
+- `/blog/:slug`, archives, categories and pagination redirect to `/blog` **temporarily** until posts are migrated.
+- Run `npm run check:redirects` after changing the map.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Adding or promoting a page
+1. Create `src/pages/<slug>.astro` using `Base` (indexable) or `Stub` (noindex).
+2. For an indexable page, add its path to the `indexable` list in `astro.config.mjs` and to `scripts/verify-dist.mjs`.
+3. Use the constants in `src/lib/site.ts` for name/address/phone so NAP stays consistent.

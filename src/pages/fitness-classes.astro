@@ -1,0 +1,36 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { NAP, LINKS } from '../lib/site'
+---
+
+<Stub
+  title="Kickboxing & Fitness Classes in Boise, ID | Bodies in Motion"
+  description="Kickboxing and strength training (SGX) classes at Bodies in Motion in Boise, Idaho. Try a trial offer of 3 kickboxing classes."
+  path="/fitness-classes"
+  h1="Boise Kickboxing & Fitness Classes"
+  eyebrow="Empowered"
+>
+  <p>
+    Bodies in Motion offers fitness kickboxing and strength training (SGX) classes for men and women of all experience
+    levels. Kickboxing classes are 60 minutes, and the skills taught are designed to be fun and easy to grasp. Bodies
+    in Motion is also a MyZone enabled facility, so you can track your heart rate, zone, and calorie expenditure in
+    real time at no extra monthly charge.
+  </p>
+  <!-- TODO(Duncan): the old pages disagree on the kickboxing trial price ($19.99 on /kickboxing, $29 on /kickboxing-trial), so no price is shown. Add the correct one. -->
+  <p>
+    The kickboxing trial offer includes 3 high-energy classes and a brand-new pair of boxing gloves. To sign up for the
+    trial, <a href={LINKS.calendlyKickboxing}>book on Calendly</a> or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
+  </p>
+
+  <h2>Class times</h2>
+  <ul class="bullets">
+    <li>Monday, Wednesday, Friday: Kickboxing at 5:45 am, 7:00 am, 12:15 pm and 6:15 pm</li>
+    <li>Tuesday and Thursday: Strength Training (SGX) at 12:15 pm</li>
+    <li>Saturday: Kickboxing at 9 am</li>
+  </ul>
+  <p>Open play is free for your kids while you exercise. <a href="/open-play">See open play</a>.</p>
+  <div class="stub-actions">
+    <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
+    <a class="btn-outline" href="/hours">See all hours</a>
+  </div>
+</Stub>

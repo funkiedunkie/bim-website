@@ -1,0 +1,31 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { LINKS } from '../lib/site'
+---
+
+<Stub
+  title="Birthday Parties in Boise, ID | Bodies in Motion"
+  description="Themed, super and adult birthday parties at Bodies in Motion in Boise, Idaho. Choose a party and book online."
+  path="/birthday-parties"
+  h1="Birthday Parties at Bodies in Motion"
+  eyebrow="3 ways to party"
+>
+  <p>
+    There are three ways to party at Bodies in Motion. Themed birthday parties are a 1½ hour party experience hosted by
+    one of our motioneers, great for ages 0 to 11. Super birthday parties offer longer party times, up to overnight
+    lock-ins and Cosmic Ropes, and are great for ages 10 to 16. Adult birthday parties let you build the party exactly
+    the way you want for your special occasion.
+  </p>
+  <!-- TODO(Duncan): party packages, pricing and policies (e.g. the Weebly party pricing, food packages, Cosmic Ropes "on hold") are not migrated yet. -->
+  <!-- TODO(Duncan): confirm which Sawyer link maps to Super / Cosmic / Lock-in parties (the crawl lists three links without labels). -->
+  <div class="stub-actions">
+    <a class="btn-primary" href={LINKS.calendlyBirthday} target="_blank" rel="noopener noreferrer">Birthday party RSVP</a>
+    <a class="btn-outline" href={LINKS.sawyerAdultParty} target="_blank" rel="noopener noreferrer">Book an adult party</a>
+  </div>
+  <p>Ages 10–16 party booking (Sawyer):</p>
+  <ul class="bullets">
+    <li><a href={LINKS.sawyerParty1016a} target="_blank" rel="noopener noreferrer">Booking option 1</a></li>
+    <li><a href={LINKS.sawyerParty1016b} target="_blank" rel="noopener noreferrer">Booking option 2</a></li>
+    <li><a href={LINKS.sawyerParty1016c} target="_blank" rel="noopener noreferrer">Booking option 3</a></li>
+  </ul>
+</Stub>

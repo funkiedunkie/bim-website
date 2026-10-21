@@ -1,0 +1,70 @@
+---
+// Shared shell for the three full, indexable care pages (infant/toddler, preschool,
+// before & after school). Emits one H1, canonical, ChildCare + FAQPage JSON-LD and
+// a visible FAQ that is built from the same items as the FAQPage markup.
+import { Image } from 'astro:assets'
+import Base from './Base.astro'
+import Faq from '../components/Faq.astro'
+import Location from '../components/Location.astro'
+import { NAP, childCareSchema, faqSchema, type FaqItem } from '../lib/site'
+
+interface Props {
+  title: string
+  description: string
+  path: string
+  eyebrow: string
+  h1: string
+  lead?: string
+  heroImg: ImageMetadata
+  heroAlt: string
+  tourUrl: string
+  tourLabel: string
+  faq: FaqItem[]
+  openingHours?: string[]
+}
+
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, tourUrl, tourLabel, faq, openingHours } = Astro.props
+const jsonLd = [childCareSchema({ description, openingHours }), faqSchema(faq)]
+---
+
+<Base title={title} description={description} path={path} jsonLd={jsonLd}>
+  <header class="page-hero">
+    <Image class="page-hero__img" src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="page-hero__inner">
+      <p class="page-hero__eyebrow">{eyebrow}</p>
+      <h1>{h1}</h1>
+      {lead && <p class="page-hero__lead">{lead}</p>}
+      <div class="page-hero__actions">
+        <a href={tourUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">{tourLabel}</a>
+        <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
+      </div>
+    </div>
+  </header>
+
+  <slot />
+
+  <section class="section section--surface">
+    <div class="section__inner section__inner--read">
+      <Faq items={faq} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <div class="cta-box">
+        <div>
+          <h2>Ready to see Bodies in Motion in person?</h2>
+          <p>Book a tour, or call us at {NAP.phoneDisplay}.</p>
+        </div>
+        <div class="cta-box__buttons">
+          <a href={tourUrl} class="btn-white" target="_blank" rel="noopener noreferrer">{tourLabel}</a>
+          <a href="/contact" class="btn-white-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="section__inner"><Location /></div>
+  </section>
+</Base>

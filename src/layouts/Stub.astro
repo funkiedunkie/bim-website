@@ -1,0 +1,52 @@
+---
+// Layout for the noindex "stub" pages: one H1, a real summary of the old Weebly
+// page, and links out to the live booking tools. These pages are excluded from
+// the sitemap (see astro.config.mjs) and carry noindex,follow.
+import Base from './Base.astro'
+import Location from '../components/Location.astro'
+import { NAP } from '../lib/site'
+
+interface Props {
+  title: string
+  description: string
+  path: string
+  h1: string
+  eyebrow?: string
+  showLocation?: boolean
+}
+
+const { title, description, path, h1, eyebrow, showLocation = false } = Astro.props
+---
+
+<Base title={title} description={description} path={path} noindex>
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      {eyebrow && <p class="page-hero__eyebrow">{eyebrow}</p>}
+      <h1>{h1}</h1>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <slot />
+      <p class="stub-note">
+        Questions? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or visit us at {NAP.street}, {NAP.city}, {NAP.state} {NAP.zip}.
+      </p>
+    </div>
+  </section>
+
+  {showLocation && (
+    <section class="section section--surface">
+      <div class="section__inner"><Location /></div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .stub-note {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { LINKS } from '../lib/site'
+---
+
+<Stub
+  title="Indoor Pickleball in Boise, ID | Bodies in Motion"
+  description="Indoor pickleball at Bodies in Motion in Boise, Idaho. All skill levels welcome. Book your court time online."
+  path="/pickleball"
+  h1="Indoor Pickleball at Bodies in Motion"
+  eyebrow="Where fun meets family"
+>
+  <p>
+    Bodies in Motion has an indoor pickleball court where parents can enjoy friendly matches while the kids explore our
+    indoor playground. All skill levels are welcome, and our Flatbread Cafe is there for a break between games. Pickleball
+    costs $12 per individual or $10 per person for groups of 2–5; private groups of 6–12 people are $9 per person.
+    Monthly memberships are $59 per month.
+  </p>
+  <!-- TODO(Duncan): the old Pickleball page's own schedule differs from the Hours page (e.g. weekday slots vs 9 am-3 pm / 5:30-7 pm). Hours below follow the Hours page; confirm. -->
+  <p>
+    Pickleball hours: Monday–Thursday 9:00 am–3 pm and 5:30 pm–7 pm, Friday 9:00 am–6:00 pm, Saturday and Sunday
+    9:30 am–1 pm. Monday through Friday times are by appointment only and must be booked online. Saturday and Sunday
+    court times are first come first serve and cannot be reserved in advance.
+  </p>
+  <div class="stub-actions">
+    <a class="btn-primary" href={LINKS.sawyerPickleball} target="_blank" rel="noopener noreferrer">Book a court time</a>
+    <a class="btn-outline" href="/hours">See all hours</a>
+  </div>
+</Stub>

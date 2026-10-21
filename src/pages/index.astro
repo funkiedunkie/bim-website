@@ -1,0 +1,302 @@
+---
+import { Image } from 'astro:assets'
+import Base from '../layouts/Base.astro'
+import Faq from '../components/Faq.astro'
+import Location from '../components/Location.astro'
+import { NAP, childCareSchema, faqSchema, type FaqItem } from '../lib/site'
+import heroImg from '../assets/hero.png'
+import openPlayImg from '../assets/open-play.jpg'
+import values1Img from '../assets/values1.jpg'
+import values2Img from '../assets/values2.jpg'
+import values3Img from '../assets/values3.jpg'
+import strip1Img from '../assets/strip1.jpg'
+import strip2Img from '../assets/strip2.jpg'
+import strip3Img from '../assets/strip3.jpg'
+import '../styles/home.css'
+
+const title = 'Bodies in Motion | Childcare, Preschool & Activities in Boise, ID'
+const description =
+  'Serving Boise since 2011: infant & toddler care, preschool, before & after school care, camps, ninja warrior, open play and more at 729 W. Diamond St.'
+
+const tickerItems = [
+  'Before & After School Care',
+  'Ninja Warrior',
+  'Fitness',
+  'Pickleball',
+  'Camps',
+  'Indoor Playground',
+  'Ropes Course',
+  'Birthday Parties',
+  'Preschool',
+  'Infant & Toddler Care',
+  'Flatbread Cafe & Espresso Bar',
+]
+
+// Every description below is taken from the live Weebly site (home, program pages, meta descriptions).
+const activities = [
+  { name: 'Infant & Toddler Care', desc: 'Care for ages 6 weeks to 36 months with 1 teacher for every 4 babies.', to: '/infant-toddler-care' },
+  { name: 'Preschool', desc: 'Ages 3–6, with kindergarten readiness as our top priority.', to: '/preschool' },
+  { name: 'Before & After School Care', desc: 'Clubs, homework help and transportation from select Boise schools.', to: '/after-school-care' },
+  { name: 'Camps', desc: 'Summer camps and holiday camps.', to: '/camps' },
+  { name: 'Ninja Warrior', desc: 'Kids classes for ages 5–13 plus Ninja Warrior open gym.', to: '/ninja-warrior' },
+  { name: 'Fitness', desc: 'Kickboxing and strength training classes.', to: '/fitness-classes' },
+  { name: 'Open Play', desc: 'A gigantic play structure with four slides, free wifi and specialty coffee for parents.', to: '/open-play', img: openPlayImg, alt: 'Three children laughing as they slide down orange and blue indoor slides' },
+  { name: 'Pickleball', desc: 'An indoor pickleball court. Book your court time online.', to: '/pickleball' },
+  { name: 'Ropes Course', desc: 'A high aerial ropes adventure.', to: '/ropes-course' },
+  { name: 'Birthday Parties', desc: 'Themed parties, super parties and adult parties.', to: '/birthday-parties' },
+]
+
+const valueCards = [
+  {
+    label: 'Our Core Values',
+    title: '7 Core Values',
+    text: 'Commitment to Guests, Commitment to Work, Camaraderie, Always Learning & Knowing, Having Fun, Unique & Innovative, and Motion.',
+    img: values1Img,
+    alt: 'Two smiling people in red shirts giving thumbs up indoors',
+  },
+  {
+    label: 'Our Purpose',
+    title: 'Ignite activity. Encourage empowerment.',
+    text: 'We are committed to igniting activity and encouraging empowerment.',
+    img: values2Img,
+    alt: 'A young person giving a child a piggyback ride on a grassy lawn',
+  },
+  {
+    label: 'Our Promise',
+    title: 'A “Wow” experience.',
+    text: 'To provide a “Wow” experience through healthy activity that is empowering, fun, and engaging.',
+    img: values3Img,
+    alt: 'A smiling child in a red cap laughing in front of a wall of number cards',
+  },
+]
+
+// TODO(Duncan): these three quotes are copied verbatim from the live Weebly home page. Confirm you
+// have permission to keep using them (and the names) on the new site.
+const testimonials = [
+  { quote: 'Bodies in Motion has figured out how to make fitness fun for all abilities, ages and interests. My kids love this place and so do I.', name: 'Katy F.' },
+  { quote: 'Completed the ropes course last night. Had an absolutely phenomenal time and the staff was helpful, kind, and simply superb. Thanks for the great adventure!', name: 'Julie G.' },
+  { quote: 'My kids just started TaeKwonDo here and they are loving it!', name: 'Valorie L.' },
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'Where is Bodies in Motion located?',
+    a: 'Bodies in Motion is at 729 W. Diamond St., Boise, ID 83705, near the Fred Meyer on Federal Way. Boise is our only location. You can reach us at (208) 381-0587.',
+  },
+  {
+    q: 'How long has Bodies in Motion been serving Boise?',
+    a: 'Bodies in Motion has been serving Boise since 2011. Our founders closed their martial art school and re-opened it as Bodies in Motion in January 2011.',
+  },
+  {
+    q: 'What does Bodies in Motion offer?',
+    a: 'We offer infant & toddler care, preschool, before & after school care, camps, ninja warrior classes, fitness classes, pickleball, a ropes course, an indoor playground (open play), birthday parties, parents’ night out and team building, plus a Flatbread Cafe & Espresso Bar.',
+  },
+  {
+    q: 'What childcare and school programs do you offer?',
+    a: 'Infant & toddler care for ages 6 weeks to 36 months, preschool for ages 3–6, after school care for kindergarten through 6th grade, and before school care for 1st through 6th grade.',
+  },
+  {
+    q: 'What are your childcare hours?',
+    a: 'Full-time infant & toddler care and Preschool & Care are Monday through Friday, 7:30 am to 6:00 pm.',
+  },
+  {
+    q: 'Can I fill out my waiver online?',
+    a: 'Yes. You can save time by filling out your waiver online on our waiver page before you visit.',
+  },
+]
+
+const jsonLd = [childCareSchema({ description }), faqSchema(faq)]
+---
+
+<Base title={title} description={description} path="/" jsonLd={jsonLd}>
+  <!-- 1. Hero -->
+  <section class="hero">
+    <Image
+      class="hero__bg"
+      src={heroImg}
+      alt="A boy with outstretched arms and a big smile at a water play area while other children play behind him"
+      widths={[640, 1024, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="hero__gradient"></div>
+    <div class="hero__inner">
+      <div class="hero__content">
+        <div class="hero__eyebrow">
+          <span class="hero__eyebrow-dot"></span>
+          Serving Boise Since 2011
+        </div>
+        <h1 class="hero__headline">Bodies in Motion<br /><em>Boise, Idaho</em></h1>
+        <p class="hero__sub">
+          It’s a great day at Bodies in Motion! Here, you’ll find an array of activities all under one roof.
+        </p>
+        <div class="hero__buttons">
+          <a href="/infant-toddler-care" class="btn-primary">
+            Childcare &amp; Preschool
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg>
+          </a>
+          <a href="/waiver" class="btn-outline">Sign a Waiver</a>
+        </div>
+      </div>
+
+      <ul class="hero__stats" aria-label="Bodies in Motion at a glance">
+        <li class="hero__stat">
+          <div class="hero__stat-number">2011</div>
+          <div class="hero__stat-label">Serving Boise since</div>
+        </li>
+        <li class="hero__stat">
+          <div class="hero__stat-number">60,000<span>+</span></div>
+          <div class="hero__stat-label">Guests since opening</div>
+        </li>
+        <li class="hero__stat">
+          <div class="hero__stat-number">1</div>
+          <div class="hero__stat-label">Location, in Boise</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. Ticker (decorative) -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      {[0, 1].map(() => (
+        <div class="ticker__content">
+          {tickerItems.map((item) => (
+            <span>
+              <span class="ticker__item">{item}</span>
+              <span class="ticker__dot">●</span>
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- 3. Mission -->
+  <section class="section">
+    <div class="section__inner intro">
+      <p class="section-eyebrow">About Bodies in Motion</p>
+      <p>
+        At Bodies In Motion, we strive daily to be the ultimate multi-faceted facility in Boise that promotes
+        longevity, vibrancy, health, fitness, and character through the art of motion.
+      </p>
+      <p>We offer kids and adults a wide range of unique and exciting programs that are perfect for anything from casual fun to serious gains.</p>
+      <p>
+        We work hard to maintain a family friendly atmosphere where members of the community feel welcomed to walk in
+        the door and we can’t wait to see you soon!
+      </p>
+      <p>Families come to us from Boise, Meridian and Garden City.</p>
+    </div>
+  </section>
+
+  <!-- 4. Programs -->
+  <section class="section section--surface">
+    <div class="section__inner">
+      <div class="section-header">
+        <p class="section-eyebrow">What We Offer</p>
+        <h2 class="section-title">Activities all under one roof.</h2>
+        <p class="section-sub">Care and learning for little ones, plus play, fitness and adventure for kids and adults.</p>
+      </div>
+      <div class="activities__grid">
+        {activities.map((a) => (
+          <a href={a.to} class:list={['activity-card', { 'activity-card--photo': a.img }]}>
+            {a.img && <Image class="activity-card__photo" src={a.img} alt={a.alt ?? ''} width={500} loading="lazy" />}
+            <div class="activity-card__name">{a.name}</div>
+            <div class="activity-card__desc">{a.desc}</div>
+            <span class="activity-card__arrow">
+              Learn more
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Values -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="section-header">
+        <p class="section-eyebrow">Who We Are</p>
+        <h2 class="section-title">Our purpose, values and promise.</h2>
+      </div>
+      <div class="values__grid">
+        {valueCards.map((v) => (
+          <div class="value-card">
+            <Image class="value-card__bg" src={v.img} alt={v.alt} widths={[480, 800]} sizes="(max-width: 900px) 100vw, 33vw" loading="lazy" />
+            <div class="value-card__overlay"></div>
+            <div class="value-card__content">
+              <p class="value-card__label">{v.label}</p>
+              <h3 class="value-card__title">{v.title}</h3>
+              <p class="value-card__text">{v.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Photo strip -->
+  <div class="photo-strip">
+    <a class="photo-strip__item" href="/infant-toddler-care">
+      <Image src={strip1Img} alt="Two toddlers playing on a colorful floor with a toy dump truck and stacking rings" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 33vw" loading="lazy" />
+      <span class="photo-strip__caption">Infant &amp; Toddler Care</span>
+    </a>
+    <a class="photo-strip__item" href="/preschool">
+      <Image src={strip2Img} alt="A laughing child in a red cap with other children in front of a wall of number cards" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 33vw" loading="lazy" />
+      <span class="photo-strip__caption">Preschool</span>
+    </a>
+    <a class="photo-strip__item" href="/camps">
+      <Image src={strip3Img} alt="A smiling young person in a red shirt with a child giving two thumbs up outdoors" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 33vw" loading="lazy" />
+      <span class="photo-strip__caption">Camps</span>
+    </a>
+  </div>
+
+  <!-- 7. Testimonials -->
+  <section class="section section--alt">
+    <div class="section__inner">
+      <div class="section-header">
+        <p class="section-eyebrow">What Our Clients Are Saying</p>
+        <h2 class="section-title">Words from our community.</h2>
+      </div>
+      <div class="reviews__grid">
+        {testimonials.map((t) => (
+          <figure class="review-card">
+            <blockquote class="review-card__quote">“{t.quote}”</blockquote>
+            <figcaption class="review-card__name">{t.name}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="section">
+    <div class="section__inner section__inner--read">
+      <Faq items={faq} />
+    </div>
+  </section>
+
+  <!-- 9. Location -->
+  <section class="section section--surface">
+    <div class="section__inner"><Location /></div>
+  </section>
+
+  <!-- 10. CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner__inner">
+      <div class="cta-banner__text">
+        <p class="cta-banner__eyebrow">Ready to visit?</p>
+        <h2 class="cta-banner__headline">We can’t wait to see you soon!</h2>
+        <p class="cta-banner__sub">
+          Fill out your waiver online to save time, or call us at {NAP.phoneDisplay}.
+        </p>
+      </div>
+      <div class="cta-banner__buttons">
+        <a href="/waiver" class="btn-white">Sign a Waiver</a>
+        <a href="/contact" class="btn-white-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</Base>

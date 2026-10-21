@@ -1,0 +1,31 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { LINKS } from '../lib/site'
+---
+
+<Stub
+  title="Parents’ Night Out in Boise, ID | Bodies in Motion"
+  description="Parents’ Night Out at Bodies in Motion in Boise, Idaho: drop the kids off for a fun-filled evening. Cosmic Glow Party and Family Night Out."
+  path="/parents-night-out"
+  h1="Parents’ Night Out at Bodies in Motion"
+>
+  <p>
+    Parents’ Night Out is an opportunity for you and the sweetness in your life to enjoy a kidless evening. Drop the
+    kids off at Bodies in Motion and we’ll treat them to a fun-filled night.
+  </p>
+  <h2>Cosmic Glow Party – Parents’ Night Out</h2>
+  <p>
+    Enjoy a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza, and a sweet treat. The listed date is
+    Oct 24th, 5:00–9:00 PM, for ages 5–12. Cost is $51 per adventurer, additional siblings $40.80 (dinner included).
+  </p>
+  <h2>Family Night Out</h2>
+  <p>
+    Family Night Out is an evening designed for families to laugh, play, and create memories together, 5–9 PM, for ages
+    3 (and potty trained) to adults. Cost is $49 per adventurer, additional family members $39.20. The date is to be
+    announced, and spaces are limited.
+  </p>
+  <!-- TODO(Duncan): these dates and prices are copied from the old page at crawl time (2026-10-21); confirm they are current. -->
+  <div class="stub-actions">
+    <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Cosmic Glow Party</a>
+  </div>
+</Stub>

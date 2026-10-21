@@ -1,0 +1,49 @@
+---
+import Stub from '../layouts/Stub.astro'
+import { NAP } from '../lib/site'
+---
+
+<Stub
+  title="Hours of Operation | Bodies in Motion, Boise ID"
+  description="Hours of operation at Bodies in Motion in Boise, Idaho: open play, ropes course, pickleball, fitness classes, camps and team building."
+  path="/hours"
+  h1="Hours of Operation"
+>
+  <!-- TODO(Duncan): hours are copied from the old Hours page at crawl time (fall and winter hours). The old page also listed 2025 holiday closures (Thanksgiving, Christmas), which are not repeated here; add current closures. -->
+  <h2>Open play and ropes course</h2>
+  <p>Fall and winter hours: Monday–Thursday 10AM–7PM, Friday 10AM–6PM, Saturday and Sunday 9:30AM–5:00PM.</p>
+
+  <h2>Pickleball hours</h2>
+  <p>
+    Monday–Thursday 9:00 am–3 pm and 5:30 pm–7 pm, Friday 9:00 AM–6:00 PM, Saturday 9:30 am–1 pm, Sunday 9:30 am–1 pm.
+    Monday through Friday times are by appointment only and must be booked online. Saturday and Sunday court times are
+    first come first serve and cannot be reserved in advance, because other activities and events, such as birthday
+    parties, may occupy the court.
+  </p>
+
+  <h2>Fitness hours</h2>
+  <ul class="bullets">
+    <li>Monday: Kickboxing at 5:45 am, 7:00 am, 12:15 pm, 6:15 pm</li>
+    <li>Tuesday: SGX at 12:15 pm</li>
+    <li>Wednesday: Kickboxing at 5:45 am, 7:00 am, 12:15 pm, 6:15 pm</li>
+    <li>Thursday: SGX at 12:15 pm</li>
+    <li>Friday: Kickboxing at 5:45 am, 7:00 am, 12:15 pm, 6:15 pm</li>
+    <li>Saturday: Kickboxing at 9 am</li>
+  </ul>
+
+  <h2>Camp hours</h2>
+  <p>
+    Monday–Friday 9 am–3 pm; closed Saturday and Sunday. Pre-camp starts at 7:30 am and post-camp runs 3 pm–6 pm,
+    Monday–Friday. <!-- TODO(Duncan): old page says pre-camp is "7:30 am - 9 pm"; confirm end time. -->
+  </p>
+
+  <h2>Childcare</h2>
+  <p>
+    Full-time infant &amp; toddler care and preschool with extended care are Monday through Friday, 7:30 am to 6:00 pm.
+    See <a href="/infant-toddler-care">infant &amp; toddler care</a>, <a href="/preschool">preschool</a> and
+    <a href="/after-school-care">before &amp; after school care</a>.
+  </p>
+
+  <h2>Team building hours</h2>
+  <p>By appointment only. Please call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> for more information.</p>
+</Stub>
