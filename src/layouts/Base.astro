@@ -11,9 +11,11 @@ interface Props {
   path: string
   noindex?: boolean
   jsonLd?: object[]
+  /** Open Graph type, "article" for blog posts. */
+  ogType?: string
 }
 
-const { title, description, path, noindex = false, jsonLd = [] } = Astro.props
+const { title, description, path, noindex = false, jsonLd = [], ogType = 'website' } = Astro.props
 const canonical = absoluteUrl(path)
 ---
 
@@ -29,7 +31,7 @@ const canonical = absoluteUrl(path)
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#0d0d0e" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Bodies in Motion" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

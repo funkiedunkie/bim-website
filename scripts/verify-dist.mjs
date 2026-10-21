@@ -2,11 +2,14 @@
 // Full pages must have exactly one <h1>, a canonical, business (ChildCare, or EntertainmentBusiness for the
 // activity pages) + FAQPage JSON-LD and no noindex.
 // Stub pages must have exactly one <h1> and noindex,follow. The sitemap must list only the full pages.
-import { readFileSync, readdirSync } from 'node:fs'
+// /blog (indexable listing, CollectionPage + Blog JSON-LD) and every post in src/content/blog
+// (BlogPosting JSON-LD, canonical, one h1, no noindex, no sawyer) are checked separately.
+import { readFileSync, readdirSync, existsSync as existsDir } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
-const dist = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist')
+const root = join(dirname(fileURLToPath(import.meta.url)), '..')
+const dist = join(root, 'dist')
 const SITE = 'https://www.bodiesinmotionidaho.com'
 const full = {
   index: '/',
@@ -53,7 +56,7 @@ const errors = []
 
 const count = (s, re) => (s.match(re) ?? []).length
 
-for (const file of readdirSync(dist).filter((f) => f.endsWith('.html'))) {
+for (const file of readdirSync(dist).filter((f) => f.endsWith('.html') && f !== 'blog.html')) {
   const name = file.replace('.html', '')
   const html = readFileSync(join(dist, file), 'utf8')
   const h1 = count(html, /<h1[\s>]/g)
@@ -89,10 +92,81 @@ for (const file of readdirSync(dist).filter((f) => f.endsWith('.html'))) {
   }
 }
 
+// Blog posts: one per markdown file in the content collection.
+const postSlugs = readdirSync(join(root, 'src/content/blog'))
+  .filter((f) => f.endsWith('.md'))
+  .map((f) => f.replace(/\.md$/, ''))
+const jsonLdBlocks = (html) => [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
+// Hashed asset URLs can contain digits like "555"; look at visible markup only.
+const visibleOnly = (html) => html.replace(/\s(src|srcset|href|content)="[^"]*"/g, '')
+const bannedRe = /555|50,000|Now open|Jessica M|Tyler R|Amanda S|Meridian, ID/
+
+const blogHtml = readFileSync(join(dist, 'blog.html'), 'utf8')
+{
+  const h1 = count(blogHtml, /<h1[\s>]/g)
+  if (h1 !== 1) errors.push(`blog.html: ${h1} <h1> elements`)
+  if (blogHtml.match(/<link rel="canonical" href="([^"]+)"/)?.[1] !== SITE + '/blog') errors.push('blog.html: wrong canonical')
+  if (/name="robots" content="noindex/.test(blogHtml)) errors.push('blog.html: must not be noindex')
+  if (!/<title>[^<]+<\/title>/.test(blogHtml) || !/<meta name="description" content="[^"]+"/.test(blogHtml)) errors.push('blog.html: missing title/description')
+  const blocks = jsonLdBlocks(blogHtml)
+  const collection = blocks.find((b) => [].concat(b['@type']).includes('CollectionPage') && [].concat(b['@type']).includes('Blog'))
+  if (!collection) errors.push('blog.html: missing CollectionPage/Blog JSON-LD')
+  else if (collection.blogPost.length !== postSlugs.length) errors.push(`blog.html: ${collection.blogPost.length} blogPost entries vs ${postSlugs.length} posts`)
+  const cards = count(blogHtml, /class="post-card"/g)
+  if (cards !== postSlugs.length) errors.push(`blog.html: ${cards} cards vs ${postSlugs.length} posts`)
+  const dates = [...blogHtml.matchAll(/class="post-card__date">\s*<time datetime="([^"]+)"/g)].map((m) => m[1])
+  if (dates.join() !== [...dates].sort().reverse().join()) errors.push('blog.html: cards are not sorted by pubDate descending')
+  if (/sawyer/i.test(blogHtml) || bannedRe.test(visibleOnly(blogHtml))) errors.push('blog.html: contains a banned string')
+  console.log(`blog  blog.html${' '.repeat(16)} h1=${h1} canonical=ok jsonld=[${blocks.map((b) => [].concat(b['@type']).join('+')).join(', ')}] cards=${cards}`)
+}
+
+const postFiles = existsDir(join(dist, 'blog')) ? readdirSync(join(dist, 'blog')).filter((f) => f.endsWith('.html')) : []
+if (postFiles.length !== postSlugs.length) errors.push(`dist/blog has ${postFiles.length} pages, expected ${postSlugs.length}`)
+const seenTitles = new Set()
+const seenDescs = new Set()
+for (const slug of postSlugs) {
+  const file = `blog/${slug}.html`
+  if (!postFiles.includes(slug + '.html')) {
+    errors.push(`${file}: not built`)
+    continue
+  }
+  const html = readFileSync(join(dist, file), 'utf8')
+  const h1 = count(html, /<h1[\s>]/g)
+  if (h1 !== 1) errors.push(`${file}: ${h1} <h1> elements`)
+  const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1]
+  if (canonical !== `${SITE}/blog/${slug}`) errors.push(`${file}: canonical ${canonical}`)
+  if (/name="robots" content="noindex/.test(html)) errors.push(`${file}: must not be noindex`)
+  const title = html.match(/<title>([^<]*)<\/title>/)?.[1]
+  const desc = html.match(/<meta name="description" content="([^"]*)"/)?.[1]
+  if (!title || !desc) errors.push(`${file}: missing title/description`)
+  else {
+    if (seenTitles.has(title)) errors.push(`${file}: duplicate title`)
+    if (seenDescs.has(desc)) errors.push(`${file}: duplicate description`)
+    seenTitles.add(title)
+    seenDescs.add(desc)
+  }
+  const posting = jsonLdBlocks(html).find((b) => b['@type'] === 'BlogPosting')
+  if (!posting) errors.push(`${file}: missing BlogPosting JSON-LD`)
+  else {
+    for (const k of ['headline', 'description', 'datePublished', 'dateModified', 'author', 'publisher', 'mainEntityOfPage']) if (!posting[k]) errors.push(`${file}: BlogPosting missing ${k}`)
+    if (posting.dateModified !== '2026-10-21') errors.push(`${file}: dateModified ${posting.dateModified}`)
+    if (!posting.publisher?.logo?.url) errors.push(`${file}: publisher logo missing`)
+    if (posting.mainEntityOfPage?.['@id'] !== `${SITE}/blog/${slug}`) errors.push(`${file}: mainEntityOfPage mismatch`)
+  }
+  if (!/Updated <time datetime="2026-10-21">Oct 21, 2026<\/time> · originally published <time datetime="\d{4}-\d{2}-\d{2}">/.test(html)) errors.push(`${file}: missing "Updated Oct 21, 2026 · originally published" line`)
+  if (!/class="cta-box"/.test(html)) errors.push(`${file}: missing CTA box`)
+  const internal = (html.match(/<article[\s\S]*?<\/article>/)?.[0].match(/<a href="\/(?!blog)[^"]*"/g) ?? []).length
+  if (internal < 2) errors.push(`${file}: only ${internal} internal program links in the body`)
+  if (/hisawyer\.com|sawyer/i.test(html)) errors.push(`${file}: contains a Sawyer link`)
+  if (/groupon|eventbrite/i.test(visibleOnly(html))) errors.push(`${file}: contains a Groupon/Eventbrite link`)
+  if (bannedRe.test(visibleOnly(html))) errors.push(`${file}: contains a banned/invented string`)
+  console.log(`post  ${file.padEnd(78)} h1=${h1} links=${internal} title=${title?.length}c`)
+}
+
 const sitemap = readFileSync(join(dist, 'sitemap-0.xml'), 'utf8')
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
 console.log('sitemap:', urls.join(', '))
-const want = Object.values(full).map((p) => SITE + p)
+const want = [...Object.values(full), '/blog', ...postSlugs.map((s) => `/blog/${s}`)].map((p) => SITE + p)
 for (const u of urls) if (!want.map((w) => w.replace(/\/$/, '')).includes(u.replace(/\/$/, ''))) errors.push(`sitemap includes ${u}`)
 if (urls.length !== want.length) errors.push(`sitemap has ${urls.length} URLs, expected ${want.length}`)
 

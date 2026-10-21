@@ -1,16 +1,23 @@
 // Regenerates vercel.json from the redirect map below.
 //
-//   node scripts/generate-vercel-json.mjs [path/to/inventory/index.md]
+//   node scripts/generate-vercel-json.mjs [path/to/inventory/index.md] [path/to/blog-map.json]
 //
 // The obstacle-tutorial URLs are read from the "obstacle tutorials" group of the
 // crawl inventory index so none are missed. First match wins: a source that was
 // already mapped by an earlier group is skipped, so there are no conflicts.
+//
+// Blog posts come from scripts/blog-map.json (the approved mapping of all 86 old posts):
+//   keep       -> migrated to src/content/blog/<slug>.md at the same URL, never redirected
+//   to_program -> { slug: "/program-path" }, one 301 per post
+//   to_blog    -> one 301 per post to /blog
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const inventoryIndex = process.argv[2] ?? '/workspace/bim-site/inventory/index.md'
+const blogMapFile = process.argv[3] ?? join(root, 'scripts/blog-map.json')
+const blogMap = JSON.parse(readFileSync(blogMapFile, 'utf8'))
 
 function obstacleTutorialPaths() {
   const md = readFileSync(inventoryIndex, 'utf8')
@@ -89,10 +96,16 @@ const groups = [
       '/blog/archives/:path*',
       '/blog/category/:path*',
       '/blog/previous/:path*',
-      // Temporary: individual posts are not migrated yet (see TODO.md).
-      '/blog/:slug',
+      ...blogMap.to_blog.map((slug) => `/blog/${slug}`),
     ],
   ],
+  // Posts folded into a program page. Grouped by destination so the first-match-wins logic below still applies.
+  ...Object.entries(
+    Object.entries(blogMap.to_program).reduce((acc, [slug, dest]) => {
+      ;(acc[dest] ??= []).push(`/blog/${slug}`)
+      return acc
+    }, {}),
+  ).map(([dest, sources]) => [dest, sources]),
   [
     '/',
     [
@@ -109,6 +122,12 @@ const groups = [
   ],
 ]
 
+// Kept posts must never be redirected; a slug in two buckets is a mapping error.
+const keep = new Set(blogMap.keep)
+const buckets = [...Object.keys(blogMap.to_program), ...blogMap.to_blog]
+for (const slug of buckets) if (keep.has(slug)) throw new Error(`blog-map: "${slug}" is in keep and also redirected`)
+if (new Set(buckets).size !== buckets.length) throw new Error('blog-map: a slug is in both to_program and to_blog (or listed twice)')
+
 const seen = new Set()
 const redirects = []
 for (const [destination, sources] of groups) {
@@ -121,4 +140,8 @@ for (const [destination, sources] of groups) {
 
 const config = { cleanUrls: true, trailingSlash: false, redirects }
 writeFileSync(join(root, 'vercel.json'), JSON.stringify(config, null, 2) + '\n')
-console.log(`Wrote vercel.json with ${redirects.length} redirects (${tutorials.length} obstacle tutorials).`)
+const nProgram = Object.keys(blogMap.to_program).length
+const nBlog = blogMap.to_blog.length
+console.log(
+  `Wrote vercel.json with ${redirects.length} redirects (${tutorials.length} obstacle tutorials; blog: ${nProgram} posts -> program pages, ${nBlog} posts -> /blog, ${blogMap.keep.length} kept posts not redirected).`,
+)

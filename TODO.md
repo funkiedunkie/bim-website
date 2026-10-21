@@ -37,8 +37,36 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 
 ## Content still to migrate
 - [ ] **About team roster** — copied from the old Our Team page (photos ~2020); Dyani Russell and Brian Jankowski had no role listed. Confirm the roster is current. (`src/pages/about.astro`)
-- [ ] **Blog** — ~100 posts. Until migrated, `/blog/:slug` and archive/category/pagination URLs 301 to `/blog` in `vercel.json`. Replace with per-post pages plus per-post redirects, and change this rule. (`blog.astro`, `scripts/generate-vercel-json.mjs`)
-- [ ] Remaining noindex stub to promote (use `ActivityPage`/`Base`, add to the sitemap filter in `astro.config.mjs` and `scripts/verify-dist.mjs`): `/blog`.
+- [ ] **Blog follow-ups** — 21 posts migrated (see "Blog review flags" below). The other 65 old posts are 301-redirected (29 to program pages, 36 to `/blog`); none were migrated. To bring one back, add its markdown file, move its slug into `keep` in `scripts/blog-map.json` and regenerate `vercel.json`.
+
+## Blog review flags (2026-10-21)
+Each post's `reviewNotes` frontmatter (`src/content/blog/<slug>.md`) holds the same note. Posts were lightly edited: only facts already on this site (hours, ages, ratios, programs, contact) were added, and unsourced stats, dated event references and legal claims were removed or softened.
+
+**Needs a decision**
+- [ ] **`top-five-elementary-schools-in-boise`** — the 2019 list ranked five schools with Niche grades, test-score percentages, enrollment, ratios and state rankings (one score was garbled: "775"). All scores/ranks/stats were removed; only the school names remain, retitled "(2019 List)" with a visible "This list is from 2019 and is being reviewed" note. Either verify and refresh, keep as is, or retire it (redirect `/blog/top-five-elementary-schools-in-boise` to `/blog`). Also confirm the school names.
+- [ ] **Martial arts / biking / axe throwing** — `what-makes-a-bodies-in-motion-summer-camp-special` no longer lists the 2019 "Martial Arts", "Mountain Biking" and "Learn to Ride" camps (Bodies in Motion may not offer them; confirm). No post presents martial arts or axe throwing as a current offering (the martial-arts and axe-throwing posts were redirected, not migrated).
+- [ ] **`what-makes-a-bodies-in-motion-summer-camp-special`** — rewritten to current camp facts (ages 4–12, 9 am–3 pm, 7:30 am–6 pm care, optional lunch, Motioneer certifications). Removed 2019 specifics (this-year camp list, ages 3–13, 7:00 am pre-camp, hot lunches, age-grouping, guest Ninja Warrior athletes, mountain-bike levels, Splash inflatables, Adventure sessions, the Activities Director chat). Past theme names (Ninja, Secret Agent, Treasure Hunters, Hollywood, Splash, Ninja Warrior, Adventure, Myth Busters, Super Hero, Kid vs. Wild, Bugs) are listed as past camps only; confirm you're happy with that.
+- [ ] **`what-do-you-need-for-parents-night-out`** — rewritten to the current Cosmic Glow Party (ages 5–12, 5–9 pm, dinner included) and Family Night Out (ages 3 potty-trained to adults). Removed the 2019 themes list, "one night a month", the Newton's Cafe flatbread buffet, "ages 3–12" and the behavior rules. No prices quoted. Family Night Out date is still TBA.
+
+**Stats, studies and claims removed or softened**
+- [ ] `the-ultimate-guide-to-the-different-types-of-schooling-for-kids` — removed the Waldorf "94% of graduates go to college vs 66%" statistic and the "all Waldorf schools are nonprofits" claim; fixed "public schools are funded by the federal government"; removed the incorrect "Founder, Reggio Emilia" attribution (the quote is usually credited to Loris Malaguzzi; add only with a source). The remaining school-type descriptions are the original unverified 2019 text.
+- [ ] `what-does-my-child-get-from-summer-camp` — "Some studies say children can lose half of what they learned..." became "can lose some of what they learned" (no study was named). Add a named source if you want a number back.
+- [ ] `why-host-a-birthday-party-outside-of-your-home` — removed the unsourced legal claims in the Safety section (host liability for medical bills; venue "is responsible for issues").
+- [ ] `what-can-a-ninja-warrior-class-teach-your-child` — softened the line about children with "a mobility or mental issue" overcoming their issue through the class. Statements about American Ninja Warrior competitors are the author's, unverified.
+- [ ] `why-open-play-gyms-are-vital-for-children` — removed "ninja warrior course", "free disco", "create art" and "giant lego set" (not on `/open-play`); now uses the four-slide structure, imagination stations, costume corner, trains and Legos. Age range now 12 months and up. "Open play free when you exercise" still needs confirming (see above).
+- [ ] `what-does-a-rope-course-teach` — removed "college sports teams" and "corporate events"; closing now lists Open Ropes, Cosmic Ropes parties (ages 10+) and team building for 4–60.
+- [ ] `unforgettable-summer-adventures-a-day-at-bodies-in-motion-camp` — removed the "splash in the pool" and "STEAM science experiment" claims; "counselors" became "Motioneers".
+- [ ] `five-reasons-why-a-kids-gym-is-the-perfect-birthday-party-location` — softened "chances are [yours] will be the only party"; confirm how many parties can run at once.
+- [ ] `are-camps-only-for-summer` — the winter-break paragraph is generic; confirm whether Bodies in Motion runs winter-break camps before saying so.
+- [ ] `why-team-builder-courses-are-great-for-sports-teams` — confirm the workshops are positioned for sports teams ("courses such as ours in Boise can show you how to handle in-game changes").
+- [ ] `ten-theme-ideas-for-birthdays-parties` — "Bodies in Motion has offered superhero-themed parties in the past" is the original author's; confirm. Title typo "Birthdays Parties" fixed.
+- [ ] `how-to-find-the-best-infant-care-for-your-baby` — the Idaho STARS mention and "recommended ratios" advice are the author's; the childcare license number is still not on the site (see Licensing above).
+
+**Unchanged (general advice, no site-specific claims beyond what was linked)**: `vital-considerations-when-looking-for-after-school-care`, `what-should-a-child-be-learning-in-preschool`, `how-to-pick-a-new-school`, `how-to-pick-the-perfect-summer-camp`, `can-i-get-into-a-last-minute-summer-camp`, `alternatives-to-boring-team-building` (typos fixed; closing paragraphs now describe current programs).
+
+**Photos**
+- [ ] The hero photos are the original Weebly images (stock-style, no licenses recorded; the old pages carried a block of Flickr/Creative Commons credit links that was not migrated; confirm whether any hero image needs a plain-text credit). `ten-theme-ideas-for-birthdays-parties` uses `296030532.jpg`, which looks like a stock-photo ID: confirm all licenses, or swap in Bodies in Motion photos.
+- [ ] The after-school post's photo (a parent and toddler outdoors) is a loose fit, and `why-team-builder-courses-are-great-for-sports-teams` and `alternatives-to-boring-team-building` share the same stock image. `how-to-find-the-best-infant-care-for-your-baby` has no photo (none in the original).
 
 ## Legal and page details
 - [ ] **Privacy policy: legal review + effective date** — `/privacy` is a plain-language rewrite of the old policy (the GPT / Recipe Builder / OpenAI sections are dropped) and shows "Draft — pending legal review" at the top. Have it reviewed (a reviewer may add children's privacy, retention and state-law rights), set the effective date, then remove the draft notice. Confirm a mailing address (the street address is used). Update the Cookies section if analytics are added: the old Weebly site used Google Tag Manager (GTM-KGR99L7N); this site loads none. (`src/pages/privacy.astro`)
@@ -71,4 +99,4 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 - `/reviews`: all reviews from the ten old review pages migrated, grouped by program, no review schema.
 - `/contact`: No Pickup Hotline (Ext. 5), Fred Meyer directions note, map, form and email. `/waiver`: GymMaster button. `/jobs`: positions, core values, purpose and email/phone application instructions.
 - Privacy: GPT / Recipe Builder / OpenAI sections removed; draft notice added.
-- Only `/blog` remains a noindex stub.
+- Blog migrated: `/blog` is now an indexable listing and 21 posts are full pages at their original `/blog/<slug>` URLs (content collection, BlogPosting JSON-LD, sitemap, verify-dist). 29 old posts 301 to their program page, 36 to `/blog`; the temporary `/blog/:slug` catch-all is gone. `check-redirects` now fails unless every old blog URL (blog-map, `urls.txt`, `pages.json`) is a built kept post or redirected. No noindex stubs remain.
