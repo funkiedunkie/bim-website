@@ -1,16 +1,76 @@
 ---
-import Stub from '../layouts/Stub.astro'
-import { LINKS } from '../lib/site'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { LINKS, NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/strip3.jpg'
+
+const title = 'Online Waiver | Bodies in Motion, Boise, ID'
+const description =
+  'Save time and fill out your Bodies in Motion waiver online before your visit to our Boise, Idaho location at 729 W. Diamond St.'
+
+// TODO(Duncan): the old Waiver page only says "Thank you for participating in an activity at Bodies in Motion. Please fill out
+// the waiver below." (an embedded GymMaster form). Not stated, so not claimed here: who must sign (e.g. a parent or guardian for
+// children), whether it is per visit or one-time, and whether it must be done before arriving. Add if you want it on the page.
+
+const faq: FaqItem[] = [
+  {
+    q: 'Where do I fill out the Bodies in Motion waiver?',
+    a: 'Online through our waiver portal. Use the “Fill out your waiver” button on this page; it opens our GymMaster portal in a new tab.',
+  },
+  {
+    q: 'Who needs to fill out the waiver?',
+    a: 'The waiver is for anyone participating in an activity at Bodies in Motion. If you are unsure whether you or your child need one, call (208) 381-0587 or email help@bodiesinmotionidaho.com.',
+  },
+  {
+    q: 'Can I fill it out before I visit?',
+    a: 'Yes. Filling out your waiver online saves time when you arrive.',
+  },
+  {
+    q: 'Who do I contact if I have trouble with the waiver?',
+    a: 'Call (208) 381-0587 or email help@bodiesinmotionidaho.com.',
+  },
+  {
+    q: 'Where is Bodies in Motion?',
+    a: 'Bodies in Motion is at 729 W. Diamond St, Boise, ID 83705, near the Fred Meyer on Federal Way.',
+  },
+]
 ---
 
-<Stub
-  title="Online Waiver | Bodies in Motion, Boise ID"
-  description="Save time and fill out your Bodies in Motion waiver online before your visit to our Boise, Idaho location."
+<ActivityPage
+  title={title}
+  description={description}
   path="/waiver"
+  eyebrow="Before you visit"
   h1="Bodies in Motion Waiver"
+  lead="Thank you for participating in an activity at Bodies in Motion. Save time and fill out your waiver online."
+  heroImg={heroImg}
+  heroAlt="A smiling young person in a red shirt with a child giving two thumbs up outdoors"
+  ctaUrl={LINKS.waiverPortal}
+  ctaLabel="Fill out your waiver"
+  ctaHeading="Fill out your waiver online"
+  ctaText="It opens our GymMaster portal in a new tab. Questions? Call (208) 381-0587."
+  faq={faq}
 >
-  <p>Thank you for participating in an activity at Bodies in Motion. Save time and fill out your waiver online.</p>
-  <div class="stub-actions">
-    <a class="btn-primary" href={LINKS.waiverPortal} target="_blank" rel="noopener noreferrer">Fill out your waiver</a>
-  </div>
-</Stub>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Fill out your waiver online</h2>
+      <p>
+        Thank you for participating in an activity at Bodies in Motion. Save time and fill out your waiver online before
+        your visit.
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={LINKS.waiverPortal} target="_blank" rel="noopener noreferrer">Fill out your waiver</a>
+      </div>
+
+      <h2 id="who">Who fills it out</h2>
+      <p>
+        The waiver is for anyone participating in an activity at Bodies in Motion. Not sure whether you or your child need
+        one? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or email
+        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> and we’ll help.
+      </p>
+      <p>
+        The waiver form is hosted on our GymMaster portal, a separate site. Planning your visit? See our
+        <a href="/hours">hours</a> or <a href="/contact">contact us</a>.
+      </p>
+    </div>
+  </section>
+</ActivityPage>

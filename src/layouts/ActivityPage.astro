@@ -28,10 +28,12 @@ interface Props {
   faq: FaqItem[]
   reviews?: { quote: string; name: string; source?: string }[]
   extraJsonLd?: object[]
+  /** Sourced, non-conflicting hours only (see activityBusinessSchema). */
+  openingHoursSpecification?: object[]
 }
 
-const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, ctaUrl, ctaLabel, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [] } = Astro.props
-const jsonLd = [activityBusinessSchema({ description }), ...extraJsonLd, faqSchema(faq)]
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, ctaUrl, ctaLabel, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification } = Astro.props
+const jsonLd = [activityBusinessSchema({ description, openingHoursSpecification }), ...extraJsonLd, faqSchema(faq)]
 const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 ---
 

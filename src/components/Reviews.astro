@@ -9,13 +9,15 @@ interface Review {
 interface Props {
   items: Review[]
   title?: string
+  /** Unique heading id when several groups share one page. */
+  id?: string
 }
 
-const { items, title = 'What our guests say' } = Astro.props
+const { items, title = 'What our guests say', id = 'reviews-title' } = Astro.props
 ---
 
-<section class="reviews" aria-labelledby="reviews-title">
-  <h2 id="reviews-title" class="reviews__title">{title}</h2>
+<section class="reviews" aria-labelledby={id}>
+  <h2 id={id} class="reviews__title">{title}</h2>
   <div class="reviews__grid">
     {items.map((r) => (
       <figure class="review-card">

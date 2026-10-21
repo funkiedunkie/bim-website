@@ -23,6 +23,12 @@ const full = {
   pickleball: '/pickleball',
   'team-building': '/team-building',
   about: '/about',
+  hours: '/hours',
+  reviews: '/reviews',
+  contact: '/contact',
+  jobs: '/jobs',
+  waiver: '/waiver',
+  privacy: '/privacy',
 }
 // Care pages carry ChildCare JSON-LD; the activity pages carry the EntertainmentBusiness node instead.
 const activity = new Set([
@@ -36,6 +42,12 @@ const activity = new Set([
   'pickleball',
   'team-building',
   'about',
+  'hours',
+  'reviews',
+  'contact',
+  'jobs',
+  'waiver',
+  'privacy',
 ])
 const errors = []
 

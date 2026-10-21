@@ -21,6 +21,12 @@ const indexable = new Set(
     '/pickleball',
     '/team-building',
     '/about',
+    '/hours',
+    '/reviews',
+    '/contact',
+    '/jobs',
+    '/waiver',
+    '/privacy',
   ].map((p) =>
     strip('https://www.bodiesinmotionidaho.com' + p),
   ),

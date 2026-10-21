@@ -88,14 +88,16 @@ export function childCareSchema({ openingHours, description }: ChildCareOptions)
 
 interface ActivityOptions {
   description: string
+  /** Only pass hours that are sourced and not in conflict anywhere on the old site. */
+  openingHoursSpecification?: object[]
 }
 
 /**
  * Business schema for the non-childcare activity pages (camps, parties, Parents' Night Out,
  * open play). Same NAP/areaServed/sameAs as the ChildCare node; no openingHours on purpose
- * (hours differ by program and season).
+ * (hours differ by program and season), except where a page passes sourced, non-conflicting hours.
  */
-export function activityBusinessSchema({ description }: ActivityOptions) {
+export function activityBusinessSchema({ description, openingHoursSpecification }: ActivityOptions) {
   return {
     '@context': 'https://schema.org',
     '@type': ['EntertainmentBusiness', 'SportsActivityLocation'],
@@ -117,6 +119,20 @@ export function activityBusinessSchema({ description }: ActivityOptions) {
     geo: { '@type': 'GeoCoordinates', latitude: NAP.lat, longitude: NAP.lng },
     areaServed: AREA_SERVED.map((name) => ({ '@type': 'City', name })),
     sameAs: SOCIAL.map((s) => s.href),
+    ...(openingHoursSpecification ? { openingHoursSpecification } : {}),
+  }
+}
+
+/** ContactPage node for /contact; points at the business node emitted by activityBusinessSchema. */
+export function contactPageSchema({ description }: ActivityOptions) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${SITE_URL}/contact#contactpage`,
+    url: `${SITE_URL}/contact`,
+    name: `Contact ${NAP.name}`,
+    description,
+    about: { '@id': `${SITE_URL}/#business` },
   }
 }
 

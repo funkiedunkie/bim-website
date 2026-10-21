@@ -12,7 +12,7 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 
 ## Licensing, hours and structured data
 - [ ] **Childcare license number** — the infant & toddler page says "Licensed" but gives no number. (`src/pages/infant-toddler-care.astro`)
-- [ ] **Holiday closures** — the old Hours page lists only 2025 closures (Thanksgiving, Christmas); none are shown. Add current ones. (`src/pages/hours.astro`)
+- [ ] **Holiday closures** — the old Hours page lists only 2025 closures (Thanksgiving, Christmas); none are shown (the page just says to call before visiting on a holiday). Add current ones. (`src/pages/hours.astro`)
 - [ ] **Seasonal hours** — Open Play shows "summer hours" on the old Open Play page but fall/winter hours on the old Hours page (used). Confirm. (`src/pages/open-play.astro`, `hours.astro`)
 - [ ] **Pickleball hours** — Hours page (used) and old Pickleball page list different slots. Confirm. (`src/pages/pickleball.astro`)
 - [ ] **Ninja open gym Sunday end time** — 5:00 pm on `/ninja-warrior` (used) vs 3:00 pm on `/ninja-warrior-competition`. (`src/pages/ninja-warrior.astro`)
@@ -33,14 +33,18 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 
 ## Links and forms
 - [ ] **Contact form delivery** — `/api/contact` (Vercel Function, `api/contact.js`) sends to help@bodiesinmotionidaho.com via Resend's free tier. Set `RESEND_API_KEY` and `CONTACT_FROM` (a sender on a domain verified in Resend; needs DNS records) in Vercel; optional `CONTACT_TO`. Until set, the form shows a mailto fallback. Infant/toddler info-request and job application forms can reuse this endpoint later.
-- [ ] **Motioneer job application form** — not migrated (it posted to Weebly); applicants are asked to call. (`src/pages/jobs.astro`)
+- [ ] **Motioneer job application form** — not migrated (it posted to Weebly); `/jobs` tells applicants to email help@ or call. Add a form (can reuse `/api/contact`) or link. No `JobPosting` schema until there is a concrete opening (title, description, date posted, pay, employment type); pay, hours and benefits are not on the old page, so none are listed. (`src/pages/jobs.astro`)
 
 ## Content still to migrate
 - [ ] **About team roster** — copied from the old Our Team page (photos ~2020); Dyani Russell and Brian Jankowski had no role listed. Confirm the roster is current. (`src/pages/about.astro`)
-- [ ] **Reviews page** — migrate each `*-reviews.html` page into `/reviews` (publication is approved). (`reviews.astro`)
 - [ ] **Blog** — ~100 posts. Until migrated, `/blog/:slug` and archive/category/pagination URLs 301 to `/blog` in `vercel.json`. Replace with per-post pages plus per-post redirects, and change this rule. (`blog.astro`, `scripts/generate-vercel-json.mjs`)
-- [ ] **Privacy policy** — the old text contains sections about a "GPT application / Recipe Builder / OpenAI" that do not seem to relate to this business. Get the policy reviewed; only a summary of the website-relevant parts is shown. (`privacy.astro`)
-- [ ] Remaining noindex stubs to promote (use `ActivityPage`/`Base`, add to the sitemap filter in `astro.config.mjs` and `scripts/verify-dist.mjs`): `/hours`, `/reviews`, `/blog`, `/jobs`, `/contact`, `/waiver`, `/privacy`.
+- [ ] Remaining noindex stub to promote (use `ActivityPage`/`Base`, add to the sitemap filter in `astro.config.mjs` and `scripts/verify-dist.mjs`): `/blog`.
+
+## Legal and page details
+- [ ] **Privacy policy: legal review + effective date** — `/privacy` is a plain-language rewrite of the old policy (the GPT / Recipe Builder / OpenAI sections are dropped) and shows "Draft — pending legal review" at the top. Have it reviewed (a reviewer may add children's privacy, retention and state-law rights), set the effective date, then remove the draft notice. Confirm a mailing address (the street address is used). Update the Cookies section if analytics are added: the old Weebly site used Google Tag Manager (GTM-KGR99L7N); this site loads none. (`src/pages/privacy.astro`)
+- [ ] **Waiver details** — the old page only said "fill out the waiver" (GymMaster portal). Not stated, so not claimed: who must sign (e.g. parent/guardian for children), whether it is per visit or one-time, whether it is required before arriving. (`src/pages/waiver.astro`)
+- [ ] **Reviews** — 129 reviews in ten groups are in `src/lib/reviews.ts` (verbatim; star ratings not shown; exact duplicates listed once). Martial-arts and axe-throwing team-building reviews are under "Other programs". No Review/AggregateRating schema on purpose. The three home-page testimonials are shortened-name copies of reviews already listed. (`src/pages/reviews.astro`)
+- [ ] **Past-Motioneer quotes on `/jobs`** — five named people, copied verbatim from the old Jobs page; confirm they may stay public. (`src/pages/jobs.astro`)
 
 ## Intentionally omitted (not sourced, or conflicts with the brief)
 - "Second location very soon" from the old About page (Boise is the only location).
@@ -63,3 +67,8 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 - Open play prices: $8.25 / $10.50 / $12.50.
 - Contact email help@bodiesinmotionidaho.com on Contact, footer and Privacy; contact form added.
 - Social links confirmed.
+- `/hours`, `/reviews`, `/contact`, `/jobs`, `/waiver`, `/privacy` promoted to full indexable pages (sitemap, verify-dist, FAQ + JSON-LD). `/contact` adds ContactPage schema; `/hours` adds `openingHoursSpecification` for the childcare hours only (Mon–Fri 7:30 am–6 pm).
+- `/reviews`: all reviews from the ten old review pages migrated, grouped by program, no review schema.
+- `/contact`: No Pickup Hotline (Ext. 5), Fred Meyer directions note, map, form and email. `/waiver`: GymMaster button. `/jobs`: positions, core values, purpose and email/phone application instructions.
+- Privacy: GPT / Recipe Builder / OpenAI sections removed; draft notice added.
+- Only `/blog` remains a noindex stub.

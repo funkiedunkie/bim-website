@@ -1,17 +1,87 @@
 ---
-import Stub from '../layouts/Stub.astro'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import Reviews from '../components/Reviews.astro'
+import type { FaqItem } from '../lib/site'
+import { reviewGroups } from '../lib/reviews'
+import heroImg from '../assets/values1.jpg'
+
+const title = 'Reviews of Bodies in Motion | Boise, ID'
+const description =
+  'Read what Boise families say about Bodies in Motion: reviews of preschool, birthday parties, parents’ night out, open play, ninja warrior, fitness, ropes course and team building.'
+
+// Reviews are shown verbatim from the old Weebly *-reviews pages (publication approved by Duncan, 2026-10-21); see src/lib/reviews.ts.
+// Deliberately no AggregateRating/Review schema: reviews a business publishes about itself are not eligible for review rich results.
+// The three home-page testimonials (Katy F., Julie G., Valorie L.) are shortened-name copies of reviews that are already listed here.
+
+const faq: FaqItem[] = [
+  {
+    q: 'Where do these reviews come from?',
+    a: 'They were shared by guests, students, parents and community members on Google, Facebook, Yelp and Groupon, or sent to us by email, and were collected on our previous website. They are shown as originally written, with the name the reviewer used.',
+  },
+  {
+    q: 'What programs are reviewed?',
+    a: 'Preschool and childcare, birthday parties, Parents’ Night Out, open play, ninja warrior, fitness classes, the ropes course, team building, and our staff and community. Reviews of programs we no longer list, such as martial arts and axe-throwing team building, are under Other programs.',
+  },
+  {
+    q: 'Where is Bodies in Motion?',
+    a: 'Bodies in Motion is at 729 W. Diamond St, Boise, ID 83705, near the Fred Meyer on Federal Way. Boise is our only location.',
+  },
+  {
+    q: 'How can I ask about a program before I visit?',
+    a: 'Call (208) 381-0587 or email help@bodiesinmotionidaho.com, or use the form on our contact page.',
+  },
+]
 ---
 
-<Stub
-  title="Reviews | Bodies in Motion, Boise ID"
-  description="Reviews of Bodies in Motion in Boise, Idaho from guests, students, parents and community members."
+<ActivityPage
+  title={title}
+  description={description}
   path="/reviews"
+  eyebrow="What our guests say"
   h1="Reviews of Bodies in Motion"
+  lead="Real reviews from Boise families, students, parents and community members, grouped by program."
+  heroImg={heroImg}
+  heroAlt="Two smiling people in red shirts giving thumbs up indoors"
+  ctaUrl="/contact"
+  ctaLabel="Contact us"
+  ctaExternal={false}
+  ctaHeading="See it for yourself"
+  ctaText="Call (208) 381-0587 or email help@bodiesinmotionidaho.com to plan your visit."
+  faq={faq}
 >
-  <p>
-    Our previous website collected guest reviews by program: birthday parties, fitness, martial arts, ninja warrior,
-    open play, parents’ night out, preschool, ropes course, team building, and staff &amp; community. Those reviews are
-    being brought over to this site.
-  </p>
-  <!-- TODO(Duncan): migrate the review text from the old /*-reviews.html pages (each names the reviewer and source, e.g. Google/Facebook). Publication is approved. -->
-</Stub>
+  <section class="section">
+    <div class="section__inner">
+      <nav class="reviews-nav" aria-label="Review groups">
+        {reviewGroups.map((g) => <a href={`#${g.id}`}>{g.title}</a>)}
+      </nav>
+    </div>
+  </section>
+
+  {reviewGroups.map((g, i) => (
+    <section class={`section${i % 2 ? ' section--surface' : ''}`} id={g.id}>
+      <div class="section__inner">
+        <Reviews items={g.items} title={g.title} id={`${g.id}-title`} />
+      </div>
+    </section>
+  ))}
+</ActivityPage>
+
+<style>
+  .reviews-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .reviews-nav a {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .reviews-nav a:hover {
+    border-color: #e05c4e;
+  }
+</style>
