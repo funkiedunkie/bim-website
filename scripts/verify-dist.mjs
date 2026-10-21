@@ -1,5 +1,6 @@
 // Post-build SEO sanity check:  npm run build && node scripts/verify-dist.mjs
-// Full pages must have exactly one <h1>, a canonical, ChildCare + FAQPage JSON-LD and no noindex.
+// Full pages must have exactly one <h1>, a canonical, business (ChildCare, or EntertainmentBusiness for the
+// activity pages) + FAQPage JSON-LD and no noindex.
 // Stub pages must have exactly one <h1> and noindex,follow. The sitemap must list only the full pages.
 import { readFileSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -7,7 +8,18 @@ import { dirname, join } from 'node:path'
 
 const dist = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist')
 const SITE = 'https://www.bodiesinmotionidaho.com'
-const full = { index: '/', 'infant-toddler-care': '/infant-toddler-care', preschool: '/preschool', 'after-school-care': '/after-school-care' }
+const full = {
+  index: '/',
+  'infant-toddler-care': '/infant-toddler-care',
+  preschool: '/preschool',
+  'after-school-care': '/after-school-care',
+  camps: '/camps',
+  'birthday-parties': '/birthday-parties',
+  'parents-night-out': '/parents-night-out',
+  'open-play': '/open-play',
+}
+// Care pages carry ChildCare JSON-LD; the activity pages carry the EntertainmentBusiness node instead.
+const activity = new Set(['camps', 'birthday-parties', 'parents-night-out', 'open-play'])
 const errors = []
 
 const count = (s, re) => (s.match(re) ?? []).length
@@ -29,7 +41,10 @@ for (const file of readdirSync(dist).filter((f) => f.endsWith('.html'))) {
     if (noindex) errors.push(`${file}: full page must not be noindex`)
     const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
     const types = blocks.map((b) => b['@type'])
-    if (!types.includes('ChildCare')) errors.push(`${file}: missing ChildCare JSON-LD`)
+    if (activity.has(name)) {
+      if (!blocks.some((b) => Array.isArray(b['@type']) && b['@type'].includes('EntertainmentBusiness'))) errors.push(`${file}: missing EntertainmentBusiness JSON-LD`)
+      if (types.includes('ChildCare')) errors.push(`${file}: unexpected ChildCare JSON-LD`)
+    } else if (!types.includes('ChildCare')) errors.push(`${file}: missing ChildCare JSON-LD`)
     if (!types.includes('FAQPage')) errors.push(`${file}: missing FAQPage JSON-LD`)
     const faq = blocks.find((b) => b['@type'] === 'FAQPage')
     const visible = count(html, /<details class="[^"]*faq__item/g)
@@ -49,7 +64,7 @@ const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
 console.log('sitemap:', urls.join(', '))
 const want = Object.values(full).map((p) => SITE + p)
 for (const u of urls) if (!want.map((w) => w.replace(/\/$/, '')).includes(u.replace(/\/$/, ''))) errors.push(`sitemap includes ${u}`)
-if (urls.length !== 4) errors.push(`sitemap has ${urls.length} URLs, expected 4`)
+if (urls.length !== want.length) errors.push(`sitemap has ${urls.length} URLs, expected ${want.length}`)
 
 if (errors.length) {
   console.error('\nProblems:\n  - ' + errors.join('\n  - '))

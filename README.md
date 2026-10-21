@@ -23,8 +23,8 @@ Replaces the Weebly site at https://www.bodiesinmotionidaho.com. Boise is the on
 ```
 src/
   assets/          photos and logo (optimized at build time)
-  components/      Nav, Footer, Faq, PriceTable, Location
-  layouts/         Base (head/SEO), CarePage (full care pages), Stub (noindex pages)
+  components/      Nav, Footer, Faq, PriceTable, Reviews, Location
+  layouts/         Base (head/SEO), CarePage (full care pages), ActivityPage (camps/parties/PNO/open play), Stub (noindex pages)
   lib/site.ts      NAP, external links, JSON-LD builders
   pages/           one file per route
   styles/          global.css, home.css
@@ -33,11 +33,13 @@ scripts/           redirect generator/checker, dist verifier
 ```
 
 ## SEO notes
-- **Full, indexable pages:** `/`, `/infant-toddler-care`, `/preschool`, `/after-school-care`. Each has a unique title and
+- **Full, indexable pages:** `/`, `/infant-toddler-care`, `/preschool`, `/after-school-care` (`ChildCare` JSON-LD) and
+  `/camps`, `/birthday-parties`, `/parents-night-out`, `/open-play` (`ActivityPage` layout, `EntertainmentBusiness` JSON-LD;
+  `Event` JSON-LD only for the dated Cosmic Glow Party, dropped automatically once its date passes). Each has a unique title and
   description, one H1, a canonical URL, `ChildCare` JSON-LD (name, address, phone, `areaServed`: Boise, Meridian, Garden City)
   and `FAQPage` JSON-LD. The visible FAQ is rendered from the same list as the JSON-LD so they always match.
   `openingHours` is only included where the source states it (7:30am–6pm Mon–Fri on infant/toddler and preschool).
-- **Stub pages** (`/camps`, `/birthday-parties`, `/hours`, …) use `src/layouts/Stub.astro`: `noindex,follow`, one real
+- **Stub pages** (`/hours`, `/pickleball`, …) use `src/layouts/Stub.astro`: `noindex,follow`, one real
   paragraph from the old site, and links to the live booking tools. They are excluded from the sitemap.
 - `robots.txt` allows everything and points to `https://www.bodiesinmotionidaho.com/sitemap-index.xml`.
 - Meridian and Garden City appear only as service areas, never as locations.
@@ -51,7 +53,7 @@ scripts/           redirect generator/checker, dist verifier
 - Run `npm run check:redirects` after changing the map.
 
 ## Adding or promoting a page
-1. Create `src/pages/<slug>.astro` using `Base` (indexable) or `Stub` (noindex).
+1. Create `src/pages/<slug>.astro` using `CarePage`/`ActivityPage`/`Base` (indexable) or `Stub` (noindex).
 2. For an indexable page, add its path to the `indexable` list in `astro.config.mjs` and to `scripts/verify-dist.mjs`.
 3. Use the constants in `src/lib/site.ts` for name/address/phone so NAP stays consistent.
 

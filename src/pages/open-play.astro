@@ -1,49 +1,130 @@
 ---
-import Stub from '../layouts/Stub.astro'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import PriceTable from '../components/PriceTable.astro'
+import type { FaqItem } from '../lib/site'
+import heroImg from '../assets/open-play.jpg'
+
+const title = 'Indoor Playground & Open Play in Boise, ID | Bodies in Motion'
+const description =
+  'Open play at Bodies in Motion in Boise, ID: giant indoor play structure with four slides, free wifi and coffee for parents. $8.25–$12.50 per child.'
+
+const priceRows = [
+  { label: '12–23 months old', price: '$8.25' },
+  { label: '2–4 yrs old', price: '$10.50' },
+  { label: '5 yrs & up', price: '$12.50' },
+]
+
+// TODO(Duncan): the old Open Play page shows "Summer hours" (Mon–Fri 9:30–6, Sat/Sun 9:30–5); the old Hours page
+// shows fall & winter hours, used here. Confirm the current season's hours.
+const hoursText =
+  'Fall and winter hours: Monday–Thursday 10 AM–7 PM, Friday 10 AM–6 PM, Saturday and Sunday 9:30 AM–5:00 PM.'
+
+// TODO(Duncan): the "monthly specials" calendar on the old Open Play page is October-specific and was not migrated.
+// TODO(Duncan): confirm how "open play free when you exercise" works (which classes/memberships qualify).
+const faq: FaqItem[] = [
+  {
+    q: 'How much does open play cost?',
+    a: 'Open play is $8.25 for children 12–23 months old, $10.50 for ages 2–4 and $12.50 for ages 5 and up.',
+  },
+  {
+    q: 'What are the open play hours?',
+    a: hoursText,
+  },
+  {
+    q: 'Do you have memberships or passes?',
+    a: 'Yes. If you come more than twice a month, monthly memberships for each child are $22 per month (12–23 months), $28 per month (2–4 years) and $33 per month (5 and up), with members-only perks that vary each month. Annual passes are also available. Family monthly passes are $99 per month and include all family members in the same household for pickleball, ropes course and open play.',
+  },
+  {
+    q: 'What is there to do in the play area?',
+    a: 'A gigantic play structure with four slides (the Vandal Vortex, Bronco Tsunami, Bengal Bolt and the Warrior Challenge), imagination stations, a costume corner, the Eye Play system, and trains and Legos. Parents can also play pickleball while the kids play.',
+  },
+  {
+    q: 'Can parents get coffee or work while the kids play?',
+    a: 'Yes. You can grab a freshly brewed latte, and there is free wifi and cozy seating for parents.',
+  },
+  {
+    q: 'Can I bring my own food?',
+    a: 'No. Due to food safety liability, outside food cannot be brought in. Snacks and drinks are available to purchase from Newton’s Cafe.',
+  },
+  {
+    q: 'Can my day care or preschool bring a group?',
+    a: 'Yes. Bring at least 10 kids for a guided Open Play field trip experience of 1½ hours. Guardians or teachers receive an itinerary to keep the kids active. Reservations are required, so call (208) 381-0587.',
+  },
+  {
+    q: 'Can I do open play for free?',
+    a: 'Yes, you can do open play free when you exercise. Fitness kickboxing and strength training classes are offered while your child plays.',
+  },
+]
+
+const reviews = [
+  { quote: 'Amazing!! What a great, safe place for kids to burn off their constant energy. Definitely a must for adults & kids.', name: 'Holly B.', source: '5 stars, Google' },
+  { quote: 'Such a great way to get my kid running around, especially in this weather. Staff are very friendly and I even get my coffee! Well done', name: 'Allen T.', source: '5 stars, Facebook' },
+  { quote: 'Very pleased with the open play area. My 4 year old was in heaven. So much variety between the indoor play gym, costumes, train tracks, exercise ball... You name it. Was not a stuffy parent area either. Clean, cozy, bright.', name: 'Mindy H', source: '5 stars, Yelp' },
+]
 ---
 
-<Stub
-  title="Indoor Playground & Open Play in Boise, ID | Bodies in Motion"
-  description="Open play at Bodies in Motion in Boise, Idaho: a gigantic indoor play structure, four slides, free wifi and specialty coffee for parents."
+<ActivityPage
+  title={title}
+  description={description}
   path="/open-play"
-  h1="Open Play: The Funnest Indoor Playground in Boise"
   eyebrow="Indoor playground"
-  showLocation
+  h1="Open Play: The Funnest Indoor Playground in Boise"
+  lead="A gigantic play structure, four mega slides, free wifi and fresh coffee for parents."
+  heroImg={heroImg}
+  heroAlt="Three children laughing as they slide down orange and blue indoor slides"
+  ctaUrl="/waiver"
+  ctaLabel="Sign a waiver"
+  ctaExternal={false}
+  ctaHeading="Ready to play?"
+  ctaText="Sign your waiver ahead of time, then walk in. Questions? Call (208) 381-0587."
+  faq={faq}
+  reviews={reviews}
 >
-  <p>
-    Walk in, grab a freshly brewed latte, find a cozy spot with free wifi, and watch your little ones unleash their
-    energy on our gigantic play structure. Kids can ride four slides (the Vandal Vortex, Bronco Tsunami, Bengal Bolt and
-    the Warrior Challenge), use imagination stations and a costume corner, and build with trains and Legos. Parents can
-    also try pickleball while the kids play.
-  </p>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Boise’s indoor playground for families</h2>
+      <p>
+        Walk in, grab a freshly brewed latte, find a cozy spot with free wifi, and watch your little ones unleash their
+        energy on our gigantic play structure. Families come to us from Boise, Meridian and Garden City.
+      </p>
+      <ul class="bullets">
+        <li>Four slides: the Vandal Vortex, Bronco Tsunami, Bengal Bolt and the Warrior Challenge</li>
+        <li>Imagination stations, a costume corner and our Eye Play system</li>
+        <li>Building with trains and Legos</li>
+        <li>Parents can relax, chase their kiddo around the playground, or try <a href="/pickleball">pickleball</a></li>
+      </ul>
 
-  <h2>Open play cost</h2>
-  <ul class="bullets">
-    <li>12–23 months old: $8.25</li>
-    <li>2–4 yrs old: $10.50</li>
-    <li>5 yrs &amp; up: $12.50</li>
-  </ul>
-  <p>
-    Monthly memberships for each child are $22/month (12–23 months), $28/month (2–4 years) and $33/month (5 and up).
-    Annual passes are also available. Family monthly passes are $99/month and include all family members in the same
-    household for pickleball, ropes course, and open play.
-  </p>
+      <h2>Open play cost</h2>
+      <PriceTable caption="Open play admission" subtitle="Per child" rows={priceRows} priceHeading="Price" rowHeading="Age" />
+      <h3>Memberships</h3>
+      <p>
+        Come more than twice a month? Monthly memberships for each child are $22/month (12–23 months), $28/month
+        (2–4 years) and $33/month (5 and up), with members-only perks that vary each month. Annual passes are also
+        available. Family monthly passes are $99/month and include all family members in the same household for
+        pickleball, ropes course, and open play.
+      </p>
 
-  <h2>Hours</h2>
-  <!-- TODO(Duncan): the old Open Play page shows "Summer hours" (Mon-Fri 9:30-6, Sat/Sun 9:30-5); the old Hours page shows fall and winter hours, used here. Confirm the current season. -->
-  <p>
-    Fall and winter hours for open play: Monday–Thursday 10 AM–7 PM, Friday 10 AM–6 PM, Saturday and Sunday
-    9:30 AM–5:00 PM. <a href="/hours">See all hours</a>.
-  </p>
+      <h2>Open play hours</h2>
+      <p>{hoursText} <a href="/hours">See all hours</a>.</p>
 
-  <h2>Good to know</h2>
-  <p>
-    Due to food safety liability, outside food cannot be brought in. Snacks and drinks are available from Newton’s Cafe.
-    Day cares and preschools can bring at least 10 kids for a guided Open Play field trip experience of 1½ hours;
-    reservations are required.
-  </p>
-  <div class="stub-actions">
-    <a class="btn-primary" href="/waiver">Sign a waiver</a>
-    <a class="btn-outline" href="/fitness-classes">Open play free when you exercise</a>
-  </div>
-</Stub>
+      <h2>Good to know</h2>
+      <p>
+        Due to food safety liability, outside food cannot be brought in. Snacks and drinks are available from Newton’s
+        Cafe.
+      </p>
+
+      <h2>Open play field trip experience</h2>
+      <p>
+        Have a day care or preschool? Bring at least 10 kids for a guided Open Play adventure. Guardians or teachers
+        are given an itinerary to keep the kids active for 1½ hours. Reservations are required; call
+        <a href="tel:+12083810587">(208) 381-0587</a>.
+      </p>
+
+      <h2>Open play free when you exercise</h2>
+      <p>
+        Get in shape while your kiddo plays. See our <a href="/fitness-classes">fitness classes</a> for kickboxing and
+        strength training.
+      </p>
+    </div>
+  </section>
+</ActivityPage>

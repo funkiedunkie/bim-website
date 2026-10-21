@@ -12,9 +12,11 @@ interface Props {
   footnote?: string
   /** Column heading for the price column, e.g. "Monthly tuition". */
   priceHeading?: string
+  /** Column heading for the label column. */
+  rowHeading?: string
 }
 
-const { caption, subtitle, rows, footnote, priceHeading = 'Monthly tuition' } = Astro.props
+const { caption, subtitle, rows, footnote, priceHeading = 'Monthly tuition', rowHeading = 'Schedule' } = Astro.props
 ---
 
 <div class="price">
@@ -25,7 +27,7 @@ const { caption, subtitle, rows, footnote, priceHeading = 'Monthly tuition' } = 
     </caption>
     <thead>
       <tr>
-        <th scope="col">Schedule</th>
+        <th scope="col">{rowHeading}</th>
         <th scope="col">{priceHeading}</th>
       </tr>
     </thead>

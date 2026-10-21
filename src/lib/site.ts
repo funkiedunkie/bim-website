@@ -98,6 +98,80 @@ export function childCareSchema({ openingHours, description }: ChildCareOptions)
   }
 }
 
+interface ActivityOptions {
+  description: string
+}
+
+/**
+ * Business schema for the non-childcare activity pages (camps, parties, Parents' Night Out,
+ * open play). Same NAP/areaServed/sameAs as the ChildCare node; no openingHours on purpose
+ * (hours differ by program and season).
+ */
+export function activityBusinessSchema({ description }: ActivityOptions) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': ['EntertainmentBusiness', 'SportsActivityLocation'],
+    '@id': `${SITE_URL}/#business`,
+    name: NAP.name,
+    description,
+    url: SITE_URL + '/',
+    telephone: NAP.phoneE164,
+    image: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/logo.png`,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: NAP.street,
+      addressLocality: NAP.city,
+      addressRegion: NAP.state,
+      postalCode: NAP.zip,
+      addressCountry: 'US',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: NAP.lat, longitude: NAP.lng },
+    areaServed: AREA_SERVED.map((name) => ({ '@type': 'City', name })),
+    sameAs: SOCIAL.map((s) => s.href),
+  }
+}
+
+interface EventOptions {
+  name: string
+  description: string
+  startDate: string
+  endDate: string
+  url: string
+  price: string
+  typicalAgeRange: string
+}
+
+/** Only call this for events that have a concrete date/time in the source. */
+export function eventSchema({ name, description, startDate, endDate, url, price, typicalAgeRange }: EventOptions) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name,
+    description,
+    startDate,
+    endDate,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    typicalAgeRange,
+    image: `${SITE_URL}/logo.png`,
+    location: {
+      '@type': 'Place',
+      name: NAP.name,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: NAP.street,
+        addressLocality: NAP.city,
+        addressRegion: NAP.state,
+        postalCode: NAP.zip,
+        addressCountry: 'US',
+      },
+    },
+    organizer: { '@type': 'Organization', name: NAP.name, url: SITE_URL + '/' },
+    offers: { '@type': 'Offer', url, price, priceCurrency: 'USD' },
+  }
+}
+
 export function faqSchema(items: FaqItem[]) {
   return {
     '@context': 'https://schema.org',

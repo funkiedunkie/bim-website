@@ -1,0 +1,72 @@
+---
+// Verbatim guest reviews from the old Weebly *-reviews pages.
+// TODO(Duncan): confirm permission to publish these reviews (name, text) before launch.
+interface Review {
+  quote: string
+  name: string
+  source?: string
+}
+
+interface Props {
+  items: Review[]
+  title?: string
+}
+
+const { items, title = 'What our guests say' } = Astro.props
+---
+
+<section class="reviews" aria-labelledby="reviews-title">
+  <h2 id="reviews-title" class="reviews__title">{title}</h2>
+  <div class="reviews__grid">
+    {items.map((r) => (
+      <figure class="review-card">
+        <blockquote class="review-card__quote">“{r.quote}”</blockquote>
+        <figcaption class="review-card__name">{r.name}{r.source && <span class="review-card__source"> · {r.source}</span>}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
+
+<style>
+  .reviews__title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .review-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .review-card__quote {
+    color: rgba(240, 236, 228, 0.85);
+    line-height: 1.7;
+    flex: 1;
+    font-style: italic;
+  }
+
+  .review-card__name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+
+  .review-card__source {
+    font-weight: 400;
+    color: var(--muted);
+  }
+</style>

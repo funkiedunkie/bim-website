@@ -1,24 +1,78 @@
 ---
-import Stub from '../layouts/Stub.astro'
-import { LINKS } from '../lib/site'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { LINKS, type FaqItem } from '../lib/site'
+import heroImg from '../assets/hero.png'
+
+const title = 'Summer & Holiday Camps in Boise, ID | Bodies in Motion'
+const description =
+  'Summer camps and holiday camps in Boise, ID at Bodies in Motion. Camp runs Monday–Friday 9 am–3 pm with pre-camp and post-camp. Register at Camps for Kids Idaho.'
+
+// TODO(Duncan): the old Camps page only lists "Summer Camps" and "Holiday Camps" with a link to
+// campsforkidsidaho.com. Camp descriptions, ages, dates and pricing are not in the source; add them here.
+// TODO(Duncan): the old Hours page lists pre-camp as "7:30 am - 9 pm" (likely a typo for 9 am). The end
+// time is therefore not stated on this page; confirm it.
+const faq: FaqItem[] = [
+  {
+    q: 'What kinds of camps does Bodies in Motion offer?',
+    a: 'We offer Summer Camps and Holiday Camps at our Boise facility.',
+  },
+  {
+    q: 'What are the camp hours?',
+    a: 'Camp runs Monday through Friday from 9 am to 3 pm. We are closed for camp on Saturday and Sunday.',
+  },
+  {
+    q: 'Is there before-camp and after-camp care?',
+    a: 'Yes. Pre-camp starts at 7:30 am and post-camp runs from 3 pm to 6 pm, Monday through Friday.',
+  },
+  {
+    q: 'How do I register for camp?',
+    a: 'Camp registration is handled through Camps for Kids Idaho at campsforkidsidaho.com. You can also call us at (208) 381-0587.',
+  },
+  {
+    q: 'Where are camps held?',
+    a: 'Camps are held at Bodies in Motion, 729 W. Diamond St, Boise, ID 83705. Families come to us from Boise, Meridian and Garden City.',
+  },
+]
 ---
 
-<Stub
-  title="Camps in Boise, ID | Bodies in Motion"
-  description="Summer camps and holiday camps at Bodies in Motion in Boise, Idaho. Register for camps at campsforkidsidaho.com."
+<ActivityPage
+  title={title}
+  description={description}
   path="/camps"
-  h1="Camps at Bodies in Motion"
   eyebrow="Summer Camps · Holiday Camps"
+  h1="Summer & Holiday Camps in Boise"
+  lead="Camp programs at Bodies in Motion, with pre-camp and post-camp hours for working families."
+  heroImg={heroImg}
+  heroAlt="A boy with outstretched arms and a big smile at a water play area while other children play behind him"
+  ctaUrl={LINKS.camps}
+  ctaLabel="Register for camps"
+  ctaHeading="Ready to pick a camp?"
+  ctaText="Register through Camps for Kids Idaho, or call us at (208) 381-0587."
+  faq={faq}
 >
-  <p>
-    Bodies in Motion runs Summer Camps and Holiday Camps at our Boise facility. Camp days run Monday through Friday,
-    9 am to 3 pm, with pre-camp starting at 7:30 am and post-camp from 3 pm to 6 pm. Camp registration is handled
-    through Camps for Kids Idaho.
-  </p>
-  <!-- TODO(Duncan): the old Hours page lists pre-camp as "7:30 am - 9 pm" (likely a typo for 9 am). Confirm the pre-camp end time. -->
-  <!-- TODO(Duncan): the old Camps page only lists "Summer Camps" and "Holiday Camps" with links; migrate camp descriptions, ages and pricing. -->
-  <div class="stub-actions">
-    <a class="btn-primary" href={LINKS.camps} target="_blank" rel="noopener noreferrer">Register for camps</a>
-    <a class="btn-outline" href="/hours">See camp hours</a>
-  </div>
-</Stub>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Choose your camp</h2>
+      <p>
+        Bodies in Motion runs <strong>Summer Camps</strong> and <strong>Holiday Camps</strong> at our Boise facility.
+        Families come to us from Boise, Meridian and Garden City. Camp registration is handled through Camps for Kids
+        Idaho.
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={LINKS.camps} target="_blank" rel="noopener noreferrer">Register at Camps for Kids Idaho</a>
+      </div>
+
+      <h2>Camp hours</h2>
+      <ul class="bullets">
+        <li><strong>Camp:</strong> Monday–Friday, 9 am–3 pm</li>
+        <li><strong>Pre-camp:</strong> starts at 7:30 am, Monday–Friday</li>
+        <li><strong>Post-camp:</strong> 3 pm–6 pm, Monday–Friday</li>
+        <li>Closed for camp on Saturday and Sunday</li>
+      </ul>
+      <p>
+        See the <a href="/hours">full hours page</a> for everything else we offer, or call
+        <a href="tel:+12083810587">(208) 381-0587</a> with questions.
+      </p>
+    </div>
+  </section>
+</ActivityPage>

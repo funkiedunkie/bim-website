@@ -1,31 +1,140 @@
 ---
-import Stub from '../layouts/Stub.astro'
-import { LINKS } from '../lib/site'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { LINKS, eventSchema, type FaqItem } from '../lib/site'
+import heroImg from '../assets/strip3.jpg'
+
+const title = 'Parents’ Night Out in Boise, ID | Bodies in Motion'
+const description =
+  'Parents’ Night Out at Bodies in Motion in Boise, ID: drop the kids off for a fun-filled evening. Cosmic Glow Party (ages 5–12) and Family Night Out.'
+
+// TODO(Duncan): the only dated event in the source is "Oct 24th, 5:00–9:00 PM" with no year. 2026 is inferred
+// (the old Open Play page lists October dates whose weekdays match 2026). Confirm the year, then update this
+// page (and the Event schema) once the date passes. After this cutoff the build drops the Event schema and
+// shows "next date to be announced" instead of an upcoming-event block.
+const glowStart = '2026-10-24T17:00:00-06:00'
+const glowEnd = '2026-10-24T21:00:00-06:00'
+const glowUpcoming = Date.now() < Date.parse(glowEnd)
+
+// TODO(Duncan): confirm Cosmic Glow ($51 / $40.80) and Family Night Out ($49 / $39.20) prices are current.
+// TODO(Duncan): Family Night Out date is "TBA" on the old page; add the date and an Event schema when known.
+const glowFacts =
+  'The Cosmic Glow Party – Parents’ Night Out includes a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza and a sweet treat. It is for ages 5–12, 5:00–9:00 PM, at $51 per adventurer and $40.80 for additional siblings (dinner included).'
+
+const faq: FaqItem[] = [
+  {
+    q: 'What is Parents’ Night Out?',
+    a: 'Parents’ Night Out is an opportunity for you and the sweetness in your life to enjoy a kidless evening. Drop the kids off at Bodies in Motion and we’ll treat them to a fun-filled night.',
+  },
+  {
+    q: 'What is the Cosmic Glow Party?',
+    a: glowFacts,
+  },
+  glowUpcoming
+    ? {
+        q: 'When is the next Parents’ Night Out?',
+        a: 'The Cosmic Glow Party is on Oct 24th from 5:00 to 9:00 PM. Register through Camps for Kids Idaho or call (208) 381-0587.',
+      }
+    : {
+        q: 'When is the next Parents’ Night Out?',
+        a: 'Call (208) 381-0587 or use the registration link on this page to find out about the next Parents’ Night Out.',
+      },
+  {
+    q: 'What ages is Parents’ Night Out for?',
+    a: 'The Cosmic Glow Party is for ages 5–12. Family Night Out is for ages 3 (potty trained) up to adults.',
+  },
+  {
+    q: 'What is Family Night Out?',
+    a: 'Family Night Out is an evening designed for families to laugh, play and create memories together, from 5 to 9 PM, for ages 3 (and potty trained) to adults. It costs $49 per adventurer and $39.20 for additional family members. The date is to be announced and spaces are limited.',
+  },
+  {
+    q: 'Is dinner included?',
+    a: 'Yes. The Cosmic Glow Party includes pizza and a sweet treat, and the price includes dinner.',
+  },
+  {
+    q: 'How do I register?',
+    a: 'Register for the Cosmic Glow Party through Camps for Kids Idaho using the registration link on this page, or call (208) 381-0587.',
+  },
+]
+
+const reviews = [
+  { quote: 'Took my son there for super hero night. It was his first time there. I was nervous, but they made me feel better by making him feel included. He had a blast, and didn’t want to leave. We will be back!', name: 'Lisa R.', source: '5 stars, Facebook' },
+  { quote: 'Parent’s night out is a blessing.', name: 'Anonymous', source: '5 stars, Google' },
+  { quote: 'Been going for years and love the family atmosphere! Great workouts! Kick butt parents nights out! Great play area!', name: 'Susan L.', source: '5 stars, Facebook' },
+]
+
+const extraJsonLd = glowUpcoming
+  ? [
+      eventSchema({
+        name: 'Cosmic Glow Party – Parents’ Night Out',
+        description: glowFacts,
+        startDate: glowStart,
+        endDate: glowEnd,
+        url: LINKS.pnoRegister,
+        price: '51',
+        typicalAgeRange: '5-12',
+      }),
+    ]
+  : []
 ---
 
-<Stub
-  title="Parents’ Night Out in Boise, ID | Bodies in Motion"
-  description="Parents’ Night Out at Bodies in Motion in Boise, Idaho: drop the kids off for a fun-filled evening. Cosmic Glow Party and Family Night Out."
+<ActivityPage
+  title={title}
+  description={description}
   path="/parents-night-out"
-  h1="Parents’ Night Out at Bodies in Motion"
+  eyebrow="Kidless evenings for parents"
+  h1="Parents’ Night Out in Boise"
+  lead="Drop the kids off at Bodies in Motion and we’ll treat them to a fun-filled night."
+  heroImg={heroImg}
+  heroAlt="A smiling young person in a red shirt with a child giving two thumbs up outdoors"
+  ctaUrl={LINKS.pnoRegister}
+  ctaLabel="Register for Cosmic Glow Party"
+  ctaHeading="Ready for a kidless evening?"
+  ctaText="Register through Camps for Kids Idaho, or call us at (208) 381-0587."
+  faq={faq}
+  reviews={reviews}
+  extraJsonLd={extraJsonLd}
 >
-  <p>
-    Parents’ Night Out is an opportunity for you and the sweetness in your life to enjoy a kidless evening. Drop the
-    kids off at Bodies in Motion and we’ll treat them to a fun-filled night.
-  </p>
-  <h2>Cosmic Glow Party – Parents’ Night Out</h2>
-  <p>
-    Enjoy a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza, and a sweet treat. The listed date is
-    Oct 24th, 5:00–9:00 PM, for ages 5–12. Cost is $51 per adventurer, additional siblings $40.80 (dinner included).
-  </p>
-  <h2>Family Night Out</h2>
-  <p>
-    Family Night Out is an evening designed for families to laugh, play, and create memories together, 5–9 PM, for ages
-    3 (and potty trained) to adults. Cost is $49 per adventurer, additional family members $39.20. The date is to be
-    announced, and spaces are limited.
-  </p>
-  <!-- TODO(Duncan): these dates and prices are copied from the old page at crawl time (2026-10-21); confirm they are current. -->
-  <div class="stub-actions">
-    <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Cosmic Glow Party</a>
-  </div>
-</Stub>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>A kidless evening for you, a fun night for them</h2>
+      <p>
+        Parents’ Night Out is an opportunity for you and the sweetness in your life to enjoy a kidless evening. Drop the
+        kids off at Bodies in Motion and we’ll treat them to a fun-filled night. Families come to us from Boise,
+        Meridian and Garden City.
+      </p>
+
+      <h2>Cosmic Glow Party – Parents’ Night Out</h2>
+      <p>
+        Get ready to glow, groove and play! Enjoy a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza
+        and a sweet treat.
+      </p>
+      <ul class="bullets">
+        {glowUpcoming
+          ? <li><strong>Date:</strong> Oct 24th</li>
+          : <li><strong>Date:</strong> the next date is to be announced. Call us or check the registration link.</li>}
+        <li><strong>Time:</strong> 5:00–9:00 PM</li>
+        <li><strong>For:</strong> ages 5–12</li>
+        <li><strong>Cost:</strong> $51 per adventurer, additional siblings $40.80 (dinner included)</li>
+      </ul>
+      <div class="stub-actions">
+        <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Cosmic Glow Party</a>
+      </div>
+
+      <h2>Family Night Out</h2>
+      <p>
+        A new twist on family fun: an evening designed for families to laugh, play and create memories together. Spaces
+        are limited.
+      </p>
+      <ul class="bullets">
+        <li><strong>Date:</strong> to be announced</li>
+        <li><strong>Time:</strong> 5–9 PM</li>
+        <li><strong>For:</strong> ages 3 (and potty trained) to adults</li>
+        <li><strong>Cost:</strong> $49 per adventurer, additional family members $39.20</li>
+      </ul>
+      <p>
+        Where else can you see your dad attempt to dance in silence or your family build a cookie masterpiece
+        blindfolded? Questions? Call <a href="tel:+12083810587">(208) 381-0587</a>.
+      </p>
+    </div>
+  </section>
+</ActivityPage>

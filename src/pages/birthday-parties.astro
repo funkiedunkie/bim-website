@@ -1,31 +1,235 @@
 ---
-import Stub from '../layouts/Stub.astro'
-import { LINKS } from '../lib/site'
+import ActivityPage from '../layouts/ActivityPage.astro'
+import PriceTable from '../components/PriceTable.astro'
+import { LINKS, type FaqItem } from '../lib/site'
+import heroImg from '../assets/values1.jpg'
+
+const title = 'Birthday Parties in Boise, ID: Kids, Teens & Adults | Bodies in Motion'
+const description =
+  'Birthday parties in Boise, ID at Bodies in Motion: 1½-hour kids parties, ages 10–16 super and lock-in parties, and adult parties. See pricing and book online.'
+
+// TODO(Duncan): all party prices, sizes and times below were copied from the old Weebly party pages
+// (kids-birthday-parties, birthdayparties10-16, adult-parties); confirm they are current.
+// TODO(Duncan): confirm which Sawyer link maps to which ages 10–16 package (Super / Cosmic / Lock-in).
+// The crawl lists three links without labels, so they are shown neutrally and NOT labeled with package names.
+// TODO(Duncan): Cosmic party is marked "PROGRAM CURRENTLY ON HOLD" on the old page; its prices ($323 Nova up to
+// 16 kids, $251 Dwarf Star up to 8 kids) are intentionally left off. Confirm whether it is back.
+// TODO(Duncan): the old Lock-in text says "With the Super Party, all of your food is taken care" (dinner, late-night
+// snacks, continental breakfast). It reads like a typo for Lock-in; food is not stated on this page until confirmed.
+// TODO(Duncan): the old kids page says the Ropes Course add-on (+$50) is for ages 10+ and includes two free adult
+// participants, while the "themed" parties are described as ages 0–11; confirm how the add-on is booked.
+// TODO(Duncan): old Weebly "Themed birthday parties" vs. "Play Zone Party" naming; confirm current package names.
+
+const kidsRows = [
+  { label: 'Small Party (up to 8 kids)', price: '$215' },
+  { label: 'Big Party (up to 16 kids)', price: '$287' },
+  { label: 'Huge Party (up to 25 kids)', price: '$359' },
+]
+
+const superRows = [
+  { label: 'Small Party (up to 8 kids)', price: '$299' },
+  { label: 'Big Party (up to 16 kids)', price: '$399' },
+  { label: 'Huge Party (up to 20 kids)', price: '$450' },
+]
+
+const lockInRows = [
+  { label: 'Small Party (up to 8 kids)', price: '$1199' },
+  { label: 'Big Party (up to 16 kids)', price: '$1499' },
+  { label: 'Huge Party (up to 25 kids)', price: '$1599' },
+]
+
+const adultPrivateRows = [
+  { label: 'Small Party (up to 19 guests)', price: '$819' },
+  { label: 'Big Party (20 to 39 guests)', price: '$1289' },
+  { label: 'Huge Party (40 to 60 guests)', price: '$1879' },
+]
+
+const adultSemiRows = [
+  { label: 'Semi-Private Small Party (up to 19 guests)', price: '$489' },
+  { label: 'Semi-Private Big Party (20–30 guests)', price: '$629' },
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What birthday party options does Bodies in Motion offer?',
+    a: 'There are three ways to party: kids birthday parties (a 1½ hour party great for ages 0 to 11), super birthday parties for ages 10 to 16 (including all-night lock-ins), and adult birthday parties.',
+  },
+  {
+    q: 'How long is a kids birthday party?',
+    a: 'Kids birthday parties are a 1½ hour experience hosted by one of our motioneers, with your own personal birthday party host.',
+  },
+  {
+    q: 'How much does a kids birthday party cost?',
+    a: 'A Small Party (up to 8 kids) is $215, a Big Party (up to 16 kids) is $287 and a Huge Party (up to 25 kids) is $359. A Ropes Course add-on is +$50 for kids 10 and up and includes two free adult participants.',
+  },
+  {
+    q: 'What is included in a kids birthday party?',
+    a: 'The party includes plates, napkins, silverware, a tablecloth and general party decorations. During registration you can add a Food Package: your choice of cheese or pepperoni flatbread with apple or grape juice, at $3.00 per child ages 0–6, $4.00 ages 7–8 and $5.00 ages 9 and up.',
+  },
+  {
+    q: 'Can I bring my own food to a kids party?',
+    a: 'No outside food is allowed other than the birthday treat.',
+  },
+  {
+    q: 'What is the Super Birthday Party for ages 10–16?',
+    a: 'It is a 2½ hour party for kids, tweens and teens who like to move, jump and swing. Guests compete using Z Tag gaming technology, swing from the High Ropes and test their agility on the Ninja Warrior Course, with a private host the whole time. It is on Friday nights from 5:30 to 8:00 pm and kids must be at least 10 years old.',
+  },
+  {
+    q: 'How much is a Super Birthday Party?',
+    a: 'A Small Party (up to 8 kids) is $299, a Big Party (up to 16 kids) is $399 and a Huge Party (up to 20 kids) is $450.',
+  },
+  {
+    q: 'What is an All Night Lock-In Party?',
+    a: 'It is a 12-hour party at Bodies in Motion with multiple hosts, with Z Tag throughout the entire facility, an unlimited Cosmic Ropes Course, dance competitions, games and group challenges. It runs Friday evenings from 8 pm to 8 am Saturday morning and all participants must be at least 10 years old. Parents may stay all night but are not required to; the overnight host is a licensed child care Motioneer who is registered through the state of Idaho and background checked.',
+  },
+  {
+    q: 'How much is an All Night Lock-In Party?',
+    a: 'A Small Party (up to 8 kids) is $1199, a Big Party (up to 16 kids) is $1499 and a Huge Party (up to 25 kids) is $1599.',
+  },
+  {
+    q: 'Do you host adult birthday parties?',
+    a: 'Yes. Adult parties can celebrate any milestone: birthdays, bachelor and bachelorette parties, engagement parties, bridal showers and more. We tailor the 3-hour event to your needs, with adult-only games and optional Ropes Course or Ninja Warrior Course. Adult Super Parties can be booked Friday evenings from 8 pm to 11 pm.',
+  },
+  {
+    q: 'Can I bring food and drinks to an adult party?',
+    a: 'You can have us provide the food, order your own food truck to park just outside, or bring your own food and enjoy some of our adult beverages. No outside alcohol is allowed.',
+  },
+  {
+    q: 'How much does an adult party cost?',
+    a: 'Private parties are $819 for up to 19 guests, $1289 for 20 to 39 guests and $1879 for 40 to 60 guests. Semi-private parties are $489 for up to 19 guests and $629 for 20–30 guests.',
+  },
+  {
+    q: 'How do I book a party?',
+    a: 'Book a kids party with the birthday party RSVP scheduler, book ages 10–16 and adult parties on Sawyer, or call (208) 381-0587.',
+  },
+]
+
+const reviews = [
+  { quote: 'We had my little girl’s 5th birthday here today. The kids loved it, ate good food, and didn’t want to leave. Great job Bodies in Motion.', name: 'Bess L.', source: '5 stars, Facebook' },
+  { quote: 'My son had his birthday party here and they were amazing! The party room was set up nicely, the piñata was done well, and the party hosts really made it a fun day for him and his friends!', name: 'Amber A.', source: '5 stars, Facebook' },
+  { quote: 'The cosmic ropes course was AMAZING for my 10 yr old’s birthday party! Will be back soon for sure!', name: 'Gina J', source: 'Groupon' },
+]
 ---
 
-<Stub
-  title="Birthday Parties in Boise, ID | Bodies in Motion"
-  description="Themed, super and adult birthday parties at Bodies in Motion in Boise, Idaho. Choose a party and book online."
+<ActivityPage
+  title={title}
+  description={description}
   path="/birthday-parties"
-  h1="Birthday Parties at Bodies in Motion"
   eyebrow="3 ways to party"
+  h1="Birthday Parties in Boise at Bodies in Motion"
+  lead="The coolest birthday parties in Boise: kids parties, ages 10–16 parties and adult parties."
+  heroImg={heroImg}
+  heroAlt="Two smiling people in red shirts giving thumbs up indoors"
+  ctaUrl={LINKS.calendlyBirthday}
+  ctaLabel="Birthday party RSVP"
+  ctaHeading="Ready to book a party?"
+  ctaText="RSVP online or call us at (208) 381-0587. Families come to us from Boise, Meridian and Garden City."
+  faq={faq}
+  reviews={reviews}
 >
-  <p>
-    There are three ways to party at Bodies in Motion. Themed birthday parties are a 1½ hour party experience hosted by
-    one of our motioneers, great for ages 0 to 11. Super birthday parties offer longer party times, up to overnight
-    lock-ins and Cosmic Ropes, and are great for ages 10 to 16. Adult birthday parties let you build the party exactly
-    the way you want for your special occasion.
-  </p>
-  <!-- TODO(Duncan): party packages, pricing and policies (e.g. the Weebly party pricing, food packages, Cosmic Ropes "on hold") are not migrated yet. -->
-  <!-- TODO(Duncan): confirm which Sawyer link maps to Super / Cosmic / Lock-in parties (the crawl lists three links without labels). -->
-  <div class="stub-actions">
-    <a class="btn-primary" href={LINKS.calendlyBirthday} target="_blank" rel="noopener noreferrer">Birthday party RSVP</a>
-    <a class="btn-outline" href={LINKS.sawyerAdultParty} target="_blank" rel="noopener noreferrer">Book an adult party</a>
-  </div>
-  <p>Ages 10–16 party booking (Sawyer):</p>
-  <ul class="bullets">
-    <li><a href={LINKS.sawyerParty1016a} target="_blank" rel="noopener noreferrer">Booking option 1</a></li>
-    <li><a href={LINKS.sawyerParty1016b} target="_blank" rel="noopener noreferrer">Booking option 2</a></li>
-    <li><a href={LINKS.sawyerParty1016c} target="_blank" rel="noopener noreferrer">Booking option 3</a></li>
-  </ul>
-</Stub>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>3 ways to party at Bodies in Motion</h2>
+      <ul class="bullets">
+        <li><a href="#kids-parties"><strong>Kids birthday parties</strong></a> – a 1½ hour party hosted by one of our motioneers, great for ages 0 to 11.</li>
+        <li><a href="#parties-10-16"><strong>Ages 10–16 parties</strong></a> – longer party times, up to overnight lock-ins.</li>
+        <li><a href="#adult-parties"><strong>Adult birthday parties</strong></a> – build your party exactly the way you want for your special occasion.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="kids-parties">
+    <div class="section__inner section__inner--read prose">
+      <h2>Kids birthday parties (ages 0–11)</h2>
+      <p>
+        Our 1½ hour birthday party lets you choose something that might interest your child, and you’ll have your own
+        personal birthday party host to make sure the experience is amazing. The party includes plates, napkins,
+        silverware, a tablecloth and general party decorations.
+      </p>
+      <p>
+        <strong>Play Zone Party:</strong> if you are looking for a party filled with games and fun, kids get some game
+        time in their very own party room before going out to do games and challenges on our indoor play structure.
+      </p>
+      <p>
+        <strong>Ropes Course add-on (+$50):</strong> kids take on 3 Indiana Jones-style bridges on the High Ropes
+        Course. Ropes parties are for ages 10 and up and include two free adult participants to help the kiddos.
+      </p>
+      <p>
+        <strong>Food Package (optional):</strong> add it during registration: your choice of cheese or pepperoni
+        flatbread, with apple or grape juice. $3.00 per child ages 0–6, $4.00 ages 7–8, $5.00 ages 9+. No outside food
+        other than the birthday treat is allowed.
+      </p>
+      <p>Let the kids run around while the parents relax and take pictures. Then we’ll round them up for food and/or cake, and some final activities and play time.</p>
+      <PriceTable caption="Kids birthday party pricing" rows={kidsRows} priceHeading="Price" rowHeading="Party size" />
+      <div class="stub-actions">
+        <a class="btn-primary" href={LINKS.calendlyBirthday} target="_blank" rel="noopener noreferrer">Birthday party RSVP</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="parties-10-16">
+    <div class="section__inner section__inner--read prose">
+      <h2>Birthday parties for ages 10–16</h2>
+      <p>
+        Kids, tweens and teens who have moved past character-themed parties can choose from Super, Cosmic and Lock-In
+        parties. Kids must be at least 10 years old.
+      </p>
+
+      <h3>Super Birthday Party</h3>
+      <p>
+        This 2½ hour party is perfect for the active kiddo who loves to move, jump and swing with their friends. Your
+        birthday kiddo and friends compete against each other using our Z Tag gaming technology, swing from the High
+        Ropes and test their agility and strength on the Ninja Warrior Course. Your party agenda includes various games
+        and activities, guided by a private host the whole time. The Super Birthday Party is on Friday nights from
+        5:30–8:00 pm.
+      </p>
+      <PriceTable caption="Super Birthday pricing" rows={superRows} priceHeading="Price" rowHeading="Party size" />
+
+      <h3>Cosmic Birthday Party</h3>
+      <p>
+        Lights out, music up and disco in full effect: a Cosmic Z Tag and Ropes Course experience with the whole
+        facility lit by colored lights, disco lights and blacklights. It is offered at 5:30 pm on Fridays.
+        <strong>This program is currently on hold.</strong> Call us to ask about availability.
+      </p>
+
+      <h3>All Night Lock-In Party</h3>
+      <p>
+        The ultimate birthday party package: 12 hours at Bodies in Motion with multiple hosts. Z Tag throughout the
+        entire facility, unlimited Cosmic Ropes Course, dance competitions, games, group challenges and more. Parents are
+        welcome to stay all night but aren’t required to. The overnight host is one of our licensed child care
+        Motioneers, registered through the state of Idaho and background checked. Lock-In parties are booked Friday
+        evenings from 8 pm to 8 am Saturday morning, and all participants must be at least 10 years old.
+      </p>
+      <PriceTable caption="All Night Lock-In pricing" rows={lockInRows} priceHeading="Price" rowHeading="Party size" />
+
+      <h3>Book ages 10–16 parties</h3>
+      <ul class="bullets">
+        <li><a href={LINKS.sawyerParty1016a} target="_blank" rel="noopener noreferrer">Book ages 10–16 parties on Sawyer (option 1)</a></li>
+        <li><a href={LINKS.sawyerParty1016b} target="_blank" rel="noopener noreferrer">Book ages 10–16 parties on Sawyer (option 2)</a></li>
+        <li><a href={LINKS.sawyerParty1016c} target="_blank" rel="noopener noreferrer">Book ages 10–16 parties on Sawyer (option 3)</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="adult-parties">
+    <div class="section__inner section__inner--read prose">
+      <h2>Adult birthday parties</h2>
+      <p>
+        Celebrate any milestone at Bodies in Motion: a birthday, bachelor/bachelorette party, divorce party, engagement
+        party, bridal shower, over-the-hill party, 80’s party, disco party, or a party-just-to-party party. Theme it
+        however you want and we’ll go right along with it.
+      </p>
+      <p>
+        We’ll organize an array of hilarious, adults-only games, and those who are up for it can take on the Ropes Course
+        or our very own Ninja Warrior Course. For 3 hours we’ll tailor your event to your needs. Have us provide the
+        food, order your own food truck to park just outside, or bring your own food and enjoy some of our adult
+        beverages (no outside alcohol allowed). Adult Super Parties can be booked Friday evenings from 8 pm to 11 pm.
+      </p>
+      <PriceTable caption="Private party pricing" rows={adultPrivateRows} priceHeading="Price" rowHeading="Party size" />
+      <PriceTable caption="Semi-private party pricing" rows={adultSemiRows} priceHeading="Price" rowHeading="Party size" />
+      <div class="stub-actions">
+        <a class="btn-primary" href={LINKS.sawyerAdultParty} target="_blank" rel="noopener noreferrer">Book an adult party on Sawyer</a>
+      </div>
+    </div>
+  </section>
+</ActivityPage>

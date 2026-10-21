@@ -1,0 +1,84 @@
+---
+// Shared shell for the full, indexable activity pages (camps, birthday parties,
+// Parents' Night Out, open play). Emits one H1, canonical, business + FAQPage JSON-LD
+// (plus any page-specific nodes such as Event), a visible FAQ built from the same
+// items, optional reviews and the location block.
+import { Image } from 'astro:assets'
+import Base from './Base.astro'
+import Faq from '../components/Faq.astro'
+import Reviews from '../components/Reviews.astro'
+import Location from '../components/Location.astro'
+import { NAP, activityBusinessSchema, faqSchema, type FaqItem } from '../lib/site'
+
+interface Props {
+  title: string
+  description: string
+  path: string
+  eyebrow: string
+  h1: string
+  lead?: string
+  heroImg: ImageMetadata
+  heroAlt: string
+  ctaUrl: string
+  ctaLabel: string
+  /** Opens in a new tab (booking tools on other domains). Default true. */
+  ctaExternal?: boolean
+  ctaHeading: string
+  ctaText: string
+  faq: FaqItem[]
+  reviews?: { quote: string; name: string; source?: string }[]
+  extraJsonLd?: object[]
+}
+
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, ctaUrl, ctaLabel, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [] } = Astro.props
+const jsonLd = [activityBusinessSchema({ description }), ...extraJsonLd, faqSchema(faq)]
+const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+---
+
+<Base title={title} description={description} path={path} jsonLd={jsonLd}>
+  <header class="page-hero">
+    <Image class="page-hero__img" src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="page-hero__inner">
+      <p class="page-hero__eyebrow">{eyebrow}</p>
+      <h1>{h1}</h1>
+      {lead && <p class="page-hero__lead">{lead}</p>}
+      <div class="page-hero__actions">
+        <a href={ctaUrl} class="btn-primary" {...ext}>{ctaLabel}</a>
+        <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
+      </div>
+    </div>
+  </header>
+
+  <slot />
+
+  {reviews && reviews.length > 0 && (
+    <section class="section">
+      <div class="section__inner"><Reviews items={reviews} /></div>
+    </section>
+  )}
+
+  <section class="section section--surface">
+    <div class="section__inner section__inner--read">
+      <Faq items={faq} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <div class="cta-box">
+        <div>
+          <h2>{ctaHeading}</h2>
+          <p>{ctaText}</p>
+        </div>
+        <div class="cta-box__buttons">
+          <a href={ctaUrl} class="btn-white" {...ext}>{ctaLabel}</a>
+          <a href="/contact" class="btn-white-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="section__inner"><Location /></div>
+  </section>
+</Base>
