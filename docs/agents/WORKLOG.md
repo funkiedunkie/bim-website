@@ -10,6 +10,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 Template:
 
 ```markdown
+## 2026-10-23 — Grok — `astro-rebuild`
+
+**Changed:** Merged `main` (shared agent docs) into `astro-rebuild`; committed the `.gitignore` `.env*` rule from `vercel link` (`4a1d4d9`). Applied Duncan's 2026-10-23 staff answers (`cd4e5fe`): childcare license #28-11875 (infant & toddler page + footer); holiday closures / early closes on `/hours` and FAQ; open play summer + fall/winter hours (copy + `openingHoursSpecification`, shared constants in `src/lib/site.ts`); pickleball weekday slots "subject to availability", booking by phone/email/form; ninja Saturday open gym to 5 pm, competition date TBA; kickboxing $29 trial / $109 mo / kickboxing + SGX $139 mo, fitness challenge section removed (old URLs already 301 to `/fitness-classes`); team building per-person prices, "Book a team-building event" CTA and a "Team Building" contact-form type (also allowed in `api/contact.js`); Open Ropes slots/$16; Cosmic Ropes + Supernova removed, Cosmic Birthday Party shown "currently unavailable" with no prices; lock-in food stated; "Ropes $50+" add-on wording; Family Night Out "next date coming soon"; 2021 team roster removed from `/about`; TODO.md resolved/remaining lists updated.
+**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK; grep: no Sawyer in `dist/`, no roster names, no "taken care"/"Supernova" in `dist/`.
+**Live vs committed:** Vercel **preview** only (`bim-website-b8s4q8pqm-camps-for-kids-idaho.vercel.app`, Ready). Production still Weebly; DNS untouched; PR #1 not merged (Duncan reviews first).
+**Open questions:** Cosmic Birthday Party (Dwarf Star/Nova) treated as on hold along with Cosmic Ropes — confirm. Ninja Sunday open gym hours; pickleball weekend times (none given); open play season changeover dates; new pickleball booking link; team building and Family Night Out revamps; privacy legal review; job form evaluation (Rhea).
+**Handoff:** Local builds need Node >= 22.22 (box default is 20; a Node 22 copy is at `~/node22`).
+
 ## YYYY-MM-DD — <Agent> — `<branch>`
 
 **Changed:** what you did and why, with commit hashes / PR link.
