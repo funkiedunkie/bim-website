@@ -1,0 +1,42 @@
+---
+// Standalone shell for the /concepts design explorations (grok/design-concepts).
+// Deliberately does NOT use Base/Nav/Footer so each concept owns its full look. Always noindex.
+interface Props { title: string; description: string; fonts?: ('fraunces' | 'bricolage' | 'inter')[] }
+const { title, description, fonts = ['inter'] } = Astro.props
+const files = { fraunces: 'Fraunces', bricolage: 'Bricolage Grotesque', inter: 'Inter' }
+const ranges = { fraunces: '300 800', bricolage: '300 800', inter: '300 800' }
+const faces = fonts.map((f) => `@font-face{font-family:'${files[f]}';src:url('/concepts/fonts/${f}.woff2') format('woff2');font-weight:${ranges[f]};font-display:swap}`).join('')
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {fonts.map((f) => <link rel="preload" href={`/concepts/fonts/${f}.woff2`} as="font" type="font/woff2" crossorigin />)}
+    <style set:html={faces}></style>
+    <meta name="view-transition" content="same-origin" />
+    <style is:global>
+      @view-transition { navigation: auto; }
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      img{display:block;max-width:100%;height:auto}
+      a{color:inherit}
+      :focus-visible{outline:3px solid currentColor;outline-offset:3px}
+      .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .concept-switch{position:fixed;z-index:99;bottom:14px;left:50%;translate:-50% 0;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(15,15,18,.82);backdrop-filter:blur(10px);font:600 12px/1 system-ui,sans-serif}
+      .concept-switch a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:999px}
+      .concept-switch a[aria-current]{background:#fff;color:#111}
+      @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+    </style>
+  </head>
+  <body>
+    <slot />
+    <nav class="concept-switch" aria-label="Design concepts">
+      <a href="/concepts">All</a>
+      {['a','b','c'].map((k) => <a href={`/concepts/${k}`} aria-current={Astro.url.pathname.replace(/\.html$/,'').endsWith('/'+k) ? 'page' : undefined}>{k.toUpperCase()}</a>)}
+    </nav>
+  </body>
+</html>

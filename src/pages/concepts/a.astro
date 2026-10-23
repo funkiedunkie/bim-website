@@ -1,0 +1,160 @@
+---
+import { Image } from 'astro:assets'
+import Shell from '../../layouts/ConceptShell.astro'
+import { care, play, reviews, NAP, LICENSE_NUMBER, LINKS } from '../../lib/concepts'
+import cuddle from '../../assets/concepts/joyful-daycare-cuddle-moment.jpg'
+import toddlers from '../../assets/concepts/toddlers-web_orig.jpg'
+import preschool from '../../assets/concepts/preschool-web_orig.jpg'
+import afterSchool from '../../assets/concepts/after-school-pals.jpg'
+import fire from '../../assets/concepts/preschool-firefighters-web_orig.jpg'
+import camp from '../../assets/concepts/summer-camp-splash-2-web_orig.jpg'
+const careImgs = [
+  { img: toddlers, alt: 'Two toddlers playing with a toy dump truck and stacking rings' },
+  { img: preschool, alt: 'A laughing preschooler in a red cap in front of a wall of number cards' },
+  { img: afterSchool, alt: 'Two school-age boys in silly glasses and paper mustaches' },
+]
+---
+<Shell title="Concept A · Warm editorial | Bodies in Motion" description="Design concept A for the Bodies in Motion homepage: warm, premium, editorial." fonts={['fraunces','inter']}>
+<div class="a">
+  <header class="top">
+    <a href="/" class="brand">Bodies <i>in</i> Motion</a>
+    <nav aria-label="Main"><a href="/infant-toddler-care">Childcare</a><a href="/camps">Camps</a><a href="/birthday-parties">Parties</a><a href="/open-play">Play</a><a href="/about">About</a></nav>
+    <a class="btn btn--sm" href={LINKS.calendly30}>Book a tour</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="kicker">Childcare &amp; preschool · Boise, since 2011</p>
+        <h1>A second home where your kids <em>grow, learn</em> and&nbsp;move.</h1>
+        <p class="lede">Infant &amp; toddler care, preschool and before &amp; after school care at 729 W. Diamond St., plus camps, ninja and play, all under one roof.</p>
+        <div class="ctas">
+          <a class="btn" href={LINKS.calendly30}>Book a tour</a>
+          <a class="link" href="/infant-toddler-care">Explore childcare →</a>
+        </div>
+      </div>
+      <figure class="hero__art">
+        <Image src={cuddle} alt="A smiling teacher holding two babies in a bright classroom" widths={[480, 720]} sizes="(max-width: 900px) 90vw, 40vw" loading="eager" fetchpriority="high" class="art1" />
+        <Image src={fire} alt="Preschool class on a field trip in front of a red fire truck" widths={[400, 640]} sizes="(max-width: 900px) 60vw, 24vw" class="art2" />
+        <figcaption><span>1:4</span> teacher-to-baby ratio in our infant room</figcaption>
+      </figure>
+    </section>
+
+    <ul class="trust" aria-label="Credentials">
+      <li><b>Idaho STARS</b> provider</li>
+      <li>Licensed childcare <b>#{LICENSE_NUMBER}</b></li>
+      <li>Serving Boise <b>since 2011</b></li>
+      <li>Locally <b>owned</b></li>
+    </ul>
+
+    <section class="care" aria-labelledby="care-h">
+      <div class="sechead">
+        <p class="kicker">01 — Care &amp; learning</p>
+        <h2 id="care-h">From first steps to the school bus.</h2>
+      </div>
+      <ol class="rows">
+        {care.map((c, i) => (
+          <li class="row reveal">
+            <Image src={careImgs[i].img} alt={careImgs[i].alt} widths={[400, 640]} sizes="(max-width: 900px) 90vw, 30vw" />
+            <div>
+              <p class="num">0{i + 1}</p>
+              <h3>{c.name}</h3>
+              <p class="ages">{c.ages}</p>
+              <p>{c.fact}</p>
+              <p class="rowlinks"><a class="btn btn--ghost" href={c.tour}>Book a tour</a><a class="link" href={c.to}>Details &amp; tuition →</a></p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="quote reveal" aria-label="A parent review">
+      <blockquote>“{reviews[0].quote}”</blockquote>
+      <p>— {reviews[0].name}, via {reviews[0].source}</p>
+    </section>
+
+    <section class="more" aria-labelledby="more-h">
+      <div class="more__img"><Image src={camp} alt="Kids at summer camp sitting on a wall in front of a water sprinkler" widths={[640, 1100]} sizes="(max-width: 900px) 100vw, 45vw" /></div>
+      <div>
+        <p class="kicker">02 — Beyond the classroom</p>
+        <h2 id="more-h">Weekends, school breaks and birthdays, too.</h2>
+        <ul class="list">
+          {play.map((p) => <li><a href={p.to}><span>{p.name}</span><small>{p.blurb}</small></a></li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="voices" aria-labelledby="voices-h">
+      <h2 id="voices-h" class="kicker">03 — From our families</h2>
+      <div class="voices__grid">
+        {reviews.slice(1).map((r) => <figure class="reveal"><blockquote>“{r.quote}”</blockquote><figcaption>{r.name}{r.source && ` · ${r.source}`}</figcaption></figure>)}
+      </div>
+    </section>
+
+    <section class="visit" aria-labelledby="visit-h">
+      <h2 id="visit-h">Come see the classrooms.</h2>
+      <p>Pick a time online. Meet the teachers, see the rooms, ask anything.</p>
+      <div class="ctas"><a class="btn btn--light" href={LINKS.calendly30}>Book a tour</a><a class="link" href={NAP.phoneTel}>or call {NAP.phoneDisplay}</a></div>
+      <address>{NAP.street}, {NAP.city}, {NAP.state} {NAP.zip} · <a href={`mailto:${NAP.email}`}>{NAP.email}</a></address>
+    </section>
+  </main>
+  <footer class="foot"><p>© Bodies in Motion · Idaho childcare license #{LICENSE_NUMBER} · Idaho STARS provider</p></footer>
+</div>
+</Shell>
+
+<style>
+.a{--bg:#f7f2ea;--ink:#1f1b16;--mute:#5c5248;--acc:#a8461f;--line:#e2d8c9;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 Inter,system-ui,sans-serif}
+.a h1,.a h2,.a h3,.brand{font-family:Fraunces,Georgia,serif;font-weight:500;letter-spacing:-.02em;line-height:1.04}
+.a em,.a i{font-style:italic;color:var(--acc)}
+.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:32px;padding:18px clamp(20px,5vw,64px);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brand{font-size:1.5rem;text-decoration:none;margin-right:auto}
+.top nav{display:flex;gap:28px}.top nav a{text-decoration:none;font-size:.95rem;color:var(--mute)}.top nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;padding:14px 26px;border-radius:999px;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;transition:transform .2s,background .2s}
+.btn:hover{background:var(--acc);transform:translateY(-1px)}
+.btn--sm{padding:10px 18px;font-size:.9rem}.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);padding:10px 20px}
+.btn--ghost:hover{color:#fff}.btn--light{background:var(--bg);color:var(--ink)}
+.link{font-weight:600;text-underline-offset:4px}
+.kicker{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);font-weight:600;font-family:Inter,sans-serif}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,80px);align-items:center;padding:clamp(40px,7vw,96px) clamp(20px,5vw,64px) 56px;max-width:1440px;margin:auto}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5.6rem);margin:20px 0 24px;font-weight:400}
+.lede{font-size:1.2rem;color:var(--mute);max-width:36ch}
+.ctas{display:flex;flex-wrap:wrap;gap:24px;align-items:center;margin-top:36px}
+.hero__art{position:relative;aspect-ratio:4/5}
+.art1{width:82%;height:88%;object-fit:cover;border-radius:220px 220px 18px 18px;margin-left:auto}
+.art2{position:absolute;left:0;bottom:0;width:52%;aspect-ratio:1;object-fit:cover;border-radius:18px;border:8px solid var(--bg)}
+.hero__art figcaption{position:absolute;right:0;bottom:4%;background:#fff;padding:14px 18px;border-radius:14px;max-width:200px;font-size:.85rem;box-shadow:0 10px 30px rgba(60,40,20,.12)}
+.hero__art figcaption span{display:block;font:500 2rem/1 Fraunces,serif;color:var(--acc)}
+.trust{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 48px;padding:28px clamp(20px,5vw,64px);border-block:1px solid var(--line);color:var(--mute);font-size:.95rem}
+.trust b{color:var(--ink)}
+.care,.voices{max-width:1240px;margin:auto;padding:clamp(64px,9vw,128px) clamp(20px,5vw,64px)}
+.sechead h2,.more h2{font-size:clamp(2.1rem,4.6vw,3.8rem);margin-top:14px;max-width:16ch}
+.rows{list-style:none;margin-top:56px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,5vw,72px);align-items:center;padding:36px 0;border-top:1px solid var(--line)}
+.row:nth-child(even) img{order:2}
+.row img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:18px}
+.num{font:400 .9rem/1 Fraunces,serif;color:var(--acc)}
+.row h3{font-size:clamp(1.8rem,3vw,2.6rem);margin:8px 0}
+.ages{font-weight:600;margin-bottom:6px}.row p{color:var(--mute)}.row .ages{color:var(--ink)}
+.rowlinks{display:flex;gap:22px;align-items:center;margin-top:22px;flex-wrap:wrap}
+.quote{background:var(--ink);color:var(--bg);padding:clamp(64px,10vw,140px) clamp(20px,8vw,160px);text-align:center}
+.quote blockquote{font:300 clamp(1.8rem,4vw,3.4rem)/1.2 Fraunces,serif;max-width:22ch;margin:auto;letter-spacing:-.01em}
+.quote p{margin-top:24px;opacity:.75}
+.more{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);max-width:1240px;margin:auto;padding:clamp(64px,9vw,128px) clamp(20px,5vw,64px) 0;align-items:start}
+.more__img{position:sticky;top:100px}.more__img img{border-radius:18px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.list{list-style:none;margin-top:36px}
+.list a{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .25s}
+.list a:hover{padding-left:10px}.list span{font:500 1.5rem/1.2 Fraunces,serif}.list small{color:var(--mute);text-align:right;font-size:.9rem}
+.voices__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+.voices figure{padding:32px;background:#fff;border-radius:18px}.voices blockquote{font:400 1.2rem/1.45 Fraunces,serif}
+.voices figcaption{margin-top:18px;font-size:.88rem;color:var(--mute);font-weight:600}
+.visit{margin:0 clamp(12px,3vw,40px);border-radius:28px;background:var(--acc);color:#fff;padding:clamp(56px,8vw,112px) clamp(24px,6vw,96px);text-align:center}
+.visit h2{font-size:clamp(2.4rem,6vw,5rem);font-weight:400}.visit p{margin-top:12px;font-size:1.15rem}
+.visit .ctas{justify-content:center}.visit .btn--light:hover{background:var(--ink);color:#fff}
+.visit address{font-style:normal;margin-top:40px;font-size:.95rem;opacity:.92}
+.foot{padding:40px 20px 90px;text-align:center;color:var(--mute);font-size:.85rem}
+@media (max-width:900px){.top nav{display:none}.hero,.more{grid-template-columns:1fr}.row{grid-template-columns:1fr}.row:nth-child(even) img{order:0}.voices__grid{grid-template-columns:1fr}.more__img{position:static}.more__img img{aspect-ratio:3/2}.list small{display:none}.hero__art{max-width:480px}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){
+  .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
+  @keyframes rise{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
+}}
+</style>
