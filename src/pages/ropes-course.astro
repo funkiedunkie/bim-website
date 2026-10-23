@@ -3,21 +3,17 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/values1.jpg'
 
-const title = 'High Ropes Course in Boise, ID: Open Ropes & Cosmic Ropes | Bodies in Motion'
+const title = 'High Ropes Course in Boise, ID: Open Ropes | Bodies in Motion'
 const description =
-  'Indoor high aerial ropes course in Boise, ID at Bodies in Motion: 45-minute Open Ropes, Cosmic Ropes adventures and ropes birthday parties. Call to reserve.'
+  'Indoor high aerial ropes course in Boise, ID at Bodies in Motion: 45-minute Open Ropes for $16 per person, ropes birthday party add-ons and team building. Call to reserve.'
 
-// TODO(Duncan): confirm current Open Ropes slots (old page: Mon–Fri 4–5 and 5–6 PM, Saturday "call for availability") and
-// price ($16 + tax per person).
-// TODO(Duncan): the old page marks the public Cosmic Ropes Adventure night "PROGRAM CURRENTLY ON HOLD". Cosmic Ropes
-// birthday parties are confirmed current (prices live on /birthday-parties), but the old ropes page lists different party
-// prices (Supernova up to 20 kids $299, Nova $259, Dwarf Star $199) than the 10–16 page (Nova $323, Dwarf Star $251). Only
-// the confirmed prices are shown. Confirm Cosmic Ropes Adventure availability and whether a Supernova party exists.
+// Open Ropes slots and $16/person confirmed by Duncan (2026-10-23). Cosmic Ropes (and the Supernova Cosmic Ropes party)
+// are ON HOLD until staffing and the cosmic light system are upgraded, so they are not offered on this page.
 
 const faq: FaqItem[] = [
   {
-    q: 'How many ways can I enjoy the ropes course?',
-    a: 'There are three ways: Open Ropes (the regular high ropes adventure), the Cosmic Ropes Adventure (the same course in the dark with blacklights, disco lights and music) and Cosmic Ropes Birthday Parties.',
+    q: 'How can I enjoy the ropes course?',
+    a: 'Open Ropes (a 45-minute high ropes adventure), a Ropes add-on for birthday parties, and team building. Cosmic Ropes is currently on hold.',
   },
   {
     q: 'How long is Open Ropes and what does it cost?',
@@ -25,7 +21,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'What are the age requirements?',
-    a: 'Participants must be at least 10 years old with an adult, or 10 years old and 5 feet tall to go up without an adult. For the Cosmic Ropes Adventure, guests must be at least 10 and accompanied by an adult (1 adult per 2 kids); to go without an adult, participants must be at least 13 and 5 feet tall.',
+    a: 'Participants must be at least 10 years old with an adult, or 10 years old and 5 feet tall to go up without an adult.',
   },
   {
     q: 'When is Open Ropes available?',
@@ -41,7 +37,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Can I have a birthday party on the ropes course?',
-    a: 'Yes. Cosmic Ropes birthday parties include Cosmic Z Tag, a private room and a private host, then a trip to the high ropes. They are for ages 10 and up and include two free adult participants. See our birthday parties page for packages and prices, and add Ropes to a kids party for +$50.',
+    a: 'Yes. Choose the Ropes ($50+) option when you book a kids party; ropes parties are for ages 10 and up and include two free adult participants. If you booked a different party and want to add ropes later, call (208) 381-0587 ahead of time so we can make sure we can support it. Super and Lock-In parties include High Ropes time.',
   },
   {
     q: 'What should I wear?',
@@ -76,12 +72,13 @@ const reviews = [
 >
   <section class="section">
     <div class="section__inner section__inner--read prose">
-      <h2>3 ways to enjoy the ropes course</h2>
+      <h2>Ways to enjoy the ropes course</h2>
       <ul class="bullets">
-        <li><a href="#open-ropes"><strong>Open Ropes</strong></a> – the thrill and challenge of the high ropes, minus the disco.</li>
-        <li><a href="#cosmic-ropes"><strong>Cosmic Ropes Adventure</strong></a> – the perfect date night or outing with friends or family, in the dark with blacklights and disco lights.</li>
-        <li><a href="#ropes-birthday"><strong>Cosmic Ropes Birthday Party</strong></a> – a birthday party experience for the adventurer.</li>
+        <li><a href="#open-ropes"><strong>Open Ropes</strong></a> – the thrill and challenge of the high ropes.</li>
+        <li><a href="#ropes-birthday"><strong>Ropes birthday parties</strong></a> – add ropes to a party for ages 10 and up.</li>
+        <li><a href="/team-building"><strong>Team building</strong></a> – high ropes workshops for groups.</li>
       </ul>
+      <p><strong>Cosmic Ropes is currently on hold.</strong></p>
 
       <h2 id="open-ropes">Open Ropes</h2>
       <p>
@@ -109,25 +106,12 @@ const reviews = [
 
   <section class="section section--alt" id="cosmic-ropes">
     <div class="section__inner section__inner--read prose">
-      <h2>Cosmic Ropes Adventure</h2>
+      <h2 id="ropes-birthday">Ropes birthday parties</h2>
       <p>
-        A totally different experience: the ropes course in the dark, with blacklights, disco lights and funky music. As
-        if the ropes course wasn’t challenging enough! It is for ages 13 and up, or 10 years old with an adult. Guests
-        must be at least 10 years old and accompanied by an adult (1 adult per 2 kids); to go without an adult,
-        participants must be at least 13 years old and 5 feet tall.
-      </p>
-      <p>
-        Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> to ask whether Cosmic Ropes Adventure nights are currently
-        scheduled and for upcoming dates.
-      </p>
-
-      <h2 id="ropes-birthday">Cosmic Ropes birthday parties</h2>
-      <p>
-        An out-of-this-world birthday for ages 10 and up: your own room, your own private host for Cosmic Z Tag, then up
-        to the high ropes for an extreme and very memorable experience. Cosmic Ropes birthdays include two free adult
-        participants. See <a href="/birthday-parties#parties-10-16">birthday parties for ages 10–16</a> for Cosmic party
-        packages (Dwarf Star up to 8 kids $251, Nova up to 16 kids $323), or add the Ropes Course to a
-        <a href="/birthday-parties#kids-parties">kids party</a> for +$50.
+        Choose the <strong>Ropes ($50+)</strong> option when you book a <a href="/birthday-parties#kids-parties">kids party</a>.
+        Ropes parties are for ages 10 and up and include two free adult participants. Booked a different party and want
+        to add ropes later? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> ahead of time so we can make sure we can
+        support it.
       </p>
       <p>
         Ropes is also part of our <a href="/team-building">team building</a> workshops, and Super and Lock-In parties

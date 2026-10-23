@@ -43,6 +43,23 @@ export const SOCIAL = [
   { label: 'YouTube', href: 'https://www.youtube.com/channel/UC9j0odw1B_Jw1jLxWo0qJDw' },
 ] as const
 
+// Confirmed by Duncan (2026-10-23).
+export const LICENSE_NUMBER = '28-11875'
+export const HOLIDAYS_CLOSED = ['Easter', 'Memorial Day', 'July 4th', 'Labor Day', 'Thanksgiving Day', 'Christmas Day', "New Year's Day"]
+export const HOLIDAYS_EARLY_CLOSE = ['Halloween', 'Christmas Eve', "New Year's Eve"]
+export const HOLIDAY_TEXT = `We are closed on ${HOLIDAYS_CLOSED.join(', ')}. We close early on ${HOLIDAYS_EARLY_CLOSE.join(', ')}; call (208) 381-0587 for that day's hours.`
+export const OPEN_PLAY_HOURS = {
+  summer: 'Summer hours: Monday–Friday 9:30 am–6:00 pm, Saturday and Sunday 9:30 am–5:00 pm.',
+  fallWinter: 'Fall and winter hours: Monday–Thursday 9:30 am–7:00 pm, Friday 9:30 am–6:00 pm, Saturday and Sunday 9:30 am–5:00 pm.',
+}
+// Current season (fall/winter) open play hours for JSON-LD. TODO(Duncan): swap to summer hours when the season changes
+// (no changeover dates given).
+export const OPEN_PLAY_HOURS_SPEC = [
+  { '@type': 'OpeningHoursSpecification', name: 'Open play (fall/winter)', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '09:30', closes: '19:00' },
+  { '@type': 'OpeningHoursSpecification', name: 'Open play (fall/winter)', dayOfWeek: ['Friday'], opens: '09:30', closes: '18:00' },
+  { '@type': 'OpeningHoursSpecification', name: 'Open play (fall/winter)', dayOfWeek: ['Saturday', 'Sunday'], opens: '09:30', closes: '17:00' },
+]
+
 export const AREA_SERVED = ['Boise', 'Meridian', 'Garden City']
 
 export interface FaqItem {

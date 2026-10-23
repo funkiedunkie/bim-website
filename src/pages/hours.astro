@@ -1,22 +1,16 @@
 ---
 import ActivityPage from '../layouts/ActivityPage.astro'
-import { NAP, type FaqItem } from '../lib/site'
+import { NAP, HOLIDAY_TEXT, OPEN_PLAY_HOURS, OPEN_PLAY_HOURS_SPEC, type FaqItem } from '../lib/site'
 import heroImg from '../assets/open-play.jpg'
 
 const title = 'Hours of Operation | Bodies in Motion, Boise, ID'
 const description =
-  'Hours at Bodies in Motion in Boise, ID: childcare 7:30 am–6 pm, open play and ropes course, pickleball, fitness classes, ninja warrior open gym, camps and team building.'
+  'Hours at Bodies in Motion in Boise, ID: childcare 7:30 am–6 pm, open play, ropes course, holiday closures, pickleball, fitness classes, ninja warrior open gym, camps and team building.'
 
-// TODO(Duncan): holiday closures. The old Hours page listed only 2025 closures (Thanksgiving Day, Christmas Day), which are
-// not repeated here. Add current closures.
-// TODO(Duncan): seasonal hours. Open play/ropes hours below are the old Hours page's "fall and winter" hours; the old Open Play
-// page showed summer hours. Confirm which are current and when they change.
-// TODO(Duncan): pickleball hours conflict. This page follows the old Hours page; the old Pickleball page listed different slots
-// (Mon–Fri 10–11:30, 11:30–1, 1–2:30 and 5:30–7; Sat/Sun 9:30–11). Confirm.
-// TODO(Duncan): ninja open gym Sunday end time is 5:00 pm on the old /ninja-warrior page but 3:00 pm on /ninja-warrior-competition.
-// 5:00 pm is shown; confirm.
-// Structured data: openingHoursSpecification lists only the childcare hours (Mon–Fri 7:30 am–6:00 pm), which are stated the same
-// way everywhere on the old site. Open play, pickleball and ninja hours are left out of the schema until the conflicts above are resolved.
+// Holidays, open play seasons, pickleball slots and ninja Saturday open gym confirmed by Duncan (2026-10-23).
+// TODO(Duncan): ninja open gym Sunday end time (5:00 pm on the old /ninja-warrior page, 3:00 pm on /ninja-warrior-competition);
+// Duncan confirmed Saturday ends at 5 pm. Pickleball weekend times were not in the 2026-10-23 list, so none are shown.
+// Structured data: childcare hours plus current-season open play hours (OPEN_PLAY_HOURS_SPEC).
 const childcareHours = [
   {
     '@type': 'OpeningHoursSpecification',
@@ -24,12 +18,17 @@ const childcareHours = [
     opens: '07:30',
     closes: '18:00',
   },
+  ...OPEN_PLAY_HOURS_SPEC,
 ]
 
 const faq: FaqItem[] = [
   {
-    q: 'What are the open play and ropes course hours?',
-    a: 'Fall and winter hours are Monday through Thursday 10 AM–7 PM, Friday 10 AM–6 PM, and Saturday and Sunday 9:30 AM–5:00 PM.',
+    q: 'What are the open play hours?',
+    a: `${OPEN_PLAY_HOURS.fallWinter} ${OPEN_PLAY_HOURS.summer}`,
+  },
+  {
+    q: 'When is Open Ropes?',
+    a: 'Open Ropes sessions are Monday through Friday 4:00–5:00 pm and 5:00–6:00 pm. For Saturday, call (208) 381-0587 for availability. Reservations are required.',
   },
   {
     q: 'What are the childcare hours?',
@@ -37,7 +36,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'What are the pickleball hours?',
-    a: 'Monday through Thursday 9:00 am–3 pm and 5:30–7 pm, Friday 9:00 am–6:00 pm, and Saturday and Sunday 9:30 am–1 pm. Monday through Friday times are by appointment only; Saturday and Sunday are first come, first served.',
+    a: 'Monday through Friday 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm, plus Monday and Thursday 5:00–6:30 pm. Times are subject to availability; call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve.',
   },
   {
     q: 'When are the fitness classes?',
@@ -49,7 +48,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'What are the ninja warrior open gym hours?',
-    a: 'Monday through Friday 10:30 am–12:00 pm and 1:30–4:00 pm, and Saturday and Sunday 10 am–5:00 pm.',
+    a: 'Monday through Friday 10:30 am–12:00 pm and 1:30–4:00 pm, and Saturday 10 am–5:00 pm. For Sunday, call (208) 381-0587.',
   },
   {
     q: 'When can I book team building?',
@@ -57,7 +56,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Are you open on holidays?',
-    a: 'Please call (208) 381-0587 before you visit on a holiday to confirm our hours.',
+    a: HOLIDAY_TEXT,
   },
   {
     q: 'Where are you located?',
@@ -85,14 +84,26 @@ const faq: FaqItem[] = [
 >
   <section class="section">
     <div class="section__inner section__inner--read prose">
-      <h2 id="open-play">Open play and ropes course</h2>
+      <h2 id="open-play">Open play</h2>
       <p><strong>Fall and winter hours:</strong></p>
       <ul class="bullets">
-        <li><strong>Monday–Thursday:</strong> 10 AM–7 PM</li>
-        <li><strong>Friday:</strong> 10 AM–6 PM</li>
-        <li><strong>Saturday and Sunday:</strong> 9:30 AM–5:00 PM</li>
+        <li><strong>Monday–Thursday:</strong> 9:30 am–7:00 pm</li>
+        <li><strong>Friday:</strong> 9:30 am–6:00 pm</li>
+        <li><strong>Saturday and Sunday:</strong> 9:30 am–5:00 pm</li>
       </ul>
-      <p>See <a href="/open-play">open play</a> and the <a href="/ropes-course">ropes course</a> for prices and booking.</p>
+      <p><strong>Summer hours:</strong></p>
+      <ul class="bullets">
+        <li><strong>Monday–Friday:</strong> 9:30 am–6:00 pm</li>
+        <li><strong>Saturday and Sunday:</strong> 9:30 am–5:00 pm</li>
+      </ul>
+      <p>See <a href="/open-play">open play</a> for prices.</p>
+
+      <h2 id="ropes">Open Ropes</h2>
+      <ul class="bullets">
+        <li><strong>Monday–Friday:</strong> 4:00–5:00 pm and 5:00–6:00 pm</li>
+        <li><strong>Saturday:</strong> call for availability</li>
+      </ul>
+      <p>Reservations are required. See the <a href="/ropes-course">ropes course</a> for details.</p>
 
       <h2 id="childcare">Childcare and school care</h2>
       <p>
@@ -106,14 +117,12 @@ const faq: FaqItem[] = [
 
       <h2 id="pickleball">Pickleball hours</h2>
       <ul class="bullets">
-        <li><strong>Monday–Thursday:</strong> 9:00 am–3 pm and 5:30–7 pm</li>
-        <li><strong>Friday:</strong> 9:00 am–6:00 pm</li>
-        <li><strong>Saturday and Sunday:</strong> 9:30 am–1 pm</li>
+        <li><strong>Monday–Friday:</strong> 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm</li>
+        <li><strong>Monday and Thursday only:</strong> 5:00–6:30 pm</li>
       </ul>
       <p>
-        Monday through Friday times are by appointment only: call or email us to reserve. Saturday and Sunday court times are
-        first come, first served and cannot be reserved in advance, because other activities and events, such as birthday
-        parties, may be using the court. More on the <a href="/pickleball">pickleball page</a>.
+        Court times are subject to availability (some overlap with other programs). Call or email us to reserve. More on
+        the <a href="/pickleball">pickleball page</a>.
       </p>
 
       <h2 id="fitness">Fitness hours</h2>
@@ -130,7 +139,8 @@ const faq: FaqItem[] = [
       <h2 id="ninja-warrior">Ninja warrior open gym</h2>
       <ul class="bullets">
         <li><strong>Monday–Friday:</strong> 10:30 am–12:00 pm and 1:30–4:00 pm</li>
-        <li><strong>Saturday and Sunday:</strong> 10 am–5:00 pm</li>
+        <li><strong>Saturday:</strong> 10 am–5:00 pm</li>
+        <li><strong>Sunday:</strong> call for hours</li>
       </ul>
       <p>Class times and trials are on the <a href="/ninja-warrior">ninja warrior page</a>.</p>
 
@@ -150,8 +160,10 @@ const faq: FaqItem[] = [
       </p>
 
       <h2 id="holidays">Holiday closures</h2>
+      <p><strong>Closed:</strong> Easter, Memorial Day, July 4th, Labor Day, Thanksgiving Day, Christmas Day and New Year’s Day.</p>
       <p>
-        Please call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> before you visit on a holiday to confirm our hours.
+        <strong>Close early:</strong> Halloween, Christmas Eve and New Year’s Eve. Call
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> for that day’s hours.
       </p>
 
       <div class="stub-actions">

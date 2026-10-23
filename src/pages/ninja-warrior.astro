@@ -7,12 +7,9 @@ const title = 'Kids Ninja Warrior Classes in Boise, ID | Bodies in Motion'
 const description =
   'Kids Ninja Warrior classes (ages 5–13), a free 30-minute ninja trial, open gym and competitions at Bodies in Motion in Boise, ID. See the schedule and tuition.'
 
-// TODO(Duncan): confirm the class schedule and tuition below (copied from the old /ninja-warrior page). The old page
-// also says Friday and Saturday classes are "Coming Soon!"; they are not listed here.
-// TODO(Duncan): Sunday open gym ends at 5:00 pm on the old /ninja-warrior page but 3:00 pm on /ninja-warrior-competition.
-// 5:00 pm (the main page) is shown; confirm.
-// TODO(Duncan): competition dates are not announced on the old site. The only dated event in the source was the Winter 2025
-// qualifier (Saturday, February 22), shown below as a past example. Replace with the next event when announced.
+// Class schedule and tuition confirmed by Duncan (2026-10-23). Saturday open gym ends at 5 pm (confirmed).
+// TODO(Duncan): Sunday open gym hours (old pages said 5:00 pm or 3:00 pm); shown as "call" until confirmed.
+// TODO(Duncan): next competition is in the works, date TBA. Add the date when set.
 
 const bands = [
   { band: 'White Band', obstacles: 'Thread Vault, Rope Swing, Slosh Walk, Spider Wall, Tramp to Bar, PK Roll' },
@@ -50,11 +47,11 @@ const faq: FaqItem[] = [
   },
   {
     q: 'When is open gym?',
-    a: 'Monday through Friday 10:30 am–12:00 pm and 1:30–4:00 pm, and Saturday and Sunday 10 am–5:00 pm.',
+    a: 'Monday through Friday 10:30 am–12:00 pm and 1:30–4:00 pm, and Saturday 10 am–5:00 pm. For Sunday, call (208) 381-0587.',
   },
   {
     q: 'Do you host Ninja Warrior competitions?',
-    a: 'Yes. Our competitions let athletes race the clock and tackle challenging obstacles, with divisions for different age groups. Dates are announced on this page and by phone; call (208) 381-0587 to ask about the next one.',
+    a: 'Yes. Our competitions let athletes race the clock and tackle challenging obstacles, with divisions for different age groups. The next competition is in the works; the date will be announced soon. Call (208) 381-0587 to ask about it.',
   },
   {
     q: 'Where is the Ninja Warrior course?',
@@ -151,7 +148,8 @@ const reviews = [
       <ul class="bullets">
         <li><strong>Cost:</strong> $14</li>
         <li><strong>Monday–Friday:</strong> 10:30 am–12:00 pm and 1:30–4:00 pm</li>
-        <li><strong>Saturday and Sunday:</strong> 10 am–5:00 pm</li>
+        <li><strong>Saturday:</strong> 10 am–5:00 pm</li>
+        <li><strong>Sunday:</strong> call for hours</li>
       </ul>
       <p>
         During busy camp seasons, please call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> before coming in to make sure
@@ -162,7 +160,7 @@ const reviews = [
       <p>
         Whether you’re new to Ninja Warrior competitions or gunning for the national championship, you are invited to test
         your skills at Bodies in Motion. Competitions let athletes race the clock, tackle challenging obstacles and show
-        off everything they’ve trained for, with divisions for different age groups. Call us for upcoming dates.
+        off everything they’ve trained for, with divisions for different age groups. The next competition is in the works; the date is to be announced. Call us to ask about it.
       </p>
       <p class="camp-note">
         <strong>Past example (seasonal, for reference only):</strong> our Winter 2025 qualifier on Saturday, February 22

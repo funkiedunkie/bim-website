@@ -9,23 +9,7 @@ const description =
 
 // The old About page ends with "You'll be seeing us in a second location very soon!". Intentionally omitted:
 // Boise is the only location.
-// TODO(Duncan): the team roster below is copied from the old Our Team page (photos date from ~2020). Dyani Russell and
-// Brian Jankowski had no role listed. Confirm the roster and roles are current.
-
-const team = [
-  { name: 'Duncan Richardson', role: 'Owner' },
-  { name: 'Rachel Richardson', role: 'Owner' },
-  { name: 'Brandon Nelson', role: 'General Manager' },
-  { name: 'Rhea Bowman', role: 'Membership Director' },
-  { name: 'Brandi Leatham', role: 'Fitness Instructor' },
-  { name: 'Mindy Ketterling', role: 'Motioneer & Cafe Ninja' },
-  { name: 'Mackenzie Allred', role: 'Motioneer & Cafe Ninja' },
-  { name: 'Reese Richardson', role: 'Motioneer' },
-  { name: 'Louis Myers', role: 'Motioneer' },
-  { name: 'Gavin Jackson', role: 'Motioneer' },
-  { name: 'Dyani Russell', role: '' },
-  { name: 'Brian Jankowski', role: '' },
-]
+// The old Our Team roster (~2020/2021) is intentionally not published (Duncan, 2026-10-23); no staff list on this page.
 
 const coreValues = [
   'Commitment to Guests',
@@ -160,17 +144,9 @@ const extraJsonLd = [aboutPageSchema({ description })]
     </div>
   </section>
 
-  <section class="section" id="team">
+  <section class="section" id="join">
     <div class="section__inner section__inner--read prose">
-      <h2>Meet our team</h2>
-      <ul class="team-list">
-        {team.map((m) => (
-          <li class="team-card">
-            <strong>{m.name}</strong>
-            {m.role && <span>{m.role}</span>}
-          </li>
-        ))}
-      </ul>
+      <h2>Join our team</h2>
       <p>
         Interested in joining us? See <a href="/jobs">jobs</a>. Questions? Call
         <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or <a href="/contact">contact us</a>.
@@ -179,28 +155,3 @@ const extraJsonLd = [aboutPageSchema({ description })]
   </section>
 </ActivityPage>
 
-<style>
-  .team-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-  }
-
-  .team-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
-    padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .team-card span {
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-</style>

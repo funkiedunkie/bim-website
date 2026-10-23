@@ -7,13 +7,8 @@ const title = 'Kickboxing & Bootcamp Fitness Classes in Boise, ID | Bodies in Mo
 const description =
   'Fitness kickboxing and SGX bootcamp classes in Boise, ID at Bodies in Motion: 60-minute classes for all levels, MyZone heart-rate tracking and a family-friendly gym.'
 
-// TODO(Duncan): the old pages disagree on the kickboxing trial price ($19.99 on /kickboxing, $29 on /kickboxing-trial),
-// so no kickboxing trial price is shown. Add the correct one.
-// TODO(Duncan): SGX details from the old bootcamp page: "For $29, we'll give you 3 classes to test drive" and "Classes start
-// at $109/mo". Confirm both are current and add an SGX trial sign-up link (the old page used an external
-// events.membersolutions.com registration link that is not used here).
-// TODO(Duncan): the "Happy New Rear Challenge" (10-week fitness challenge) is dated/seasonal on the old site. It is shown
-// as a past/seasonal program; add the next start date, price and registration link when a new challenge is scheduled.
+// Prices confirmed by Duncan (2026-10-23): kickboxing trial $29, kickboxing $109/mo, kickboxing + SGX $139/mo.
+// No fitness challenge is scheduled, so the challenge section was removed; old challenge URLs 301 to /fitness-classes.
 
 const faq: FaqItem[] = [
   {
@@ -34,7 +29,11 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Is there a trial offer?',
-    a: 'Yes. The kickboxing trial includes 3 high-energy classes and a brand-new pair of boxing gloves, and you can book it online. SGX has a 3-class trial as well; call (208) 381-0587 to get started.',
+    a: 'Yes. The $29 kickboxing trial includes 3 high-energy classes and a brand-new pair of boxing gloves, and you can book it online. For SGX, call (208) 381-0587 to get started.',
+  },
+  {
+    q: 'How much are fitness memberships?',
+    a: 'Kickboxing is $109 per month. Kickboxing plus SGX is $139 per month. The kickboxing trial is $29.',
   },
   {
     q: 'I haven’t worked out in a long time. Is kickboxing right for me?',
@@ -103,7 +102,7 @@ const reviews = [
         <li>Unwavering confidence in your newfound abilities</li>
       </ul>
       <p>
-        <strong>Kickboxing trial:</strong> 3 high-energy classes and a brand-new pair of boxing gloves.
+        <strong>Kickboxing trial ($29):</strong> 3 high-energy classes and a brand-new pair of boxing gloves.
         <a href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book your trial on Calendly</a> or
         call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
       </p>
@@ -130,6 +129,13 @@ const reviews = [
         will help you schedule your first class.
       </p>
 
+      <h2 id="pricing">Fitness pricing</h2>
+      <ul class="bullets">
+        <li><strong>Kickboxing trial:</strong> $29 (3 classes plus boxing gloves)</li>
+        <li><strong>Kickboxing:</strong> $109 per month</li>
+        <li><strong>Kickboxing + SGX:</strong> $139 per month</li>
+      </ul>
+
       <h2 id="class-times">Class times</h2>
       <ul class="bullets">
         <li><strong>Kickboxing:</strong> Monday, Wednesday and Friday at 5:45 am, 7:00 am, 12:15 pm and 6:15 pm; Saturday at 9 am</li>
@@ -153,20 +159,6 @@ const reviews = [
       <p>
         Bodies in Motion is a family fitness venue: parents take class while kids play on the indoor play structure. Open play is free for your kids while you exercise;
         <a href="/open-play">see open play</a>.
-      </p>
-
-      <h2 id="fitness-challenge">Fitness challenges (seasonal)</h2>
-      <p class="camp-note">
-        <strong>Seasonal program, not currently scheduled on this page.</strong> We run a 10-week fitness challenge
-        (past editions included the “Happy New Rear Challenge”). Start dates, prices and registration change with each
-        edition, so call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> to ask when the next one begins.
-      </p>
-      <p>
-        The challenge combines four principles: nutrition coaching and accountability, strength training, cardio training
-        and the camaraderie of doing it with others. It includes 10 weeks of coaching, 10 weeks of fitness classes
-        (cardio kickboxing and muscle-stimulating resistance training), three check-ins that assess body composition,
-        strength and flexibility, a pair of 14 oz boxing gloves and a guide book. Duncan and Rachel Richardson have been
-        refining the formula for over 20 years.
       </p>
     </div>
   </section>

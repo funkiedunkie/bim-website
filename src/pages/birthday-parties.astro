@@ -6,14 +6,13 @@ import heroImg from '../assets/values1.jpg'
 
 const title = 'Birthday Parties in Boise, ID: Kids, Teens & Adults | Bodies in Motion'
 const description =
-  'Birthday parties in Boise, ID at Bodies in Motion: 1½-hour kids parties, ages 10–16 super, cosmic and lock-in parties, and adult parties. See pricing and book.'
+  'Birthday parties in Boise, ID at Bodies in Motion: 1½-hour kids parties, ages 10–16 super and lock-in parties, and adult parties. See pricing and book.'
 
-// Prices/packages (incl. Cosmic) confirmed current by Duncan (2026-10-21). Booking: kids parties via the Calendly RSVP
+// Prices/packages confirmed current by Duncan (2026-10-21). Booking: kids parties via the Calendly RSVP
 // scheduler; ages 10–16 and adult parties by phone, email or /contact.
-// TODO(Duncan): the old Lock-in text says "With the Super Party, all of your food is taken care" (dinner, late-night
-// snacks, continental breakfast). It reads like a typo for Lock-in; food is not stated on this page until confirmed.
-// TODO(Duncan): the old kids page says the Ropes Course add-on (+$50) is for ages 10+ and includes two free adult
-// participants, while the "themed" parties are described as ages 0–11; confirm how the add-on is booked.
+// 2026-10-23 (Duncan): Cosmic Ropes is on hold (staffing + cosmic light system), so the Cosmic Birthday Party is shown as
+// currently unavailable with no prices. Lock-in food: late-night snack/dinner and continental breakfast. Ropes add-on:
+// choose the "Ropes $50+" option; other packages call ahead.
 // TODO(Duncan): old Weebly "Themed birthday parties" vs. "Play Zone Party" naming; confirm current package names.
 
 const kidsRows = [
@@ -28,10 +27,6 @@ const superRows = [
   { label: 'Huge Party (up to 20 kids)', price: '$450' },
 ]
 
-const cosmicRows = [
-  { label: 'Dwarf Star Party (up to 8 kids)', price: '$251' },
-  { label: 'Nova Party (up to 16 kids)', price: '$323' },
-]
 
 const lockInRows = [
   { label: 'Small Party (up to 8 kids)', price: '$1199' },
@@ -61,7 +56,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'How much does a kids birthday party cost?',
-    a: 'A Small Party (up to 8 kids) is $215, a Big Party (up to 16 kids) is $287 and a Huge Party (up to 25 kids) is $359. A Ropes Course add-on is +$50 for kids 10 and up and includes two free adult participants.',
+    a: 'A Small Party (up to 8 kids) is $215, a Big Party (up to 16 kids) is $287 and a Huge Party (up to 25 kids) is $359. For a ropes party, choose the Ropes ($50+) option (ages 10 and up, includes two free adult participants).',
   },
   {
     q: 'What is included in a kids birthday party?',
@@ -80,12 +75,16 @@ const faq: FaqItem[] = [
     a: 'A Small Party (up to 8 kids) is $299, a Big Party (up to 16 kids) is $399 and a Huge Party (up to 20 kids) is $450.',
   },
   {
-    q: 'What is the Cosmic Birthday Party?',
-    a: 'It is a party for ages 10 to 16 where the entire facility is lit by colored lights, disco lights and blacklights, with louder music, Cosmic Z Tag and a Cosmic Ropes Course experience. Guests get a room to eat flatbread and cake or just socialize. It is only offered at 5:30 pm on Fridays. A Dwarf Star Party (up to 8 kids) is $251 and a Nova Party (up to 16 kids) is $323.',
+    q: 'Is the Cosmic Birthday Party available?',
+    a: 'Cosmic parties (Cosmic Z Tag and Cosmic Ropes in blacklight) are currently on hold and not available to book. Super and Lock-In parties are available for ages 10 to 16.',
   },
   {
     q: 'What is an All Night Lock-In Party?',
-    a: 'It is a 12-hour party at Bodies in Motion with multiple hosts, with Z Tag throughout the entire facility, an unlimited Cosmic Ropes Course, dance competitions, games and group challenges. It runs Friday evenings from 8 pm to 8 am Saturday morning and all participants must be at least 10 years old. Parents may stay all night but are not required to; the overnight host is a licensed child care Motioneer who is registered through the state of Idaho and background checked.',
+    a: 'It is a 12-hour party at Bodies in Motion with multiple hosts, with Z Tag throughout the entire facility, High Ropes time, dance competitions, games and group challenges. It runs Friday evenings from 8 pm to 8 am Saturday morning and all participants must be at least 10 years old. Food includes a late-night snack/dinner and a continental breakfast. Parents may stay all night but are not required to; the overnight host is a licensed child care Motioneer who is registered through the state of Idaho and background checked.',
+  },
+  {
+    q: 'Can I add the ropes course to a kids party?',
+    a: 'Yes. Choose the Ropes ($50+) party option when you book. If you choose a different party and want to add ropes later, call (208) 381-0587 ahead of time so we can make sure we can support it.',
   },
   {
     q: 'How much is an All Night Lock-In Party?',
@@ -156,8 +155,10 @@ const reviews = [
         time in their very own party room before going out to do games and challenges on our indoor play structure.
       </p>
       <p>
-        <strong>Ropes Course add-on (+$50):</strong> kids take on 3 Indiana Jones-style bridges on the High Ropes
-        Course. Ropes parties are for ages 10 and up and include two free adult participants to help the kiddos.
+        <strong>Ropes party (choose the “Ropes $50+” option):</strong> kids take on 3 Indiana Jones-style bridges on the
+        High Ropes Course. Ropes parties are for ages 10 and up and include two free adult participants to help the
+        kiddos. Booked a different party and want to add ropes later? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>
+        ahead of time so we can make sure we can support it.
       </p>
       <p>
         <strong>Food Package (optional):</strong> add it during registration: your choice of cheese or pepperoni
@@ -176,7 +177,7 @@ const reviews = [
     <div class="section__inner section__inner--read prose">
       <h2>Birthday parties for ages 10–16</h2>
       <p>
-        Kids, tweens and teens who have moved past character-themed parties can choose from Super, Cosmic and Lock-In
+        Kids, tweens and teens who have moved past character-themed parties can choose from Super and Lock-In
         parties. Kids must be at least 10 years old.
       </p>
 
@@ -191,17 +192,13 @@ const reviews = [
       <PriceTable caption="Super Birthday pricing" rows={superRows} priceHeading="Price" rowHeading="Party size" />
 
       <h3>Cosmic Birthday Party</h3>
-      <p>
-        Lights out, music up and disco in full effect: a Cosmic Z Tag and Ropes Course experience with the whole
-        facility lit by colored lights, disco lights and blacklights, and the music is louder. Guests get a room to eat
-        flatbread and cake or just socialize. Because of the extreme ambiance, it is only offered at 5:30 pm on Fridays.
-      </p>
-      <PriceTable caption="Cosmic Birthday pricing" rows={cosmicRows} priceHeading="Price" rowHeading="Party size" />
+      <p><strong>Currently unavailable.</strong> Cosmic parties are on hold for now.</p>
 
       <h3>All Night Lock-In Party</h3>
       <p>
         The ultimate birthday party package: 12 hours at Bodies in Motion with multiple hosts. Z Tag throughout the
-        entire facility, unlimited Cosmic Ropes Course, dance competitions, games, group challenges and more. Parents are
+        entire facility, High Ropes time, dance competitions, games, group challenges and more. Food includes a
+        late-night snack/dinner and a continental breakfast. Parents are
         welcome to stay all night but aren’t required to. The overnight host is one of our licensed child care
         Motioneers, registered through the state of Idaho and background checked. Lock-In parties are booked Friday
         evenings from 8 pm to 8 am Saturday morning, and all participants must be at least 10 years old.
@@ -210,7 +207,7 @@ const reviews = [
 
       <h3>Book ages 10–16 parties</h3>
       <p>
-        To book a Super, Cosmic or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
+        To book a Super or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
         <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a>.
       </p>
     </div>

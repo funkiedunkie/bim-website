@@ -1,7 +1,7 @@
 ---
 import ActivityPage from '../layouts/ActivityPage.astro'
 import PriceTable from '../components/PriceTable.astro'
-import type { FaqItem } from '../lib/site'
+import { OPEN_PLAY_HOURS, OPEN_PLAY_HOURS_SPEC, HOLIDAY_TEXT, type FaqItem } from '../lib/site'
 import heroImg from '../assets/open-play.jpg'
 
 const title = 'Indoor Playground & Open Play in Boise, ID | Bodies in Motion'
@@ -14,10 +14,8 @@ const priceRows = [
   { label: '5 yrs & up', price: '$12.50' },
 ]
 
-// TODO(Duncan): the old Open Play page shows "Summer hours" (Mon–Fri 9:30–6, Sat/Sun 9:30–5); the old Hours page
-// shows fall & winter hours, used here. Confirm the current season's hours.
-const hoursText =
-  'Fall and winter hours: Monday–Thursday 10 AM–7 PM, Friday 10 AM–6 PM, Saturday and Sunday 9:30 AM–5:00 PM.'
+// Open play hours (summer and fall/winter) confirmed by Duncan (2026-10-23).
+const hoursText = `${OPEN_PLAY_HOURS.fallWinter} ${OPEN_PLAY_HOURS.summer}`
 
 // TODO(Duncan): the "monthly specials" calendar on the old Open Play page is October-specific and was not migrated.
 // TODO(Duncan): confirm how "open play free when you exercise" works (which classes/memberships qualify).
@@ -29,6 +27,10 @@ const faq: FaqItem[] = [
   {
     q: 'What are the open play hours?',
     a: hoursText,
+  },
+  {
+    q: 'Are you open on holidays?',
+    a: HOLIDAY_TEXT,
   },
   {
     q: 'Do you have memberships or passes?',
@@ -79,6 +81,7 @@ const reviews = [
   ctaText="Sign your waiver ahead of time, then walk in. Questions? Call (208) 381-0587."
   faq={faq}
   reviews={reviews}
+  openingHoursSpecification={OPEN_PLAY_HOURS_SPEC}
 >
   <section class="section">
     <div class="section__inner section__inner--read prose">
@@ -105,7 +108,8 @@ const reviews = [
       </p>
 
       <h2>Open play hours</h2>
-      <p>{hoursText} <a href="/hours">See all hours</a>.</p>
+      <p>{OPEN_PLAY_HOURS.fallWinter}</p>
+      <p>{OPEN_PLAY_HOURS.summer} <a href="/hours#holidays">Holiday closures</a> and <a href="/hours">all hours</a>.</p>
 
       <h2>Good to know</h2>
       <p>

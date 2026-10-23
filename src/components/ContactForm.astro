@@ -1,9 +1,9 @@
 ---
 import { NAP } from '../lib/site'
-const programs = ['Infant & Toddler Care', 'Preschool', 'Before & After School Care', 'Camps', 'Birthday Parties', 'Other']
+const programs = ['Infant & Toddler Care', 'Preschool', 'Before & After School Care', 'Camps', 'Birthday Parties', 'Team Building', 'Other']
 const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Website inquiry')}`
 ---
-<form class="contact-form" method="post" action="/api/contact" data-mailto={mailto}>
+<form id="contact-form" class="contact-form" method="post" action="/api/contact" data-mailto={mailto}>
   <h2>Send us a message</h2>
   <p class="contact-form__status" role="status" aria-live="polite" hidden></p>
   <label>Name* <input name="name" required maxlength="120" autocomplete="name" /></label>
@@ -22,7 +22,11 @@ const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Website inquir
   if (form) {
     const status = form.querySelector<HTMLElement>('.contact-form__status')!
     const show = (html: string) => { status.hidden = false; status.innerHTML = html }
-    const q = new URLSearchParams(location.search).get('status')
+    const params = new URLSearchParams(location.search)
+    const pre = params.get('program')
+    const sel = form.querySelector<HTMLSelectElement>('select[name=program]')
+    if (pre && sel && [...sel.options].some((o) => o.value === pre)) sel.value = pre
+    const q = params.get('status')
     if (q === 'sent') show('Thanks! Your message was sent.')
     if (q === 'error') show(`Sorry, that didn't send. Please email <a href="${form.dataset.mailto}">us directly</a>.`)
     form.addEventListener('submit', async (e) => {

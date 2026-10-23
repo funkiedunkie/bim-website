@@ -10,33 +10,25 @@ Find them all: `grep -rn "TODO(Duncan)" src`
 - [ ] **Refresh camp dates/prices each season** (source: Camps for Kids app). Update `upcomingCamps` and the "2026 rate" notes in `src/pages/camps.astro`. Past dates are dropped at build time, but the build must be re-run (and the list edited) to add new ones.
 - [ ] **Rebuild after Oct 24, 2026 21:00 MDT** — the Cosmic Glow Event schema drops automatically, but the static HTML must be rebuilt. Family Night Out date is still "TBA". (`src/pages/parents-night-out.astro`, `camps.astro`)
 
-## Licensing, hours and structured data
-- [ ] **Childcare license number** — the infant & toddler page says "Licensed" but gives no number. (`src/pages/infant-toddler-care.astro`)
-- [ ] **Holiday closures** — the old Hours page lists only 2025 closures (Thanksgiving, Christmas); none are shown (the page just says to call before visiting on a holiday). Add current ones. (`src/pages/hours.astro`)
-- [ ] **Seasonal hours** — Open Play shows "summer hours" on the old Open Play page but fall/winter hours on the old Hours page (used). Confirm. (`src/pages/open-play.astro`, `hours.astro`)
-- [ ] **Pickleball hours** — Hours page (used) and old Pickleball page list different slots. Confirm. (`src/pages/pickleball.astro`)
-- [ ] **Ninja open gym Sunday end time** — 5:00 pm on `/ninja-warrior` (used) vs 3:00 pm on `/ninja-warrior-competition`. (`src/pages/ninja-warrior.astro`)
+## Hours and structured data
+- [ ] **Open play season changeover** — both summer and fall/winter hours are shown; JSON-LD carries the current (fall/winter) hours via `OPEN_PLAY_HOURS_SPEC` in `src/lib/site.ts`. Swap it when the season changes (no changeover dates given).
+- [ ] **Ninja open gym Sunday hours** — Saturday ends at 5 pm (confirmed); Sunday is shown as "call for hours" (old pages said 5 pm or 3 pm). (`ninja-warrior.astro`, `hours.astro`)
+- [ ] **Pickleball weekend times** — the confirmed list (2026-10-23) has weekday slots only, so no weekend times are shown. Add if there are any. (`pickleball.astro`, `hours.astro`)
 
-## Prices and offers to confirm
-- [ ] **Kickboxing trial price** — $19.99 on `/kickboxing` vs $29 on `/kickboxing-trial`. No price is shown. (`src/pages/fitness-classes.astro`)
-- [ ] **SGX trial and membership** — old bootcamp page: 3-class trial $29, "classes start at $109/mo", external sign-up link not used. Confirm and add a link. (`fitness-classes.astro`)
-- [ ] **Next fitness challenge** — the 10-week "Happy New Rear Challenge" is shown as a seasonal/past program with no date or price. (`fitness-classes.astro`)
-- [ ] **Team building prices** — confirm; the source says "$57 to $73 (tax included) depending on group size" without saying per person. (`src/pages/team-building.astro`)
-- [ ] **Team building booking email** — the old Hours page had a separate (obfuscated) booking email; help@ and the phone are shown. Confirm whether it's help@ or another address. (`team-building.astro`)
-- [ ] **Ninja tuition/schedule** — confirm the class schedule and tuition; Friday/Saturday classes were "Coming Soon". (`ninja-warrior.astro`)
-- [ ] **Next ninja competition** — only a past Winter 2025 qualifier is in the source; add the next date. (`ninja-warrior.astro`)
-- [ ] **Ropes course** — confirm Open Ropes slots/price ($16 + tax), whether the public Cosmic Ropes Adventure night is running (old page: "on hold"), and whether a Supernova party (up to 20 kids, $299 on the old ropes page) exists; the old ropes page prices for Nova/Dwarf Star ($259/$199) conflict with the confirmed $323/$251. (`src/pages/ropes-course.astro`)
-- [ ] **Family Night Out prices** ($49 / $39.20) — confirm. (`parents-night-out.astro`)
-- [ ] **Lock-in food** — old text says "With the Super Party, all of your food is taken care" inside the Lock-in section (dinner, snacks, continental breakfast); probably a typo, so food is not stated. (`src/pages/birthday-parties.astro`)
-- [ ] **Kids party naming / ropes add-on** — old page lists only "Play Zone Party" plus a Ropes Course (+$50, ages 10+, two free adults) while "themed" parties are ages 0–11; confirm package names and how the add-on is booked. (`birthday-parties.astro`)
-- [ ] **Open play** — monthly specials calendar (October-specific) not migrated; confirm how "open play free when you exercise" works. (`open-play.astro`)
+## Programs and offers
+- [ ] **Pickleball booking link** — the old link went to Sawyer (no longer used). Booking is by phone/email/contact form until a new link exists. Rhea blocks School of Soccer overlaps on the pickleball calendar; times say "subject to availability". (`pickleball.astro`)
+- [ ] **Team building revamp** (Rhea) — prices updated and a "Book a team-building event" button sends a "Team Building" request to help@ through the contact form. Revisit the page when the program is revamped. (`team-building.astro`)
+- [ ] **Family Night Out revamp** — shown as "next date coming soon" at $49 / $39.20; add the date and Event schema when rescheduled. (`parents-night-out.astro`)
+- [ ] **Cosmic Ropes / Cosmic parties** — on hold (staffing + light system). Cosmic Ropes and the Supernova party are removed; the Cosmic Birthday Party (Dwarf Star/Nova) is shown as "currently unavailable" with no prices. Confirm that is right for the Cosmic birthday packages, and restore when back. (`ropes-course.astro`, `birthday-parties.astro`)
+- [ ] **Next ninja competition** — in the works, date TBA. (`ninja-warrior.astro`)
+- [ ] **SGX trial and sign-up link** — prices now shown: kickboxing trial $29, kickboxing $109/mo, kickboxing + SGX $139/mo. SGX-only trial/price and an online sign-up link are not confirmed. (`fitness-classes.astro`)
+- [ ] **Kids party naming** — "Themed" vs "Play Zone Party" naming. (`birthday-parties.astro`)
+- [ ] **Open play** — monthly specials calendar not migrated; confirm how "open play free when you exercise" works. (`open-play.astro`)
 
 ## Links and forms
-- [ ] **Contact form delivery** — `/api/contact` (`api/contact.js`, Vercel Function) sends to help@bodiesinmotionidaho.com via Mailjet Send API v3.1 (Duncan chose Mailjet over Resend 2026-10-21; no DNS changes needed since Mailjet is already in the domain's SPF). Set `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM` (a bodiesinmotionidaho.com sender already validated in Mailjet) and optional `CONTACT_TO` in Vercel (Preview first), then send a test from the preview. Until set, the form shows a mailto fallback.
-- [ ] **Motioneer job application form** — not migrated (it posted to Weebly); `/jobs` tells applicants to email help@ or call. Add a form (can reuse `/api/contact`) or link. No `JobPosting` schema until there is a concrete opening (title, description, date posted, pay, employment type); pay, hours and benefits are not on the old page, so none are listed. (`src/pages/jobs.astro`)
+- [ ] **Motioneer job application form** — keep the current approach (email/phone on `/jobs`) for now. Rhea will evaluate form usage vs an external hiring site. No `JobPosting` schema until there is a concrete opening. (`src/pages/jobs.astro`)
 
 ## Content still to migrate
-- [ ] **About team roster** — copied from the old Our Team page (photos ~2020); Dyani Russell and Brian Jankowski had no role listed. Confirm the roster is current. (`src/pages/about.astro`)
 - [ ] **Blog follow-ups** — 21 posts migrated (see "Blog review flags" below). The other 65 old posts are 301-redirected (29 to program pages, 36 to `/blog`); none were migrated. To bring one back, add its markdown file, move its slug into `keep` in `scripts/blog-map.json` and regenerate `vercel.json`.
 
 ## Blog review flags (2026-10-21)
@@ -76,6 +68,21 @@ Each post's `reviewNotes` frontmatter (`src/content/blog/<slug>.md`) holds the s
 - Old Weebly seasonal items (Trunk or Treat RSVP banner, etc.); member codes; camp dates that have already passed.
 - Axe-throwing team building (appears only in old reviews, not as a current workshop).
 - Open play kids' prices from the old pickleball page ($6 / $9.60 / $12); `/open-play` has the confirmed prices.
+
+## Resolved (2026-10-23, staff answers via Duncan)
+- Childcare license #28-11875 on `/infant-toddler-care` and in the footer.
+- Holidays: closed Easter, Memorial Day, July 4th, Labor Day, Thanksgiving Day, Christmas Day, New Year's Day; close early Halloween, Christmas Eve, New Year's Eve (`/hours`, open play FAQ).
+- Open play hours: summer and fall/winter, on `/open-play`, `/hours` and JSON-LD (`openingHoursSpecification`).
+- Pickleball hours (weekday slots, Mon/Thu evening) with "subject to availability".
+- Ninja tuition/schedule confirmed; Saturday open gym ends 5 pm.
+- Kickboxing $29 trial, $109/mo; kickboxing + SGX $139/mo. Fitness challenge section removed; old challenge URLs already 301 to `/fitness-classes`.
+- Team building per-person prices; booking CTA + "Team Building" contact-form type (to help@ → Rhea).
+- Open Ropes M–F 4–5 and 5–6 pm, Saturday call, $16/person.
+- Family Night Out prices confirmed; "next date coming soon".
+- Lock-in food: late-night snack/dinner and continental breakfast (typo text not used).
+- Ropes party add-on: "Ropes $50+" option, otherwise call ahead.
+- About: 2021 team roster removed; About page kept without a staff list.
+- Contact form delivery: Mailjet env vars set on Preview and a Mailjet test reached help@ (2026-10-21).
 
 ## Resolved (2026-10-21)
 - `/camps`, `/birthday-parties`, `/parents-night-out`, `/open-play` promoted to full indexable pages (sitemap, FAQ + JSON-LD).

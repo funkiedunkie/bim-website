@@ -14,8 +14,8 @@ const glowEnd = '2026-10-24T21:00:00-06:00'
 const glowUpcoming = Date.now() < Date.parse(glowEnd)
 
 // Cosmic Glow ($51, 20% sibling discount = $40.80, ages 5–12) matches the Camps for Kids app.
-// TODO(Duncan): confirm Family Night Out prices ($49 / $39.20) are current.
-// TODO(Duncan): Family Night Out date is "TBA" on the old page; add the date and an Event schema when known.
+// Family Night Out prices ($49 / $39.20) confirmed by Duncan (2026-10-23). Next date TBA: the program is being revamped.
+// TODO(Duncan): add the Family Night Out date and an Event schema when the revamped program is scheduled.
 const glowFacts =
   'The Cosmic Glow Party – Parents’ Night Out includes a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza and a sweet treat. It is for ages 5–12, 5:00–9:00 PM, at $51 per child, with a 20% sibling discount ($40.80 for additional siblings) and dinner included.'
 
@@ -43,7 +43,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'What is Family Night Out?',
-    a: 'Family Night Out is an evening designed for families to laugh, play and create memories together, from 5 to 9 PM, for ages 3 (and potty trained) to adults. It costs $49 per adventurer and $39.20 for additional family members. The date is to be announced and spaces are limited.',
+    a: 'Family Night Out is an evening designed for families to laugh, play and create memories together, from 5 to 9 PM, for ages 3 (and potty trained) to adults. It costs $49 per person, with additional family members $39.20 each. The next date is coming soon and spaces are limited.',
   },
   {
     q: 'Is dinner included?',
@@ -125,10 +125,10 @@ const extraJsonLd = glowUpcoming
         are limited.
       </p>
       <ul class="bullets">
-        <li><strong>Date:</strong> to be announced</li>
+        <li><strong>Date:</strong> next date coming soon</li>
         <li><strong>Time:</strong> 5–9 PM</li>
         <li><strong>For:</strong> ages 3 (and potty trained) to adults</li>
-        <li><strong>Cost:</strong> $49 per adventurer, additional family members $39.20</li>
+        <li><strong>Cost:</strong> $49 per person, additional family members $39.20 each</li>
       </ul>
       <p>
         Where else can you see your dad attempt to dance in silence or your family build a cookie masterpiece

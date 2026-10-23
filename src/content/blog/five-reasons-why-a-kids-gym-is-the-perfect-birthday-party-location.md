@@ -43,4 +43,4 @@ Having a party at a kids gym is a one-stop solution. Make planning simpler, know
 
 ## Birthday Parties at Bodies in Motion
 
-Bodies in Motion offers [birthday parties](/birthday-parties) in Boise for every age: a 1½-hour kids party hosted by one of our Motioneers (great for ages 0 to 11), super and cosmic parties for ages 10 to 16, and adult parties. We’re happy to help you take the stress out of celebrating with your kids and their friends. [RSVP online](/birthday-parties) or [contact us](/contact).
+Bodies in Motion offers [birthday parties](/birthday-parties) in Boise for every age: a 1½-hour kids party hosted by one of our Motioneers (great for ages 0 to 11), super and lock-in parties for ages 10 to 16, and adult parties. We’re happy to help you take the stress out of celebrating with your kids and their friends. [RSVP online](/birthday-parties) or [contact us](/contact).

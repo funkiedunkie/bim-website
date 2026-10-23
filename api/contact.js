@@ -5,7 +5,7 @@
 //   CONTACT_FROM - sender already validated in Mailjet, e.g. "Bodies in Motion Website <website@bodiesinmotionidaho.com>" or a bare address
 //   CONTACT_TO   - optional, defaults to help@bodiesinmotionidaho.com
 const TO_DEFAULT = 'help@bodiesinmotionidaho.com'
-const PROGRAMS = ['Infant & Toddler Care', 'Preschool', 'Before & After School Care', 'Camps', 'Birthday Parties', 'Other']
+const PROGRAMS = ['Infant & Toddler Care', 'Preschool', 'Before & After School Care', 'Camps', 'Birthday Parties', 'Team Building', 'Other']
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
 
 async function readBody(req) {

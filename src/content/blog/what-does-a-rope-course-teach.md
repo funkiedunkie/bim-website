@@ -48,4 +48,4 @@ Last on the list is building focus. Completing a ropes course is a challenging e
 
 ## Ropes at Bodies in Motion
 
-If you are looking for a ropes course in Boise, Idaho, our [high ropes course](/ropes-course) is a great place to start. It hosts Open Ropes sessions, Cosmic Ropes [birthday parties](/birthday-parties) for ages 10 and up, and [team building workshops](/team-building) for groups of 4 to 60. [Contact us](/contact) today to see how we can help you!
+If you are looking for a ropes course in Boise, Idaho, our [high ropes course](/ropes-course) is a great place to start. It hosts Open Ropes sessions, ropes [birthday parties](/birthday-parties) for ages 10 and up, and [team building workshops](/team-building) for groups of 4 to 60. [Contact us](/contact) today to see how we can help you!

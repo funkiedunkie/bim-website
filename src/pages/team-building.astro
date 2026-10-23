@@ -7,10 +7,9 @@ const title = 'Team Building in Boise, ID: Ropes Course & Ninja Warrior | Bodies
 const description =
   'Team building workshops in Boise, ID for groups of 4 to 60: Mission Possible, Team Building Express and Ninja Warrior vs Ropes Course at Bodies in Motion.'
 
-// TODO(Duncan): the old Hours page had a separate (obfuscated in the crawl) team building booking email. help@ and the
-// phone number are shown as contact for now; confirm whether team building uses another address.
-// TODO(Duncan): confirm these workshop prices (copied from the old page). The source gives "$57 to $73 (tax included)
-// depending on group size" without saying per person; shown exactly as sourced. Say "per person" if that is the case.
+// Prices confirmed by Duncan (2026-10-23), per person: 3-hour Corporate (Mission Possible) $53.77–$68.87, 2-hour Corporate
+// (Ninja Warrior vs Ropes) $35.85–$40.57, 1-hour Express $19.81–$24.53; the lower price applies to larger groups.
+// Bookings go to Rhea via help@ (contact form "Team Building" type). TODO(Duncan): program revamp planned (Rhea).
 // TODO(Duncan): old reviews mention axe throwing team building (Scentsy, Trane); it is not listed as a current workshop
 // on the old page, so it is not offered here and those reviews are not shown.
 
@@ -21,7 +20,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'How much does team building cost?',
-    a: 'Mission Possible is $57 to $73 (tax included) depending on group size. Team Building Express is $21 to $26 (tax included) depending on the size of your group. Ninja Warrior vs Ropes Course is $38 to $43 (tax included) depending on group size.',
+    a: 'Prices are per person, and larger groups get the lower price. Mission Possible (3-hour corporate) is $53.77 to $68.87 per person, Ninja Warrior vs Ropes Course (2-hour corporate) is $35.85 to $40.57 per person and Team Building Express (1 hour) is $19.81 to $24.53 per person.',
   },
   {
     q: 'How big can our group be?',
@@ -45,7 +44,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'How do I book team building?',
-    a: 'Team building is by appointment only. Call (208) 381-0587 or email help@bodiesinmotionidaho.com.',
+    a: 'Team building is by appointment only. Send a team building request through our contact form, email help@bodiesinmotionidaho.com or call (208) 381-0587.',
   },
 ]
 
@@ -67,11 +66,11 @@ const reviews = [
   lead="Experiential team building on our high ropes course and Ninja Warrior course, for groups of 4 to 60."
   heroImg={heroImg}
   heroAlt="Two smiling people in red shirts giving thumbs up indoors"
-  ctaUrl="/contact"
-  ctaLabel="Contact us about team building"
+  ctaUrl="/contact?program=Team%20Building#contact-form"
+  ctaLabel="Book a team-building event"
   ctaExternal={false}
   ctaHeading="Plan your team’s next adventure"
-  ctaText="Team building is by appointment: call (208) 381-0587 or email help@bodiesinmotionidaho.com."
+  ctaText="Team building is by appointment. Send us a request, email help@bodiesinmotionidaho.com or call (208) 381-0587."
   faq={faq}
   reviews={reviews}
 >
@@ -85,6 +84,10 @@ const reviews = [
         Garden City, and our team building is beyond normal.
       </p>
 
+      <div class="stub-actions">
+        <a class="btn-primary" href="/contact?program=Team%20Building#contact-form">Book a team-building event</a>
+      </div>
+
       <h2 id="mission-possible">Mission Possible Team Building</h2>
       <p>
         Transform your team into special agents on a mission to crack the code of a foreign king pin who threatens to
@@ -94,7 +97,7 @@ const reviews = [
       </p>
       <ul class="bullets">
         <li><strong>Participants:</strong> 6 to 60</li>
-        <li><strong>Cost:</strong> $57 to $73 (tax included) depending on group size</li>
+        <li><strong>Cost:</strong> $53.77 to $68.87 per person (lower price for larger groups)</li>
         <li><strong>Estimated time:</strong> 3 hours</li>
       </ul>
 
@@ -106,7 +109,7 @@ const reviews = [
       </p>
       <ul class="bullets">
         <li><strong>Participants:</strong> 4 to 20</li>
-        <li><strong>Cost:</strong> $21 to $26 (tax included) depending on group size</li>
+        <li><strong>Cost:</strong> $19.81 to $24.53 per person (lower price for larger groups)</li>
         <li><strong>Estimated time:</strong> 1 hour</li>
       </ul>
 
@@ -120,7 +123,7 @@ const reviews = [
       </p>
       <ul class="bullets">
         <li><strong>Participants:</strong> 4 to 40</li>
-        <li><strong>Cost:</strong> $38 to $43 (tax included) depending on group size</li>
+        <li><strong>Cost:</strong> $35.85 to $40.57 per person (lower price for larger groups)</li>
         <li><strong>Estimated time:</strong> 2 hours</li>
       </ul>
       <p>
@@ -131,13 +134,14 @@ const reviews = [
 
       <h2 id="book">Book team building</h2>
       <p>
-        Team building is by appointment only. Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
-        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a>. Learn more about the
+        Team building is by appointment only. Send a team building request through our
+        <a href="/contact?program=Team%20Building#contact-form">contact form</a>, email
+        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>. Learn more about the
         <a href="/ropes-course">ropes course</a> and <a href="/ninja-warrior">Ninja Warrior</a> programs.
       </p>
       <div class="stub-actions">
-        <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
-        <a class="btn-outline" href="/contact">Contact us</a>
+        <a class="btn-primary" href="/contact?program=Team%20Building#contact-form">Book a team-building event</a>
+        <a class="btn-outline" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
       </div>
     </div>
   </section>
