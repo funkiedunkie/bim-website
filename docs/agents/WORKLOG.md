@@ -10,6 +10,25 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 Template:
 
 ```markdown
+## YYYY-MM-DD — <Agent> — `<branch>`
+
+**Changed:** what you did and why, with commit hashes / PR link.
+**Live vs committed:** what is deployed (preview/production) vs only committed.
+**Uncommitted / unmerged:** files or branches left in flight, if any.
+**Open questions:** things Duncan or the next agent must decide.
+**Handoff:** what the next agent should do or watch out for.
+```
+
+---
+
+## 2026-10-23 — Grok — `grok/design-concepts`
+
+**Changed:** Added `/concepts/d` ("Parent-first"), built section by section from the research Page "What Boise Moms Want From a Childcare Website": practical-facts hero (ages, hours, address), trust strip (Idaho STARS, license #28-11875, ratios, star-rating placeholder), program cards with an availability slot (neutral "Ask about openings" placeholder chip, no invented status) and "from $X" using the lowest prices already published on the program pages (`SHOW_PRICES` flag swaps to "Pricing shared on your tour"), one-building story, safety & staff, review band, camps linking to CFK (`LINKS.camps`), extras, FAQ (confirmed answers only; unconfirmed questions shown as "Answer pending"), 6-field single-column tour/waitlist form (no JS) posting to `/api/contact`, sticky mobile Book a tour / Call / Text bar. Added D to `/concepts` index and the ConceptShell switcher. `api/contact.js`: accepts program `Tour` and `Waitlist` and folds `tour_program`, `child_age`, `tour_time`, `start_date` into the message (other programs unchanged). One-time cleanup: moved the two 2026-10-23 entries that had been inserted inside the template code block out to the top of the log (text unchanged).
+**Evidence:** `npm run build` (47 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK; Playwright screenshots at 1440 and 390 reviewed, no horizontal overflow (`/workspace/concepts-shots/d-desktop.png`, `d-mobile.png`, outside repo).
+**Live vs committed:** Committed and pushed; Vercel auto-builds the branch **preview** only. Not merged; production still Weebly; DNS untouched. The tour form has not been submitted end-to-end yet.
+**Open questions:** real Open/Limited/Waitlist status per program; show tuition or not; Google star rating + review count; state license lookup URL; whether (208) 381-0587 takes texts; CPR, ICCP, parent update app, illness policy, secure check-in, schools served, reply-time promise; tour time choices.
+**Handoff:** Placeholders are marked `TODO(...)` in `src/pages/concepts/d.astro`. Same rule as before: don't merge this branch into `main`.
+
 ## 2026-10-23 — Grok — `grok/design-concepts` (off `astro-rebuild`)
 
 **Changed:** Duncan said the inherited visual design feels dated. Added three standalone homepage design concepts (`b1d521c`): `/concepts` index plus `/concepts/a` (warm editorial: Fraunces serif, cream/terracotta), `/concepts/b` (bold playful: Bricolage Grotesque, bright color blocks, sticker shapes, marquee), `/concepts/c` (modern bento: Inter, app-like cards). New files only: `src/layouts/ConceptShell.astro` (own head, always `noindex,follow`, no Nav/Footer), `src/lib/concepts.ts` (content pulled from existing pages / `site.ts` / `reviews.ts`, reviews verbatim or marked excerpts), real BIM photos copied from the Weebly inventory into `src/assets/concepts/`, self-hosted OFL fonts in `public/concepts/fonts/`. CSS-only motion (scroll-driven `animation-timeline: view()` inside `@supports`, cross-document view transitions), all disabled under `prefers-reduced-motion`. No JS shipped. Existing pages untouched; concepts are not in the sitemap.
@@ -25,17 +44,6 @@ Template:
 **Live vs committed:** Vercel **preview** only (`bim-website-b8s4q8pqm-camps-for-kids-idaho.vercel.app`, Ready). Production still Weebly; DNS untouched; PR #1 not merged (Duncan reviews first).
 **Open questions:** Cosmic Birthday Party (Dwarf Star/Nova) treated as on hold along with Cosmic Ropes — confirm. Ninja Sunday open gym hours; pickleball weekend times (none given); open play season changeover dates; new pickleball booking link; team building and Family Night Out revamps; privacy legal review; job form evaluation (Rhea).
 **Handoff:** Local builds need Node >= 22.22 (box default is 20; a Node 22 copy is at `~/node22`).
-
-## YYYY-MM-DD — <Agent> — `<branch>`
-
-**Changed:** what you did and why, with commit hashes / PR link.
-**Live vs committed:** what is deployed (preview/production) vs only committed.
-**Uncommitted / unmerged:** files or branches left in flight, if any.
-**Open questions:** things Duncan or the next agent must decide.
-**Handoff:** what the next agent should do or watch out for.
-```
-
----
 
 ## 2026-10-21 — Grok — `grok/agent-docs`
 
