@@ -17,5 +17,6 @@ Never paste secrets here; env vars are listed by name only.
 
 | Date | What | Kind | Commit | By | Verified live? |
 |---|---|---|---|---|---|
+| 2026-10-23 | Preview deploy of homepage design concepts (`/concepts`, noindex): bim-website-git-grok-design-concepts-camps-for-kids-idaho.vercel.app | preview deploy (git push, branch `grok/design-concepts`) | `b1d521c` | Grok | Yes — Vercel status Ready |
 | 2026-10-23 | Preview deploy of staff-answer content updates: bim-website-b8s4q8pqm-camps-for-kids-idaho.vercel.app | preview deploy (git push) | `cd4e5fe` | Grok | Yes — Vercel status Ready |
 | 2026-10-21 | Preview env vars `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM`, `CONTACT_TO` added (Preview, branch `astro-rebuild`) and preview redeployed: bim-website-55ple7m8t-camps-for-kids-idaho.vercel.app | env vars + preview deploy | `3726f78` | Grok | Yes — Mailjet test send to help@ received 2026-10-21 (sent via API, not the form) |
