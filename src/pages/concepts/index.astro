@@ -4,12 +4,13 @@ const list = [
   { k: 'a', t: 'Warm editorial', d: 'Premium and calm. Serif headlines, cream and terracotta, big photography. Built to earn a parent’s trust first.' },
   { k: 'b', t: 'Bold & playful', d: 'Loud color, chunky type and sticker shapes. Shows off ninja, ropes and parties while keeping childcare one click away.' },
   { k: 'c', t: 'Modern bento', d: 'Clean, app-like cards. Ratios, license and hours at a glance, fast to scan on a phone.' },
+  { k: 'd', t: 'Parent-first (research-based)', d: 'Built from the parent research: practical facts and credentials up top, openings and starting prices on each program, safety, reviews, FAQ, a 6-field tour/waitlist form and a sticky Book / Call / Text bar on phones.' },
 ]
 ---
 <Shell title="Homepage design concepts | Bodies in Motion" description="Three homepage design concepts for the new Bodies in Motion site (internal review, not indexed)." fonts={['inter']}>
 <main style="max-width:900px;margin:auto;padding:64px 20px 120px;font:400 1.05rem/1.6 Inter,system-ui,sans-serif;color:#111">
   <h1 style="font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.05">Homepage design concepts</h1>
-  <p style="color:#5a5a5a;margin-top:12px">Same real content and photos, three different directions. Pick one and it gets applied across the site.</p>
+  <p style="color:#5a5a5a;margin-top:12px">Same real content and photos, four different directions. Pick one and it gets applied across the site.</p>
   <ul style="list-style:none;display:grid;gap:14px;margin-top:36px">
     {list.map((c) => <li><a href={`/concepts/${c.k}`} style="display:block;padding:24px 28px;border:1px solid #ddd;border-radius:20px;text-decoration:none"><b style="font-size:1.3rem">{c.k.toUpperCase()} · {c.t}</b><br /><span style="color:#5a5a5a">{c.d}</span></a></li>)}
   </ul>
