@@ -2,6 +2,12 @@
 import ActivityPage from '../layouts/ActivityPage.astro'
 import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/ropes-course-web.jpeg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryRopes1 from '../assets/photos/ropes-locks.jpeg'
+import galleryRopes2 from '../assets/photos/group-ropes-course.jpg'
+import galleryRopes3 from '../assets/photos/ropes-family-1.jpg'
+import galleryRopes4 from '../assets/photos/ropes-family-2.jpeg'
+import galleryRopes5 from '../assets/photos/ropes-family-3.jpg'
 
 const title = 'High Ropes Course in Boise, ID: Open Ropes | Bodies in Motion'
 const description =
@@ -50,6 +56,14 @@ const reviews = [
   { quote: 'I am terrified of heights, but the staff were all very supportive and helped me through the course!', name: 'Cassie S', source: 'Groupon' },
   { quote: 'Completed the ropes course last night. Had an absolutely phenomenal time and the staff was helpful, kind, and simply superb. Thanks for the great adventure!', name: 'Julie Giles', source: '5 stars, Facebook' },
   { quote: 'Call in advance to schedule a time to come. It books up and its not a last minute activity. That being said, they were great to us and we had a blast. We went for date night and loved the physical challenge!', name: 'Debbie T', source: 'Groupon' },
+]
+
+const gallery = [
+  { src: galleryRopes1, alt: 'Harness and safety locks ready for the high ropes course' },
+  { src: galleryRopes2, alt: 'A group clipped in and moving across the indoor high ropes course' },
+  { src: galleryRopes3, alt: 'Families navigating suspended platforms on the ropes course' },
+  { src: galleryRopes4, alt: 'Climbers on the high aerial ropes course at Bodies in Motion' },
+  { src: galleryRopes5, alt: 'Kids and adults high on the ropes course walkways' },
 ]
 ---
 
@@ -119,4 +133,5 @@ const reviews = [
       </p>
     </div>
   </section>
+  <PhotoGallery eyebrow="High ropes" heading="Open Ropes in action" items={gallery} />
 </ActivityPage>

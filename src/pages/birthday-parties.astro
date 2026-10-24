@@ -3,6 +3,15 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import PriceTable from '../components/PriceTable.astro'
 import { LINKS, NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/birthday-party-web.jpeg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryBday1 from '../assets/photos/isaac-birthday-web.jpg'
+import galleryBday2 from '../assets/photos/zion-birthday-singing.jpg'
+import galleryBday3 from '../assets/photos/super-birthday-party.jpg'
+import galleryBday4 from '../assets/photos/super-birthday-ropes-web_1_orig.jpg'
+import galleryBday5 from '../assets/photos/birthday-lock-in.jpg'
+import galleryBday6 from '../assets/photos/adult-birthday-web.jpeg'
+import galleryBday7 from '../assets/photos/adult-party-web-1.jpeg'
+import galleryBday8 from '../assets/photos/adult-party-web-2.jpeg'
 
 const title = 'Birthday Parties in Boise, ID: Kids, Teens & Adults | Bodies in Motion'
 const description =
@@ -112,6 +121,17 @@ const reviews = [
   { quote: 'We had my little girl’s 5th birthday here today. The kids loved it, ate good food, and didn’t want to leave. Great job Bodies in Motion.', name: 'Bess L.', source: '5 stars, Facebook' },
   { quote: 'My son had his birthday party here and they were amazing! The party room was set up nicely, the piñata was done well, and the party hosts really made it a fun day for him and his friends!', name: 'Amber A.', source: '5 stars, Facebook' },
   { quote: 'The cosmic ropes course was AMAZING for my 10 yr old’s birthday party! Will be back soon for sure!', name: 'Gina J', source: 'Groupon' },
+]
+
+const gallery = [
+  { src: galleryBday1, alt: 'Birthday kid celebrating at a Bodies in Motion kids party' },
+  { src: galleryBday2, alt: 'Friends singing to the birthday child in the party room' },
+  { src: galleryBday3, alt: 'Tweens competing during a Super Birthday Party' },
+  { src: galleryBday4, alt: 'Birthday guests in helmets on the ropes course add-on' },
+  { src: galleryBday5, alt: 'Overnight lock-in birthday party fun at the gym' },
+  { src: galleryBday6, alt: 'Adults celebrating a birthday at Bodies in Motion' },
+  { src: galleryBday7, alt: 'Adult party group enjoying the facility' },
+  { src: galleryBday8, alt: 'Adult birthday party guests hanging out after activities' },
 ]
 ---
 
@@ -235,4 +255,5 @@ const reviews = [
       </div>
     </div>
   </section>
+  <PhotoGallery eyebrow="Birthday parties" heading="Kids, tweens and adult parties" items={gallery} />
 </ActivityPage>
