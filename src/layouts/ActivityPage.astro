@@ -21,6 +21,9 @@ interface Props {
   heroAlt: string
   ctaUrl: string
   ctaLabel: string
+  /** Optional second hero / bottom CTA (e.g. ninja ages 9+ trial). */
+  cta2Url?: string
+  cta2Label?: string
   /** Opens in a new tab (booking tools on other domains). Default true. */
   ctaExternal?: boolean
   ctaHeading: string
@@ -32,7 +35,7 @@ interface Props {
   openingHoursSpecification?: object[]
 }
 
-const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, ctaUrl, ctaLabel, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification } = Astro.props
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, ctaUrl, ctaLabel, cta2Url, cta2Label, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification } = Astro.props
 const jsonLd = [activityBusinessSchema({ description, openingHoursSpecification }), ...extraJsonLd, faqSchema(faq)]
 const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 ---
@@ -46,6 +49,7 @@ const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
       {lead && <p class="page-hero__lead">{lead}</p>}
       <div class="page-hero__actions">
         <a href={ctaUrl} class="btn-primary" {...ext}>{ctaLabel}</a>
+        {cta2Url && cta2Label && <a href={cta2Url} class="btn-primary" {...ext}>{cta2Label}</a>}
         <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
       </div>
     </div>
@@ -74,6 +78,7 @@ const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
         </div>
         <div class="cta-box__buttons">
           <a href={ctaUrl} class="btn-white" {...ext}>{ctaLabel}</a>
+          {cta2Url && cta2Label && <a href={cta2Url} class="btn-white" {...ext}>{cta2Label}</a>}
           <a href="/contact" class="btn-white-outline">Contact Us</a>
         </div>
       </div>

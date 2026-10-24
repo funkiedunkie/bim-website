@@ -39,12 +39,12 @@ const tickerItems = [
 
 // "Find the right program" cards (from concept D). Every value is already published on the program pages.
 // TODO(Duncan): show "from $X" tuition or not. SHOW_PRICES=false swaps to "Pricing shared on your tour".
-// TODO(Duncan/Rhea): real Open / Limited / Waitlist status per program; until then a neutral "Ask about openings" chip.
+// TODO(Duncan/Rhea): real Open / Limited / Waitlist status per program; until then "Ask about openings" links to /contact with program prefilled (not a fake status).
 const SHOW_PRICES = true
 const programs = [
-  { name: 'Infant & Toddler', ages: '6 weeks – 3 years', hours: 'Mon–Fri · 7:30 am – 6 pm', fact: '1 teacher for every 4 babies', from: '$650/mo', fromNote: 'part time, 2 days', img: zoeyImg, alt: 'A teacher hugging a smiling toddler', to: '/infant-toddler-care', tour: LINKS.calendlyInfant, color: 'var(--o)' },
-  { name: 'Preschool', ages: 'Ages 3 – 6', hours: 'Morning class 9 am – 12 pm, or care 7:30 am – 6 pm', fact: '8:1 ratio · kindergarten readiness', from: '$355/mo', fromNote: 'morning class, 2 days', img: preschoolImg, alt: 'A laughing preschooler in a red cap', to: '/preschool', tour: LINKS.calendly30, color: 'var(--bl)' },
-  { name: 'Before & After School', ages: 'K – 6th grade', hours: 'From 7:30 am until school · pickup until 6 pm', fact: 'Transportation, snack, homework club', from: '$248/mo', fromNote: 'before school, 2 days', img: afterSchoolImg, alt: 'Two school-age boys in silly glasses', to: '/after-school-care', tour: LINKS.calendly30, color: 'var(--lime)' },
+  { name: 'Infant & Toddler', ages: '6 weeks – 3 years', hours: 'Mon–Fri · 7:30 am – 6 pm', fact: '1 teacher for every 4 babies', from: '$650/mo', fromNote: 'part time, 2 days', img: zoeyImg, alt: 'A teacher hugging a smiling toddler', to: '/infant-toddler-care', tour: LINKS.calendlyInfant, contactProgram: 'Infant & Toddler Care', color: 'var(--o)' },
+  { name: 'Preschool', ages: 'Ages 3 – 6', hours: 'Morning class 9 am – 12 pm, or care 7:30 am – 6 pm', fact: '8:1 ratio · kindergarten readiness', from: '$355/mo', fromNote: 'morning class, 2 days', img: preschoolImg, alt: 'A laughing preschooler in a red cap', to: '/preschool', tour: LINKS.calendly30, contactProgram: 'Preschool', color: 'var(--bl)' },
+  { name: 'Before & After School', ages: 'K – 6th grade', hours: 'From 7:30 am until school · pickup until 6 pm', fact: 'Transportation, snack, homework club', from: '$248/mo', fromNote: 'before school, 2 days', img: afterSchoolImg, alt: 'Two school-age boys in silly glasses', to: '/after-school-care', tour: LINKS.calendly30, contactProgram: 'Before & After School Care', color: 'var(--lime)' },
 ]
 
 // Descriptions taken from the live Weebly site (home, program pages, meta descriptions).
@@ -52,7 +52,7 @@ const tiles = [
   { name: 'Camps', blurb: 'Summer camps and holiday camps', to: '/camps', img: campImg, alt: 'A camp counselor and kids giving thumbs up outdoors', color: 'var(--y)' },
   { name: 'Ninja Warrior', blurb: 'Classes for ages 5–13 plus open gym', to: '/ninja-warrior', img: salmonImg, alt: 'A child swinging across a ninja warrior obstacle', color: 'var(--o)' },
   { name: 'Birthday Parties', blurb: 'Themed parties, super parties and adult parties', to: '/birthday-parties', img: bdayImg, alt: 'Two girls smiling among pink and gold balloons', color: 'var(--bl)' },
-  { name: 'Open Play', blurb: 'A gigantic play structure with four slides, free wifi and specialty coffee for parents', to: '/open-play', img: slideImg, alt: 'Kids racing down orange and blue indoor slides', color: 'var(--lime)' },
+  { name: 'Open Play', blurb: 'Indoor playground · fill out your waiver before you come', to: '/open-play', img: slideImg, alt: 'Kids racing down orange and blue indoor slides', color: 'var(--lime)' },
   { name: 'Ropes Course', blurb: 'A high aerial ropes adventure', to: '/ropes-course', img: ropesCourseImg, alt: 'Adults in harnesses on the indoor high ropes course', color: 'var(--lilac)' },
 ]
 const more = [
@@ -143,7 +143,6 @@ const bubbleColors = ['var(--o)', 'var(--bl)', 'var(--lime)']
       <div class="ctas">
         <a class="btn-primary btn-lg" href={LINKS.calendly30} target="_blank" rel="noopener noreferrer">Book a tour</a>
         <a class="btn-outline btn-lg" href="#programs">Find a program</a>
-        <a class="btn-outline btn-lg" href="/waiver">Sign a waiver</a>
       </div>
     </div>
   </section>
@@ -163,7 +162,7 @@ const bubbleColors = ['var(--o)', 'var(--bl)', 'var(--lime)']
         <article class="prog reveal" style={`--c:${p.color}`}>
           <Image src={p.img} alt={p.alt} widths={[420, 680]} sizes="(max-width:900px) 100vw, 33vw" />
           <div class="prog__body">
-            <p class="status"><span class="sdot" aria-hidden="true"></span>Ask about openings</p>
+            <a class="status" href={`/contact?program=${encodeURIComponent(p.contactProgram)}`}><span class="sdot" aria-hidden="true"></span>Ask about openings</a>
             <h3>{p.name}</h3>
             <dl class="tags">
               <div><dt>Ages</dt><dd>{p.ages}</dd></div>
@@ -243,11 +242,10 @@ const bubbleColors = ['var(--o)', 'var(--bl)', 'var(--lime)']
 
   <section class="bigcta">
     <h2>Come play.<br />Come see.</h2>
-    <p>Fill out your waiver online to save time, or call us at {NAP.phoneDisplay}.</p>
+    <p>Book a tour for childcare, or call us at {NAP.phoneDisplay}. Coming for open play? <a href="/waiver">Sign a waiver</a> online first.</p>
     <div class="ctas">
       <a class="btn-primary btn-lg" href={LINKS.calendly30} target="_blank" rel="noopener noreferrer">Book a tour</a>
-      <a class="btn-outline btn-lg" href="/waiver">Sign a waiver</a>
-      <a class="btn-outline btn-lg" href="/contact">Contact us</a>
+      <a class="btn-outline btn-lg" href="#programs">Find a program</a>
     </div>
   </section>
 </Base>

@@ -21,6 +21,15 @@ Template:
 
 ---
 
+## 2026-10-24 — Grok — `grok/p0-conversion` (off `astro-rebuild`)
+
+**Changed:** Duncan approved all five P0 conversion fixes. (1) Nav primary CTA is **Book a tour** → `/contact?program=Tour`; waiver demoted to secondary text link (desktop + mobile). (2) Homepage program-card "Ask about openings" chip is a real link into `/contact` with the matching ContactForm program prefilled (Infant & Toddler Care / Preschool / Before & After School Care) — not a fake Open/Limited status. (3) Care heroes (`/infant-toddler-care`, `/preschool`, `/after-school-care`) get an above-fold fact strip: Ages · Hours · From $ · License #28-11875 · Ask about openings CTA, using only already-published tuition/hours. (4) `/ninja-warrior` hero shows both free trial CTAs (ages 5–8 and 9+) plus call. (5) Homepage hero CTA hierarchy: primary Tour, secondary Find a program; waiver removed as equal third (open-play tile blurb + bigcta copy + nav secondary). Design B kept; Cosmic untouched; no invented openings labels.
+**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK. Playwright shots (1440/390, zero overflow) at `/workspace/p0-conversion-shots/` (home, nav, preschool, infant, ninja).
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild`.
+**Open questions:** Real Open/Limited/Waitlist status per program still needed from Rhea/Rachel. Nav Book a tour goes to contact (program=Tour); hero/care tour buttons still use Calendly — intentional until Duncan wants one path.
+**Handoff:** Do not merge PR #1 (`astro-rebuild` → `main`) without Duncan. Prices stay shown. After this PR merges to `astro-rebuild`, refresh laptop preview pack.
+
+
 ## 2026-10-24 — Grok — `grok/restore-images` (off `astro-rebuild`)
 
 **Changed:** Duncan noted many pages lost multi-image content in the redesign (hero-only). Audited Weebly crawl (`bim-site/pages.json` + inventory images) vs current pages. Added Design B `PhotoGallery` component (outlined cards, colored ink shadows) and restored additional **correct** activity photos on 14 pages from existing Weebly inventory assets copied into `src/assets/photos/`. Kept the recent correct heroes (pickleball adults, kickboxing bags, ropes, etc.). Did **not** reintroduce axe-throwing for team building (not a current workshop) or Cosmic package promo copy (Cosmic still on hold; ropes-family facility shots used without Cosmic labeling).
