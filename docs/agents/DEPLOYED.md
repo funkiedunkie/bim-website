@@ -17,6 +17,7 @@ Never paste secrets here; env vars are listed by name only.
 
 | Date | What | Kind | Commit | By | Verified live? |
 |---|---|---|---|---|---|
+| 2026-10-24 | Preview deploy of proof-photo → browse-gallery layout (ProofPhotos + program pages): bim-website-git-grok-proof-photos-camps-for-kids-idaho.vercel.app (deployment bim-website-d7rix7aib-camps-for-kids-idaho.vercel.app / D7rix7aiB5wMgNvqwUq52T5yNotz) | preview deploy (git push, branch `grok/proof-photos`) | `774718f` | Grok | Yes — Vercel status Ready |
 | 2026-10-24 | Preview deploy of P0 conversion fixes (tour-first nav, openings CTAs, care fact strips, dual ninja trials): bim-website-git-grok-p0-conversion-camps-for-kids-idaho.vercel.app (deployment bim-website-bj10chhpn-camps-for-kids-idaho.vercel.app) | preview deploy (git push, branch `grok/p0-conversion`) | `7c96314` | Grok | Yes — Vercel status Ready |
 | 2026-10-24 | Preview deploy of multi-image PhotoGallery restore (14 program pages): bim-website-git-grok-restore-images-camps-for-kids-idaho.vercel.app | preview deploy (git push, branch `grok/restore-images`) | `e1c8558` (+ ledger `04e3138`) | Grok | Yes — Vercel status Ready |
 | 2026-10-24 | Preview deploy of detail pass (real BIM logo + photo polish): bim-website-git-grok-detail-pass-camps-for-kids-idaho.vercel.app | preview deploy (git push, branch `grok/detail-pass`) | `7b30c23` | Grok | Yes — Vercel status Ready |
