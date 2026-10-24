@@ -3,15 +3,20 @@ import { Image } from 'astro:assets'
 import Base from '../layouts/Base.astro'
 import Faq from '../components/Faq.astro'
 import Location from '../components/Location.astro'
-import { NAP, childCareSchema, faqSchema, type FaqItem } from '../lib/site'
-import heroImg from '../assets/hero.png'
-import openPlayImg from '../assets/open-play.jpg'
+import { NAP, LINKS, LICENSE_NUMBER, childCareSchema, faqSchema, type FaqItem } from '../lib/site'
+import ninjaImg from '../assets/photos/web-summer-camp-ninja-warrior_orig.jpg'
+import ropesImg from '../assets/photos/super-birthday-ropes-web_1_orig.jpg'
+import zoeyImg from '../assets/photos/zoey-toddler-2.jpeg'
+import preschoolImg from '../assets/photos/preschool-web_orig.jpg'
+import afterSchoolImg from '../assets/photos/after-school-pals.jpg'
+import campImg from '../assets/photos/camps-web_orig.jpg'
+import salmonImg from '../assets/photos/ninja-salmon_orig.jpg'
+import bdayImg from '../assets/photos/birthday-party-web.jpeg'
+import slideImg from '../assets/photos/open-play-web_1.jpg'
+import ropesCourseImg from '../assets/photos/ropes-course-web.jpeg'
 import values1Img from '../assets/values1.jpg'
 import values2Img from '../assets/values2.jpg'
 import values3Img from '../assets/values3.jpg'
-import strip1Img from '../assets/strip1.jpg'
-import strip2Img from '../assets/strip2.jpg'
-import strip3Img from '../assets/strip3.jpg'
 import '../styles/home.css'
 
 const title = 'Bodies in Motion | Childcare, Preschool & Activities in Boise, ID'
@@ -32,18 +37,29 @@ const tickerItems = [
   'Flatbread Cafe & Espresso Bar',
 ]
 
-// Every description below is taken from the live Weebly site (home, program pages, meta descriptions).
-const activities = [
-  { name: 'Infant & Toddler Care', desc: 'Care for ages 6 weeks to 36 months with 1 teacher for every 4 babies.', to: '/infant-toddler-care' },
-  { name: 'Preschool', desc: 'Ages 3–6, with kindergarten readiness as our top priority.', to: '/preschool' },
-  { name: 'Before & After School Care', desc: 'Clubs, homework help and transportation from select Boise schools.', to: '/after-school-care' },
-  { name: 'Camps', desc: 'Summer camps and holiday camps.', to: '/camps' },
-  { name: 'Ninja Warrior', desc: 'Kids classes for ages 5–13 plus Ninja Warrior open gym.', to: '/ninja-warrior' },
-  { name: 'Fitness', desc: 'Kickboxing and strength training classes.', to: '/fitness-classes' },
-  { name: 'Open Play', desc: 'A gigantic play structure with four slides, free wifi and specialty coffee for parents.', to: '/open-play', img: openPlayImg, alt: 'Three children laughing as they slide down orange and blue indoor slides' },
-  { name: 'Pickleball', desc: 'An indoor pickleball court. Book your court time online.', to: '/pickleball' },
-  { name: 'Ropes Course', desc: 'A high aerial ropes adventure.', to: '/ropes-course' },
-  { name: 'Birthday Parties', desc: 'Themed parties, super parties and adult parties.', to: '/birthday-parties' },
+// "Find the right program" cards (from concept D). Every value is already published on the program pages.
+// TODO(Duncan): show "from $X" tuition or not. SHOW_PRICES=false swaps to "Pricing shared on your tour".
+// TODO(Duncan/Rhea): real Open / Limited / Waitlist status per program; until then a neutral "Ask about openings" chip.
+const SHOW_PRICES = true
+const programs = [
+  { name: 'Infant & Toddler', ages: '6 weeks – 3 years', hours: 'Mon–Fri · 7:30 am – 6 pm', fact: '1 teacher for every 4 babies', from: '$650/mo', fromNote: 'part time, 2 days', img: zoeyImg, alt: 'A teacher hugging a smiling toddler', to: '/infant-toddler-care', tour: LINKS.calendlyInfant, color: 'var(--o)' },
+  { name: 'Preschool', ages: 'Ages 3 – 6', hours: 'Morning class 9 am – 12 pm, or care 7:30 am – 6 pm', fact: '8:1 ratio · kindergarten readiness', from: '$355/mo', fromNote: 'morning class, 2 days', img: preschoolImg, alt: 'A laughing preschooler in a red cap', to: '/preschool', tour: LINKS.calendly30, color: 'var(--bl)' },
+  { name: 'Before & After School', ages: 'K – 6th grade', hours: 'From 7:30 am until school · pickup until 6 pm', fact: 'Transportation, snack, homework club', from: '$248/mo', fromNote: 'before school, 2 days', img: afterSchoolImg, alt: 'Two school-age boys in silly glasses', to: '/after-school-care', tour: LINKS.calendly30, color: 'var(--lime)' },
+]
+
+// Descriptions taken from the live Weebly site (home, program pages, meta descriptions).
+const tiles = [
+  { name: 'Camps', blurb: 'Summer camps and holiday camps', to: '/camps', img: campImg, alt: 'A camp counselor and kids giving thumbs up outdoors', color: 'var(--y)' },
+  { name: 'Ninja Warrior', blurb: 'Classes for ages 5–13 plus open gym', to: '/ninja-warrior', img: salmonImg, alt: 'A child swinging across a ninja warrior obstacle', color: 'var(--o)' },
+  { name: 'Birthday Parties', blurb: 'Themed parties, super parties and adult parties', to: '/birthday-parties', img: bdayImg, alt: 'Two girls smiling among pink and gold balloons', color: 'var(--bl)' },
+  { name: 'Open Play', blurb: 'A gigantic play structure with four slides, free wifi and specialty coffee for parents', to: '/open-play', img: slideImg, alt: 'Kids racing down orange and blue indoor slides', color: 'var(--lime)' },
+  { name: 'Ropes Course', blurb: 'A high aerial ropes adventure', to: '/ropes-course', img: ropesCourseImg, alt: 'Kids in helmets on the high ropes course', color: 'var(--lilac)' },
+]
+const more = [
+  { name: 'Fitness classes', to: '/fitness-classes' },
+  { name: 'Pickleball', to: '/pickleball' },
+  { name: 'Parents’ Night Out', to: '/parents-night-out' },
+  { name: 'Team building', to: '/team-building' },
 ]
 
 const valueCards = [
@@ -105,197 +121,131 @@ const faq: FaqItem[] = [
 ]
 
 const jsonLd = [childCareSchema({ description }), faqSchema(faq)]
+const bubbleColors = ['var(--o)', 'var(--bl)', 'var(--lime)']
 ---
 
 <Base title={title} description={description} path="/" jsonLd={jsonLd}>
-  <!-- 1. Hero -->
   <section class="hero">
-    <Image
-      class="hero__bg"
-      src={heroImg}
-      alt="A boy with outstretched arms and a big smile at a water play area while other children play behind him"
-      widths={[640, 1024, 1600]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="hero__gradient"></div>
-    <div class="hero__inner">
-      <div class="hero__content">
-        <div class="hero__eyebrow">
-          <span class="hero__eyebrow-dot"></span>
-          Serving Boise Since 2011
-        </div>
-        <h1 class="hero__headline">Bodies in Motion<br /><em>Boise, Idaho</em></h1>
-        <p class="hero__sub">
-          It’s a great day at Bodies in Motion! Here, you’ll find an array of activities all under one roof.
-        </p>
-        <div class="hero__buttons">
-          <a href="/infant-toddler-care" class="btn-primary">
-            Childcare &amp; Preschool
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg>
-          </a>
-          <a href="/waiver" class="btn-outline">Sign a Waiver</a>
-        </div>
-      </div>
-
-      <ul class="hero__stats" aria-label="Bodies in Motion at a glance">
-        <li class="hero__stat">
-          <div class="hero__stat-number">2011</div>
-          <div class="hero__stat-label">Serving Boise since</div>
-        </li>
-        <li class="hero__stat">
-          <div class="hero__stat-number">60,000<span>+</span></div>
-          <div class="hero__stat-label">Guests since opening</div>
-        </li>
-        <li class="hero__stat">
-          <div class="hero__stat-number">1</div>
-          <div class="hero__stat-label">Location, in Boise</div>
-        </li>
+    <h1><span>Boise’s home</span> <span class="l2">for kids who</span> <span>never <em>stop</em></span> <span>moving.</span></h1>
+    <div class="hero__pics">
+      <Image class="p1" src={ninjaImg} alt="Campers cheering on a friend hanging from a ninja warrior bar" widths={[480, 800]} sizes="(max-width:900px) 70vw, 34vw" loading="eager" fetchpriority="high" />
+      <Image class="p2" src={ropesImg} alt="Kids in helmets smiling on the ropes course" widths={[320, 560]} sizes="(max-width:900px) 45vw, 20vw" loading="eager" />
+      <span class="sticker s1">Since 2011</span>
+      <span class="sticker s2">Idaho STARS provider</span>
+    </div>
+    <div class="hero__foot">
+      <p>It’s a great day at Bodies in Motion! Childcare, preschool and after-school care, plus ninja, ropes, camps and parties. All under one roof at {NAP.street}.</p>
+      <ul class="hero__facts" aria-label="Quick facts">
+        <li><b>Ages</b> 6 weeks – 6th grade</li>
+        <li><b>Childcare</b> Mon–Fri 7:30 am – 6 pm</li>
+        <li><b>License</b> #{LICENSE_NUMBER}</li>
       </ul>
+      <div class="ctas">
+        <a class="btn-primary btn-lg" href={LINKS.calendly30} target="_blank" rel="noopener noreferrer">Book a tour</a>
+        <a class="btn-outline btn-lg" href="#programs">Find a program</a>
+        <a class="btn-outline btn-lg" href="/waiver">Sign a waiver</a>
+      </div>
     </div>
   </section>
 
-  <!-- 2. Ticker (decorative) -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      {[0, 1].map(() => (
-        <div class="ticker__content">
-          {tickerItems.map((item) => (
-            <span>
-              <span class="ticker__item">{item}</span>
-              <span class="ticker__dot">●</span>
-            </span>
-          ))}
-        </div>
-      ))}
-    </div>
+  <div class="marquee" aria-hidden="true">
+    <div>{[0, 1].map(() => <span>{tickerItems.map((t) => <>{t} ✦ </>)}</span>)}</div>
   </div>
 
-  <!-- 3. Mission -->
-  <section class="section">
-    <div class="section__inner intro">
-      <p class="section-eyebrow">About Bodies in Motion</p>
-      <p>
-        At Bodies In Motion, we strive daily to be the ultimate multi-faceted facility in Boise that promotes
-        longevity, vibrancy, health, fitness, and character through the art of motion.
-      </p>
-      <p>We offer kids and adults a wide range of unique and exciting programs that are perfect for anything from casual fun to serious gains.</p>
-      <p>
-        We work hard to maintain a family friendly atmosphere where members of the community feel welcomed to walk in
-        the door and we can’t wait to see you soon!
-      </p>
-      <p>Families come to us from Boise, Meridian and Garden City.</p>
-    </div>
-  </section>
-
-  <!-- 4. Programs -->
-  <section class="section section--surface">
-    <div class="section__inner">
-      <div class="section-header">
-        <p class="section-eyebrow">What We Offer</p>
-        <h2 class="section-title">Activities all under one roof.</h2>
-        <p class="section-sub">Care and learning for little ones, plus play, fitness and adventure for kids and adults.</p>
-      </div>
-      <div class="activities__grid">
-        {activities.map((a) => (
-          <a href={a.to} class:list={['activity-card', { 'activity-card--photo': a.img }]}>
-            {a.img && <Image class="activity-card__photo" src={a.img} alt={a.alt ?? ''} width={500} loading="lazy" />}
-            <div class="activity-card__name">{a.name}</div>
-            <div class="activity-card__desc">{a.desc}</div>
-            <span class="activity-card__arrow">
-              Learn more
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg>
-            </span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Values -->
-  <section class="section">
-    <div class="section__inner">
-      <div class="section-header">
-        <p class="section-eyebrow">Who We Are</p>
-        <h2 class="section-title">Our purpose, values and promise.</h2>
-      </div>
-      <div class="values__grid">
-        {valueCards.map((v) => (
-          <div class="value-card">
-            <Image class="value-card__bg" src={v.img} alt={v.alt} widths={[480, 800]} sizes="(max-width: 900px) 100vw, 33vw" loading="lazy" />
-            <div class="value-card__overlay"></div>
-            <div class="value-card__content">
-              <p class="value-card__label">{v.label}</p>
-              <h3 class="value-card__title">{v.title}</h3>
-              <p class="value-card__text">{v.text}</p>
+  <section id="programs" class="block" aria-labelledby="prog-h">
+    <p class="section-eyebrow">Childcare &amp; preschool</p>
+    <h2 id="prog-h" class="big">Find the right program</h2>
+    <p class="sub">Licensed childcare #{LICENSE_NUMBER}. Small ratios. A building made for moving.</p>
+    <div class="prog__grid">
+      {programs.map((p) => (
+        <article class="prog reveal" style={`--c:${p.color}`}>
+          <Image src={p.img} alt={p.alt} widths={[420, 680]} sizes="(max-width:900px) 100vw, 33vw" />
+          <div class="prog__body">
+            <p class="status"><span class="sdot" aria-hidden="true"></span>Ask about openings</p>
+            <h3>{p.name}</h3>
+            <dl class="tags">
+              <div><dt>Ages</dt><dd>{p.ages}</dd></div>
+              <div><dt>Hours</dt><dd>{p.hours}</dd></div>
+              <div><dt>Good to know</dt><dd>{p.fact}</dd></div>
+              <div><dt>Tuition</dt><dd>{SHOW_PRICES ? <><b>from {p.from}</b> <small>{p.fromNote}</small></> : 'Pricing shared on your tour'}</dd></div>
+            </dl>
+            <div class="prog__cta">
+              <a href={p.tour} target="_blank" rel="noopener noreferrer">Book a tour</a>
+              <a href={p.to} aria-label={`Details about ${p.name}`}>Details →</a>
             </div>
           </div>
-        ))}
+        </article>
+      ))}
+    </div>
+    <p class="note">Openings change month to month. <a href="/contact">Ask us</a> what’s available for your child’s age.</p>
+  </section>
+
+  <section class="block" aria-labelledby="play-h">
+    <h2 id="play-h" class="big">After school, weekends &amp; every&nbsp;birthday.</h2>
+    <div class="tiles">
+      {tiles.map((t, i) => (
+        <a class={`tile tile--${i}`} href={t.to} style={`--c:${t.color}`}>
+          <Image src={t.img} alt={t.alt} widths={[400, 720]} sizes="(max-width:900px) 90vw, 33vw" />
+          <span class="tile__label"><b>{t.name}</b><small>{t.blurb}</small></span>
+        </a>
+      ))}
+      <div class="tile tile--more">
+        <b>Also here</b>
+        <ul>{more.map((m) => <li><a href={m.to}>{m.name} →</a></li>)}</ul>
       </div>
     </div>
   </section>
 
-  <!-- 6. Photo strip -->
-  <div class="photo-strip">
-    <a class="photo-strip__item" href="/infant-toddler-care">
-      <Image src={strip1Img} alt="Two toddlers playing on a colorful floor with a toy dump truck and stacking rings" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 33vw" loading="lazy" />
-      <span class="photo-strip__caption">Infant &amp; Toddler Care</span>
-    </a>
-    <a class="photo-strip__item" href="/preschool">
-      <Image src={strip2Img} alt="A laughing child in a red cap with other children in front of a wall of number cards" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 33vw" loading="lazy" />
-      <span class="photo-strip__caption">Preschool</span>
-    </a>
-    <a class="photo-strip__item" href="/camps">
-      <Image src={strip3Img} alt="A smiling young person in a red shirt with a child giving two thumbs up outdoors" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 33vw" loading="lazy" />
-      <span class="photo-strip__caption">Camps</span>
-    </a>
-  </div>
-
-  <!-- 7. Testimonials -->
-  <section class="section section--alt">
-    <div class="section__inner">
-      <div class="section-header">
-        <p class="section-eyebrow">What Our Clients Are Saying</p>
-        <h2 class="section-title">Words from our community.</h2>
-      </div>
-      <div class="reviews__grid">
-        {testimonials.map((t) => (
-          <figure class="review-card">
-            <blockquote class="review-card__quote">“{t.quote}”</blockquote>
-            <figcaption class="review-card__name">{t.name}</figcaption>
-          </figure>
-        ))}
-      </div>
+  <section class="block mission" aria-labelledby="who-h">
+    <p class="section-eyebrow">About Bodies in Motion</p>
+    <h2 id="who-h" class="big">Our purpose, values and promise.</h2>
+    <div class="mission__text">
+      <p>At Bodies In Motion, we strive daily to be the ultimate multi-faceted facility in Boise that promotes longevity, vibrancy, health, fitness, and character through the art of motion.</p>
+      <p>We offer kids and adults a wide range of unique and exciting programs that are perfect for anything from casual fun to serious gains. We work hard to maintain a family friendly atmosphere where members of the community feel welcomed to walk in the door and we can’t wait to see you soon!</p>
+      <p>Families come to us from Boise, Meridian and Garden City.</p>
+    </div>
+    <div class="values__grid">
+      {valueCards.map((v, i) => (
+        <article class="value reveal" style={`--c:${['var(--y)', 'var(--lilac)', 'var(--bl)'][i]}`}>
+          <Image src={v.img} alt={v.alt} widths={[400, 640]} sizes="(max-width:900px) 90vw, 30vw" loading="lazy" />
+          <div class="value__body">
+            <span class="tag">{v.label}</span>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 
-  <!-- 8. FAQ -->
+  <section class="block" aria-labelledby="love-h">
+    <h2 id="love-h" class="big">Parents say it best</h2>
+    <div class="love__row">
+      {testimonials.map((t, i) => (
+        <figure class="bubble reveal" style={`--c:${bubbleColors[i % 3]}`}>
+          <blockquote>“{t.quote}”</blockquote>
+          <figcaption>{t.name}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="note"><a href="/reviews">Read more reviews →</a></p>
+  </section>
+
   <section class="section">
-    <div class="section__inner section__inner--read">
-      <Faq items={faq} />
-    </div>
+    <div class="section__inner section__inner--read"><Faq items={faq} /></div>
   </section>
 
-  <!-- 9. Location -->
   <section class="section section--surface">
     <div class="section__inner"><Location /></div>
   </section>
 
-  <!-- 10. CTA -->
-  <section class="cta-banner">
-    <div class="cta-banner__inner">
-      <div class="cta-banner__text">
-        <p class="cta-banner__eyebrow">Ready to visit?</p>
-        <h2 class="cta-banner__headline">We can’t wait to see you soon!</h2>
-        <p class="cta-banner__sub">
-          Fill out your waiver online to save time, or call us at {NAP.phoneDisplay}.
-        </p>
-      </div>
-      <div class="cta-banner__buttons">
-        <a href="/waiver" class="btn-white">Sign a Waiver</a>
-        <a href="/contact" class="btn-white-outline">Contact Us</a>
-      </div>
+  <section class="bigcta">
+    <h2>Come play.<br />Come see.</h2>
+    <p>Fill out your waiver online to save time, or call us at {NAP.phoneDisplay}.</p>
+    <div class="ctas">
+      <a class="btn-primary btn-lg" href={LINKS.calendly30} target="_blank" rel="noopener noreferrer">Book a tour</a>
+      <a class="btn-outline btn-lg" href="/waiver">Sign a waiver</a>
+      <a class="btn-outline btn-lg" href="/contact">Contact us</a>
     </div>
   </section>
 </Base>

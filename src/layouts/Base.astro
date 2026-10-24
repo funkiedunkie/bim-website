@@ -29,7 +29,7 @@ const canonical = absoluteUrl(path)
     <link rel="canonical" href={canonical} />
     {noindex ? <meta name="robots" content="noindex,follow" /> : <meta name="robots" content="index,follow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0d0d0e" />
+    <meta name="theme-color" content="#fffaf0" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Bodies in Motion" />
@@ -39,12 +39,9 @@ const canonical = absoluteUrl(path)
     <meta property="og:image" content={`${SITE_URL}/logo.png`} />
     <meta name="twitter:card" content="summary" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
-    />
+    <link rel="preload" href="/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="view-transition" content="same-origin" />
 
     {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
   </head>

@@ -10,14 +10,6 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 Template:
 
 ```markdown
-## 2026-10-23 — Grok — `astro-rebuild`
-
-**Changed:** Merged `main` (shared agent docs) into `astro-rebuild`; committed the `.gitignore` `.env*` rule from `vercel link` (`4a1d4d9`). Applied Duncan's 2026-10-23 staff answers (`cd4e5fe`): childcare license #28-11875 (infant & toddler page + footer); holiday closures / early closes on `/hours` and FAQ; open play summer + fall/winter hours (copy + `openingHoursSpecification`, shared constants in `src/lib/site.ts`); pickleball weekday slots "subject to availability", booking by phone/email/form; ninja Saturday open gym to 5 pm, competition date TBA; kickboxing $29 trial / $109 mo / kickboxing + SGX $139 mo, fitness challenge section removed (old URLs already 301 to `/fitness-classes`); team building per-person prices, "Book a team-building event" CTA and a "Team Building" contact-form type (also allowed in `api/contact.js`); Open Ropes slots/$16; Cosmic Ropes + Supernova removed, Cosmic Birthday Party shown "currently unavailable" with no prices; lock-in food stated; "Ropes $50+" add-on wording; Family Night Out "next date coming soon"; 2021 team roster removed from `/about`; TODO.md resolved/remaining lists updated.
-**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK; grep: no Sawyer in `dist/`, no roster names, no "taken care"/"Supernova" in `dist/`.
-**Live vs committed:** Vercel **preview** only (`bim-website-b8s4q8pqm-camps-for-kids-idaho.vercel.app`, Ready). Production still Weebly; DNS untouched; PR #1 not merged (Duncan reviews first).
-**Open questions:** Cosmic Birthday Party (Dwarf Star/Nova) treated as on hold along with Cosmic Ropes — confirm. Ninja Sunday open gym hours; pickleball weekend times (none given); open play season changeover dates; new pickleball booking link; team building and Family Night Out revamps; privacy legal review; job form evaluation (Rhea).
-**Handoff:** Local builds need Node >= 22.22 (box default is 20; a Node 22 copy is at `~/node22`).
-
 ## YYYY-MM-DD — <Agent> — `<branch>`
 
 **Changed:** what you did and why, with commit hashes / PR link.
@@ -28,6 +20,38 @@ Template:
 ```
 
 ---
+
+## 2026-10-23 — Grok — `grok/design-b` (off `astro-rebuild`)
+
+**Changed:** Duncan's team picked Concept B (energy, color, design, layout) plus concept D's "Find the right program" cards. Applied site-wide: new design tokens + "Design B layer" in `src/styles/global.css` (cream/ink/yellow/orange/blue palette, Bricolage Grotesque display + Inter, self-hosted from `public/fonts/` instead of Google Fonts; chunky outlined pill buttons with offset shadows; inner-page hero becomes big type + framed photo; outlined cards, FAQ, price tables, reviews, CTA box). Nav (cream, logo in a sticker badge, yellow waiver pill) and Footer (ink) restyled, markup unchanged. Homepage rebuilt in B's layout: B hero + stickers + quick facts (ages, hours, license #28-11875) + Book a tour; marquee; D's program cards (ages/hours/good-to-know/"from $X" behind `SHOW_PRICES`, neutral "Ask about openings" chip); B play tiles; mission + values; reviews (same verbatim testimonials); FAQ (unchanged, still in FAQPage JSON-LD); location; big CTA. Removed `/concepts` routes, `ConceptShell`, `src/lib/concepts.ts`, unused concept photos and Fraunces; used photos moved to `src/assets/photos/`. Kept concept D's `api/contact.js` Tour/Waitlist support (merged in from `grok/design-concepts`). No copy facts changed.
+**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK; Playwright full-page shots at 1440 and 390 for home, infant-toddler-care, preschool, ninja-warrior, zero horizontal overflow (`/workspace/design-b-shots/`, outside repo).
+**Live vs committed:** Pushed; Vercel branch **preview** only. Not merged; production still Weebly; DNS untouched. Mailjet env vars are scoped to the `astro-rebuild` preview branch, so the contact form on this branch's preview falls back to mailto.
+**Open questions:** show "from $X" tuition on the homepage cards (currently on, prices already published on program pages); real openings status per program; Google rating.
+**Handoff:** PR targets `astro-rebuild`. `grok/design-concepts` can be deleted after this merges.
+
+## 2026-10-23 — Grok — `grok/design-concepts`
+
+**Changed:** Added `/concepts/d` ("Parent-first"), built section by section from the research Page "What Boise Moms Want From a Childcare Website": practical-facts hero (ages, hours, address), trust strip (Idaho STARS, license #28-11875, ratios, star-rating placeholder), program cards with an availability slot (neutral "Ask about openings" placeholder chip, no invented status) and "from $X" using the lowest prices already published on the program pages (`SHOW_PRICES` flag swaps to "Pricing shared on your tour"), one-building story, safety & staff, review band, camps linking to CFK (`LINKS.camps`), extras, FAQ (confirmed answers only; unconfirmed questions shown as "Answer pending"), 6-field single-column tour/waitlist form (no JS) posting to `/api/contact`, sticky mobile Book a tour / Call / Text bar. Added D to `/concepts` index and the ConceptShell switcher. `api/contact.js`: accepts program `Tour` and `Waitlist` and folds `tour_program`, `child_age`, `tour_time`, `start_date` into the message (other programs unchanged). One-time cleanup: moved the two 2026-10-23 entries that had been inserted inside the template code block out to the top of the log (text unchanged).
+**Evidence:** `npm run build` (47 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK; Playwright screenshots at 1440 and 390 reviewed, no horizontal overflow (`/workspace/concepts-shots/d-desktop.png`, `d-mobile.png`, outside repo).
+**Live vs committed:** Committed and pushed; Vercel auto-builds the branch **preview** only. Not merged; production still Weebly; DNS untouched. The tour form has not been submitted end-to-end yet.
+**Open questions:** real Open/Limited/Waitlist status per program; show tuition or not; Google star rating + review count; state license lookup URL; whether (208) 381-0587 takes texts; CPR, ICCP, parent update app, illness policy, secure check-in, schools served, reply-time promise; tour time choices.
+**Handoff:** Placeholders are marked `TODO(...)` in `src/pages/concepts/d.astro`. Same rule as before: don't merge this branch into `main`.
+
+## 2026-10-23 — Grok — `grok/design-concepts` (off `astro-rebuild`)
+
+**Changed:** Duncan said the inherited visual design feels dated. Added three standalone homepage design concepts (`b1d521c`): `/concepts` index plus `/concepts/a` (warm editorial: Fraunces serif, cream/terracotta), `/concepts/b` (bold playful: Bricolage Grotesque, bright color blocks, sticker shapes, marquee), `/concepts/c` (modern bento: Inter, app-like cards). New files only: `src/layouts/ConceptShell.astro` (own head, always `noindex,follow`, no Nav/Footer), `src/lib/concepts.ts` (content pulled from existing pages / `site.ts` / `reviews.ts`, reviews verbatim or marked excerpts), real BIM photos copied from the Weebly inventory into `src/assets/concepts/`, self-hosted OFL fonts in `public/concepts/fonts/`. CSS-only motion (scroll-driven `animation-timeline: view()` inside `@supports`, cross-document view transitions), all disabled under `prefers-reduced-motion`. No JS shipped. Existing pages untouched; concepts are not in the sitemap.
+**Evidence:** `npm run build` (46 pages), `node scripts/verify-dist.mjs` OK (`concepts.html` checked as noindex stub), `npm run check:redirects` OK; Playwright full-page screenshots at 1440 and 390 reviewed, no horizontal overflow.
+**Live vs committed:** Vercel **preview** only for branch `grok/design-concepts` (`bim-website-git-grok-design-concepts-camps-for-kids-idaho.vercel.app`, Ready). Not merged anywhere; production still Weebly; DNS untouched.
+**Open questions:** Duncan picks a direction (or a mix); then it gets applied site-wide on `astro-rebuild` and `/concepts` is deleted before launch.
+**Handoff:** Don't merge this branch into `main`. Remove `src/pages/concepts`, `src/layouts/ConceptShell.astro`, `src/lib/concepts.ts` and unused concept assets once a direction is applied.
+
+## 2026-10-23 — Grok — `astro-rebuild`
+
+**Changed:** Merged `main` (shared agent docs) into `astro-rebuild`; committed the `.gitignore` `.env*` rule from `vercel link` (`4a1d4d9`). Applied Duncan's 2026-10-23 staff answers (`cd4e5fe`): childcare license #28-11875 (infant & toddler page + footer); holiday closures / early closes on `/hours` and FAQ; open play summer + fall/winter hours (copy + `openingHoursSpecification`, shared constants in `src/lib/site.ts`); pickleball weekday slots "subject to availability", booking by phone/email/form; ninja Saturday open gym to 5 pm, competition date TBA; kickboxing $29 trial / $109 mo / kickboxing + SGX $139 mo, fitness challenge section removed (old URLs already 301 to `/fitness-classes`); team building per-person prices, "Book a team-building event" CTA and a "Team Building" contact-form type (also allowed in `api/contact.js`); Open Ropes slots/$16; Cosmic Ropes + Supernova removed, Cosmic Birthday Party shown "currently unavailable" with no prices; lock-in food stated; "Ropes $50+" add-on wording; Family Night Out "next date coming soon"; 2021 team roster removed from `/about`; TODO.md resolved/remaining lists updated.
+**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK; grep: no Sawyer in `dist/`, no roster names, no "taken care"/"Supernova" in `dist/`.
+**Live vs committed:** Vercel **preview** only (`bim-website-b8s4q8pqm-camps-for-kids-idaho.vercel.app`, Ready). Production still Weebly; DNS untouched; PR #1 not merged (Duncan reviews first).
+**Open questions:** Cosmic Birthday Party (Dwarf Star/Nova) treated as on hold along with Cosmic Ropes — confirm. Ninja Sunday open gym hours; pickleball weekend times (none given); open play season changeover dates; new pickleball booking link; team building and Family Night Out revamps; privacy legal review; job form evaluation (Rhea).
+**Handoff:** Local builds need Node >= 22.22 (box default is 20; a Node 22 copy is at `~/node22`).
 
 ## 2026-10-21 — Grok — `grok/agent-docs`
 

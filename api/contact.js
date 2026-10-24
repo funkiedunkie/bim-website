@@ -5,7 +5,7 @@
 //   CONTACT_FROM - sender already validated in Mailjet, e.g. "Bodies in Motion Website <website@bodiesinmotionidaho.com>" or a bare address
 //   CONTACT_TO   - optional, defaults to help@bodiesinmotionidaho.com
 const TO_DEFAULT = 'help@bodiesinmotionidaho.com'
-const PROGRAMS = ['Infant & Toddler Care', 'Preschool', 'Before & After School Care', 'Camps', 'Birthday Parties', 'Team Building', 'Other']
+const PROGRAMS = ['Infant & Toddler Care', 'Preschool', 'Before & After School Care', 'Camps', 'Birthday Parties', 'Team Building', 'Tour', 'Waitlist', 'Other']
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
 
 async function readBody(req) {
@@ -35,7 +35,11 @@ export default async function handler(req, res) {
   const email = String(b.email || '').trim().slice(0, 200)
   const phone = String(b.phone || '').trim().slice(0, 40)
   const program = PROGRAMS.includes(b.program) ? b.program : 'Other'
-  const message = String(b.message || '').trim().slice(0, 5000)
+  // Tour / waitlist requests (homepage concept D) send extra structured fields; fold them into the message.
+  const extra = [['Interested in', b.tour_program], ["Child's age / due date", b.child_age], ['Preferred tour time', b.tour_time], ['Desired start date', b.start_date]]
+    .filter(([, v]) => v && String(v).trim()).map(([k, v]) => `${k}: ${String(v).trim().slice(0, 200)}`).join('\n')
+  const note = String(b.message || '').trim().slice(0, 5000)
+  const message = (program === 'Tour' || program === 'Waitlist') ? [extra, note].filter(Boolean).join('\n\n') || '(no details)' : note
   if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !message) return done(400, false, 'Please fill in name, a valid email and a message.')
 
   const key = process.env.MAILJET_API_KEY
