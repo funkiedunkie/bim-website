@@ -35,9 +35,10 @@ const { items, title = 'Frequently asked questions' } = Astro.props
   }
 
   .faq__item {
-    background: var(--surface);
-    border: 1px solid var(--line);
+    background: #fff;
+    border: 3px solid var(--ink);
     border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
   }
 
   .faq__item summary {
@@ -56,7 +57,7 @@ const { items, title = 'Frequently asked questions' } = Astro.props
 
   .faq__item summary::after {
     content: '+';
-    color: #d43f17;
+    color: var(--ink);
     font-size: 1.3rem;
     line-height: 1;
     flex-shrink: 0;
