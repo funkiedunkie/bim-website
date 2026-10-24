@@ -1,0 +1,201 @@
+---
+import CarePage from '../layouts/CarePage.astro'
+import PriceTable from '../components/PriceTable.astro'
+import { LINKS, type FaqItem } from '../lib/site'
+import heroImg from '../assets/strip2.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryPre1 from '../assets/photos/preschool-web.jpg'
+import galleryPre2 from '../assets/photos/preschool-play.jpg'
+import galleryPre3 from '../assets/photos/preschool-firefighters.jpg'
+import galleryPre4 from '../assets/photos/preschool-pumpkin.jpeg'
+import galleryPre5 from '../assets/photos/preschool-amanda.jpg'
+import galleryPre6 from '../assets/photos/preschool-name.jpg'
+
+const title = 'Preschool in Boise, ID (Ages 3–6) | Bodies in Motion'
+const description =
+  'Preschool in Boise, ID for ages 3–6: confidence, independence and kindergarten readiness. 8:1 ratio, morning class or full-day care. Schedule a tour.'
+
+const morningRows = [
+  { label: '1 day a week', price: 'N/A' },
+  { label: '2 days a week', price: '$355' },
+  { label: '3 days a week', price: '$520' },
+  { label: '4 days a week', price: '$672' },
+  { label: '5 days a week', price: '$823' },
+]
+
+const careRows = [
+  { label: '1 day a week', price: 'N/A' },
+  { label: '2 days a week', price: '$623' },
+  { label: '3 days a week', price: '$936' },
+  { label: '4 days a week', price: '$1246' },
+  { label: '5 days a week', price: '$1402' },
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What ages is your preschool for?',
+    a: 'Our preschool is for ages 3 to 6.',
+  },
+  {
+    q: 'What is your teacher-to-child ratio?',
+    a: 'We keep our ratio at 8:1 to ensure each child is supported in their learning.',
+  },
+  {
+    q: 'What are the preschool hours?',
+    a: 'The Morning Class runs 9 am to 12 pm. Preschool with Extended Care (Preschool & Care) runs 7:30 am to 6 pm.',
+  },
+  {
+    q: 'How much does the morning preschool class cost?',
+    a: 'The Morning Class (9 am to 12 pm) is $355 per month for 2 days a week, $520 for 3 days, $672 for 4 days and $823 for 5 days. One day a week is not available.',
+  },
+  {
+    q: 'How much does preschool with extended care cost?',
+    a: 'Preschool & Care (7:30 am to 6 pm) is $623 per month for 2 days a week, $936 for 3 days, $1246 for 4 days and $1402 for 5 days. One day a week is not available.',
+  },
+  {
+    q: 'Is there a discount for paying by ACH?',
+    a: 'Yes. You save 3% when using ACH.',
+  },
+  {
+    q: 'How do you prepare children for kindergarten?',
+    a: 'Kindergarten readiness is our top priority. Children work on expressing and managing big emotions, personal care, recognizing and writing their first name, sorting by size, color and shape, recognizing shapes, colors, numbers and letters, patterns, rhyming sounds and syllables, cutting with scissors, gripping crayons, markers and pencils, recognizing common sight words, following simple directions and routines, and problem solving.',
+  },
+  {
+    q: 'How does the preschool curriculum work?',
+    a: 'Bodies in Motion implements a value-based curriculum. We teach children through activities, experiences and field trips, and your child’s day is filled with a curriculum that encourages them to become confident, independent learners.',
+  },
+  {
+    q: 'How do I schedule a preschool tour?',
+    a: 'Tours are private and are available at 10:30 am or 5:00 pm, Monday through Friday. Step 1: decide whether you can meet at 10:30 am or 5:00 pm. Step 2: register through our online scheduler, then come on in.',
+  },
+  {
+    q: 'Which areas do families come from?',
+    a: 'Our only location is 729 W. Diamond St. in Boise. We serve families from Boise, Meridian and Garden City.',
+  },
+]
+
+const gallery = [
+  { src: galleryPre1, alt: 'Preschoolers learning together in a Bodies in Motion classroom' },
+  { src: galleryPre2, alt: 'Preschool children playing and exploring in class' },
+  { src: galleryPre3, alt: 'Preschool class visiting with local firefighters' },
+  { src: galleryPre4, alt: 'Preschoolers with pumpkins during a fall classroom activity' },
+  { src: galleryPre5, alt: 'A preschool teacher working with children at a table' },
+  { src: galleryPre6, alt: 'Preschool name recognition and early literacy activity' },
+]
+---
+
+<CarePage
+  title={title}
+  description={description}
+  path="/preschool"
+  eyebrow="Boise preschool · Encourage. Empower."
+  h1="Preschool in Boise for Ages 3–6"
+  lead="The greatest gift you can give your child… empowerment! Our top priority is kindergarten readiness, so your child walks into their first day of kindergarten knowing what to expect."
+  heroImg={heroImg}
+  heroAlt="A laughing child in a red cap with other children in front of a wall of number cards"
+  tourUrl={LINKS.calendly30}
+  tourLabel="Schedule a Tour"
+  faq={faq}
+  openingHours={['Mo-Fr 07:30-18:00']}
+  facts={{
+    ages: 'Ages 3 – 6',
+    hours: 'Morning 9 am – 12 pm, or care 7:30 am – 6 pm',
+    from: '$355/mo',
+    fromNote: 'morning class, 2 days',
+    openingsProgram: 'Preschool',
+  }}
+>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Empowerment and confidence</h2>
+      <p>
+        Empowerment is the one character trait that a preschool student cannot go without. We believe an empowered
+        student will:
+      </p>
+      <ol class="steps">
+        <li>Not shy away from challenges.</li>
+        <li>Stand up to bullies.</li>
+        <li>Stand up for others.</li>
+        <li>Approach their teacher when they have questions.</li>
+        <li>Present in front of their class or read aloud with more ease.</li>
+        <li>Learn at a faster rate because they believe in themselves.</li>
+      </ol>
+      <p>
+        There are several ways that we instill confidence in our preschool students. First of all, we make
+        kindergarten readiness our top priority. If we can give our preschool students the tools to be successful,
+        then we’re setting them up to be a star in their class.
+      </p>
+
+      <h2>Getting your child kindergarten ready</h2>
+      <ul class="checks">
+        <li>Express and manage big emotions</li>
+        <li>Demonstrate independence in personal care</li>
+        <li>Recognize and write their first name</li>
+        <li>Sort objects by size, color, and shape</li>
+        <li>Social interaction skills</li>
+        <li>Recognize shapes, colors, numbers, and letters</li>
+        <li>Identify, extend, and create patterns</li>
+        <li>Recognize rhyming sounds and syllables</li>
+        <li>Grip and cut with scissors properly</li>
+        <li>Recognize common sight words like stop</li>
+        <li>Grip crayons, markers, and pencils correctly</li>
+        <li>Understand cause and effect</li>
+        <li>Follow simple directions and routines</li>
+        <li>Use problem solving skills</li>
+        <li>Participate and engage in activities and play</li>
+      </ul>
+
+      <h2>Why “Bodies in Motion”</h2>
+      <p>
+        Sir Isaac Newton (1643–1727) was a brilliant man. So brilliant, that we adopted his 1st Law of Motion as the
+        name of our organization, and the philosophy driving the physical aspect of our preschool curriculum. Not
+        only do we believe that “A body in motion, will stay in motion, unless acted upon by an equal and opposite
+        force”, but that a brain will do the same thing.
+      </p>
+      <p>
+        If we can teach a child through activities, experiences, and field trips we will all watch your child grow
+        leaps and bounds in kindergarten preparedness. Our most important goal is to serve the needs of your child
+        while promoting a healthy and active lifestyle. Your child will feel comfortable, needed, accepted and most of
+        all loved. Bodies in Motion will implement a value-based curriculum.
+      </p>
+      <p>
+        Children should have FUN! And, children should experience MOTION! Your child’s day will be filled with a
+        curriculum that encourages them to become confident, independent learners.
+      </p>
+
+      <h2>Loving preschool teachers</h2>
+      <p>
+        Our Bodies in Motion teachers are highly dedicated and appropriately educated in order to provide our children
+        with the ultimate care. Emphasis is placed on a caring and loving environment away from home. We are committed
+        to enriching children’s lives socially, emotionally, intellectually, and physically in an atmosphere that
+        enhances creativity and self-confidence.
+      </p>
+      <p>
+        We keep our ratio at 8:1 to ensure each child is supported in their learning. Our curriculum is designed with
+        developmentally appropriate activities. We encourage them towards challenging, yet attainable goals.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="tuition">
+    <div class="section__inner section__inner--read prose">
+      <h2>Preschool care tuition</h2>
+      <PriceTable caption="Preschool, ages 3–6" subtitle="Morning Class, 9 am – 12 pm" rows={morningRows} footnote="Save 3% when using ACH." />
+      <PriceTable caption="Preschool with extended care, ages 3–6" subtitle="Preschool & Care, 7:30 am – 6 pm" rows={careRows} footnote="Save 3% when using ACH." />
+
+      <h2>Start your child’s preschool journey today</h2>
+      <p>
+        Sign up to schedule a tour of Bodies in Motion. You’ll have the opportunity to ask questions and learn exactly
+        how your child will be cared for.
+      </p>
+      <ol class="steps">
+        <li>Determine if you could meet at 10:30 am or 5:00 pm for a private tour, Monday through Friday.</li>
+        <li>
+          Register, then come on in!
+          <a href={LINKS.calendly30} target="_blank" rel="noopener noreferrer">Schedule a tour</a>.
+        </li>
+      </ol>
+    </div>
+  </section>
+  <PhotoGallery eyebrow="Preschool" heading="Learning through motion" items={gallery} />
+</CarePage>

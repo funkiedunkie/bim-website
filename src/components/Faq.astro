@@ -1,0 +1,74 @@
+---
+import type { FaqItem } from '../lib/site'
+
+interface Props {
+  items: FaqItem[]
+  title?: string
+}
+
+const { items, title = 'Frequently asked questions' } = Astro.props
+---
+
+<section class="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title" class="faq__title">{title}</h2>
+  <div class="faq__list">
+    {items.map(({ q, a }) => (
+      <details class="faq__item">
+        <summary>{q}</summary>
+        <p>{a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  .faq__title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .faq__list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .faq__item {
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+  }
+
+  .faq__item summary {
+    cursor: pointer;
+    padding: 18px 22px;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item summary::after {
+    content: '+';
+    color: var(--ink);
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .faq__item[open] summary::after {
+    content: '–';
+  }
+
+  .faq__item p {
+    padding: 0 22px 20px;
+    color: rgba(20, 18, 58, 0.8);
+  }
+</style>

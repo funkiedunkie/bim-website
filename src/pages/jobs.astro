@@ -1,0 +1,175 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import Reviews from '../components/Reviews.astro'
+import { NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/values2.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryJobs1 from '../assets/photos/jobs-purpose.jpeg'
+import galleryJobs2 from '../assets/photos/after-school-pals.jpg'
+import galleryJobs3 from '../assets/photos/ninja-warrior-private-class.jpg'
+import galleryJobs4 from '../assets/photos/dave-kickboxing.jpg'
+
+const title = 'Jobs at Bodies in Motion | Become a Motioneer in Boise, ID'
+const description =
+  'Join the Bodies in Motion team in Boise, ID. We’re always looking for amazing people to become Motioneers: preschool, after school care, cafe, fitness, ninja warrior and more.'
+
+// TODO(Duncan): Rhea will evaluate form usage vs an external hiring site before choosing a replacement (2026-10-23).
+// TODO(Duncan): the Weebly "Motioneer application" form is not migrated (it posted to Weebly). Add a replacement application form
+// (api/contact.js could be reused) or link. Until then applicants are asked to email help@ or call.
+// TODO(Duncan): no JobPosting schema on purpose: the old page has no concrete posting (no title/description/date posted/pay/employment
+// type for a specific opening). Add JobPosting JSON-LD only for real, current openings.
+// TODO(Duncan): pay, hours, minimum age and other benefits are not stated on the old page, so none are listed. The old page's only
+// "benefits" are the past-Motioneer testimonials below (verbatim; confirm you are happy to keep them public).
+
+const positions = [
+  'Preschool Teacher',
+  'After School Care Leader',
+  'Shuttle Driver',
+  'Cafe Barista',
+  'Janitor',
+  'Fitness Instructor',
+  'Infant/Toddler Teacher',
+  'Ninja Warrior Coach',
+]
+
+const coreValues = [
+  'Commitment to Guests',
+  'Commitment to Work',
+  'Unique & Innovative',
+  'Always Learning & Knowing',
+  'Camaraderie',
+  'Motion',
+  'Fun',
+]
+
+const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Motioneer application')}`
+
+// Verbatim from the old Jobs page.
+const motioneers = [
+  {
+    quote:
+      'Its pretty hard to look back and call it a job, or work, when I had the opportunity to swing from ropes up high, race kids down slides, and prepare delicious food! What really makes Bodies In Motion a unique and fun place to work is the team atmosphere. Everyone is working together to move towards the same goal of healthy and happy bodies, which I love. To this day I still talk with one of my best friends, or should I say teammates, that I got to interact with during my time at BIM. Beyond the team, being given the freedom and responsibilities with a potential to grow is what set me up for success in my future endeavors. I’m forever thankful for my chance to become part of the team and call myself a Motioneer!',
+    name: 'Adam Branstetter',
+    source: 'BS; Exercise Science, Head Strength & Conditioning Coach at Auckland Strength & Conditioning, Auckland, New Zealand',
+  },
+  {
+    quote:
+      'I attribute most of my professional success to BIM. I worked with Duncan and Rachel throughout my teenage years, and even during college. I say I worked “with” them and not “for” them because that’s the dynamic Duncan and Rachel create while you work at BIM. They foster communication and love to hear input from everyone on the team. When I had an idea, they listened. They would talk to me about the legitimacies of implementing my ideas. I felt important. It built my confidence. It taught me to work hard to build something amazing for my community. Duncan and Rachel encourage my growth and praised my success. The skills I developed while working there put me ahead of others in the work force. After college I moved and got another amazing job. The college degree didn’t put me ahead of the other applicants, it was my experience at BIM; it was what we talked about for most of my interview! I love Duncan and Rachel and see them as family. Working at BIM was one of the best decisions I’ve ever made.',
+    name: 'Kayla Mellville',
+    source: 'Residency Program Coordinator at U of H, Honolulu, Hawaii',
+  },
+  {
+    quote:
+      'I started at Bodies In Motion as I was graduating from high school. When I started, I figured this job was going to  mean nothing, and just be a place to work so I could pay for college. What I didn’t realize is that I would make lifelong friends, experience what a good company looks like, and solidify what I wanted to do with the rest of my life. Part of Bodies in Motion is camaraderie, the idea that their employees are friendly and get along well with each other. At BIM, I made many good friends, and one that I still hang out with to this day, and count as a close, trusted friend. Anyone who has ever worked there has come out of BIM with at least one person to call a close friend!',
+    name: 'Joel Munn',
+    source: 'Boise School District Teacher',
+  },
+  {
+    quote:
+      'It’s hard to classify my time at BIM as working. It felt more like play. I made lifelong friends among my coworkers and learned a great deal about conflict resolution, communication, and leadership. The management was very understanding and flexible with regards to my other commitments as a college student and gave me a great home for the summer!',
+    name: 'Maddie Bernardo',
+    source: 'Studying Science of Biology Pre-Med University of Utah',
+  },
+  {
+    quote:
+      'Working at Bodies in Motion has been one of the most wonderful work opportunities that I have had. Immediately upon starting work there I felt a sense of place and importance as an employee. I knew that I would be given ample responsibility and treated as equally important to other employees who had been there much longer than I had. The opportunities I had at BIM really have benefited my leadership and empathetic skills especially with the kids there. Being able to lead camps and after school programs helped me a lot to better connect with the kids and better understand how to be a positive influence in their lives. I\'m so happy that I got to be a part of the BIM family. It\'s an amazing place to work and I cherish my time working there.',
+    name: 'Bennett Christensen',
+    source: 'Studying at BYU',
+  },
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What is a Motioneer?',
+    a: 'Motioneers are the people who make up the Bodies in Motion team. We’re always looking for amazing people to join our team of Motioneers.',
+  },
+  {
+    q: 'What positions do you hire for?',
+    a: 'Our previous application listed these positions: Preschool Teacher, After School Care Leader, Shuttle Driver, Cafe Barista, Janitor, Fitness Instructor, Infant/Toddler Teacher and Ninja Warrior Coach. Ask us which are open right now.',
+  },
+  {
+    q: 'What are you looking for in a Motioneer?',
+    a: 'First, our 7 Core Values must strike a chord with you: Commitment to Guests, Commitment to Work, Unique & Innovative, Always Learning & Knowing, Camaraderie, Motion and Fun. Second, you must be able to stand behind our purpose: we are committed to igniting activity and encouraging empowerment.',
+  },
+  {
+    q: 'How do I apply?',
+    a: 'Email help@bodiesinmotionidaho.com or call (208) 381-0587. Tell us which position or positions you are interested in, how soon you can start, your work history and any experience working with kids.',
+  },
+  {
+    q: 'What does the application ask about?',
+    a: 'Our previous application asked for your name, email and phone, the positions you are interested in, your highest level of education and GPA, whether you have experience working with kids, your work history, your hobbies and interests, whether you are willing to get a background check, and how soon you can start.',
+  },
+  {
+    q: 'Where would I work?',
+    a: 'At Bodies in Motion, 729 W. Diamond St, Boise, ID 83705, near the Fred Meyer on Federal Way. Boise is our only location.',
+  },
+]
+
+const gallery = [
+  { src: galleryJobs1, alt: 'Team members working with kids and adults at Bodies in Motion' },
+  { src: galleryJobs2, alt: 'Staff supporting after-school kids on the playground' },
+  { src: galleryJobs3, alt: 'A coach spotting a child on a ninja obstacle' },
+  { src: galleryJobs4, alt: 'A coach training adults on the kickboxing bags' },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/jobs"
+  eyebrow="Join our team"
+  h1="Want to Be a Motioneer?"
+  lead="We’re always looking for amazing people to join our team of Motioneers."
+  heroImg={heroImg}
+  heroAlt="Two Bodies in Motion staff in red shirts giving thumbs up in the gym"
+  ctaUrl={mailto}
+  ctaLabel="Email us to apply"
+  ctaExternal={false}
+  ctaHeading="Ready to become a Motioneer?"
+  ctaText="Email help@bodiesinmotionidaho.com or call (208) 381-0587 and tell us which position interests you."
+  faq={faq}
+>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Join our team of Motioneers</h2>
+      <p>
+        We’re always looking for amazing people to join our team of Motioneers. First, our 7 Core Values must strike a
+        chord with you. Second, you must be able to stand behind our purpose. If our Core Values and Purpose resonate
+        with you, this could be the start of a very cool relationship.
+      </p>
+
+      <h2 id="core-values">Our 7 Core Values</h2>
+      <ol class="steps">
+        {coreValues.map((v) => <li>{v}</li>)}
+      </ol>
+
+      <h2 id="purpose">Bodies in Motion’s purpose</h2>
+      <p>We are committed to igniting activity, and encouraging empowerment.</p>
+
+      <h2 id="positions">Positions</h2>
+      <p>Our previous application listed these positions. Ask us which are open right now:</p>
+      <ul class="bullets">
+        {positions.map((p) => <li>{p}</li>)}
+      </ul>
+
+      <h2 id="apply">How to apply</h2>
+      <p>
+        Email <a href={mailto}>{NAP.email}</a> or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>. Tell us which position
+        or positions you are interested in and how soon you can start, and include your work history and any experience
+        working with kids. Our previous application also asked about your highest level of education, your hobbies and
+        interests, and whether you are willing to get a background check.
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={mailto}>Email us to apply</a>
+        <a class="btn-outline" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="section__inner">
+      <Reviews items={motioneers} title="What past Motioneers say" id="motioneers-title" />
+    </div>
+  </section>
+  <PhotoGallery eyebrow="Work here" heading="A day at Bodies in Motion" items={gallery} />
+</ActivityPage>

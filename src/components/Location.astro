@@ -1,0 +1,66 @@
+---
+import { NAP, MAP_EMBED_URL } from '../lib/site'
+---
+
+<section class="location" aria-labelledby="location-title">
+  <div class="location__info">
+    <h2 id="location-title" class="location__title">Visit us in Boise</h2>
+    <address>
+      <p><strong>{NAP.name}</strong></p>
+      <p>{NAP.street}<br />{NAP.city}, {NAP.state} {NAP.zip}</p>
+      <p>Near the Fred Meyer on Federal Way</p>
+      <p>Phone: <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a></p>
+    </address>
+  </div>
+  <iframe
+    class="location__map"
+    title="Map showing Bodies in Motion at 729 W. Diamond St, Boise, ID 83705"
+    src={MAP_EMBED_URL}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen
+  ></iframe>
+</section>
+
+<style>
+  .location {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .location__title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+
+  address {
+    font-style: normal;
+    display: grid;
+    gap: 10px;
+    color: rgba(20, 18, 58, 0.82);
+  }
+
+  address a {
+    color: var(--accent-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .location__map {
+    width: 100%;
+    min-height: 320px;
+    border: 0;
+    border-radius: var(--radius);
+    filter: grayscale(0.3);
+  }
+
+  @media (max-width: 900px) {
+    .location {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/photos/pickleball-play.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryPb1 from '../assets/photos/pickleball-play-2.jpg'
+import galleryPb2 from '../assets/photos/pickleball-group.jpg'
+
+const title = 'Indoor Pickleball in Boise, ID | Bodies in Motion'
+const description =
+  'Indoor pickleball court in Boise, ID at Bodies in Motion: all skill levels, $12 per player, group rates and a $59 monthly membership. Kids play indoors while you play.'
+
+// Hours confirmed by Duncan (2026-10-23). Some slots overlap School of Soccer; Rhea blocks those on the calendar, so
+// times are "subject to availability". No weekend times were given, so none are shown.
+// TODO(Duncan): new online pickleball booking link (the old link went to a booking system BIM no longer uses). Until then: call/email.
+// TODO(Duncan): the old Pickleball page also listed open play prices ($6 / $9.60 / $12) that differ from the confirmed
+// /open-play prices ($8.25 / $10.50 / $12.50); this page links to /open-play instead of repeating either set.
+// Booking: Monday–Friday court times are reserved by phone/email (confirmed by Duncan, 2026-10-21).
+
+const faq: FaqItem[] = [
+  {
+    q: 'How much does indoor pickleball cost?',
+    a: 'Pickleball is $12 per individual (+ tax) or $10 per person for groups of 2–5. Private groups of 6–12 people are $9 per person. Monthly memberships are $59 per month.',
+  },
+  {
+    q: 'What are the pickleball hours?',
+    a: 'Monday through Friday 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm, plus Monday and Thursday 5:00–6:30 pm. Times are subject to availability.',
+  },
+  {
+    q: 'Do I need to reserve a court time?',
+    a: 'Yes. Court times are by reservation and subject to availability, because other programs sometimes use the court. Call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve a spot.',
+  },
+  {
+    q: 'What skill levels are welcome?',
+    a: 'All skill levels. Whether you are a seasoned player or a beginner, the court offers a welcoming environment for casual play and making new friends. Games are posted courtside for 6 and 12 person play.',
+  },
+  {
+    q: 'Can my kids play while I play pickleball?',
+    a: 'Yes. Parents can enjoy friendly matches while the kids explore our indoor playground. See the open play page for kids’ pricing.',
+  },
+  {
+    q: 'Is there food and drink?',
+    a: 'Yes. Take a break between games at our Flatbread Cafe for flatbreads, coffee and more, or unwind with a canned cocktail or a beer.',
+  },
+  {
+    q: 'Where is the pickleball court?',
+    a: 'At Bodies in Motion, 729 W. Diamond St, Boise, ID 83705.',
+  },
+]
+
+const gallery = [
+  { src: galleryPb1, alt: 'Adults playing indoor pickleball on the court at Bodies in Motion' },
+  { src: galleryPb2, alt: 'A player tracks a pickleball mid-air on the indoor court, with the ropes course behind' },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/pickleball"
+  eyebrow="Where fun meets family"
+  h1="Indoor Pickleball in Boise"
+  lead="Friendly matches for parents, an indoor playground for the kids, and a Flatbread Cafe for the break between games."
+  heroImg={heroImg}
+  heroAlt="Adults playing indoor pickleball at Bodies in Motion"
+  ctaUrl={NAP.phoneTel}
+  ctaLabel={`Call ${NAP.phoneDisplay} to book`}
+  ctaExternal={false}
+  ctaHeading="Ready to hit the court?"
+  ctaText="Call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve your court time."
+  faq={faq}
+>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Where fun meets family</h2>
+      <p>
+        Bodies in Motion is a family recreation center with an indoor playground, ropes course, childcare, camps,
+        fitness and ninja warrior classes, and an exclusive pickleball court. Our court is a blend of friendly
+        competition and family bonding: parents enjoy exciting matches while the kids explore our indoor wonderland.
+      </p>
+      <p>
+        All skill levels are welcome. Whether you’re a seasoned player or a beginner, it’s a welcoming place for casual
+        play and making new friends. Take a break at our Flatbread Cafe for artisanal flatbreads, coffee and more, or
+        unwind after a game with a canned cocktail or a beer.
+      </p>
+
+      <h2 id="rates">Pickleball rates</h2>
+      <ul class="bullets">
+        <li><strong>Individual:</strong> $12 per person (+ tax)</li>
+        <li><strong>Groups of 2–5:</strong> $10 per person</li>
+        <li><strong>Private groups of 6–12:</strong> $9 per person</li>
+        <li><strong>Monthly membership:</strong> $59 per month</li>
+      </ul>
+      <p>Games are posted courtside for 6 and 12 person play. Kids’ play pricing is on the <a href="/open-play">open play page</a>.</p>
+
+      <h2 id="hours">Hours and reservations</h2>
+      <ul class="bullets">
+        <li><strong>Monday–Friday:</strong> 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm</li>
+        <li><strong>Monday and Thursday only:</strong> 5:00–6:30 pm</li>
+      </ul>
+      <p>
+        Court times are subject to availability, because other programs sometimes use the court. To reserve, call
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our
+        <a href="/contact">contact page</a>.
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={NAP.phoneTel}>Call to book a court</a>
+        <a class="btn-outline" href="/hours">See all hours</a>
+      </div>
+    </div>
+  </section>
+  <PhotoGallery eyebrow="Indoor pickleball" heading="Play while the kids play" items={gallery} />
+</ActivityPage>

@@ -1,0 +1,175 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { NAP, HOLIDAY_TEXT, OPEN_PLAY_HOURS, OPEN_PLAY_HOURS_SPEC, type FaqItem } from '../lib/site'
+import heroImg from '../assets/open-play.jpg'
+
+const title = 'Hours of Operation | Bodies in Motion, Boise, ID'
+const description =
+  'Hours at Bodies in Motion in Boise, ID: childcare 7:30 am–6 pm, open play, ropes course, holiday closures, pickleball, fitness classes, ninja warrior open gym, camps and team building.'
+
+// Holidays, open play seasons, pickleball slots and ninja Saturday open gym confirmed by Duncan (2026-10-23).
+// TODO(Duncan): ninja open gym Sunday end time (5:00 pm on the old /ninja-warrior page, 3:00 pm on /ninja-warrior-competition);
+// Duncan confirmed Saturday ends at 5 pm. Pickleball weekend times were not in the 2026-10-23 list, so none are shown.
+// Structured data: childcare hours plus current-season open play hours (OPEN_PLAY_HOURS_SPEC).
+const childcareHours = [
+  {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '18:00',
+  },
+  ...OPEN_PLAY_HOURS_SPEC,
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What are the open play hours?',
+    a: `${OPEN_PLAY_HOURS.fallWinter} ${OPEN_PLAY_HOURS.summer}`,
+  },
+  {
+    q: 'When is Open Ropes?',
+    a: 'Open Ropes sessions are Monday through Friday 4:00–5:00 pm and 5:00–6:00 pm. For Saturday, call (208) 381-0587 for availability. Reservations are required.',
+  },
+  {
+    q: 'What are the childcare hours?',
+    a: 'Full-time infant & toddler care and preschool with extended care are Monday through Friday, 7:30 am to 6:00 pm. Before school care starts at 7:30 am and after school care runs from school pickup until 6:00 pm.',
+  },
+  {
+    q: 'What are the pickleball hours?',
+    a: 'Monday through Friday 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm, plus Monday and Thursday 5:00–6:30 pm. Times are subject to availability; call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve.',
+  },
+  {
+    q: 'When are the fitness classes?',
+    a: 'Kickboxing is Monday, Wednesday and Friday at 5:45 am, 7:00 am, 12:15 pm and 6:15 pm, and Saturday at 9 am. SGX is Tuesday and Thursday at 12:15 pm.',
+  },
+  {
+    q: 'What are the camp hours?',
+    a: 'Camp runs Monday through Friday from 9 am to 3 pm and is closed Saturday and Sunday. Before-camp care starts at 7:30 am and runs until camp begins at 9:00 am; after-camp care runs from 3 pm to 6 pm.',
+  },
+  {
+    q: 'What are the ninja warrior open gym hours?',
+    a: 'Monday through Friday 10:30 am–12:00 pm and 1:30–4:00 pm, and Saturday 10 am–5:00 pm. For Sunday, call (208) 381-0587.',
+  },
+  {
+    q: 'When can I book team building?',
+    a: 'Team building is by appointment only. Call (208) 381-0587 or email help@bodiesinmotionidaho.com.',
+  },
+  {
+    q: 'Are you open on holidays?',
+    a: HOLIDAY_TEXT,
+  },
+  {
+    q: 'Where are you located?',
+    a: 'Bodies in Motion is at 729 W. Diamond St, Boise, ID 83705, near the Fred Meyer on Federal Way.',
+  },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/hours"
+  eyebrow="Plan your visit"
+  h1="Hours of Operation"
+  lead="Open play, childcare, pickleball, fitness classes, camps and more at our Boise location."
+  heroImg={heroImg}
+  heroAlt="Three children laughing as they slide down orange and blue indoor slides"
+  ctaUrl={NAP.phoneTel}
+  ctaLabel={`Call ${NAP.phoneDisplay}`}
+  ctaExternal={false}
+  ctaHeading="Questions about our hours?"
+  ctaText="Call (208) 381-0587 or email help@bodiesinmotionidaho.com and we will help you plan your visit."
+  faq={faq}
+  openingHoursSpecification={childcareHours}
+>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2 id="open-play">Open play</h2>
+      <p><strong>Fall and winter hours:</strong></p>
+      <ul class="bullets">
+        <li><strong>Monday–Thursday:</strong> 9:30 am–7:00 pm</li>
+        <li><strong>Friday:</strong> 9:30 am–6:00 pm</li>
+        <li><strong>Saturday and Sunday:</strong> 9:30 am–5:00 pm</li>
+      </ul>
+      <p><strong>Summer hours:</strong></p>
+      <ul class="bullets">
+        <li><strong>Monday–Friday:</strong> 9:30 am–6:00 pm</li>
+        <li><strong>Saturday and Sunday:</strong> 9:30 am–5:00 pm</li>
+      </ul>
+      <p>See <a href="/open-play">open play</a> for prices.</p>
+
+      <h2 id="ropes">Open Ropes</h2>
+      <ul class="bullets">
+        <li><strong>Monday–Friday:</strong> 4:00–5:00 pm and 5:00–6:00 pm</li>
+        <li><strong>Saturday:</strong> call for availability</li>
+      </ul>
+      <p>Reservations are required. See the <a href="/ropes-course">ropes course</a> for details.</p>
+
+      <h2 id="childcare">Childcare and school care</h2>
+      <p>
+        Full-time <a href="/infant-toddler-care">infant &amp; toddler care</a> and <a href="/preschool">preschool</a> with
+        extended care are Monday through Friday, 7:30 am to 6:00 pm. The preschool Morning Class runs 9 am to 12 pm.
+      </p>
+      <p>
+        <a href="/after-school-care">Before school care</a> starts at 7:30 am until we take the kids to school. After school
+        care runs from school pickup until 6:00 pm.
+      </p>
+
+      <h2 id="pickleball">Pickleball hours</h2>
+      <ul class="bullets">
+        <li><strong>Monday–Friday:</strong> 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm</li>
+        <li><strong>Monday and Thursday only:</strong> 5:00–6:30 pm</li>
+      </ul>
+      <p>
+        Court times are subject to availability (some overlap with other programs). Call or email us to reserve. More on
+        the <a href="/pickleball">pickleball page</a>.
+      </p>
+
+      <h2 id="fitness">Fitness hours</h2>
+      <ul class="bullets">
+        <li><strong>Monday:</strong> Kickboxing at 5:45 am, 7:00 am, 12:15 pm, 6:15 pm</li>
+        <li><strong>Tuesday:</strong> SGX at 12:15 pm</li>
+        <li><strong>Wednesday:</strong> Kickboxing at 5:45 am, 7:00 am, 12:15 pm, 6:15 pm</li>
+        <li><strong>Thursday:</strong> SGX at 12:15 pm</li>
+        <li><strong>Friday:</strong> Kickboxing at 5:45 am, 7:00 am, 12:15 pm, 6:15 pm</li>
+        <li><strong>Saturday:</strong> Kickboxing at 9 am</li>
+      </ul>
+      <p>See <a href="/fitness-classes">fitness classes</a> for details.</p>
+
+      <h2 id="ninja-warrior">Ninja warrior open gym</h2>
+      <ul class="bullets">
+        <li><strong>Monday–Friday:</strong> 10:30 am–12:00 pm and 1:30–4:00 pm</li>
+        <li><strong>Saturday:</strong> 10 am–5:00 pm</li>
+        <li><strong>Sunday:</strong> call for hours</li>
+      </ul>
+      <p>Class times and trials are on the <a href="/ninja-warrior">ninja warrior page</a>.</p>
+
+      <h2 id="camps">Camp hours</h2>
+      <ul class="bullets">
+        <li><strong>Camp:</strong> Monday–Friday, 9 am–3 pm</li>
+        <li><strong>Before-camp care:</strong> Monday–Friday, 7:30–9:00 am</li>
+        <li><strong>After-camp care:</strong> Monday–Friday, 3 pm–6 pm</li>
+        <li><strong>Saturday and Sunday:</strong> closed</li>
+      </ul>
+      <p>Dates, prices and registration are on the <a href="/camps">camps page</a>.</p>
+
+      <h2 id="team-building">Team building hours</h2>
+      <p>
+        By appointment only. Please call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or email
+        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> for more information, or see <a href="/team-building">team building</a>.
+      </p>
+
+      <h2 id="holidays">Holiday closures</h2>
+      <p><strong>Closed:</strong> Easter, Memorial Day, July 4th, Labor Day, Thanksgiving Day, Christmas Day and New Year’s Day.</p>
+      <p>
+        <strong>Close early:</strong> Halloween, Christmas Eve and New Year’s Eve. Call
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> for that day’s hours.
+      </p>
+
+      <div class="stub-actions">
+        <a class="btn-primary" href="/contact">Contact us</a>
+        <a class="btn-outline" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+</ActivityPage>

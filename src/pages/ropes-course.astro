@@ -1,0 +1,137 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/photos/ropes-course-web.jpeg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryRopes1 from '../assets/photos/ropes-locks.jpeg'
+import galleryRopes2 from '../assets/photos/group-ropes-course.jpg'
+import galleryRopes3 from '../assets/photos/ropes-family-1.jpg'
+import galleryRopes4 from '../assets/photos/ropes-family-2.jpeg'
+import galleryRopes5 from '../assets/photos/ropes-family-3.jpg'
+
+const title = 'High Ropes Course in Boise, ID: Open Ropes | Bodies in Motion'
+const description =
+  'Indoor high aerial ropes course in Boise, ID at Bodies in Motion: 45-minute Open Ropes for $16 per person, ropes birthday party add-ons and team building. Call to reserve.'
+
+// Open Ropes slots and $16/person confirmed by Duncan (2026-10-23). Cosmic Ropes (and the Supernova Cosmic Ropes party)
+// are ON HOLD until staffing and the cosmic light system are upgraded, so they are not offered on this page.
+
+const faq: FaqItem[] = [
+  {
+    q: 'How can I enjoy the ropes course?',
+    a: 'Open Ropes (a 45-minute high ropes adventure), a Ropes add-on for birthday parties, and team building. Cosmic Ropes is currently on hold.',
+  },
+  {
+    q: 'How long is Open Ropes and what does it cost?',
+    a: 'Open Ropes is a 45-minute high aerial ropes adventure with free-range swinging and hanging, Tarzan style. It is $16 (+ tax) per person.',
+  },
+  {
+    q: 'What are the age requirements?',
+    a: 'Participants must be at least 10 years old with an adult, or 10 years old and 5 feet tall to go up without an adult.',
+  },
+  {
+    q: 'When is Open Ropes available?',
+    a: 'Open Ropes sessions run Monday through Friday from 4–5 pm and 5–6 pm. For Saturday, please call for availability. A reservation is required.',
+  },
+  {
+    q: 'How do I reserve a ropes course time?',
+    a: 'Call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve. A reservation is required.',
+  },
+  {
+    q: 'Is there a size or weight restriction?',
+    a: 'Weight is not a concern on the course, but our harnesses may not fit all guests. Our harnesses are Adult Large (waist 46 inches, thighs 30 inches), and we have 2 Adult X-Large harnesses (waist 51 inches, thighs 34 inches).',
+  },
+  {
+    q: 'Can I have a birthday party on the ropes course?',
+    a: 'Yes. Choose the Ropes ($50+) option when you book a kids party; ropes parties are for ages 10 and up and include two free adult participants. If you booked a different party and want to add ropes later, call (208) 381-0587 ahead of time so we can make sure we can support it. Super and Lock-In parties include High Ropes time.',
+  },
+  {
+    q: 'What should I wear?',
+    a: 'One guest’s tip: wear good shoes, be ready to sweat, and consider bringing gloves for better grip.',
+  },
+]
+
+const reviews = [
+  { quote: 'Best place in town for kids and adults! The ropes course is a blast.', name: 'Crystal Ikebe', source: '5 stars, Facebook' },
+  { quote: 'I am terrified of heights, but the staff were all very supportive and helped me through the course!', name: 'Cassie S', source: 'Groupon' },
+  { quote: 'Completed the ropes course last night. Had an absolutely phenomenal time and the staff was helpful, kind, and simply superb. Thanks for the great adventure!', name: 'Julie Giles', source: '5 stars, Facebook' },
+  { quote: 'Call in advance to schedule a time to come. It books up and its not a last minute activity. That being said, they were great to us and we had a blast. We went for date night and loved the physical challenge!', name: 'Debbie T', source: 'Groupon' },
+]
+
+const gallery = [
+  { src: galleryRopes1, alt: 'Harness and safety locks ready for the high ropes course' },
+  { src: galleryRopes2, alt: 'A group clipped in and moving across the indoor high ropes course' },
+  { src: galleryRopes3, alt: 'Families navigating suspended platforms on the ropes course' },
+  { src: galleryRopes4, alt: 'Climbers on the high aerial ropes course at Bodies in Motion' },
+  { src: galleryRopes5, alt: 'Kids and adults high on the ropes course walkways' },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/ropes-course"
+  eyebrow="Encourage. Empower."
+  h1="Indoor High Ropes Course in Boise"
+  lead="Free-range swinging and hanging, Tarzan style, on a high aerial ropes course that would make Indiana Jones envious."
+  heroImg={heroImg}
+  heroAlt="Adults in harnesses and helmets on the indoor high ropes course"
+  ctaUrl={NAP.phoneTel}
+  ctaLabel={`Call ${NAP.phoneDisplay} to reserve`}
+  ctaExternal={false}
+  ctaHeading="Ready to take on the ropes?"
+  ctaText="Reservations are required: call (208) 381-0587 or email help@bodiesinmotionidaho.com."
+  faq={faq}
+  reviews={reviews}
+>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Ways to enjoy the ropes course</h2>
+      <ul class="bullets">
+        <li><a href="#open-ropes"><strong>Open Ropes</strong></a> – the thrill and challenge of the high ropes.</li>
+        <li><a href="#ropes-birthday"><strong>Ropes birthday parties</strong></a> – add ropes to a party for ages 10 and up.</li>
+        <li><a href="/team-building"><strong>Team building</strong></a> – high ropes workshops for groups.</li>
+      </ul>
+      <p><strong>Cosmic Ropes is currently on hold.</strong></p>
+
+      <h2 id="open-ropes">Open Ropes</h2>
+      <p>
+        Experience the thrill of the ropes course with free-range swinging and hanging, Tarzan style. Challenge yourself,
+        with a friend, in a 45-minute high aerial ropes adventure. Participants must be 10 years old with an adult, or
+        10 years old and 5 feet tall to go up without an adult.
+      </p>
+      <ul class="bullets">
+        <li><strong>Cost:</strong> $16 (+ tax) per person</li>
+        <li><strong>Monday–Friday:</strong> 4:00–5:00 pm and 5:00–6:00 pm</li>
+        <li><strong>Saturday:</strong> please call for availability</li>
+        <li><strong>Reservation required:</strong> call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or email <a href={`mailto:${NAP.email}`}>{NAP.email}</a></li>
+      </ul>
+      <p>
+        <strong>Size restriction:</strong> weight is not a concern on the course, but our harnesses may not accommodate
+        all guests. All our harnesses are Adult Large (waist 46 inches, thighs 30 inches). We have 2 Adult X-Large
+        harnesses (waist 51 inches, thighs 34 inches).
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={NAP.phoneTel}>Call to reserve</a>
+        <a class="btn-outline" href="/contact">Email or contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="cosmic-ropes">
+    <div class="section__inner section__inner--read prose">
+      <h2 id="ropes-birthday">Ropes birthday parties</h2>
+      <p>
+        Choose the <strong>Ropes ($50+)</strong> option when you book a <a href="/birthday-parties#kids-parties">kids party</a>.
+        Ropes parties are for ages 10 and up and include two free adult participants. Booked a different party and want
+        to add ropes later? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> ahead of time so we can make sure we can
+        support it.
+      </p>
+      <p>
+        Ropes is also part of our <a href="/team-building">team building</a> workshops, and Super and Lock-In parties
+        include High Ropes time.
+      </p>
+    </div>
+  </section>
+  <PhotoGallery eyebrow="High ropes" heading="Open Ropes in action" items={gallery} />
+</ActivityPage>

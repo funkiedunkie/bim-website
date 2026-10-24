@@ -1,0 +1,108 @@
+---
+import { NAP } from '../lib/site'
+// Tour / Waitlist match api/contact.js PROGRAMS (kept from concept D).
+const programs = [
+  'Infant & Toddler Care',
+  'Preschool',
+  'Before & After School Care',
+  'Camps',
+  'Birthday Parties',
+  'Team Building',
+  'Tour',
+  'Waitlist',
+  'Other',
+]
+const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Website inquiry')}`
+---
+<form id="contact-form" class="contact-form" method="post" action="/api/contact" data-mailto={mailto}>
+  <h2>Send us a message</h2>
+  <p class="contact-form__status" role="status" aria-live="polite" hidden></p>
+  <label>Name* <input name="name" required maxlength="120" autocomplete="name" /></label>
+  <label>Email* <input name="email" type="email" required maxlength="200" autocomplete="email" /></label>
+  <label>Phone <input name="phone" type="tel" maxlength="40" autocomplete="tel" /></label>
+  <label>Program
+    <select name="program">{programs.map((p) => <option>{p}</option>)}</select>
+  </label>
+  <label>Message* <textarea name="message" required rows="5" maxlength="5000"></textarea></label>
+  <label class="contact-form__hp" aria-hidden="true">Company <input name="company" tabindex="-1" autocomplete="off" /></label>
+  <button type="submit" class="btn-primary">Send</button>
+  <p class="contact-form__alt">Prefer email? Write to <a href={mailto}>{NAP.email}</a> or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.</p>
+</form>
+<script>
+  const form = document.querySelector<HTMLFormElement>('.contact-form')
+  if (form) {
+    const status = form.querySelector<HTMLElement>('.contact-form__status')!
+    const show = (html: string) => { status.hidden = false; status.innerHTML = html }
+    const params = new URLSearchParams(location.search)
+    const pre = params.get('program')
+    const sel = form.querySelector<HTMLSelectElement>('select[name=program]')
+    if (pre && sel && [...sel.options].some((o) => o.value === pre)) sel.value = pre
+    const q = params.get('status')
+    if (q === 'sent') show('Thanks! Your message was sent.')
+    if (q === 'error') show(`Sorry, that didn't send. Please email <a href="${form.dataset.mailto}">us directly</a>.`)
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const data = Object.fromEntries(new FormData(form))
+      try {
+        const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })
+        const j = await r.json().catch(() => ({}))
+        if (r.ok && j.ok) { form.reset(); show('Thanks! Your message was sent. We’ll get back to you soon.'); return }
+        if (r.status === 400) { show(j.message || 'Please check the form.'); return }
+        throw new Error()
+      } catch {
+        const body = `Name: ${data.name}\nPhone: ${data.phone}\nProgram: ${data.program}\n\n${data.message}`
+        const href = `${form.dataset.mailto}&body=${encodeURIComponent(String(body))}`
+        show(`Our form couldn't send right now. <a href="${href}">Open your email app</a> to send it to us instead.`)
+      }
+    })
+  }
+</script>
+<style>
+  .contact-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 560px;
+    margin: 2rem 0;
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 28px 24px;
+  }
+  .contact-form h2 {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1;
+    margin: 0 0 4px;
+  }
+  .contact-form label {
+    display: grid;
+    gap: 0.35rem;
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font: inherit;
+    font-weight: 500;
+    padding: 0.7rem 0.85rem;
+    border-radius: 14px;
+    border: 2.5px solid var(--ink);
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .contact-form select option { color: #111; }
+  .contact-form__hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .contact-form__status {
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
+    border: 2.5px solid var(--ink);
+    background: var(--y);
+    font-weight: 600;
+  }
+  .contact-form button { justify-self: start; margin-top: 4px; }
+  .contact-form__alt { font-size: 0.92rem; color: var(--muted); margin: 4px 0 0; }
+  .contact-form__alt a { color: var(--accent-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+</style>

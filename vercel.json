@@ -1,0 +1,806 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/childcare.html",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/before-after-school-tour.html",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/infant-toddler-care.html",
+      "destination": "/infant-toddler-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/infant-toddler-care-624358.html",
+      "destination": "/infant-toddler-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/infant-toddler-tour.html",
+      "destination": "/infant-toddler-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/preschool.html",
+      "destination": "/preschool",
+      "statusCode": 301
+    },
+    {
+      "source": "/preschool-tour.html",
+      "destination": "/preschool",
+      "statusCode": 301
+    },
+    {
+      "source": "/preschool-reviews.html",
+      "destination": "/preschool",
+      "statusCode": 301
+    },
+    {
+      "source": "/camps.html",
+      "destination": "/camps",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-camp-registration.html",
+      "destination": "/camps",
+      "statusCode": 301
+    },
+    {
+      "source": "/birthday-parties.html",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/kids-birthday-parties.html",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/birthdayparties10-16.html",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/adult-parties.html",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/birthday-party-reviews.html",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/parents-night-out.html",
+      "destination": "/parents-night-out",
+      "statusCode": 301
+    },
+    {
+      "source": "/parents-night-out-reviews.html",
+      "destination": "/parents-night-out",
+      "statusCode": 301
+    },
+    {
+      "source": "/openplay.html",
+      "destination": "/open-play",
+      "statusCode": 301
+    },
+    {
+      "source": "/open-play-reviews.html",
+      "destination": "/open-play",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior-trial.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior-competition.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior-members.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/members-only-ninja-warrior.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior-reviews.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior1.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior-resources.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-ninja-warrior.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/circuit-board.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/cliff-hanger.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/conveyor-belt.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/devil-steps.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/flying-bar.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/flying-squirrel-360680-168085-328084-705776.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/flywheel.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/i-beam-360680-168085.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/invisible-ladder-360680-168085-328084.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/lache.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/monkey-bars.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/peg-wall.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/rock-traverse-360680-168085-328084-705776-646066-215209-556805.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/rock-traverse-360680-168085-328084-705776-646066-215209.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/rock-traverse-360680-168085-328084-705776-646066.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/rock-traverse.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/rumbling-dice.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/salmon-ladder.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/suspended-ladders-360680-211701.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/unstable-bridges.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/warped-wall-360680.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/wingnuts.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/fitness-classes.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/fitness-signup.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/fitness-challenge.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/fitnesschallenge-648156.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/bootcamp-fitness.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/kickboxing.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/kickboxing-trial.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/kickboxing-1month.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-kickboxing.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/4x4x48.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/holiday-challenge.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/members-only-fitness.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/fitness-reviews.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/martial-arts.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/martial-art-reviews.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/ropes-course.html",
+      "destination": "/ropes-course",
+      "statusCode": 301
+    },
+    {
+      "source": "/ropes-course-reviews.html",
+      "destination": "/ropes-course",
+      "statusCode": 301
+    },
+    {
+      "source": "/teambuilding.html",
+      "destination": "/team-building",
+      "statusCode": 301
+    },
+    {
+      "source": "/team-building-reviews.html",
+      "destination": "/team-building",
+      "statusCode": 301
+    },
+    {
+      "source": "/indoor-pickleball.html",
+      "destination": "/pickleball",
+      "statusCode": 301
+    },
+    {
+      "source": "/schedule.html",
+      "destination": "/hours",
+      "statusCode": 301
+    },
+    {
+      "source": "/aboutus.html",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/our-team.html",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/our-company.html",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/staff-community-reviews.html",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/contactus.html",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/jobs.html",
+      "destination": "/jobs",
+      "statusCode": 301
+    },
+    {
+      "source": "/apply.html",
+      "destination": "/jobs",
+      "statusCode": 301
+    },
+    {
+      "source": "/waiver.html",
+      "destination": "/waiver",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/reviews.html",
+      "destination": "/reviews",
+      "statusCode": 301
+    },
+    {
+      "source": "/programs--activities.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog.html",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates.html",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/:path*",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/archives/:path*",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/category/:path*",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/previous/:path*",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-ways-children-can-be-more-active-during-the-school-day",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-do-children-need-to-stay-active",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-get-your-children-outside-more",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-physical-fitness-helps-build-confidence",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-to-do-outside-this-month",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-improve-your-childs-focus-on-important-interests-through-activies",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/5-great-spring-festivals-to-take-kids-along",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-should-you-do-if-your-child-is-bullied",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-promote-fitness-at-home",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-promote-fitness-at-home4055393",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/monkey-see-monkey-do-how-you-influence-your-kids-in-everyday-life",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-playing-pretend-with-your-kid-is-vital",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-important-is-staying-active-during-childhood",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-important-is-staying-active-during-childhood3714593",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-ways-to-add-in-hidden-workouts-to-your-day",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-integrate-technology-and-fitness",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-healthy-mom-blogs-you-should-be-reading",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/active-ideas-for-mothers-day",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ax-throwing-for-a-perfect-date-night",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-great-ways-to-get-into-healthy-eating-slowly",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-embrace-your-inner-child-to-live-a-healthier-life",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/june-19th-2019",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/volunteering-young-is-the-best-way-to-learn-about-your-community",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-ways-to-get-your-kids-involved-in-the-community",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ways-working-on-your-childs-fitness-is-great-for-your-own",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-prepare-your-child-for-the-school-year",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/top-races-for-runners-this-fall",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/july-24th-2019",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-squeeze-a-little-more-summer-into-life",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/best-fall-activities-in-2019-for-a-family",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-make-your-evenings-more-active",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/top-tip-pack-an-outing-backpack",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-basics-of-ax-throwing",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-create-unstructured-playtime-for-kids",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-hikes-in-idaho-your-family-will-love",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/september-27th-2019",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-does-martial-arts-help-children",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-ways-martial-arts-is-good-for-the-mind",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/can-you-do-martial-arts-as-a-family",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-fitness-classes-does-bodies-in-motion-offer",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-bodies-in-motion-classes-and-how-they-help",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/at-what-age-should-i-get-my-kid-into-fitness-classes",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-should-you-do-if-fitness-is-boring",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/planning-time-for-a-workout-when-your-kids-are-back-in-school",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-skills-does-the-ninja-warrior-class-teach-students",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-take-part-in-the-american-ninja-warrior",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-make-an-indoor-obstacle-course-at-home",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/four-ways-team-building-helps-your-business",
+      "destination": "/team-building",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-do-team-building-activities-at-work",
+      "destination": "/team-building",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-should-you-take-a-child-to-an-open-play-gym-session",
+      "destination": "/open-play",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/using-an-open-gym-as-a-cold-climate-play-place",
+      "destination": "/open-play",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/seven-rainy-day-activities-your-family-can-enjoy",
+      "destination": "/open-play",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/interview-with-a-student-about-their-experience-in-your-classes",
+      "destination": "/reviews",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/one-mothers-thoughts-on-growth-and-exploration-through-bodies-in-motion",
+      "destination": "/reviews",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/avas-summer-camp-adventure-turned-passion",
+      "destination": "/camps",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-ways-to-make-spring-break-active",
+      "destination": "/camps",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-to-do-with-your-children-during-fall-break",
+      "destination": "/camps",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-ways-to-enjoy-your-parents-night-out",
+      "destination": "/parents-night-out",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/an-active-birthday-is-the-best-birthday",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/at-what-age-can-children-stay-at-home-alone",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-know-when-you-can-leave-your-child-alone",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/finding-time-for-family-when-homework-is-on-the-table",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/end-of-summer-bucket-list-for-preschool-children",
+      "destination": "/preschool",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/five-values-for-your-five-year-old",
+      "destination": "/preschool",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/seven-places-in-idaho-to-see-animals-with-your-preschooler",
+      "destination": "/preschool",
+      "statusCode": 301
+    },
+    {
+      "source": "/closed.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/black-friday-special.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/trunk-or-treat.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/block-party.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-infant.html",
+      "destination": "/",
+      "statusCode": 301
+    }
+  ]
+}

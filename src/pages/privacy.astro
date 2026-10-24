@@ -1,0 +1,157 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/strip2.jpg'
+
+const title = 'Website Privacy Policy | Bodies in Motion, Boise, ID'
+const description =
+  'Privacy policy for the Bodies in Motion website in Boise, Idaho: what we collect, how we use it, third-party tools we link to and how to opt out of text messages.'
+
+// TODO(Duncan): LEGAL REVIEW. This is a plain-language rewrite of the old Weebly policy (last updated 6/19/2026), keeping only the parts
+// relevant to this business and website, and it is marked "Draft — pending legal review" on the page. Have it reviewed, then remove the
+// draft notice. Things the old policy does not cover and a reviewer may want added: children's privacy (we serve children), how long
+// information is kept, and any state-law rights.
+// TODO(Duncan): set the effective date (the old policy said "Last updated: 6/19/2026").
+// TODO(Duncan): mailing address. The physical address is used below; if you want a separate mailing address (e.g. a PO box), add it.
+// TODO(Duncan): analytics. The old Weebly site loaded Google Tag Manager (GTM-KGR99L7N). This site loads no analytics or tag manager
+// today, so the policy says so. Update the Cookies section if analytics are added.
+// Dropped on purpose: the old policy's numbered sections about a "GPT application" / Recipe Builder / OpenAI (not this business).
+
+const faq: FaqItem[] = [
+  {
+    q: 'How do I contact you about privacy?',
+    a: 'Email help@bodiesinmotionidaho.com or call (208) 381-0587. You can also write to us at Bodies in Motion, 729 W. Diamond St, Boise, ID 83705.',
+  },
+  {
+    q: 'How do I stop text messages?',
+    a: 'Reply STOP to any message. You can opt out at any time. Message frequency varies, and message and data rates may apply.',
+  },
+  {
+    q: 'Do you sell my personal information?',
+    a: 'No. We do not sell, trade or transfer your personally identifiable information to outside parties without your consent, except for trusted third parties who assist us in operating our website.',
+  },
+  {
+    q: 'What happens to the message I send through the contact form?',
+    a: 'The form sends your name, email, phone number (if you give one), the program you chose and your message to help@bodiesinmotionidaho.com. It is delivered by email through Mailjet, an email delivery service.',
+  },
+  {
+    q: 'Does this website use cookies?',
+    a: 'Our previous website used cookies to improve the experience and track usage patterns. You can accept or decline cookies in your browser settings. This website does not currently load an analytics or tag manager script.',
+  },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/privacy"
+  eyebrow="Your privacy"
+  h1="Website Privacy Policy"
+  lead="How Bodies in Motion collects, uses and protects the information you give us through this website."
+  heroImg={heroImg}
+  heroAlt="A laughing child in a red cap with other children in front of a wall of number cards"
+  ctaUrl={`mailto:${NAP.email}`}
+  ctaLabel="Email us about privacy"
+  ctaExternal={false}
+  ctaHeading="Questions about this policy?"
+  ctaText="Email help@bodiesinmotionidaho.com or call (208) 381-0587."
+  faq={faq}
+>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <p class="draft-notice" role="note"><strong>Draft — pending legal review</strong></p>
+      <p>
+        This policy explains how Bodies in Motion collects, uses and protects any personal information you provide while
+        using our website. We are committed to ensuring that your privacy is protected. It replaces the policy on our
+        previous website (last updated 6/19/2026). Effective date: to be announced.
+      </p>
+
+      <h2 id="collect">Information we collect</h2>
+      <ul class="bullets">
+        <li>Name and contact information</li>
+        <li>Demographic information</li>
+        <li>Usage data and analytics</li>
+        <li>Information from cookies and tracking technologies</li>
+      </ul>
+
+      <h2 id="use">How we use it</h2>
+      <ul class="bullets">
+        <li>Internal record keeping</li>
+        <li>Personalizing your experience</li>
+        <li>Sending promotional emails</li>
+        <li>Improving our products and services</li>
+      </ul>
+
+      <h2 id="forms">Contact form and email</h2>
+      <p>
+        If you use the form on our <a href="/contact">contact page</a>, we collect the name, email address, phone number
+        (optional), program and message you enter. The form sends them to <a href={`mailto:${NAP.email}`}>{NAP.email}</a>,
+        and the email is delivered through Mailjet, an email delivery service. If you email or call us directly, we receive
+        whatever you send us.
+      </p>
+
+      <h2 id="text-messages">Text messages (SMS)</h2>
+      <p>
+        Bodies in Motion Idaho may send text messages (SMS) to individuals who have provided their phone number in
+        connection with a job application or business inquiry. Message frequency varies. Message and data rates may apply.
+        You may opt out at any time by replying STOP to any message. Mobile opt-in and consent to receive text messages
+        will not be shared with third parties or affiliates for marketing or promotional purposes.
+      </p>
+
+      <h2 id="cookies">Cookies and analytics</h2>
+      <p>
+        Our website may use cookies to enhance your experience and track usage patterns. You can choose to accept or
+        decline cookies through your browser settings. This website does not currently load an analytics or tag manager
+        script; our previous website used Google Tag Manager.
+      </p>
+
+      <h2 id="third-parties">Third-party services and links</h2>
+      <p>
+        We do not sell, trade or transfer your personally identifiable information to outside parties without your
+        consent, except for trusted third parties who assist us in operating our website. Parts of our website use or link
+        to other services, which have their own privacy practices that we do not control:
+      </p>
+      <ul class="bullets">
+        <li><strong>Calendly</strong> for scheduling tours, birthday party RSVPs and trial classes.</li>
+        <li><strong>GymMaster</strong> for the online waiver portal.</li>
+        <li><strong>Camps for Kids Idaho</strong> (campsforkidsidaho.com) for camp and event registration.</li>
+        <li><strong>Mailjet</strong> for delivering contact form messages by email.</li>
+        <li><strong>Google</strong>, for the map on our pages and the fonts the site loads.</li>
+        <li>Our <strong>Facebook, Instagram, X (Twitter) and YouTube</strong> pages, which we link to.</li>
+      </ul>
+
+      <h2 id="security">Security</h2>
+      <p>
+        We are dedicated to safeguarding your information and have implemented suitable physical, electronic and
+        managerial procedures to secure it.
+      </p>
+
+      <h2 id="changes">Changes to this policy</h2>
+      <p>
+        We may update this policy as necessary to reflect changes in our practices or relevant laws. Please check this page
+        periodically for changes. By using our website, you signify your acceptance of this policy.
+      </p>
+
+      <h2 id="contact">Contact us</h2>
+      <p>If you have any questions or concerns about this policy or our practices, contact us:</p>
+      <ul class="bullets">
+        <li><strong>Email:</strong> <a href={`mailto:${NAP.email}`}>{NAP.email}</a></li>
+        <li><strong>Phone:</strong> <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a></li>
+        <li><strong>Mail:</strong> {NAP.name}, {NAP.street}, {NAP.city}, {NAP.state} {NAP.zip}</li>
+      </ul>
+    </div>
+  </section>
+</ActivityPage>
+
+<style>
+  .draft-notice {
+    border: 3px solid var(--ink);
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    color: var(--ink);
+    background: var(--y);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+</style>

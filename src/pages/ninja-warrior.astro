@@ -1,0 +1,196 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { LINKS, NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/photos/ninja-warrior-private-class.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryNinja1 from '../assets/photos/ninja-salmon_orig.jpg'
+import galleryNinja2 from '../assets/photos/ninja-private-class-2.jpg'
+import galleryNinja3 from '../assets/photos/duncan-ninja-warrior.jpeg'
+import galleryNinja4 from '../assets/photos/ninja-nunchuk.jpg'
+
+const title = 'Kids Ninja Warrior Classes in Boise, ID | Bodies in Motion'
+const description =
+  'Kids Ninja Warrior classes (ages 5–13), a free 30-minute ninja trial, open gym and competitions at Bodies in Motion in Boise, ID. See the schedule and tuition.'
+
+// Class schedule and tuition confirmed by Duncan (2026-10-23). Saturday open gym ends at 5 pm (confirmed).
+// TODO(Duncan): Sunday open gym hours (old pages said 5:00 pm or 3:00 pm); shown as "call" until confirmed.
+// TODO(Duncan): next competition is in the works, date TBA. Add the date when set.
+
+const bands = [
+  { band: 'White Band', obstacles: 'Thread Vault, Rope Swing, Slosh Walk, Spider Wall, Tramp to Bar, PK Roll' },
+  { band: 'Yellow Band', obstacles: 'Speed Vault, Monkey Bars, Ninja Wheel, Quad Step, Crane Jump, Ring Pulls' },
+  { band: 'Green Band', obstacles: 'Kong Vault, Tramp to Rope, Med. Ball Alley, Descending Devil, Tramp to Low Bar, Unstable Bridge' },
+  { band: 'Blue Band', obstacles: 'Dash Vault, Rock Traverse, Rope Climb, Slosh Traverse, Sonic Curve, 4’ Lache' },
+  { band: 'Red Band', obstacles: 'Dive Roll, Cannonball Alley, Hanging Chuks, Jr. Warped Wall, Cat Leap, Block Walk' },
+  { band: 'Dan Bo Band', obstacles: 'Kong to Dive Roll, Reverse Vault, Swing Pop, 4 Obstacle Rig, Cliff Hanger, Ring to Wall' },
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What ages are the Kids Ninja Warrior classes for?',
+    a: 'The program is for ages 5 to 13, with one class group for ages 5–8 and another for kids 9 and up so every child trains at the right pace.',
+  },
+  {
+    q: 'What is the Ninja Warrior class schedule?',
+    a: 'Monday and Wednesday: 4:30–5:15 pm for ages 5–8 and 5:30–6:15 pm for ages 9+. Tuesday and Thursday: 4:30–5:15 pm for ages 9+ and 5:30–6:15 pm for ages 5–8.',
+  },
+  {
+    q: 'How much do Ninja Warrior classes cost?',
+    a: 'Tuition is $149 per month for 2 days a week, $189 per month for 3 days a week and $219 per month for 4 days a week. Sibling discounts are available.',
+  },
+  {
+    q: 'Is there a free trial?',
+    a: 'Yes. The free private trial is a 30-minute one-on-one session where your child meets one of our coaches and tries beginner parkour and obstacle skills. Parents must stay to watch but do not need to participate. Have siblings? Register one child and we’ll include the rest.',
+  },
+  {
+    q: 'How does the rank system work?',
+    a: 'Students advance through ranks, from White Band up through Yellow, Green, Blue, Red and Dan Bo Band. Each band has a set of obstacles to complete and a fitness benchmark, and students build character traits like Focus, Self-Discipline and Confidence along the way.',
+  },
+  {
+    q: 'What is Ninja Warrior open gym and what does it cost?',
+    a: 'Open gym lets you adjust the equipment and create your own course at your own pace. It costs $14. If you are fairly new to the sport, we recommend doing the Ninja Warrior experience once first. During busy camp seasons, call before coming in to make sure campers are not using the Ninja Warrior room.',
+  },
+  {
+    q: 'When is open gym?',
+    a: 'Monday through Friday 10:30 am–12:00 pm and 1:30–4:00 pm, and Saturday 10 am–5:00 pm. For Sunday, call (208) 381-0587.',
+  },
+  {
+    q: 'Do you host Ninja Warrior competitions?',
+    a: 'Yes. Our competitions let athletes race the clock and tackle challenging obstacles, with divisions for different age groups. The next competition is in the works; the date will be announced soon. Call (208) 381-0587 to ask about it.',
+  },
+  {
+    q: 'Where is the Ninja Warrior course?',
+    a: 'At Bodies in Motion, 729 W. Diamond St, Boise, ID 83705. Ninja athletes and families come to us from Boise, Meridian and Garden City.',
+  },
+]
+
+const reviews = [
+  { quote: 'Best Parkour in town!!', name: 'Ryan H', source: 'Groupon' },
+  { quote: 'My 7 year old loved every class! In fact, it was the thing she looks forward to most every week. Well worth the money.', name: 'Nicholas B', source: 'Groupon' },
+  { quote: 'I’m impressed with how many quality American Ninja Warrior and Spartan obstacles are available at Bodies in Motion. I’ve flown in from WA just to train here!!', name: 'Rose Wetzel-Sinnett', source: '5 stars, Facebook' },
+  { quote: 'Really awesome place. Tyler, the Ninja Warrior teacher, is very nice and has the best interests of the kids in mind. He groups the kids by skill and gives the little ones more help and care so they don’t get hurt.', name: 'Teresa A', source: 'Groupon' },
+]
+
+const gallery = [
+  { src: galleryNinja1, alt: 'A ninja student hanging from the salmon ladder bars' },
+  { src: galleryNinja2, alt: 'Coach and child working one-on-one on a ninja obstacle' },
+  { src: galleryNinja3, alt: 'Duncan Richardson on the ninja warrior course' },
+  { src: galleryNinja4, alt: 'A student swinging across hanging nunchuk holds on the ninja course' },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/ninja-warrior"
+  eyebrow="Encourage. Empower."
+  h1="Kids Ninja Warrior Classes in Boise"
+  lead="Train like a ninja: build strength, speed, agility and confidence with coaches who meet every child where they are."
+  heroImg={heroImg}
+  heroAlt="A child hanging from a ninja obstacle bar while a coach spots them"
+  ctaUrl={LINKS.calendlyNinja58}
+  ctaLabel="Free trial ages 5–8"
+  cta2Url={LINKS.calendlyNinja9}
+  cta2Label="Free trial ages 9+"
+  ctaHeading="Ready to try Ninja Warrior?"
+  ctaText="Book a free 30-minute private trial for ages 5–8 or 9+, or call us at (208) 381-0587. Families come to us from Boise, Meridian and Garden City."
+  faq={faq}
+  reviews={reviews}
+>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Train like a ninja</h2>
+      <p>
+        Our high-energy Ninja Warrior classes are designed to build strength, agility and confidence. There are two age
+        groups, one for ages 5–8 and another for kids 9 and up, so challenges suit each child’s stage of development.
+        From obstacle course skills to body awareness and coordination, kids gain more than physical fitness: they build
+        resilience, focus and a sense of accomplishment in every class.
+      </p>
+      <p>
+        Ninja Warrior is also a great alternative to traditional sports, a fun cross-training option, or a way to stay
+        active between seasons. Owner Duncan Richardson competed on American Ninja Warrior in 2016.
+      </p>
+
+      <h2 id="free-trial">Free private ninja trial</h2>
+      <p>
+        Our free trial is a 30-minute one-on-one session. Your child meets one of our coaches and tries beginner parkour
+        and obstacle skills, just enough to build confidence and spark excitement. It is fun and low pressure. Parents
+        must stay to watch (cheering encouraged), but no participation is needed. Have siblings? Bring them too: register
+        one child and we’ll include the rest.
+      </p>
+      <div class="stub-actions">
+        <a class="btn-primary" href={LINKS.calendlyNinja58} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 5–8)</a>
+        <a class="btn-primary" href={LINKS.calendlyNinja9} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 9+)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="classes">
+    <div class="section__inner section__inner--read prose">
+      <h2>Kids Ninja Warrior classes: schedule and tuition</h2>
+      <p>
+        The Kids Ninja Warrior program is built on the proven structure of our former junior martial arts classes, with a
+        clear progression system and a focus on personal development. Students advance through ranks while developing
+        traits like Focus, Self-Discipline and Confidence.
+      </p>
+      <ul class="bullets">
+        <li><strong>Monday &amp; Wednesday:</strong> 4:30–5:15 pm ages 5–8, 5:30–6:15 pm ages 9+</li>
+        <li><strong>Tuesday &amp; Thursday:</strong> 4:30–5:15 pm ages 9+, 5:30–6:15 pm ages 5–8</li>
+        <li><strong>Tuition:</strong> $149/mo (2 days a week), $189/mo (3 days a week), $219/mo (4 days a week). Sibling discounts available.</li>
+      </ul>
+      <p>Questions about classes? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or <a href="/contact">contact us</a>.</p>
+
+      <h2 id="ranks">Ranks and obstacles taught</h2>
+      <p>
+        Each band has six obstacles to complete plus a fitness benchmark (push-ups, sit-ups, squats, dead hangs and
+        pull-ups, with age-appropriate targets for ages 5–8 and 9+). Obstacles taught at each rank:
+      </p>
+      <ul class="bullets">
+        {bands.map((b) => <li><strong>{b.band}:</strong> {b.obstacles}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="open-gym">
+    <div class="section__inner section__inner--read prose">
+      <h2>Ninja Warrior open gym</h2>
+      <p>
+        Already know what you’re doing and want to improve your skills and strength at your own pace? Open gym lets you
+        adjust the equipment and create your own course, for all ages. If you’re fairly new to the sport, we highly
+        recommend doing the Ninja Warrior experience one time first.
+      </p>
+      <ul class="bullets">
+        <li><strong>Cost:</strong> $14</li>
+        <li><strong>Monday–Friday:</strong> 10:30 am–12:00 pm and 1:30–4:00 pm</li>
+        <li><strong>Saturday:</strong> 10 am–5:00 pm</li>
+        <li><strong>Sunday:</strong> call for hours</li>
+      </ul>
+      <p>
+        During busy camp seasons, please call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> before coming in to make sure
+        campers aren’t using the Ninja Warrior room.
+      </p>
+
+      <h2 id="competitions">Ninja Warrior competitions</h2>
+      <p>
+        Whether you’re new to Ninja Warrior competitions or gunning for the national championship, you are invited to test
+        your skills at Bodies in Motion. Competitions let athletes race the clock, tackle challenging obstacles and show
+        off everything they’ve trained for, with divisions for different age groups. The next competition is in the works; the date is to be announced. Call us to ask about it.
+      </p>
+      <p class="camp-note">
+        <strong>Past example (seasonal, for reference only):</strong> our Winter 2025 qualifier on Saturday, February 22
+        was $50 per registrant, with optional 6–13 Open and 14+ Open divisions at $75 each. Age groups were 7U and 9U,
+        11U and 13U, 15U and 40+, and Amateur/Pro, and spectators were free. Format, prices and dates change with each
+        event.
+      </p>
+    </div>
+  </section>
+  <PhotoGallery eyebrow="Ninja Warrior" heading="Obstacles, coaches and open gym" items={gallery} />
+</ActivityPage>
+
+<style>
+  .camp-note {
+    border-left: 4px solid var(--o);
+    padding: 4px 0 4px 16px;
+    color: var(--muted);
+  }
+</style>

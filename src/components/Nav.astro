@@ -1,0 +1,376 @@
+---
+import { Image } from 'astro:assets'
+import logo from '../assets/logo.png'
+import { NAP } from '../lib/site'
+
+const programLinks = [
+  { to: '/infant-toddler-care', label: 'Infant & Toddler Care' },
+  { to: '/preschool', label: 'Preschool' },
+  { to: '/after-school-care', label: 'Before & After School Care' },
+  { to: '/camps', label: 'Camps' },
+  null, // divider
+  { to: '/ninja-warrior', label: 'Ninja Warrior' },
+  { to: '/fitness-classes', label: 'Fitness Classes' },
+  { to: '/pickleball', label: 'Pickleball' },
+  { to: '/ropes-course', label: 'Ropes Course' },
+  { to: '/open-play', label: 'Open Play' },
+  { to: '/birthday-parties', label: 'Birthday Parties' },
+  { to: '/parents-night-out', label: "Parents' Night Out" },
+  { to: '/team-building', label: 'Team Building' },
+]
+
+const mainLinks = [
+  { to: '/hours', label: 'Hours' },
+  { to: '/about', label: 'About' },
+  { to: '/reviews', label: 'Reviews' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/contact', label: 'Contact' },
+]
+
+const current = Astro.url.pathname.replace(/\/$/, '') || '/'
+---
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Bodies in Motion home">
+      <Image src={logo} alt="Bodies in Motion logo" width={200} height={56} densities={[1, 2]} loading="eager" />
+    </a>
+
+    <div class="nav__links">
+      <div class="nav__dropdown">
+        <button type="button" class="nav__dropdown-trigger" aria-haspopup="true">
+          Programs
+          <svg class="nav__dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="nav__dropdown-menu">
+          {programLinks.map((item) =>
+            item === null ? (
+              <div class="nav__dropdown-divider" role="separator" />
+            ) : (
+              <a href={item.to} class="nav__dropdown-item" aria-current={current === item.to ? 'page' : undefined}>{item.label}</a>
+            )
+          )}
+        </div>
+      </div>
+
+      {mainLinks.map((l) => (
+        <a href={l.to} class="nav__link" aria-current={current === l.to ? 'page' : undefined}>{l.label}</a>
+      ))}
+    </div>
+
+    <div class="nav__actions">
+      <a href={NAP.phoneTel} class="nav__login">{NAP.phoneDisplay}</a>
+      <a href="/waiver" class="nav__login nav__waiver">Sign a waiver</a>
+      <a href="/contact?program=Tour" class="nav__join">Book a tour</a>
+    </div>
+
+    <details class="nav__mobile">
+      <summary aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </summary>
+      <div class="nav__mobile-panel">
+        <p class="nav__mobile-title">Programs</p>
+        {programLinks.map((item) =>
+          item === null ? <div class="nav__dropdown-divider" role="separator" /> : <a href={item.to}>{item.label}</a>
+        )}
+        <div class="nav__dropdown-divider" role="separator"></div>
+        {mainLinks.map((l) => <a href={l.to}>{l.label}</a>)}
+        <a href="/contact?program=Tour" class="nav__mobile-cta">Book a tour</a>
+        <a href="/waiver" class="nav__mobile-secondary">Sign a waiver</a>
+        <a href={NAP.phoneTel} class="nav__mobile-phone">Call {NAP.phoneDisplay}</a>
+      </div>
+    </details>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    background: var(--nav-bg);
+    border-bottom: 3px solid var(--ink);
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__inner {
+    width: 100%;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 40px;
+  }
+
+  /* Real BIM wordmark (transparent PNG from CFK / brand files). Reads on cream nav. */
+  .nav__logo :global(img) {
+    height: 48px;
+    width: auto;
+    max-width: min(200px, 42vw);
+    rotate: -2deg;
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .nav__link,
+  .nav__dropdown-trigger {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    border-radius: 999px;
+    transition: color 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .nav__link:hover,
+  .nav__link[aria-current='page'] {
+    color: #fff;
+    background: var(--ink);
+  }
+
+  /* Programs dropdown (hover and keyboard focus) */
+  .nav__dropdown {
+    position: relative;
+  }
+
+  .nav__dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+  }
+
+  .nav__dropdown:hover .nav__dropdown-trigger,
+  .nav__dropdown:focus-within .nav__dropdown-trigger {
+    color: #fff;
+    background: var(--ink);
+  }
+
+  .nav__dropdown-chevron {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+    opacity: 0.6;
+  }
+
+  .nav__dropdown:hover .nav__dropdown-chevron,
+  .nav__dropdown:focus-within .nav__dropdown-chevron {
+    transform: rotate(180deg);
+  }
+
+  .nav__dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: #fffaf0;
+    border: 3px solid var(--ink);
+    border-radius: 22px;
+    padding: 8px;
+    min-width: 260px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  /* bridge the 8px gap so the menu stays open while moving the pointer */
+  .nav__dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+
+  .nav__dropdown:hover .nav__dropdown-menu,
+  .nav__dropdown:focus-within .nav__dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav__dropdown-item {
+    display: block;
+    padding: 9px 14px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(20, 18, 58, 0.75);
+    border-radius: 6px;
+    transition: color 0.12s ease, background 0.12s ease;
+  }
+
+  .nav__dropdown-item:hover,
+  .nav__dropdown-item[aria-current='page'] {
+    color: var(--ink);
+    background: var(--y);
+  }
+
+  .nav__dropdown-divider {
+    height: 1px;
+    background: rgba(20, 18, 58, 0.08);
+    margin: 6px 8px;
+  }
+
+  .nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .nav__login {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(20, 18, 58, 0.75);
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+
+  .nav__login:hover {
+    color: var(--text);
+    background: rgba(20, 18, 58, 0.06);
+  }
+
+  .nav__join {
+    padding: 9px 20px;
+    background: var(--y);
+    color: var(--ink);
+    border: 2.5px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition: background 0.15s ease, transform 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .nav__join:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  /* Mobile menu: native <details>, no JavaScript needed */
+  .nav__mobile {
+    display: none;
+    margin-left: auto;
+  }
+
+  .nav__mobile summary {
+    list-style: none;
+    padding: 8px;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .nav__mobile summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav__mobile-panel {
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+    background: #fffaf0;
+    border-bottom: 3px solid var(--ink);
+    padding: 12px 24px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav__mobile-panel a {
+    padding: 12px 4px;
+    font-weight: 500;
+    color: rgba(20, 18, 58, 0.85);
+  }
+
+  .nav__mobile-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(20, 18, 58, 0.45);
+    padding: 8px 4px;
+  }
+
+  .nav__mobile-panel a.nav__mobile-cta {
+    margin-top: 12px;
+    background: var(--y);
+    color: var(--ink);
+    border: 2.5px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    text-align: center;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+
+  .nav__mobile-panel a.nav__mobile-phone {
+    text-align: center;
+    color: var(--accent-text);
+  }
+
+  @media (max-width: 1180px) {
+    .nav__actions .nav__waiver {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1060px) {
+    .nav__actions .nav__login {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .nav__inner {
+      padding: 0 24px;
+    }
+
+    .nav__logo {
+      margin-right: 12px;
+    }
+
+    .nav__logo :global(img) {
+      height: 40px;
+      max-width: min(168px, 55vw);
+    }
+
+    .nav__links,
+    .nav__actions {
+      display: none;
+    }
+
+    .nav__mobile {
+      display: block;
+    }
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+// Shared shell for the three full, indexable care pages (infant/toddler, preschool,
+// before & after school). Emits one H1, canonical, ChildCare + FAQPage JSON-LD and
+// a visible FAQ that is built from the same items as the FAQPage markup.
+import { Image } from 'astro:assets'
+import Base from './Base.astro'
+import Faq from '../components/Faq.astro'
+import Location from '../components/Location.astro'
+import { NAP, LICENSE_NUMBER, childCareSchema, faqSchema, type FaqItem } from '../lib/site'
+
+interface CareFacts {
+  ages: string
+  hours: string
+  from: string
+  fromNote?: string
+  /** Exact ContactForm program option value for openings CTA. */
+  openingsProgram: string
+}
+
+interface Props {
+  title: string
+  description: string
+  path: string
+  eyebrow: string
+  h1: string
+  lead?: string
+  heroImg: ImageMetadata
+  heroAlt: string
+  tourUrl: string
+  tourLabel: string
+  faq: FaqItem[]
+  openingHours?: string[]
+  schemaDescription?: string
+  /** Above-fold Ages · Hours · From $ · License · Openings (published facts only). */
+  facts?: CareFacts
+}
+
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, tourUrl, tourLabel, faq, openingHours, schemaDescription, facts } = Astro.props
+const jsonLd = [childCareSchema({ description: schemaDescription ?? description, openingHours }), faqSchema(faq)]
+const openingsHref = facts ? `/contact?program=${encodeURIComponent(facts.openingsProgram)}` : undefined
+---
+
+<Base title={title} description={description} path={path} jsonLd={jsonLd}>
+  <header class="page-hero">
+    <Image class="page-hero__img" src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="page-hero__inner">
+      <p class="page-hero__eyebrow">{eyebrow}</p>
+      <h1>{h1}</h1>
+      {lead && <p class="page-hero__lead">{lead}</p>}
+      {facts && (
+        <ul class="page-hero__facts" aria-label="Program facts">
+          <li><b>Ages</b> {facts.ages}</li>
+          <li><b>Hours</b> {facts.hours}</li>
+          <li><b>From</b> {facts.from}{facts.fromNote ? ` · ${facts.fromNote}` : ''}</li>
+          <li><b>License</b> #{LICENSE_NUMBER}</li>
+          <li class="page-hero__facts-cta"><a href={openingsHref}>Ask about openings →</a></li>
+        </ul>
+      )}
+      <div class="page-hero__actions">
+        <a href={tourUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">{tourLabel}</a>
+        <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
+      </div>
+    </div>
+  </header>
+
+  <slot />
+
+  <section class="section section--surface">
+    <div class="section__inner section__inner--read">
+      <Faq items={faq} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <div class="cta-box">
+        <div>
+          <h2>Ready to see Bodies in Motion in person?</h2>
+          <p>Book a tour, or call us at {NAP.phoneDisplay}.</p>
+        </div>
+        <div class="cta-box__buttons">
+          <a href={tourUrl} class="btn-white" target="_blank" rel="noopener noreferrer">{tourLabel}</a>
+          <a href="/contact" class="btn-white-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="section__inner"><Location /></div>
+  </section>
+</Base>
+
+<style>
+  .page-hero__facts {
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .page-hero__facts li {
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+  .page-hero__facts li b {
+    font-weight: 800;
+    margin-right: 4px;
+  }
+  .page-hero__facts-cta {
+    background: var(--y) !important;
+    padding: 0 !important;
+  }
+  .page-hero__facts-cta a {
+    display: inline-block;
+    padding: 6px 14px;
+    font-weight: 800;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .page-hero__facts-cta a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

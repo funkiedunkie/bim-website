@@ -1,0 +1,79 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import ContactForm from '../components/ContactForm.astro'
+import { NAP, contactPageSchema, type FaqItem } from '../lib/site'
+import heroImg from '../assets/hero.png'
+
+const title = 'Contact Bodies in Motion | Boise, ID'
+const description =
+  'Contact Bodies in Motion at 729 W. Diamond St, Boise, ID 83705, near the Fred Meyer on Federal Way. Call (208) 381-0587, email help@bodiesinmotionidaho.com or send a message.'
+
+const faq: FaqItem[] = [
+  {
+    q: 'How do I contact Bodies in Motion?',
+    a: 'Call (208) 381-0587, email help@bodiesinmotionidaho.com, or send a message with the form on this page.',
+  },
+  {
+    q: 'Where are you located?',
+    a: 'Bodies in Motion is at 729 W. Diamond St, Boise, ID 83705, near the Fred Meyer on Federal Way. Boise is our only location.',
+  },
+  {
+    q: 'What is the No Pickup Hotline?',
+    a: 'It is a separate line at the same number: call (208) 381-0587 and dial extension 5.',
+  },
+  {
+    q: 'Where can I find your hours?',
+    a: 'Hours for open play, childcare, pickleball, fitness classes, camps and team building are on our hours page.',
+  },
+  {
+    q: 'What email address should I use?',
+    a: 'Write to help@bodiesinmotionidaho.com. The contact form on this page sends to the same address.',
+  },
+  {
+    q: 'Do you serve families outside Boise?',
+    a: 'We are located in Boise and serve families from Boise, Meridian and Garden City.',
+  },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/contact"
+  eyebrow="We’re ready to ignite activity & empowerment"
+  h1="Contact Bodies in Motion"
+  lead="Call, email or stop by. We’re near the Fred Meyer on Federal Way in Boise."
+  heroImg={heroImg}
+  heroAlt="A boy with outstretched arms and a big smile at a water play area while other children play behind him"
+  ctaUrl={NAP.phoneTel}
+  ctaLabel={`Call ${NAP.phoneDisplay}`}
+  ctaExternal={false}
+  ctaHeading="Come see us in Boise"
+  ctaText="729 W. Diamond St, Boise, ID 83705, near the Fred Meyer on Federal Way."
+  faq={faq}
+  extraJsonLd={[contactPageSchema({ description })]}
+>
+  <section class="section">
+    <div class="section__inner section__inner--read prose">
+      <h2>Contact details</h2>
+      <ul class="bullets">
+        <li>
+          <strong>Address:</strong> {NAP.name}, {NAP.street}, {NAP.city}, {NAP.state} {NAP.zip} (near the Fred Meyer on
+          Federal Way)
+        </li>
+        <li><strong>Main line:</strong> <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a></li>
+        <li>
+          <strong>No Pickup Hotline:</strong> <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, Ext. 5
+        </li>
+        <li><strong>Email:</strong> <a href={`mailto:${NAP.email}`}>{NAP.email}</a></li>
+      </ul>
+      <p>
+        Looking for open play, childcare, pickleball, fitness, camp or team building times? See our
+        <a href="/hours">hours of operation</a>. Ready to visit? Save time and fill out your
+        <a href="/waiver">waiver online</a> first.
+      </p>
+
+      <ContactForm />
+    </div>
+  </section>
+</ActivityPage>
