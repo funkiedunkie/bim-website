@@ -33,7 +33,7 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
 <nav class="nav" aria-label="Main navigation">
   <div class="nav__inner">
     <a href="/" class="nav__logo" aria-label="Bodies in Motion home">
-      <Image src={logo} alt="Bodies in Motion logo" width={90} height={60} densities={[1, 2]} loading="eager" />
+      <Image src={logo} alt="Bodies in Motion logo" width={200} height={56} densities={[1, 2]} loading="eager" />
     </a>
 
     <div class="nav__links">
@@ -116,16 +116,12 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
     margin-right: 40px;
   }
 
-  /* The logo is an opaque black-background image, so it sits in a black sticker badge. */
+  /* Real BIM wordmark (transparent PNG from CFK / brand files). Reads on cream nav. */
   .nav__logo :global(img) {
-    height: 52px;
+    height: 48px;
     width: auto;
-    background: #000;
-    border: 2.5px solid var(--ink);
-    border-radius: 14px;
-    padding: 2px 6px;
-    box-sizing: content-box;
-    rotate: -3deg;
+    max-width: min(200px, 42vw);
+    rotate: -2deg;
   }
 
   .nav__links {
@@ -349,6 +345,15 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
   @media (max-width: 900px) {
     .nav__inner {
       padding: 0 24px;
+    }
+
+    .nav__logo {
+      margin-right: 12px;
+    }
+
+    .nav__logo :global(img) {
+      height: 40px;
+      max-width: min(168px, 55vw);
     }
 
     .nav__links,
