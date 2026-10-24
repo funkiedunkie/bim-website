@@ -3,6 +3,11 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import Reviews from '../components/Reviews.astro'
 import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/values2.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryJobs1 from '../assets/photos/jobs-purpose.jpeg'
+import galleryJobs2 from '../assets/photos/after-school-pals.jpg'
+import galleryJobs3 from '../assets/photos/ninja-warrior-private-class.jpg'
+import galleryJobs4 from '../assets/photos/dave-kickboxing.jpg'
 
 const title = 'Jobs at Bodies in Motion | Become a Motioneer in Boise, ID'
 const description =
@@ -99,6 +104,13 @@ const faq: FaqItem[] = [
     a: 'At Bodies in Motion, 729 W. Diamond St, Boise, ID 83705, near the Fred Meyer on Federal Way. Boise is our only location.',
   },
 ]
+
+const gallery = [
+  { src: galleryJobs1, alt: 'Team members working with kids and adults at Bodies in Motion' },
+  { src: galleryJobs2, alt: 'Staff supporting after-school kids on the playground' },
+  { src: galleryJobs3, alt: 'A coach spotting a child on a ninja obstacle' },
+  { src: galleryJobs4, alt: 'A coach training adults on the kickboxing bags' },
+]
 ---
 
 <ActivityPage
@@ -159,4 +171,5 @@ const faq: FaqItem[] = [
       <Reviews items={motioneers} title="What past Motioneers say" id="motioneers-title" />
     </div>
   </section>
+  <PhotoGallery eyebrow="Work here" heading="A day at Bodies in Motion" items={gallery} />
 </ActivityPage>

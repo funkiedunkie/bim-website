@@ -3,6 +3,11 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import PriceTable from '../components/PriceTable.astro'
 import { LINKS, NAP, eventSchema, type FaqItem } from '../lib/site'
 import heroImg from '../assets/hero.png'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryCamp1 from '../assets/photos/camps-web_orig.jpg'
+import galleryCamp2 from '../assets/photos/camp-splash.jpg'
+import galleryCamp3 from '../assets/photos/camp-ninja-salmon.jpg'
+import galleryCamp4 from '../assets/photos/web-summer-camp-ninja-warrior_orig.jpg'
 
 const title = 'Kids Camps in Boise, ID: Summer, No-School & Holiday Camps | Bodies in Motion'
 const description =
@@ -118,6 +123,13 @@ const extraJsonLd = upcoming.map((c) =>
     typicalAgeRange: c.ages.replace('–', '-'),
   }),
 )
+
+const gallery = [
+  { src: galleryCamp1, alt: 'Summer campers gathered for a group activity at Bodies in Motion' },
+  { src: galleryCamp2, alt: 'Campers cooling off during a splash day at camp' },
+  { src: galleryCamp3, alt: 'A camper on the salmon ladder during ninja camp time' },
+  { src: galleryCamp4, alt: 'Campers cheering a friend hanging from a ninja warrior bar' },
+]
 ---
 
 <ActivityPage
@@ -221,6 +233,7 @@ const extraJsonLd = upcoming.map((c) =>
       <PriceTable caption="Extended care and lunch" subtitle="Per day, optional" rows={careRows} priceHeading="Price" rowHeading="Add-on" />
     </div>
   </section>
+  <PhotoGallery eyebrow="Camps for Kids" heading="School breaks filled with motion" items={gallery} />
 </ActivityPage>
 
 <style>

@@ -3,6 +3,11 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import PriceTable from '../components/PriceTable.astro'
 import { OPEN_PLAY_HOURS, OPEN_PLAY_HOURS_SPEC, HOLIDAY_TEXT, type FaqItem } from '../lib/site'
 import heroImg from '../assets/open-play.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryPlay1 from '../assets/photos/open-play-web_1.jpg'
+import galleryPlay2 from '../assets/photos/open-play-web-2.jpg'
+import galleryPlay3 from '../assets/photos/bim-ropes-play-area.jpg'
+import galleryPlay4 from '../assets/photos/bim11color-1.jpg'
 
 const title = 'Indoor Playground & Open Play in Boise, ID | Bodies in Motion'
 const description =
@@ -62,6 +67,13 @@ const reviews = [
   { quote: 'Amazing!! What a great, safe place for kids to burn off their constant energy. Definitely a must for adults & kids.', name: 'Holly B.', source: '5 stars, Google' },
   { quote: 'Such a great way to get my kid running around, especially in this weather. Staff are very friendly and I even get my coffee! Well done', name: 'Allen T.', source: '5 stars, Facebook' },
   { quote: 'Very pleased with the open play area. My 4 year old was in heaven. So much variety between the indoor play gym, costumes, train tracks, exercise ball... You name it. Was not a stuffy parent area either. Clean, cozy, bright.', name: 'Mindy H', source: '5 stars, Yelp' },
+]
+
+const gallery = [
+  { src: galleryPlay1, alt: 'Kids laughing on the orange and blue indoor slides during open play' },
+  { src: galleryPlay2, alt: 'A child wrapped in a yellow costume inside the multi-level soft-play structure' },
+  { src: galleryPlay3, alt: 'Wide view of the indoor playground with slides, padded platforms and hanging ropes course above' },
+  { src: galleryPlay4, alt: 'Colorful indoor play structure with climbing towers and open floor space' },
 ]
 ---
 
@@ -131,4 +143,9 @@ const reviews = [
       </p>
     </div>
   </section>
+  <PhotoGallery
+    eyebrow="Open play"
+    heading="The indoor playground"
+    items={gallery}
+  />
 </ActivityPage>

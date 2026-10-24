@@ -2,6 +2,12 @@
 import ActivityPage from '../layouts/ActivityPage.astro'
 import { LINKS, NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/dave-kickboxing.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryFit1 from '../assets/photos/rhea-kickboxing.jpg'
+import galleryFit2 from '../assets/photos/anna-kickboxing.jpg'
+import galleryFit3 from '../assets/photos/lisa-kickboxing.jpg'
+import galleryFit4 from '../assets/photos/kristin-kickboxing.jpg'
+import galleryFit5 from '../assets/photos/rachel-fitness.jpg'
 
 const title = 'Kickboxing & Bootcamp Fitness Classes in Boise, ID | Bodies in Motion'
 const description =
@@ -67,6 +73,14 @@ const reviews = [
   { quote: 'Bodies in Motion is awesome - The best instructors in Boise and the place to come to succeed with your goals.', name: 'Rick Wold', source: '5 stars, Facebook' },
   { quote: 'A win win for the whole family... I get to work out while the kids get to play.', name: 'Chris Gaines', source: '5 stars, Facebook' },
   { quote: 'I highly recommend BIM because they are serious about your health and overall fitness.', name: 'Sheila Moore', source: '5 stars, Facebook' },
+]
+
+const gallery = [
+  { src: galleryFit1, alt: 'A woman in pink boxing gloves striking a heavy bag during kickboxing class' },
+  { src: galleryFit2, alt: 'Kickboxing class member working the heavy bags on the gym floor' },
+  { src: galleryFit3, alt: 'Adult kickboxing training at Bodies in Motion' },
+  { src: galleryFit4, alt: 'A member throwing punches at a freestanding bag in kickboxing' },
+  { src: galleryFit5, alt: 'Strength and fitness training in the Bodies in Motion gym' },
 ]
 ---
 
@@ -162,6 +176,7 @@ const reviews = [
       </p>
     </div>
   </section>
+  <PhotoGallery eyebrow="Kickboxing &amp; SGX" heading="Train with us" items={gallery} />
 </ActivityPage>
 
 <style>

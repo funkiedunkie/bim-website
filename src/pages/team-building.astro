@@ -2,6 +2,10 @@
 import ActivityPage from '../layouts/ActivityPage.astro'
 import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/dutch-bros-team-building.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryTb1 from '../assets/photos/team-building-ninja.jpg'
+import galleryTb2 from '../assets/photos/dutch-bros-team-building-2.jpg'
+import galleryTb3 from '../assets/photos/group-ropes-course.jpg'
 
 const title = 'Team Building in Boise, ID: Ropes Course & Ninja Warrior | Bodies in Motion'
 const description =
@@ -54,6 +58,12 @@ const reviews = [
   { quote: 'We used Bodies in Motion for a conference team-building activity, and I could not recommend them enough! … The staff is incredible knowledgeable, supportive and enthusiastic.', name: 'Kirstin Mann', source: 'Serve Idaho, Idaho Department of Labor' },
   { quote: 'We had a group of about 30-40 people come in for a fun team building night! The owner and staff were amazing, keeping the entire night so much fun for us all. There was never a moment of feeling unsafe.', name: 'Andrew Randall', source: 'Dutch Bros' },
   { quote: 'The Bodies in Motion Ninja Warrior experience set the stage for our classes to work together through communication and teamwork. The ropes course was challenging for all students and the staff helped them feel success no matter how far they made it on the course.', name: 'Kelly Selvage', source: '2/3 Teacher, Anser Public Charter School' },
+]
+
+const gallery = [
+  { src: galleryTb1, alt: 'Coworkers tackling ninja warrior obstacles during a team-building workshop' },
+  { src: galleryTb2, alt: 'Dutch Bros team posing after a team-building event at Bodies in Motion' },
+  { src: galleryTb3, alt: 'A workplace group clipped into the high ropes course together' },
 ]
 ---
 
@@ -145,4 +155,5 @@ const reviews = [
       </div>
     </div>
   </section>
+  <PhotoGallery eyebrow="Team building" heading="Workshops on ropes and ninja" items={gallery} />
 </ActivityPage>

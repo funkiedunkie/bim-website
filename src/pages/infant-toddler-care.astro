@@ -3,6 +3,11 @@ import CarePage from '../layouts/CarePage.astro'
 import PriceTable from '../components/PriceTable.astro'
 import { LINKS, type FaqItem } from '../lib/site'
 import heroImg from '../assets/strip1.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryInf1 from '../assets/photos/infant-cuddle.jpg'
+import galleryInf2 from '../assets/photos/infant-reese.jpg'
+import galleryInf3 from '../assets/photos/zoey-toddler-2.jpeg'
+import galleryInf4 from '../assets/photos/toddler-proud.jpg'
 
 const title = 'Infant & Toddler Care in Boise, ID | Bodies in Motion'
 const description =
@@ -55,6 +60,13 @@ const faq: FaqItem[] = [
     q: 'Which areas do families come from?',
     a: 'Our only location is 729 W. Diamond St. in Boise. We serve families from Boise, Meridian and Garden City.',
   },
+]
+
+const gallery = [
+  { src: galleryInf1, alt: 'A teacher cuddling with two babies in the infant room' },
+  { src: galleryInf2, alt: 'One baby and a teacher smiling together' },
+  { src: galleryInf3, alt: 'A happy toddler excited to see his teacher' },
+  { src: galleryInf4, alt: 'A proud young child showing off a classroom creation' },
 ]
 ---
 
@@ -143,4 +155,5 @@ const faq: FaqItem[] = [
       </div>
     </div>
   </section>
+  <PhotoGallery eyebrow="Infant &amp; toddler" heading="Small rooms. Soft landings." items={gallery} />
 </CarePage>

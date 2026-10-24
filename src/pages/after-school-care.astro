@@ -3,6 +3,10 @@ import CarePage from '../layouts/CarePage.astro'
 import PriceTable from '../components/PriceTable.astro'
 import { LINKS, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/after-school-pals.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryAsc1 from '../assets/photos/after-school-web.jpg'
+import galleryAsc2 from '../assets/photos/after-school-structure.jpg'
+import galleryAsc3 from '../assets/photos/open-play-web_1.jpg'
 
 const title = 'Before & After School Care in Boise, ID | Bodies in Motion'
 const description =
@@ -108,6 +112,12 @@ const faq: FaqItem[] = [
     a: 'Use our online scheduler to book a tour, or call (208) 381-0587. We’ll show you around, introduce you to our team, and answer all your questions.',
   },
 ]
+
+const gallery = [
+  { src: galleryAsc1, alt: 'After-school kids hanging out and playing at Bodies in Motion' },
+  { src: galleryAsc2, alt: 'School-age children on the indoor play structure after school' },
+  { src: galleryAsc3, alt: 'Kids on the slides during after-school free play' },
+]
 ---
 
 <CarePage
@@ -184,4 +194,5 @@ const faq: FaqItem[] = [
       </p>
     </div>
   </section>
+  <PhotoGallery eyebrow="Before &amp; after school" heading="Homework, clubs and play" items={gallery} />
 </CarePage>

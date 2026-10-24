@@ -3,6 +3,13 @@ import CarePage from '../layouts/CarePage.astro'
 import PriceTable from '../components/PriceTable.astro'
 import { LINKS, type FaqItem } from '../lib/site'
 import heroImg from '../assets/strip2.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryPre1 from '../assets/photos/preschool-web.jpg'
+import galleryPre2 from '../assets/photos/preschool-play.jpg'
+import galleryPre3 from '../assets/photos/preschool-firefighters.jpg'
+import galleryPre4 from '../assets/photos/preschool-pumpkin.jpeg'
+import galleryPre5 from '../assets/photos/preschool-amanda.jpg'
+import galleryPre6 from '../assets/photos/preschool-name.jpg'
 
 const title = 'Preschool in Boise, ID (Ages 3–6) | Bodies in Motion'
 const description =
@@ -65,6 +72,15 @@ const faq: FaqItem[] = [
     q: 'Which areas do families come from?',
     a: 'Our only location is 729 W. Diamond St. in Boise. We serve families from Boise, Meridian and Garden City.',
   },
+]
+
+const gallery = [
+  { src: galleryPre1, alt: 'Preschoolers learning together in a Bodies in Motion classroom' },
+  { src: galleryPre2, alt: 'Preschool children playing and exploring in class' },
+  { src: galleryPre3, alt: 'Preschool class visiting with local firefighters' },
+  { src: galleryPre4, alt: 'Preschoolers with pumpkins during a fall classroom activity' },
+  { src: galleryPre5, alt: 'A preschool teacher working with children at a table' },
+  { src: galleryPre6, alt: 'Preschool name recognition and early literacy activity' },
 ]
 ---
 
@@ -174,4 +190,5 @@ const faq: FaqItem[] = [
       </ol>
     </div>
   </section>
+  <PhotoGallery eyebrow="Preschool" heading="Learning through motion" items={gallery} />
 </CarePage>

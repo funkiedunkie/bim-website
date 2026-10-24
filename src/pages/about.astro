@@ -2,6 +2,12 @@
 import ActivityPage from '../layouts/ActivityPage.astro'
 import { NAP, aboutPageSchema, type FaqItem } from '../lib/site'
 import heroImg from '../assets/values2.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryAbout1 from '../assets/photos/about-richardsons.jpg'
+import galleryAbout2 from '../assets/photos/about-vista-school.jpeg'
+import galleryAbout3 from '../assets/photos/about-acro-yoga.jpg'
+import galleryAbout4 from '../assets/values1.jpg'
+import galleryAbout5 from '../assets/values3.jpg'
 
 const title = 'About Bodies in Motion | Family Fitness & Play in Boise, ID'
 const description =
@@ -60,6 +66,14 @@ const reviews = [
 ]
 
 const extraJsonLd = [aboutPageSchema({ description })]
+
+const gallery = [
+  { src: galleryAbout1, alt: 'Duncan and Rachel Richardson, founders of Bodies in Motion' },
+  { src: galleryAbout2, alt: 'Bodies in Motion community involvement with a local school' },
+  { src: galleryAbout3, alt: 'Partners practicing acro yoga at Bodies in Motion' },
+  { src: galleryAbout4, alt: 'Families and members active inside the Bodies in Motion gym' },
+  { src: galleryAbout5, alt: 'Community members moving together at Bodies in Motion' },
+]
 ---
 
 <ActivityPage
@@ -153,5 +167,6 @@ const extraJsonLd = [aboutPageSchema({ description })]
       </p>
     </div>
   </section>
+  <PhotoGallery eyebrow="About us" heading="The people and the place" items={gallery} />
 </ActivityPage>
 

@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets'
+
+interface Item {
+  src: ImageMetadata
+  alt: string
+}
+
+interface Props {
+  eyebrow?: string
+  heading?: string
+  items: Item[]
+}
+
+const { eyebrow = 'Inside Bodies in Motion', heading = 'More from this program', items } = Astro.props
+---
+
+{
+  items.length > 0 && (
+    <section class="section photo-gallery-section" aria-labelledby="photo-gallery-heading">
+      <div class="section__inner">
+        {eyebrow && <p class="section-eyebrow">{eyebrow}</p>}
+        <h2 id="photo-gallery-heading" class="photo-gallery__heading">{heading}</h2>
+        <ul class="photo-gallery">
+          {items.map((item, i) => (
+            <li class={`photo-gallery__item photo-gallery__item--${(i % 4) + 1}`}>
+              <Image
+                class="photo-gallery__img"
+                src={item.src}
+                alt={item.alt}
+                widths={[400, 720, 1100]}
+                sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw"
+                loading="lazy"
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

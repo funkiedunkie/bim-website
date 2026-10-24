@@ -2,6 +2,11 @@
 import ActivityPage from '../layouts/ActivityPage.astro'
 import { LINKS, NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/ninja-warrior-private-class.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryNinja1 from '../assets/photos/ninja-salmon_orig.jpg'
+import galleryNinja2 from '../assets/photos/ninja-private-class-2.jpg'
+import galleryNinja3 from '../assets/photos/duncan-ninja-warrior.jpeg'
+import galleryNinja4 from '../assets/photos/ninja-nunchuk.jpg'
 
 const title = 'Kids Ninja Warrior Classes in Boise, ID | Bodies in Motion'
 const description =
@@ -64,6 +69,13 @@ const reviews = [
   { quote: 'My 7 year old loved every class! In fact, it was the thing she looks forward to most every week. Well worth the money.', name: 'Nicholas B', source: 'Groupon' },
   { quote: 'I’m impressed with how many quality American Ninja Warrior and Spartan obstacles are available at Bodies in Motion. I’ve flown in from WA just to train here!!', name: 'Rose Wetzel-Sinnett', source: '5 stars, Facebook' },
   { quote: 'Really awesome place. Tyler, the Ninja Warrior teacher, is very nice and has the best interests of the kids in mind. He groups the kids by skill and gives the little ones more help and care so they don’t get hurt.', name: 'Teresa A', source: 'Groupon' },
+]
+
+const gallery = [
+  { src: galleryNinja1, alt: 'A ninja student hanging from the salmon ladder bars' },
+  { src: galleryNinja2, alt: 'Coach and child working one-on-one on a ninja obstacle' },
+  { src: galleryNinja3, alt: 'Duncan Richardson on the ninja warrior course' },
+  { src: galleryNinja4, alt: 'A student swinging across hanging nunchuk holds on the ninja course' },
 ]
 ---
 
@@ -170,6 +182,7 @@ const reviews = [
       </p>
     </div>
   </section>
+  <PhotoGallery eyebrow="Ninja Warrior" heading="Obstacles, coaches and open gym" items={gallery} />
 </ActivityPage>
 
 <style>

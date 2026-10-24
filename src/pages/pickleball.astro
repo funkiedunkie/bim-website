@@ -2,6 +2,9 @@
 import ActivityPage from '../layouts/ActivityPage.astro'
 import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/pickleball-play.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import galleryPb1 from '../assets/photos/pickleball-play-2.jpg'
+import galleryPb2 from '../assets/photos/pickleball-group.jpg'
 
 const title = 'Indoor Pickleball in Boise, ID | Bodies in Motion'
 const description =
@@ -43,6 +46,11 @@ const faq: FaqItem[] = [
     q: 'Where is the pickleball court?',
     a: 'At Bodies in Motion, 729 W. Diamond St, Boise, ID 83705.',
   },
+]
+
+const gallery = [
+  { src: galleryPb1, alt: 'Adults playing indoor pickleball on the court at Bodies in Motion' },
+  { src: galleryPb2, alt: 'A player tracks a pickleball mid-air on the indoor court, with the ropes course behind' },
 ]
 ---
 
@@ -101,4 +109,5 @@ const faq: FaqItem[] = [
       </div>
     </div>
   </section>
+  <PhotoGallery eyebrow="Indoor pickleball" heading="Play while the kids play" items={gallery} />
 </ActivityPage>

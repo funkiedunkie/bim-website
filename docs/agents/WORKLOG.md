@@ -21,6 +21,32 @@ Template:
 
 ---
 
+## 2026-10-24 — Grok — `grok/restore-images` (off `astro-rebuild`)
+
+**Changed:** Duncan noted many pages lost multi-image content in the redesign (hero-only). Audited Weebly crawl (`bim-site/pages.json` + inventory images) vs current pages. Added Design B `PhotoGallery` component (outlined cards, colored ink shadows) and restored additional **correct** activity photos on 14 pages from existing Weebly inventory assets copied into `src/assets/photos/`. Kept the recent correct heroes (pickleball adults, kickboxing bags, ropes, etc.). Did **not** reintroduce axe-throwing for team building (not a current workshop) or Cosmic package promo copy (Cosmic still on hold; ropes-family facility shots used without Cosmic labeling).
+**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK. Desktop screenshots of restored galleries at `/workspace/restore-images-shots/` (outside repo).
+**Per-page image counts (hero + gallery extras → total on page):**
+| Page | Before | After | Restored extras |
+|---|---|---|---|
+| `/open-play` | 1 | 5 | open-play-web_1/2, play area, bim11color |
+| `/pickleball` | 1 | 3 | play-2, group play |
+| `/fitness-classes` | 1 | 6 | rhea/anna/lisa/kristin kickboxing, rachel fitness |
+| `/ninja-warrior` | 1 | 5 | salmon ladder, private class 2, Duncan, nunchuks |
+| `/ropes-course` | 1 | 6 | locks, group ropes, 3 family ropes facility shots |
+| `/birthday-parties` | 1 | 9 | kids/super/lock-in/ropes add-on + adult party shots |
+| `/team-building` | 1 | 4 | ninja workshop, dutch-bros 2, group ropes |
+| `/parents-night-out` | 1 | 4 | glow PNO + party/evening kid shots (Weebly had 1 content image) |
+| `/preschool` | 1 | 7 | preschool-web + play/firefighters/pumpkin/amanda/name |
+| `/infant-toddler-care` | 1 | 5 | cuddle, reese, zoey, toddler proud |
+| `/after-school-care` | 1 | 4 | after-school-web, structure, slides |
+| `/camps` | 1 | 5 | camps-web, splash, ninja salmon, camp cheer |
+| `/about` | 1 | 6 | Richardsons, vista school, acro yoga, values1/3 |
+| `/jobs` | 1 | 5 | purpose + after-school/ninja/kickboxing workplace (skipped 2021 named staff headshots) |
+| Home / contact / hours / reviews / waiver / privacy / blog | unchanged | — | already multi-image or non-gallery pages |
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild`.
+**Open questions:** Crisp SVG logo still preferred. Pickleball inventory only has 3 photos total. PNO Weebly page was thin (1 image). No dedicated SGX-only photo.
+**Handoff:** Do not merge PR #1 (`astro-rebuild` → `main`) without Duncan. Merge this into `astro-rebuild` when ready (same pattern as prior grok/* PRs).
+
 ## 2026-10-24 — Grok — `grok/logo-knockout` (off `astro-rebuild`)
 
 **Changed:** Duncan chose `BIM Documents/logo.png` (full-color wordmark). Verified it is already a transparent RGBA PNG (byte-identical to CFK `bmi-logo.png`); corners alpha=0; black pixels are MOTION + letter outlines, not a solid badge — no destructive chroma-key (that would erase MOTION). Refreshed favicons (`favicon-32/48`, `apple-touch-icon`, `icon-512`) from that mark. Nav stays badge-free on cream; footer keeps the cream badge so black MOTION stays readable on ink. **Photo audit:** swapped mismatched program heroes to existing Weebly/repo assets — pickleball → `photos/pickleball-play.jpg` (adults); fitness → `photos/dave-kickboxing.jpg` (adult bags); ropes → `photos/ropes-course-web.jpeg`; birthday → `photos/birthday-party-web.jpeg`; ninja → `photos/ninja-warrior-private-class.jpg`; team-building → `photos/dutch-bros-team-building.jpg`; parents-night-out → `photos/open-play-web_1.jpg`. Fixed wrong alts on after-school, about, jobs, and homepage ropes tile. Copied new inventory assets into `src/assets/photos/`.
