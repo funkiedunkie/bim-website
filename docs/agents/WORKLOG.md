@@ -21,6 +21,14 @@ Template:
 
 ---
 
+## 2026-10-24 — Grok — `grok/detail-pass` (DEPLOYED note)
+
+**Changed:** Recorded the detail-pass Vercel preview in `docs/agents/DEPLOYED.md` (Ready, tip `7b30c23`).
+**Live vs committed:** Preview only; production still Weebly.
+**Open questions:** same as the detail-pass entry above.
+**Handoff:** none.
+
+
 ## 2026-10-24 — Grok — `grok/detail-pass` (off `astro-rebuild`)
 
 **Changed:** Detail pass after structural sweep. **Logo:** replaced the Claude-in-Chrome opaque black-background logo (`src/assets/logo.png` / `public/logo.png`) with the real BIM wordmark from CFK (`bodies-in-motion-redesign/public/bmi-logo.png`, same mark as live Weebly `bim-logo-png_1.png`, transparent RGBA, resized to 1800x503). Removed Nav black-sticker workaround; cream footer badge kept so black "MOTION" stays readable on ink. Favicon: dropped Astro purple `favicon.svg`; added PNG favicons cropped from the real mark (`favicon-32.png`, `favicon-48.png`, `apple-touch-icon.png`) and `icon-512.png` for OG. **Photos:** swapped homepage/tile soft assets for Weebly `_orig` hi-res (`open-play-web_1`, `after-school-pals`, `ropes-course-web`); after-school page hero now uses hi-res pals photo; fixed mismatched homepage value-card alts to match actual core-values / purpose / promise images. **CSS:** page-hero object-fit cover; focus-visible uses ink; mobile nav logo sizing; hero overflow clip on small screens; reduced-motion disables tile hover scale. Commit `a38b3b7`; PR #5.
