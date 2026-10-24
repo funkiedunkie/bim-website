@@ -17,7 +17,7 @@ Never paste secrets here; env vars are listed by name only.
 
 | Date | What | Kind | Commit | By | Verified live? |
 |---|---|---|---|---|---|
-| 2026-10-24 | Grok | Preview | `grok/restore-images` tip `e1c8558` | https://bim-website-git-grok-restore-images-camps-for-kids-idaho.vercel.app (Ready; Vercel login) | Multi-image PhotoGallery restore on 14 program pages |
+| 2026-10-24 | Preview deploy of multi-image PhotoGallery restore (14 program pages): bim-website-git-grok-restore-images-camps-for-kids-idaho.vercel.app | preview deploy (git push, branch `grok/restore-images`) | `e1c8558` (+ ledger `04e3138`) | Grok | Yes — Vercel status Ready |
 | 2026-10-24 | Preview deploy of detail pass (real BIM logo + photo polish): bim-website-git-grok-detail-pass-camps-for-kids-idaho.vercel.app | preview deploy (git push, branch `grok/detail-pass`) | `7b30c23` | Grok | Yes — Vercel status Ready |
 | 2026-10-24 | Preview deploy of structural Design B site sweep: bim-website-g3slnwfap-camps-for-kids-idaho.vercel.app (branch alias bim-website-git-grok-site-sweep-camps-for-kids-idaho.vercel.app) | preview deploy (git push, branch `grok/site-sweep`) | `97b45f9` (+ ledger `b77202b`) | Grok | Yes — Vercel status Ready |
 | 2026-10-23 | Preview deploy of design B site-wide: bim-website-izj7babfq-camps-for-kids-idaho.vercel.app (branch alias bim-website-git-grok-design-b-camps-for-kids-idaho.vercel.app) | preview deploy (git push, branch `grok/design-b`) | `0de5415` | Grok | Yes — Vercel status Ready |
