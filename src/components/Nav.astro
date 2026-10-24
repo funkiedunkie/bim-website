@@ -62,7 +62,8 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
 
     <div class="nav__actions">
       <a href={NAP.phoneTel} class="nav__login">{NAP.phoneDisplay}</a>
-      <a href="/waiver" class="nav__join">Sign a Waiver</a>
+      <a href="/waiver" class="nav__login nav__waiver">Sign a waiver</a>
+      <a href="/contact?program=Tour" class="nav__join">Book a tour</a>
     </div>
 
     <details class="nav__mobile">
@@ -80,7 +81,8 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
         )}
         <div class="nav__dropdown-divider" role="separator"></div>
         {mainLinks.map((l) => <a href={l.to}>{l.label}</a>)}
-        <a href="/waiver" class="nav__mobile-cta">Sign a Waiver</a>
+        <a href="/contact?program=Tour" class="nav__mobile-cta">Book a tour</a>
+        <a href="/waiver" class="nav__mobile-secondary">Sign a waiver</a>
         <a href={NAP.phoneTel} class="nav__mobile-phone">Call {NAP.phoneDisplay}</a>
       </div>
     </details>
@@ -334,6 +336,12 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
   .nav__mobile-panel a.nav__mobile-phone {
     text-align: center;
     color: var(--accent-text);
+  }
+
+  @media (max-width: 1180px) {
+    .nav__actions .nav__waiver {
+      display: none;
+    }
   }
 
   @media (max-width: 1060px) {

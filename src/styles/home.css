@@ -25,7 +25,7 @@
 .prog img{aspect-ratio:16/11;object-fit:cover;width:100%;border-bottom:3px solid var(--ink)}
 .prog__body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1;background:linear-gradient(var(--c),var(--c)) top/100% 10px no-repeat}
 .prog h3{font-size:2rem;line-height:1;font-weight:800;margin:12px 0 14px}
-.status{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;border:2px dashed var(--ink);font-weight:700;font-size:.85rem;margin-top:8px}
+.status{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;border:2px dashed var(--ink);font-weight:700;font-size:.85rem;margin-top:8px;color:var(--ink);text-decoration:none;transition:background .15s ease,transform .15s ease}.status:hover{background:var(--y);transform:translate(-1px,-1px)}
 .sdot{width:9px;height:9px;border-radius:50%;background:var(--c);border:1.5px solid var(--ink)}
 .tags{display:grid;gap:8px;font-size:.97rem}
 .tags div{display:grid;grid-template-columns:100px 1fr;gap:8px;border-top:2px solid var(--line);padding-top:8px}
@@ -58,3 +58,5 @@
 @media (max-width:900px){.hero{grid-template-columns:1fr;grid-template-areas:"h" "p" "f";overflow-x:clip}.hero__pics{min-height:0;aspect-ratio:1/1.05;overflow:hidden}.prog__grid,.values__grid,.love__row{grid-template-columns:1fr}}
 @media (max-width:600px){.tiles{grid-template-columns:1fr;grid-auto-rows:240px}.tile--0,.tile--3,.tile--4,.tile--more{grid-column:auto;grid-row:auto}.tile--more{min-height:240px}.s2{right:0}}
 @media (prefers-reduced-motion:reduce){.marquee div{animation:none}.tile:hover img{scale:1}}
+
+.bigcta p a{color:inherit;font-weight:800;text-decoration:underline;text-underline-offset:3px}
