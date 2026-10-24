@@ -1,6 +1,17 @@
 ---
 import { NAP } from '../lib/site'
-const programs = ['Infant & Toddler Care', 'Preschool', 'Before & After School Care', 'Camps', 'Birthday Parties', 'Team Building', 'Other']
+// Tour / Waitlist match api/contact.js PROGRAMS (kept from concept D).
+const programs = [
+  'Infant & Toddler Care',
+  'Preschool',
+  'Before & After School Care',
+  'Camps',
+  'Birthday Parties',
+  'Team Building',
+  'Tour',
+  'Waitlist',
+  'Other',
+]
 const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Website inquiry')}`
 ---
 <form id="contact-form" class="contact-form" method="post" action="/api/contact" data-mailto={mailto}>
@@ -47,11 +58,51 @@ const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Website inquir
   }
 </script>
 <style>
-  .contact-form { display: grid; gap: 0.9rem; max-width: 560px; margin: 2rem 0; }
-  .contact-form label { display: grid; gap: 0.3rem; font-weight: 600; }
-  .contact-form input, .contact-form select, .contact-form textarea { font: inherit; padding: 0.65rem 0.75rem; border-radius: 8px; border: 1px solid rgba(127,127,127,0.45); background: transparent; color: inherit; }
+  .contact-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 560px;
+    margin: 2rem 0;
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 28px 24px;
+  }
+  .contact-form h2 {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1;
+    margin: 0 0 4px;
+  }
+  .contact-form label {
+    display: grid;
+    gap: 0.35rem;
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font: inherit;
+    font-weight: 500;
+    padding: 0.7rem 0.85rem;
+    border-radius: 14px;
+    border: 2.5px solid var(--ink);
+    background: var(--cream);
+    color: var(--ink);
+  }
   .contact-form select option { color: #111; }
   .contact-form__hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-  .contact-form__status { padding: 0.75rem 1rem; border-radius: 8px; background: rgba(127,127,127,0.15); }
-  .contact-form button { justify-self: start; }
+  .contact-form__status {
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
+    border: 2.5px solid var(--ink);
+    background: var(--y);
+    font-weight: 600;
+  }
+  .contact-form button { justify-self: start; margin-top: 4px; }
+  .contact-form__alt { font-size: 0.92rem; color: var(--muted); margin: 4px 0 0; }
+  .contact-form__alt a { color: var(--accent-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 </style>
