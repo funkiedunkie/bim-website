@@ -4,12 +4,13 @@ import PriceTable from '../components/PriceTable.astro'
 import { LINKS, type FaqItem } from '../lib/site'
 import heroImg from '../assets/strip2.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryPre1 from '../assets/photos/preschool-web.jpg'
-import galleryPre2 from '../assets/photos/preschool-play.jpg'
-import galleryPre3 from '../assets/photos/preschool-firefighters.jpg'
-import galleryPre4 from '../assets/photos/preschool-pumpkin.jpeg'
-import galleryPre5 from '../assets/photos/preschool-amanda.jpg'
-import galleryPre6 from '../assets/photos/preschool-name.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoPreWeb from '../assets/photos/preschool-web.jpg'
+import photoPrePlay from '../assets/photos/preschool-play.jpg'
+import photoPreFire from '../assets/photos/preschool-firefighters.jpg'
+import photoPrePumpkin from '../assets/photos/preschool-pumpkin.jpeg'
+import photoPreAmanda from '../assets/photos/preschool-amanda.jpg'
+import photoPreName from '../assets/photos/preschool-name.jpg'
 
 const title = 'Preschool in Boise, ID (Ages 3–6) | Bodies in Motion'
 const description =
@@ -74,13 +75,31 @@ const faq: FaqItem[] = [
   },
 ]
 
-const gallery = [
-  { src: galleryPre1, alt: 'Preschoolers learning together in a Bodies in Motion classroom' },
-  { src: galleryPre2, alt: 'Preschool children playing and exploring in class' },
-  { src: galleryPre3, alt: 'Preschool class visiting with local firefighters' },
-  { src: galleryPre4, alt: 'Preschoolers with pumpkins during a fall classroom activity' },
-  { src: galleryPre5, alt: 'A preschool teacher working with children at a table' },
-  { src: galleryPre6, alt: 'Preschool name recognition and early literacy activity' },
+const proofReady = [
+  {
+    src: photoPreName,
+    alt: 'Preschool name recognition and early literacy activity',
+    caption: 'Kindergarten readiness: name recognition and early literacy.',
+  },
+]
+const proofMotion = [
+  {
+    src: photoPrePlay,
+    alt: 'Preschool children playing and exploring in class',
+    caption: 'Learning through play and motion — not worksheets alone.',
+  },
+]
+const proofTeachers = [
+  {
+    src: photoPreAmanda,
+    alt: 'A preschool teacher working with children at a table',
+    caption: 'Teachers at an 8:1 ratio who know each child.',
+  },
+]
+const browseGallery = [
+  { src: photoPreWeb, alt: 'Preschoolers learning together in a Bodies in Motion classroom' },
+  { src: photoPreFire, alt: 'Preschool class visiting with local firefighters' },
+  { src: photoPrePumpkin, alt: 'Preschoolers with pumpkins during a fall classroom activity' },
 ]
 ---
 
@@ -144,6 +163,7 @@ const gallery = [
         <li>Use problem solving skills</li>
         <li>Participate and engage in activities and play</li>
       </ul>
+      <ProofPhotos items={proofReady} />
 
       <h2>Why “Bodies in Motion”</h2>
       <p>
@@ -162,6 +182,7 @@ const gallery = [
         Children should have FUN! And, children should experience MOTION! Your child’s day will be filled with a
         curriculum that encourages them to become confident, independent learners.
       </p>
+      <ProofPhotos items={proofMotion} />
 
       <h2>Loving preschool teachers</h2>
       <p>
@@ -174,6 +195,7 @@ const gallery = [
         We keep our ratio at 8:1 to ensure each child is supported in their learning. Our curriculum is designed with
         developmentally appropriate activities. We encourage them towards challenging, yet attainable goals.
       </p>
+      <ProofPhotos items={proofTeachers} />
     </div>
   </section>
 
@@ -197,5 +219,5 @@ const gallery = [
       </ol>
     </div>
   </section>
-  <PhotoGallery eyebrow="Preschool" heading="Learning through motion" items={gallery} />
+  <PhotoGallery eyebrow="See more of the classroom" heading="More from preschool" items={browseGallery} />
 </CarePage>

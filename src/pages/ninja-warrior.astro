@@ -3,10 +3,11 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import { LINKS, NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/ninja-warrior-private-class.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryNinja1 from '../assets/photos/ninja-salmon_orig.jpg'
-import galleryNinja2 from '../assets/photos/ninja-private-class-2.jpg'
-import galleryNinja3 from '../assets/photos/duncan-ninja-warrior.jpeg'
-import galleryNinja4 from '../assets/photos/ninja-nunchuk.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoNinjaSalmon from '../assets/photos/ninja-salmon_orig.jpg'
+import photoNinjaCoach from '../assets/photos/ninja-private-class-2.jpg'
+import photoNinjaDuncan from '../assets/photos/duncan-ninja-warrior.jpeg'
+import photoNinjaNunchuk from '../assets/photos/ninja-nunchuk.jpg'
 
 const title = 'Kids Ninja Warrior Classes in Boise, ID | Bodies in Motion'
 const description =
@@ -71,11 +72,23 @@ const reviews = [
   { quote: 'Really awesome place. Tyler, the Ninja Warrior teacher, is very nice and has the best interests of the kids in mind. He groups the kids by skill and gives the little ones more help and care so they don’t get hurt.', name: 'Teresa A', source: 'Groupon' },
 ]
 
-const gallery = [
-  { src: galleryNinja1, alt: 'A ninja student hanging from the salmon ladder bars' },
-  { src: galleryNinja2, alt: 'Coach and child working one-on-one on a ninja obstacle' },
-  { src: galleryNinja3, alt: 'Duncan Richardson on the ninja warrior course' },
-  { src: galleryNinja4, alt: 'A student swinging across hanging nunchuk holds on the ninja course' },
+const proofTrial = [
+  {
+    src: photoNinjaCoach,
+    alt: 'Coach and child working one-on-one on a ninja obstacle',
+    caption: 'Free private trial: 30 minutes one-on-one with a coach.',
+  },
+]
+const proofProgress = [
+  {
+    src: photoNinjaSalmon,
+    alt: 'A ninja student hanging from the salmon ladder bars',
+    caption: 'Clear progression — obstacles and ranks kids can work toward.',
+  },
+]
+const browseGallery = [
+  { src: photoNinjaDuncan, alt: 'Duncan Richardson on the ninja warrior course' },
+  { src: photoNinjaNunchuk, alt: 'A student swinging across hanging nunchuk holds on the ninja course' },
 ]
 ---
 
@@ -122,6 +135,7 @@ const gallery = [
         <a class="btn-primary" href={LINKS.calendlyNinja58} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 5–8)</a>
         <a class="btn-primary" href={LINKS.calendlyNinja9} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 9+)</a>
       </div>
+      <ProofPhotos items={proofTrial} />
     </div>
   </section>
 
@@ -148,6 +162,7 @@ const gallery = [
       <ul class="bullets">
         {bands.map((b) => <li><strong>{b.band}:</strong> {b.obstacles}</li>)}
       </ul>
+      <ProofPhotos items={proofProgress} />
     </div>
   </section>
 
@@ -184,7 +199,7 @@ const gallery = [
       </p>
     </div>
   </section>
-  <PhotoGallery eyebrow="Ninja Warrior" heading="Obstacles, coaches and open gym" items={gallery} />
+  <PhotoGallery eyebrow="See more of the course" heading="Obstacles, coaches and open gym" items={browseGallery} />
 </ActivityPage>
 
 <style>

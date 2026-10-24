@@ -3,9 +3,10 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/dutch-bros-team-building.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryTb1 from '../assets/photos/team-building-ninja.jpg'
-import galleryTb2 from '../assets/photos/dutch-bros-team-building-2.jpg'
-import galleryTb3 from '../assets/photos/group-ropes-course.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoTbNinja from '../assets/photos/team-building-ninja.jpg'
+import photoTbDutch from '../assets/photos/dutch-bros-team-building-2.jpg'
+import photoTbRopes from '../assets/photos/group-ropes-course.jpg'
 
 const title = 'Team Building in Boise, ID: Ropes Course & Ninja Warrior | Bodies in Motion'
 const description =
@@ -60,10 +61,20 @@ const reviews = [
   { quote: 'The Bodies in Motion Ninja Warrior experience set the stage for our classes to work together through communication and teamwork. The ropes course was challenging for all students and the staff helped them feel success no matter how far they made it on the course.', name: 'Kelly Selvage', source: '2/3 Teacher, Anser Public Charter School' },
 ]
 
-const gallery = [
-  { src: galleryTb1, alt: 'Coworkers tackling ninja warrior obstacles during a team-building workshop' },
-  { src: galleryTb2, alt: 'Dutch Bros team posing after a team-building event at Bodies in Motion' },
-  { src: galleryTb3, alt: 'A workplace group clipped into the high ropes course together' },
+const proofFormats = [
+  {
+    src: photoTbNinja,
+    alt: 'Coworkers tackling ninja warrior obstacles during a team-building workshop',
+    caption: 'Ninja Warrior workshop format for workplace groups.',
+  },
+  {
+    src: photoTbRopes,
+    alt: 'A workplace group clipped into the high ropes course together',
+    caption: 'High ropes format — book with Rhea for group size and pricing.',
+  },
+]
+const browseGallery = [
+  { src: photoTbDutch, alt: 'Dutch Bros team posing after a team-building event at Bodies in Motion' },
 ]
 ---
 
@@ -142,6 +153,8 @@ const gallery = [
         harnesses (waist 51 inches, thighs 34 inches).
       </p>
 
+      <ProofPhotos items={proofFormats} />
+
       <h2 id="book">Book team building</h2>
       <p>
         Team building is by appointment only. Send a team building request through our
@@ -155,5 +168,5 @@ const gallery = [
       </div>
     </div>
   </section>
-  <PhotoGallery eyebrow="Team building" heading="Workshops on ropes and ninja" items={gallery} />
+  <PhotoGallery eyebrow="See more team events" heading="Workshops on ropes and ninja" items={browseGallery} />
 </ActivityPage>

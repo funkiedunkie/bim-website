@@ -3,9 +3,10 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import { LINKS, eventSchema, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/open-play-web_1.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryPno1 from '../assets/photos/parents-night-glow.jpg'
-import galleryPno2 from '../assets/photos/birthday-party-web.jpeg'
-import galleryPno3 from '../assets/photos/super-birthday-party.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoPnoGlow from '../assets/photos/parents-night-glow.jpg'
+import photoPnoParty from '../assets/photos/birthday-party-web.jpeg'
+import photoPnoSuper from '../assets/photos/super-birthday-party.jpg'
 
 const title = 'Parents’ Night Out in Boise, ID | Bodies in Motion'
 const description =
@@ -79,10 +80,16 @@ const extraJsonLd = glowUpcoming
     ]
   : []
 
-const gallery = [
-  { src: galleryPno1, alt: 'Kids glowing under blacklights at a Parents Night Out event' },
-  { src: galleryPno2, alt: 'Children celebrating together in a Bodies in Motion party room' },
-  { src: galleryPno3, alt: 'Kids racing through games during an evening kids event' },
+const proofGlow = [
+  {
+    src: photoPnoGlow,
+    alt: 'Kids glowing under blacklights at a Parents Night Out event',
+    caption: 'Cosmic Glow Party: kids play under blacklights while you get a night out.',
+  },
+]
+const browseGallery = [
+  { src: photoPnoParty, alt: 'Children celebrating together in a Bodies in Motion party room' },
+  { src: photoPnoSuper, alt: 'Kids racing through games during an evening kids event' },
 ]
 ---
 
@@ -128,6 +135,7 @@ const gallery = [
       <div class="stub-actions">
         <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Cosmic Glow Party</a>
       </div>
+      <ProofPhotos items={proofGlow} />
 
       <h2>Family Night Out</h2>
       <p>
@@ -146,5 +154,5 @@ const gallery = [
       </p>
     </div>
   </section>
-  <PhotoGallery eyebrow="Parents Night Out" heading="Drop them off. We handle the fun." items={gallery} />
+  <PhotoGallery eyebrow="See more evening events" heading="Drop them off. We handle the fun." items={browseGallery} />
 </ActivityPage>

@@ -4,9 +4,10 @@ import PriceTable from '../components/PriceTable.astro'
 import { LINKS, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/after-school-pals.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryAsc1 from '../assets/photos/after-school-web.jpg'
-import galleryAsc2 from '../assets/photos/after-school-structure.jpg'
-import galleryAsc3 from '../assets/photos/open-play-web_1.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoAscWeb from '../assets/photos/after-school-web.jpg'
+import photoAscStructure from '../assets/photos/after-school-structure.jpg'
+import photoAscSlides from '../assets/photos/open-play-web_1.jpg'
 
 const title = 'Before & After School Care in Boise, ID | Bodies in Motion'
 const description =
@@ -113,10 +114,22 @@ const faq: FaqItem[] = [
   },
 ]
 
-const gallery = [
-  { src: galleryAsc1, alt: 'After-school kids hanging out and playing at Bodies in Motion' },
-  { src: galleryAsc2, alt: 'School-age children on the indoor play structure after school' },
-  { src: galleryAsc3, alt: 'Kids on the slides during after-school free play' },
+const proofBelong = [
+  {
+    src: photoAscStructure,
+    alt: 'School-age children on the indoor play structure after school',
+    caption: 'After school means movement on the indoor play structure — not more sitting.',
+  },
+]
+const proofDay = [
+  {
+    src: photoAscWeb,
+    alt: 'After-school kids hanging out and playing at Bodies in Motion',
+    caption: 'Clubs, homework help and hangout time after pickup.',
+  },
+]
+const browseGallery = [
+  { src: photoAscSlides, alt: 'Kids on the slides during after-school free play' },
 ]
 ---
 
@@ -162,6 +175,7 @@ const gallery = [
       <ul class="chips" aria-label="Clubs and programs">
         {clubs.map((c) => <li class="chip">{c}</li>)}
       </ul>
+      <ProofPhotos items={proofBelong} />
 
       <h2>What does a day look like?</h2>
       <p>
@@ -177,6 +191,8 @@ const gallery = [
         participate in Homework Club. Some kids may be involved in 3 clubs at a time and others just one. It’s what
         makes our after school program totally awesome!
       </p>
+
+      <ProofPhotos items={proofDay} />
 
       <h2>We pick up &amp; drop off at these Boise schools</h2>
       <ul class="chips" aria-label="Schools served">
@@ -201,5 +217,5 @@ const gallery = [
       </p>
     </div>
   </section>
-  <PhotoGallery eyebrow="Before &amp; after school" heading="Homework, clubs and play" items={gallery} />
+  <PhotoGallery eyebrow="See more after school" heading="Homework, clubs and play" items={browseGallery} />
 </CarePage>
