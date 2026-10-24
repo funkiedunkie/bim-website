@@ -17,7 +17,7 @@ Never paste secrets here; env vars are listed by name only.
 
 | Date | What | Kind | Commit | By | Verified live? |
 |---|---|---|---|---|---|
-| 2026-10-24 | Preview deploy of structural Design B site sweep (branch `grok/site-sweep`) | preview deploy (git push) | `db624d2` | Grok | See Vercel Ready on branch alias |
+| 2026-10-24 | Preview deploy of structural Design B site sweep (branch `grok/site-sweep`) | preview deploy (git push) | `97b45f9` | Grok | See Vercel Ready on branch alias |
 | 2026-10-23 | Preview deploy of design B site-wide: bim-website-izj7babfq-camps-for-kids-idaho.vercel.app (branch alias bim-website-git-grok-design-b-camps-for-kids-idaho.vercel.app) | preview deploy (git push, branch `grok/design-b`) | `0de5415` | Grok | Yes — Vercel status Ready |
 | 2026-10-23 | Preview deploy adding concept D at `/concepts/d` (noindex) on bim-website-git-grok-design-concepts-camps-for-kids-idaho.vercel.app | preview deploy (git push, branch `grok/design-concepts`) | `78e9f27` | Grok | See WORKLOG / Vercel status |
 | 2026-10-23 | Preview deploy of homepage design concepts (`/concepts`, noindex): bim-website-git-grok-design-concepts-camps-for-kids-idaho.vercel.app | preview deploy (git push, branch `grok/design-concepts`) | `b1d521c` | Grok | Yes — Vercel status Ready |
