@@ -21,6 +21,14 @@ Template:
 
 ---
 
+## 2026-10-24 — Grok — `grok/logo-knockout` (off `astro-rebuild`)
+
+**Changed:** Duncan chose `BIM Documents/logo.png` (full-color wordmark). Verified it is already a transparent RGBA PNG (byte-identical to CFK `bmi-logo.png`); corners alpha=0; black pixels are MOTION + letter outlines, not a solid badge — no destructive chroma-key (that would erase MOTION). Refreshed favicons (`favicon-32/48`, `apple-touch-icon`, `icon-512`) from that mark. Nav stays badge-free on cream; footer keeps the cream badge so black MOTION stays readable on ink. **Photo audit:** swapped mismatched program heroes to existing Weebly/repo assets — pickleball → `photos/pickleball-play.jpg` (adults); fitness → `photos/dave-kickboxing.jpg` (adult bags); ropes → `photos/ropes-course-web.jpeg`; birthday → `photos/birthday-party-web.jpeg`; ninja → `photos/ninja-warrior-private-class.jpg`; team-building → `photos/dutch-bros-team-building.jpg`; parents-night-out → `photos/open-play-web_1.jpg`. Fixed wrong alts on after-school, about, jobs, and homepage ropes tile. Copied new inventory assets into `src/assets/photos/`.
+**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK; Playwright nav desktop/mobile + home + fixed heroes at `/workspace/logo-knockout-shots/` (zero home overflow).
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild`.
+**Open questions:** Crisp SVG wordmark still preferred (raster edge aliasing at nav size). No dedicated SGX-only photo in inventory (kickboxing gym shot covers fitness page). `values2.jpg` still low-res (344×229). Remaining staff TODOs in `TODO.md` unchanged.
+**Handoff:** Do not merge PR #1 (`astro-rebuild` → `main`) without Duncan. Prices stay shown.
+
 ## 2026-10-24 — Grok — `grok/detail-pass` (DEPLOYED note)
 
 **Changed:** Recorded the detail-pass Vercel preview in `docs/agents/DEPLOYED.md` (Ready, tip `7b30c23`).
