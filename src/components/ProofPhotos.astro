@@ -1,0 +1,49 @@
+---
+/**
+ * Captioned proof photos glued to a claim (NN/g proximity).
+ * Cap: childcare ≤3, walk-in/B2B ≤2 — callers enforce the market cap.
+ * Never invent photos; leave the claim text-only when no true proof shot exists.
+ */
+import { Image } from 'astro:assets'
+
+interface Item {
+  src: ImageMetadata
+  alt: string
+  /** What this photo proves — shown as the caption. */
+  caption: string
+}
+
+interface Props {
+  items: Item[]
+  /** Optional short label above the row (e.g. "See it for yourself"). */
+  eyebrow?: string
+}
+
+const { items, eyebrow } = Astro.props
+const shown = items.slice(0, 3)
+---
+
+{
+  shown.length > 0 && (
+    <div class={`proof-photos proof-photos--${shown.length}`} role="group" aria-label={eyebrow ?? 'Photo proof'}>
+      {eyebrow && <p class="proof-photos__eyebrow">{eyebrow}</p>}
+      <ul class="proof-photos__list">
+        {shown.map((item, i) => (
+          <li class={`proof-photos__item proof-photos__item--${(i % 3) + 1}`}>
+            <figure class="proof-photos__figure">
+              <Image
+                class="proof-photos__img"
+                src={item.src}
+                alt={item.alt}
+                widths={[400, 720, 960]}
+                sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 360px"
+                loading="lazy"
+              />
+              <figcaption class="proof-photos__caption">{item.caption}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

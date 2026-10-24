@@ -21,6 +21,14 @@ Template:
 
 ---
 
+## 2026-10-24 — Grok — `grok/proof-photos` (off `astro-rebuild`)
+
+**Changed:** Duncan signed off on the proof-photo → browse-gallery methodology (canvas bf6a14f5). Added Design B `ProofPhotos` component (captioned, ≤3, lazy-loaded) + CSS. Applied systematically: care pages first (infant-toddler-care, preschool, after-school-care, camps), then open-play, ninja-warrior, birthday-parties, fitness-classes, team-building, pickleball, ropes-course, parents-night-out, about, jobs. Pattern: facts + primary CTA stay first; 1–3 captioned proof shots beside the claims they support; remaining real inventory photos in labeled `PhotoGallery` after a primary CTA has appeared. No new/stock/wrong-program photos; Cosmic stays on-hold text only (no Cosmic imagery). Design B + P0 conversion patterns kept.
+**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK. Playwright shots at 1440/390 with zero horizontal overflow at `/workspace/proof-photos-shots/` (infant, preschool, after-school, camps, open-play, ninja, birthday, fitness).
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild`.
+**Open questions / asset gaps:** Pickleball still thin (2 real photos). Parents Night Out only has one strong PNO-specific shot (`parents-night-glow`); browse uses adjacent evening-event photos. No SVG logo. Real Open/Limited/Waitlist status still needed from Rhea/Rachel.
+**Handoff:** Do not merge PR #1 (`astro-rebuild` → `main`) without Duncan. After this PR merges to `astro-rebuild`, refresh laptop preview pack.
+
 ## 2026-10-24 — Grok — `grok/p0-conversion` (off `astro-rebuild`)
 
 **Changed:** Duncan approved all five P0 conversion fixes. (1) Nav primary CTA is **Book a tour** → `/contact?program=Tour`; waiver demoted to secondary text link (desktop + mobile). (2) Homepage program-card "Ask about openings" chip is a real link into `/contact` with the matching ContactForm program prefilled (Infant & Toddler Care / Preschool / Before & After School Care) — not a fake Open/Limited status. (3) Care heroes (`/infant-toddler-care`, `/preschool`, `/after-school-care`) get an above-fold fact strip: Ages · Hours · From $ · License #28-11875 · Ask about openings CTA, using only already-published tuition/hours. (4) `/ninja-warrior` hero shows both free trial CTAs (ages 5–8 and 9+) plus call. (5) Homepage hero CTA hierarchy: primary Tour, secondary Find a program; waiver removed as equal third (open-play tile blurb + bigcta copy + nav secondary). Design B kept; Cosmic untouched; no invented openings labels.

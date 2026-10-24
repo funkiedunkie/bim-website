@@ -4,10 +4,11 @@ import PriceTable from '../components/PriceTable.astro'
 import { OPEN_PLAY_HOURS, OPEN_PLAY_HOURS_SPEC, HOLIDAY_TEXT, type FaqItem } from '../lib/site'
 import heroImg from '../assets/open-play.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryPlay1 from '../assets/photos/open-play-web_1.jpg'
-import galleryPlay2 from '../assets/photos/open-play-web-2.jpg'
-import galleryPlay3 from '../assets/photos/bim-ropes-play-area.jpg'
-import galleryPlay4 from '../assets/photos/bim11color-1.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoPlaySlides from '../assets/photos/open-play-web_1.jpg'
+import photoPlayCostume from '../assets/photos/open-play-web-2.jpg'
+import photoPlayWide from '../assets/photos/bim-ropes-play-area.jpg'
+import photoPlayColor from '../assets/photos/bim11color-1.jpg'
 
 const title = 'Indoor Playground & Open Play in Boise, ID | Bodies in Motion'
 const description =
@@ -69,11 +70,21 @@ const reviews = [
   { quote: 'Very pleased with the open play area. My 4 year old was in heaven. So much variety between the indoor play gym, costumes, train tracks, exercise ball... You name it. Was not a stuffy parent area either. Clean, cozy, bright.', name: 'Mindy H', source: '5 stars, Yelp' },
 ]
 
-const gallery = [
-  { src: galleryPlay1, alt: 'Kids laughing on the orange and blue indoor slides during open play' },
-  { src: galleryPlay2, alt: 'A child wrapped in a yellow costume inside the multi-level soft-play structure' },
-  { src: galleryPlay3, alt: 'Wide view of the indoor playground with slides, padded platforms and hanging ropes course above' },
-  { src: galleryPlay4, alt: 'Colorful indoor play structure with climbing towers and open floor space' },
+const proofPlay = [
+  {
+    src: photoPlaySlides,
+    alt: 'Kids laughing on the orange and blue indoor slides during open play',
+    caption: 'Four indoor slides and soft-play zones kids can use walk-in.',
+  },
+  {
+    src: photoPlayWide,
+    alt: 'Wide view of the indoor playground with slides, padded platforms and hanging ropes course above',
+    caption: 'One big play structure under the ropes course — room to run.',
+  },
+]
+const browseGallery = [
+  { src: photoPlayCostume, alt: 'A child wrapped in a yellow costume inside the multi-level soft-play structure' },
+  { src: photoPlayColor, alt: 'Colorful indoor play structure with climbing towers and open floor space' },
 ]
 ---
 
@@ -108,6 +119,7 @@ const gallery = [
         <li>Building with trains and Legos</li>
         <li>Parents can relax, chase their kiddo around the playground, or try <a href="/pickleball">pickleball</a></li>
       </ul>
+      <ProofPhotos items={proofPlay} />
 
       <h2>Open play cost</h2>
       <PriceTable caption="Open play admission" subtitle="Per child" rows={priceRows} priceHeading="Price" rowHeading="Age" />
@@ -143,9 +155,5 @@ const gallery = [
       </p>
     </div>
   </section>
-  <PhotoGallery
-    eyebrow="Open play"
-    heading="The indoor playground"
-    items={gallery}
-  />
+  <PhotoGallery eyebrow="See more of open play" heading="The indoor playground" items={browseGallery} />
 </ActivityPage>

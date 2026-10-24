@@ -4,14 +4,15 @@ import PriceTable from '../components/PriceTable.astro'
 import { LINKS, NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/birthday-party-web.jpeg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryBday1 from '../assets/photos/isaac-birthday-web.jpg'
-import galleryBday2 from '../assets/photos/zion-birthday-singing.jpg'
-import galleryBday3 from '../assets/photos/super-birthday-party.jpg'
-import galleryBday4 from '../assets/photos/super-birthday-ropes-web_1_orig.jpg'
-import galleryBday5 from '../assets/photos/birthday-lock-in.jpg'
-import galleryBday6 from '../assets/photos/adult-birthday-web.jpeg'
-import galleryBday7 from '../assets/photos/adult-party-web-1.jpeg'
-import galleryBday8 from '../assets/photos/adult-party-web-2.jpeg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoBdayIsaac from '../assets/photos/isaac-birthday-web.jpg'
+import photoBdaySing from '../assets/photos/zion-birthday-singing.jpg'
+import photoBdaySuper from '../assets/photos/super-birthday-party.jpg'
+import photoBdayRopes from '../assets/photos/super-birthday-ropes-web_1_orig.jpg'
+import photoBdayLockin from '../assets/photos/birthday-lock-in.jpg'
+import photoBdayAdult from '../assets/photos/adult-birthday-web.jpeg'
+import photoBdayAdult2 from '../assets/photos/adult-party-web-1.jpeg'
+import photoBdayAdult3 from '../assets/photos/adult-party-web-2.jpeg'
 
 const title = 'Birthday Parties in Boise, ID: Kids, Teens & Adults | Bodies in Motion'
 const description =
@@ -123,15 +124,41 @@ const reviews = [
   { quote: 'The cosmic ropes course was AMAZING for my 10 yr old’s birthday party! Will be back soon for sure!', name: 'Gina J', source: 'Groupon' },
 ]
 
-const gallery = [
-  { src: galleryBday1, alt: 'Birthday kid celebrating at a Bodies in Motion kids party' },
-  { src: galleryBday2, alt: 'Friends singing to the birthday child in the party room' },
-  { src: galleryBday3, alt: 'Tweens competing during a Super Birthday Party' },
-  { src: galleryBday4, alt: 'Birthday guests in helmets on the ropes course add-on' },
-  { src: galleryBday5, alt: 'Overnight lock-in birthday party fun at the gym' },
-  { src: galleryBday6, alt: 'Adults celebrating a birthday at Bodies in Motion' },
-  { src: galleryBday7, alt: 'Adult party group enjoying the facility' },
-  { src: galleryBday8, alt: 'Adult birthday party guests hanging out after activities' },
+const proofKids = [
+  {
+    src: photoBdayIsaac,
+    alt: 'Birthday kid celebrating at a Bodies in Motion kids party',
+    caption: 'Kids Play Zone party: games, host and the indoor play structure.',
+  },
+  {
+    src: photoBdayRopes,
+    alt: 'Birthday guests in helmets on the ropes course add-on',
+    caption: 'Ropes add-on (ages 10+): choose “Ropes $50+” when you book.',
+  },
+]
+const proofTween = [
+  {
+    src: photoBdaySuper,
+    alt: 'Tweens competing during a Super Birthday Party',
+    caption: 'Super Birthday: Z Tag, ropes and ninja for ages 10–16.',
+  },
+  {
+    src: photoBdayLockin,
+    alt: 'Overnight lock-in birthday party fun at the gym',
+    caption: 'All Night Lock-In: 12 hours with late-night snack and breakfast.',
+  },
+]
+const proofAdult = [
+  {
+    src: photoBdayAdult,
+    alt: 'Adults celebrating a birthday at Bodies in Motion',
+    caption: 'Adult parties: build the night around ropes, ninja or games.',
+  },
+]
+const browseGallery = [
+  { src: photoBdaySing, alt: 'Friends singing to the birthday child in the party room' },
+  { src: photoBdayAdult2, alt: 'Adult party group enjoying the facility' },
+  { src: photoBdayAdult3, alt: 'Adult birthday party guests hanging out after activities' },
 ]
 ---
 
@@ -190,6 +217,7 @@ const gallery = [
       <div class="stub-actions">
         <a class="btn-primary" href={LINKS.calendlyBirthday} target="_blank" rel="noopener noreferrer">Birthday party RSVP</a>
       </div>
+      <ProofPhotos items={proofKids} />
     </div>
   </section>
 
@@ -230,6 +258,7 @@ const gallery = [
         To book a Super or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
         <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a>.
       </p>
+      <ProofPhotos items={proofTween} />
     </div>
   </section>
 
@@ -253,7 +282,8 @@ const gallery = [
         <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay} to book</a>
         <a class="btn-outline" href="/contact">Email or contact us</a>
       </div>
+      <ProofPhotos items={proofAdult} />
     </div>
   </section>
-  <PhotoGallery eyebrow="Birthday parties" heading="Kids, tweens and adult parties" items={gallery} />
+  <PhotoGallery eyebrow="See more parties" heading="Kids, tweens and adult parties" items={browseGallery} />
 </ActivityPage>

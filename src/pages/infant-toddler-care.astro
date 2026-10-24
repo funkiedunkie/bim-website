@@ -4,10 +4,11 @@ import PriceTable from '../components/PriceTable.astro'
 import { LINKS, type FaqItem } from '../lib/site'
 import heroImg from '../assets/strip1.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryInf1 from '../assets/photos/infant-cuddle.jpg'
-import galleryInf2 from '../assets/photos/infant-reese.jpg'
-import galleryInf3 from '../assets/photos/zoey-toddler-2.jpeg'
-import galleryInf4 from '../assets/photos/toddler-proud.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoInfCuddle from '../assets/photos/infant-cuddle.jpg'
+import photoInfReese from '../assets/photos/infant-reese.jpg'
+import photoToddlerZoey from '../assets/photos/zoey-toddler-2.jpeg'
+import photoToddlerProud from '../assets/photos/toddler-proud.jpg'
 
 const title = 'Infant & Toddler Care in Boise, ID | Bodies in Motion'
 const description =
@@ -62,11 +63,30 @@ const faq: FaqItem[] = [
   },
 ]
 
-const gallery = [
-  { src: galleryInf1, alt: 'A teacher cuddling with two babies in the infant room' },
-  { src: galleryInf2, alt: 'One baby and a teacher smiling together' },
-  { src: galleryInf3, alt: 'A happy toddler excited to see his teacher' },
-  { src: galleryInf4, alt: 'A proud young child showing off a classroom creation' },
+/** Proof (≤3): glued to safety / infant / toddler claims. Browse: rest after tour CTA. */
+const proofSafety = [
+  {
+    src: photoInfCuddle,
+    alt: 'A teacher cuddling with two babies in the infant room',
+    caption: 'Recorded classrooms and teachers who have time for your baby (1:4 infants).',
+  },
+]
+const proofInfant = [
+  {
+    src: photoInfReese,
+    alt: 'One baby and a teacher smiling together',
+    caption: 'Infant room: ages 6 weeks to 18 months.',
+  },
+]
+const proofToddler = [
+  {
+    src: photoToddlerZoey,
+    alt: 'A happy toddler excited to see his teacher',
+    caption: 'Toddler room: ages 18 months to 3 years.',
+  },
+]
+const browseGallery = [
+  { src: photoToddlerProud, alt: 'A proud young child showing off a classroom creation' },
 ]
 ---
 
@@ -110,6 +130,7 @@ const gallery = [
         <li>We’ve interviewed to find the most patient and loving teachers that have been background checked, and licensed.</li>
         <li>Professionally designed area with developmentally appropriate toys and experiences.</li>
       </ol>
+      <ProofPhotos items={proofSafety} />
 
       <h2>Infants: 6 weeks to 18 months</h2>
       <p>Aside from our #1 priority of a loving, safe environment, we focus on:</p>
@@ -119,6 +140,7 @@ const gallery = [
         <li>Neurological development by presenting opportunities to choose</li>
         <li>Mental stimulation through reading, singing, music and conversation</li>
       </ul>
+      <ProofPhotos items={proofInfant} />
 
       <h2>Toddlers: 18 months to 3 years old</h2>
       <p>
@@ -133,6 +155,7 @@ const gallery = [
         <li>Social engagement skill development</li>
         <li>Swim lessons at the Idaho Aquatic Center (extra fee)</li>
       </ul>
+      <ProofPhotos items={proofToddler} />
 
       <h3>Getting your child preschool ready</h3>
       <ul class="checks">
@@ -162,5 +185,5 @@ const gallery = [
       </div>
     </div>
   </section>
-  <PhotoGallery eyebrow="Infant &amp; toddler" heading="Small rooms. Soft landings." items={gallery} />
+  <PhotoGallery eyebrow="See more of the classroom" heading="More from infant &amp; toddler care" items={browseGallery} />
 </CarePage>

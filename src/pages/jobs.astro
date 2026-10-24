@@ -4,6 +4,7 @@ import Reviews from '../components/Reviews.astro'
 import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/values2.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
+import ProofPhotos from '../components/ProofPhotos.astro'
 import galleryJobs1 from '../assets/photos/jobs-purpose.jpeg'
 import galleryJobs2 from '../assets/photos/after-school-pals.jpg'
 import galleryJobs3 from '../assets/photos/ninja-warrior-private-class.jpg'
@@ -105,8 +106,14 @@ const faq: FaqItem[] = [
   },
 ]
 
-const gallery = [
-  { src: galleryJobs1, alt: 'Team members working with kids and adults at Bodies in Motion' },
+const proofPurpose = [
+  {
+    src: galleryJobs1,
+    alt: 'Team members working with kids and adults at Bodies in Motion',
+    caption: 'Motioneers work with kids and adults across the whole building.',
+  },
+]
+const browseGallery = [
   { src: galleryJobs2, alt: 'Staff supporting after-school kids on the playground' },
   { src: galleryJobs3, alt: 'A coach spotting a child on a ninja obstacle' },
   { src: galleryJobs4, alt: 'A coach training adults on the kickboxing bags' },
@@ -143,6 +150,8 @@ const gallery = [
         {coreValues.map((v) => <li>{v}</li>)}
       </ol>
 
+      <ProofPhotos items={proofPurpose} />
+
       <h2 id="purpose">Bodies in Motion’s purpose</h2>
       <p>We are committed to igniting activity, and encouraging empowerment.</p>
 
@@ -171,5 +180,5 @@ const gallery = [
       <Reviews items={motioneers} title="What past Motioneers say" id="motioneers-title" />
     </div>
   </section>
-  <PhotoGallery eyebrow="Work here" heading="A day at Bodies in Motion" items={gallery} />
+  <PhotoGallery eyebrow="See more of the work" heading="A day at Bodies in Motion" items={browseGallery} />
 </ActivityPage>

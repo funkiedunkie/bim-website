@@ -3,8 +3,9 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/pickleball-play.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
-import galleryPb1 from '../assets/photos/pickleball-play-2.jpg'
-import galleryPb2 from '../assets/photos/pickleball-group.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoPbPlay from '../assets/photos/pickleball-play-2.jpg'
+import photoPbGroup from '../assets/photos/pickleball-group.jpg'
 
 const title = 'Indoor Pickleball in Boise, ID | Bodies in Motion'
 const description =
@@ -48,9 +49,15 @@ const faq: FaqItem[] = [
   },
 ]
 
-const gallery = [
-  { src: galleryPb1, alt: 'Adults playing indoor pickleball on the court at Bodies in Motion' },
-  { src: galleryPb2, alt: 'A player tracks a pickleball mid-air on the indoor court, with the ropes course behind' },
+const proofCourt = [
+  {
+    src: photoPbPlay,
+    alt: 'Adults playing indoor pickleball on the court at Bodies in Motion',
+    caption: 'Indoor pickleball courts — play while the kids are in open play.',
+  },
+]
+const browseGallery = [
+  { src: photoPbGroup, alt: 'A player tracks a pickleball mid-air on the indoor court, with the ropes course behind' },
 ]
 ---
 
@@ -84,6 +91,8 @@ const gallery = [
         unwind after a game with a canned cocktail or a beer.
       </p>
 
+      <ProofPhotos items={proofCourt} />
+
       <h2 id="rates">Pickleball rates</h2>
       <ul class="bullets">
         <li><strong>Individual:</strong> $12 per person (+ tax)</li>
@@ -109,5 +118,5 @@ const gallery = [
       </div>
     </div>
   </section>
-  <PhotoGallery eyebrow="Indoor pickleball" heading="Play while the kids play" items={gallery} />
+  <PhotoGallery eyebrow="See more pickleball" heading="Play while the kids play" items={browseGallery} />
 </ActivityPage>
