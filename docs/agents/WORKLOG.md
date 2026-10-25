@@ -45,6 +45,14 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/about-photos` (off `astro-rebuild`)
+
+**Changed:** Duncan (pt57u): `/about` only. (1) B&W martial arts dojo (`about-vista-school.jpeg` — filename is mislabeled; image is Vista Ave school floor with heavy bags + kick mural, not a school visit) moved from browse gallery into **Our story** two-col as proof beside the martial-arts origin claim; alt/caption corrected. (2) Aerial/acro yoga (`about-acro-yoga.jpg`) moved from gallery into **Purpose and core values** two-col beside Unique & Innovative / ignite-activity claim. (3) Removed unrelated browse gallery items `values1.jpg` and `values3.jpg` (outdoor park people, not about-story). Browse `PhotoGallery` removed from about — nothing left that belongs. (4) Family photo (`about-richardsons.jpg`) stays with Meet the founders; **no higher-res in repo or Weebly inventory** (md5 match to `about-us-richardsons-web.jpg` at **408×272** only) — cannot invent pixels; logged on backlog. Two-col pattern kept. No other pages.
+**Evidence:** Build + `verify-dist` + `check:redirects` (see commit). Dist about.html: martial proof in Our story, acro in Purpose, founders family; no PhotoGallery / values1 / values3. Shots: `/workspace/about-photos-shots/`.
+**Live vs committed:** Preview only once pushed. Merged into `astro-rebuild` per task; not `main`; production still Weebly; DNS untouched.
+**Open questions:** Duncan to supply higher-res (and preferably up-to-date) Richardson family photo for `/about` founders proof.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after this merges to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/fix-amp-grain-crops` (off `astro-rebuild`)
 
 **Changed:** Duncan (pt55u): do all three in one PR. (1) Visible `&amp;` / double-escaped entities — root cause: Astro HTML attrs like `heading="… &amp; …"` keep the entity, then `{heading}` escapes `&` again → `&amp;amp;` on screen. Fixed infant + fitness PhotoGallery headings to `heading={"… & …"}`. (2) Grainy pics — ProofPhotos widths `[480,720,960,1280]` + `sizes=(max-width:900px) 92vw, 640px` (was max 720 / 360px, undersized for ~636px two-col proof). PhotoGallery widths `[400,640,960]`. Care/Activity heroes `sizes=(max-width:900px) 100vw, 50vw`. Inventory has no higher-res for anna/lisa/rhea/rachel thumbs (256–311px Weebly); kristin/dave already 1280. (3) Fitness crops — per-image overrides only on fitness: hero `object-pos-center`; proof rhea+rachel `proof-photos__img--portrait` (3/4 aspect, max-height 420 — 4/3 was chopping stance/dumbbell); gallery anna center / lisa left / kristin right. Added `.object-pos-25` util; left/right now `left|right center`. Optional `imgClass` on ProofPhotos/PhotoGallery items; optional `heroImgClass` on ActivityPage.
