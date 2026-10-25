@@ -81,6 +81,8 @@ const proofKick = [
     src: photoFitRhea,
     alt: 'A woman in pink boxing gloves striking a heavy bag during kickboxing class',
     caption: 'Adult kickboxing on heavy bags — $29 trial includes 3 classes and gloves.',
+    // Portrait source: use 3/4 proof box so 4/3 cover does not chop head/stance.
+    imgClass: 'proof-photos__img--portrait',
   },
 ]
 const proofKidsWhile = [
@@ -88,12 +90,14 @@ const proofKidsWhile = [
     src: photoFitRachel,
     alt: 'Strength and fitness training in the Bodies in Motion gym',
     caption: 'SGX and strength training while kids play free on open play.',
+    // Portrait source: 3/4 proof box keeps dumbbell + supporting hand in frame.
+    imgClass: 'proof-photos__img--portrait',
   },
 ]
 const browseGallery = [
-  { src: photoFitAnna, alt: 'Kickboxing class member working the heavy bags on the gym floor' },
-  { src: photoFitLisa, alt: 'Adult kickboxing training at Bodies in Motion' },
-  { src: photoFitKristin, alt: 'A member throwing punches at a freestanding bag in kickboxing' },
+  { src: photoFitAnna, alt: 'Kickboxing class member working the heavy bags on the gym floor', imgClass: 'object-pos-center' },
+  { src: photoFitLisa, alt: 'Adult kickboxing training at Bodies in Motion', imgClass: 'object-pos-left' },
+  { src: photoFitKristin, alt: 'A member throwing punches at a freestanding bag in kickboxing', imgClass: 'object-pos-right' },
 ]
 ---
 
@@ -105,6 +109,7 @@ const browseGallery = [
   h1="Kickboxing & Bootcamp Fitness Classes in Boise"
   lead="Effective, motivating workouts for all experience levels, at a gym where your kids can play while you train."
   heroImg={heroImg}
+  heroImgClass="object-pos-center"
   heroAlt="Adults training on heavy bags in a kickboxing class"
   ctaUrl={LINKS.calendlyKickboxing}
   ctaLabel="Book kickboxing trial"
@@ -199,7 +204,7 @@ const browseGallery = [
       </div>
     </div>
   </section>
-  <PhotoGallery eyebrow="See more of class" heading="Kickboxing &amp; SGX" items={browseGallery} />
+  <PhotoGallery eyebrow="See more of class" heading={"Kickboxing & SGX"} items={browseGallery} />
 </ActivityPage>
 
 <style>

@@ -42,7 +42,7 @@ const openingsHref = facts ? `/contact?program=${encodeURIComponent(facts.openin
 
 <Base title={title} description={description} path={path} jsonLd={jsonLd}>
   <header class="page-hero">
-    <Image class="page-hero__img" src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <Image class="page-hero__img" src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="(max-width:900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
     <div class="page-hero__inner">
       <p class="page-hero__eyebrow">{eyebrow}</p>
       <h1>{h1}</h1>

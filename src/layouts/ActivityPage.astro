@@ -19,6 +19,8 @@ interface Props {
   lead?: string
   heroImg: ImageMetadata
   heroAlt: string
+  /** Opt-in crop utility for action shots that center-top chops, e.g. object-pos-center. */
+  heroImgClass?: string
   ctaUrl: string
   ctaLabel: string
   /** Optional second hero / bottom CTA (e.g. ninja ages 9+ trial). */
@@ -35,14 +37,14 @@ interface Props {
   openingHoursSpecification?: object[]
 }
 
-const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, ctaUrl, ctaLabel, cta2Url, cta2Label, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification } = Astro.props
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, heroImgClass, ctaUrl, ctaLabel, cta2Url, cta2Label, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification } = Astro.props
 const jsonLd = [activityBusinessSchema({ description, openingHoursSpecification }), ...extraJsonLd, faqSchema(faq)]
 const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 ---
 
 <Base title={title} description={description} path={path} jsonLd={jsonLd}>
   <header class="page-hero">
-    <Image class="page-hero__img" src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <Image class:list={["page-hero__img", heroImgClass]} src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="(max-width:900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
     <div class="page-hero__inner">
       <p class="page-hero__eyebrow">{eyebrow}</p>
       <h1>{h1}</h1>

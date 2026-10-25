@@ -11,6 +11,8 @@ interface Item {
   alt: string
   /** What this photo proves — shown as the caption. */
   caption: string
+  /** Opt-in crop utility, e.g. object-pos-center — only when global top bias chops this shot. */
+  imgClass?: string
 }
 
 interface Props {
@@ -32,11 +34,11 @@ const shown = items.slice(0, 3)
           <li class={`proof-photos__item proof-photos__item--${(i % 3) + 1}`}>
             <figure class="proof-photos__figure">
               <Image
-                class="proof-photos__img"
+                class:list={['proof-photos__img', item.imgClass]}
                 src={item.src}
                 alt={item.alt}
-                widths={[360, 560, 720]}
-                sizes="(max-width:560px) 100vw, (max-width:900px) 50vw, 360px"
+                widths={[480, 720, 960, 1280]}
+                sizes="(max-width:900px) 92vw, 640px"
                 loading="lazy"
               />
               <figcaption class="proof-photos__caption">{item.caption}</figcaption>

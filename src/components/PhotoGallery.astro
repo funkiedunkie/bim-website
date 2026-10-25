@@ -4,6 +4,8 @@ import { Image } from 'astro:assets'
 interface Item {
   src: ImageMetadata
   alt: string
+  /** Opt-in crop utility, e.g. object-pos-center — only when global top bias chops this shot. */
+  imgClass?: string
 }
 
 interface Props {
@@ -25,11 +27,11 @@ const { eyebrow = 'Inside Bodies in Motion', heading = 'More from this program',
           {items.map((item, i) => (
             <li class={`photo-gallery__item photo-gallery__item--${(i % 4) + 1}`}>
               <Image
-                class="photo-gallery__img"
+                class:list={['photo-gallery__img', item.imgClass]}
                 src={item.src}
                 alt={item.alt}
-                widths={[320, 480, 720]}
-                sizes="(max-width:560px) 100vw, (max-width:900px) 50vw, (max-width:1100px) 33vw, 25vw"
+                widths={[400, 640, 960]}
+                sizes="(max-width:560px) 92vw, (max-width:900px) 48vw, (max-width:1100px) 33vw, 25vw"
                 loading="lazy"
               />
             </li>
