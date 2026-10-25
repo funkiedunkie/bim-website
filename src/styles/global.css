@@ -480,6 +480,28 @@ ul, ol {
   align-items: start;
 }
 
+/* Care pages: claim copy | proof photo(s). Reuses .two-col (stacks ≤900px).
+   Do not retune proof scale/object-position here — photo-scale + crop passes own that. */
+.care-claim {
+  margin: 36px 0;
+}
+.care-claim__text > :first-child {
+  margin-top: 0;
+}
+.care-claim .proof-photos {
+  margin: 0;
+}
+.care-claim .proof-photos--1 .proof-photos__list,
+.care-claim .proof-photos--2 .proof-photos__list,
+.care-claim .proof-photos--3 .proof-photos__list {
+  max-width: none;
+  width: 100%;
+}
+.care-claim .proof-photos--2 .proof-photos__list,
+.care-claim .proof-photos--3 .proof-photos__list {
+  grid-template-columns: 1fr;
+}
+
 .feature-img {
   width: 100%;
   height: auto;
