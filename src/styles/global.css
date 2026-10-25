@@ -773,9 +773,14 @@ h1, h2, h3, .section-title, .faq__title, .reviews__title, .location__title, .pri
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
+  /* Default / --4: four columns on wide desktop */
+  grid-template-columns: repeat(4, 1fr);
 }
+.photo-gallery--1 { grid-template-columns: 1fr; max-width: 640px; }
+.photo-gallery--2 { grid-template-columns: repeat(2, 1fr); }
+.photo-gallery--3 { grid-template-columns: repeat(3, 1fr); }
+.photo-gallery--4 { grid-template-columns: repeat(4, 1fr); }
 .photo-gallery__item {
   margin: 0;
   border: 3px solid var(--ink);
@@ -796,14 +801,19 @@ h1, h2, h3, .section-title, .faq__title, .reviews__title, .location__title, .pri
   object-fit: cover;
   object-position: center top;
 }
+/* Shrink columns as the viewport shrinks — never invent empty slots beyond item count */
 @media (max-width: 1100px) {
-  .photo-gallery { grid-template-columns: repeat(3, 1fr); }
+  .photo-gallery--4 { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
-  .photo-gallery { grid-template-columns: 1fr 1fr; }
+  .photo-gallery--3,
+  .photo-gallery--4 { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) {
-  .photo-gallery { grid-template-columns: 1fr; }
+  .photo-gallery--1,
+  .photo-gallery--2,
+  .photo-gallery--3,
+  .photo-gallery--4 { grid-template-columns: 1fr; max-width: none; }
   .photo-gallery__item--1,
   .photo-gallery__item--2,
   .photo-gallery__item--3,

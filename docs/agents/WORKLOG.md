@@ -10,6 +10,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 Template:
 
 ```markdown
+## 2026-10-25 — Grok — `grok/gallery-cols-spacing` (off `astro-rebuild`)
+
+**Changed:** Duncan approved auto-sizing PhotoGallery columns to photo count + fix jammed fragment spacing on camps. (1) `PhotoGallery.astro` adds `photo-gallery--N` from `items.length` (clamped 1–4) and matching `sizes`. (2) `global.css`: `--1`/`--2`/`--3`/`--4` set column count; breakpoints only shrink (4→3@1100, 3|4→2@900, all→1@560) so pages with 1–3 browse shots never show empty grid cells. Design B look unchanged. (3) Camps PNO note: `{' '}` after “current list.” so Astro no longer emits `list.Looking`. Site-wide fragment audit found only that camps jam (prior PR #22 already fixed `<a>` spacing).
+**Conversion:** Empty gallery cells read as broken; columns matching the photo count look intentional and build trust.
+**Evidence:** Build 42 pages (Node 22); `verify-dist` OK; `check:redirects` OK. Dist: camps `photo-gallery--2` + `list. Looking`; pickleball `--1`; preschool `--3`; ninja `--2`.
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild`.
+**Open questions:** None.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after this merges to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/fix-photo-crops` (off `astro-rebuild`)
 
 **Changed:** Duncan: after photo-scale (PR #12), teachers' heads / foreheads were cut off. Root cause: fixed-height boxes + `object-fit: cover` + `object-position: center` centering on mid-frame (people live in the upper third). Fix kept modest scale but stopped face chops: (1) `.page-hero__img` → `object-position: center top` (kept clamp heights). (2) `.proof-photos__img` → real `aspect-ratio: 4 / 3` (dropped fixed heights / max-height fights that still made ~1.85:1 short boxes) + `object-position: center top`. (3) `.photo-gallery__img` → `aspect-ratio: 4 / 3` + `center top`. (4) Home cover images (`.p1`/`.p2`/`.prog img`/`.tile img`/`.value img`) also `center top`. (5) Opt-in utilities `.object-pos-top|center|bottom|left|right` for rare per-image overrides — none needed after spot-check (preschool-name source itself is tight on headroom; face now fully visible vs before cutting at the nose). No new photos.
