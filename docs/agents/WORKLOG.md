@@ -10,6 +10,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 Template:
 
 ```markdown
+## 2026-10-25 — Grok — `grok/fix-photo-crops` (off `astro-rebuild`)
+
+**Changed:** Duncan: after photo-scale (PR #12), teachers' heads / foreheads were cut off. Root cause: fixed-height boxes + `object-fit: cover` + `object-position: center` centering on mid-frame (people live in the upper third). Fix kept modest scale but stopped face chops: (1) `.page-hero__img` → `object-position: center top` (kept clamp heights). (2) `.proof-photos__img` → real `aspect-ratio: 4 / 3` (dropped fixed heights / max-height fights that still made ~1.85:1 short boxes) + `object-position: center top`. (3) `.photo-gallery__img` → `aspect-ratio: 4 / 3` + `center top`. (4) Home cover images (`.p1`/`.p2`/`.prog img`/`.tile img`/`.value img`) also `center top`. (5) Opt-in utilities `.object-pos-top|center|bottom|left|right` for rare per-image overrides — none needed after spot-check (preschool-name source itself is tight on headroom; face now fully visible vs before cutting at the nose). No new photos.
+**Evidence:** Before preschool proof: crop at nose/cheek (mouth+torso only). After: full face + forehead visible; infant hero heads have headroom; about family heads in frame; fitness trainer head in frame. Metrics @1440: proof 554×416 (4/3), gallery 314×235, hero 584×455, `object-position: 50% 0%`. Build 42 pages; `verify-dist` OK; `check:redirects` OK. Shots: `/workspace/fix-photo-crops-shots/before|after/`.
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild` (merge into rebuild per Duncan own-it; not PR #1).
+**Open questions:** None for crops. Real openings status still needed from Rhea/Rachel.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after this merges to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/desktop-width` (off `astro-rebuild`)
 
 **Changed:** Duncan: desktop pages looked mobile-skinny then suddenly wide. Root cause: program/care/activity content (and FAQ) used `section__inner--read` (820px) while galleries, CTAs, and location used `section__inner` (1320px). Widened program pages + care/activity FAQ + home FAQ to `--max-w`. Left `--read-w` only for long prose (blog posts, privacy, waiver, contact, Stub). Body `p` / `.callout` keep a 65ch readable measure inside full-width prose sections; headings, lists, proof photos, and price tables use the full column. Single proof strip max raised to 960px. ProofPhotos `sizes` bumped for desktop.
