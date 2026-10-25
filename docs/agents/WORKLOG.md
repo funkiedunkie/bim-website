@@ -10,6 +10,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 Template:
 
 ```markdown
+## 2026-10-25 — Grok — `grok/desktop-width` (off `astro-rebuild`)
+
+**Changed:** Duncan: desktop pages looked mobile-skinny then suddenly wide. Root cause: program/care/activity content (and FAQ) used `section__inner--read` (820px) while galleries, CTAs, and location used `section__inner` (1320px). Widened program pages + care/activity FAQ + home FAQ to `--max-w`. Left `--read-w` only for long prose (blog posts, privacy, waiver, contact, Stub). Body `p` / `.callout` keep a 65ch readable measure inside full-width prose sections; headings, lists, proof photos, and price tables use the full column. Single proof strip max raised to 960px. ProofPhotos `sizes` bumped for desktop.
+**Evidence:** Before @1440 infant content inners measured 820 vs gallery 1320. After: all inners/gallery/CTA 1320; `p` ~671; single proof list 960. Mobile @390 inner ~342, no horizontal overflow (infant + preschool). Build 42 pages; `verify-dist` OK; `check:redirects` OK. Shots: `/workspace/desktop-width-shots/before|after/`.
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild`.
+**Open questions:** None. Autoscroll fix already on `astro-rebuild` via PR #10 (`cb72f93`).
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after merge.
+
 ## 2026-10-25 — Grok — `grok/fix-autoscroll` (off `astro-rebuild`)
 
 **Changed:** Duncan reported weird auto-scrolling on the preview. Root cause: Design B scroll-driven `.reveal` rules using `animation-timeline: view()` (homepage program cards, values, review bubbles) plus `html { scroll-behavior: smooth }`, a known Chromium jank / "page pulls itself" combo. Removed the entire `.reveal` / `view()` / `@keyframes pop` block. Set `scroll-behavior: auto` by default. Left `prefers-reduced-motion: reduce` rules intact (still force `auto` + kill animations). Homepage `.reveal` class names left in markup (harmless without CSS). Grep found no `scrollIntoView` / scroll-hijack JS; horizontal marquee in `home.css` is unrelated and already gated by reduced-motion.
