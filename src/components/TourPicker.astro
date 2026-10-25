@@ -1,0 +1,177 @@
+---
+import { LINKS } from '../lib/site'
+
+const options = [
+  { label: 'Infant & Toddler tour', href: LINKS.calendlyInfant },
+  { label: 'Preschool / Before & After School tour', href: LINKS.calendly30 },
+  { label: 'Ninja free trial (ages 5–8)', href: LINKS.calendlyNinja58 },
+  { label: 'Ninja free trial (ages 9+)', href: LINKS.calendlyNinja9 },
+  { label: 'Kickboxing trial ($29)', href: LINKS.calendlyKickboxing },
+]
+---
+
+<dialog id="tour-picker" class="tour-picker" aria-labelledby="tour-picker-title">
+  <div class="tour-picker__panel">
+    <div class="tour-picker__head">
+      <h2 id="tour-picker-title" class="tour-picker__title">Book a tour or trial</h2>
+      <button type="button" class="tour-picker__close" aria-label="Close dialog">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <ul class="tour-picker__list">
+      {options.map((o) => (
+        <li>
+          <a
+            href={o.href}
+            class="tour-picker__option"
+            target="_blank"
+            rel="noopener noreferrer"
+          >{o.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('#tour-picker')
+  if (dialog) {
+    const openers = document.querySelectorAll<HTMLElement>('[data-open-tour-picker]')
+    const closeBtn = dialog.querySelector<HTMLButtonElement>('.tour-picker__close')
+
+    const open = () => {
+      if (typeof dialog.showModal === 'function') dialog.showModal()
+      else dialog.setAttribute('open', '')
+      // Close the mobile <details> menu if it was open behind the dialog
+      const mobile = document.querySelector<HTMLDetailsElement>('.nav__mobile')
+      if (mobile) mobile.open = false
+    }
+    const close = () => {
+      if (typeof dialog.close === 'function') dialog.close()
+      else dialog.removeAttribute('open')
+    }
+
+    openers.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault()
+        open()
+      })
+    })
+    closeBtn?.addEventListener('click', () => close())
+
+    // Backdrop click (native <dialog>: click lands on the dialog itself, not the panel)
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) close()
+    })
+
+    // Esc is handled by showModal(); keep a fallback for the non-modal path
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close()
+    })
+  }
+</script>
+
+<style>
+  .tour-picker {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: calc(100vw - 32px);
+    width: 420px;
+  }
+
+  .tour-picker::backdrop {
+    background: rgba(20, 18, 58, 0.55);
+  }
+
+  .tour-picker__panel {
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 8px 8px 0 var(--ink);
+    padding: 20px 20px 16px;
+  }
+
+  .tour-picker__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .tour-picker__title {
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .tour-picker__close {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 2.5px solid var(--ink);
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .tour-picker__close:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .tour-picker__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tour-picker__option {
+    display: block;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: #fff;
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    box-shadow: 3px 3px 0 var(--ink);
+    text-align: left;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
+  .tour-picker__option:hover {
+    background: var(--y);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  @media (max-width: 480px) {
+    .tour-picker {
+      width: calc(100vw - 24px);
+    }
+
+    .tour-picker__option {
+      padding: 16px 16px;
+      font-size: 1rem;
+      border-radius: 18px;
+    }
+  }
+</style>
