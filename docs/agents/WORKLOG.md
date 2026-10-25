@@ -45,6 +45,15 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/pickleball-two-col` (off `astro-rebuild`)
+
+**Changed:** Duncan (pt61u) said go on pickleball two-col only. Prior programs-two-col already wrapped the soft intro + one proof; rates/hours/reserve stayed full-width below — weak for pickleball market questions (hours / reserve / cost). Matched ropes Open Ropes conversion block: one `.two-col.care-claim` with claim copy + rates + hours/reserve + Call CTA in `.care-claim__text` beside existing `ProofPhotos` (`proofCourt`). Desktop = copy+CTA | proof; ≤900px stacks via existing `.two-col`. Browse `PhotoGallery` stays full-width below. No photo swaps, no CSS retune, no other pages.
+**Conversion impact:** Parents see cost, court slots, and reserve CTA beside the court proof in one glance instead of scrolling past marketing into orphan rate/hours blocks.
+**Evidence:** Build 42 pages; `verify-dist` OK; `check:redirects` OK. Dist `/pickleball.html`: rates + hours + Call CTA inside `.care-claim__text` before `.proof-photos`; browse gallery still present.
+**Live vs committed:** Preview only once pushed. Merge into `astro-rebuild` per Duncan own-it; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** Weekend pickleball times still TBD; new online booking link still TODO.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after merge to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/email-obfuscation` (off `astro-rebuild`)
 
 **Changed:** Duncan (pt60u) approved site-wide email harvest fix matching Contact (PR #17). (1) Added `NAP.emailDisplay` (`help [at] bodiesinmotionidaho.com`); kept `NAP.email` for API/schema/Mailjet/`data-mailto`. (2) Footer: no mailto — link to `/contact` + obfuscated text. (3) Removed static `mailto:` hrefs from privacy, team-building, birthday-parties, hours, pickleball, ropes-course, waiver, jobs; body/FAQ/cta copy now prefer contact form and/or obfuscated display. (4) Jobs: CTA → `/contact` (mention Motioneer); no static mailto. (5) Contact page now uses `NAP.emailDisplay`. ContactForm `data-mailto` + `api/contact.js` + Mailjet unchanged. JSON-LD still has email.
