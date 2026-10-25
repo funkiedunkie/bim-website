@@ -119,23 +119,27 @@ const browseGallery = [
         Meridian and Garden City.
       </p>
 
-      <h2>Cosmic Glow Party – Parents’ Night Out</h2>
-      <p>
-        Get ready to glow, groove and play! Enjoy a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza
-        and a sweet treat.
-      </p>
-      <ul class="bullets">
-        {glowUpcoming
-          ? <li><strong>Date:</strong> Saturday, October 24, 2026</li>
-          : <li><strong>Date:</strong> the next date is to be announced. Call us or check the registration link.</li>}
-        <li><strong>Time:</strong> 5:00–9:00 PM</li>
-        <li><strong>For:</strong> ages 5–12</li>
-        <li><strong>Cost:</strong> $51 per child; 20% sibling discount ($40.80 per additional sibling); dinner included</li>
-      </ul>
-      <div class="stub-actions">
-        <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Cosmic Glow Party</a>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2>Cosmic Glow Party – Parents’ Night Out</h2>
+          <p>
+            Get ready to glow, groove and play! Enjoy a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza
+            and a sweet treat.
+          </p>
+          <ul class="bullets">
+            {glowUpcoming
+              ? <li><strong>Date:</strong> Saturday, October 24, 2026</li>
+              : <li><strong>Date:</strong> the next date is to be announced. Call us or check the registration link.</li>}
+            <li><strong>Time:</strong> 5:00–9:00 PM</li>
+            <li><strong>For:</strong> ages 5–12</li>
+            <li><strong>Cost:</strong> $51 per child; 20% sibling discount ($40.80 per additional sibling); dinner included</li>
+          </ul>
+          <div class="stub-actions">
+            <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Cosmic Glow Party</a>
+          </div>
+        </div>
+        <ProofPhotos items={proofGlow} />
       </div>
-      <ProofPhotos items={proofGlow} />
 
       <h2>Family Night Out</h2>
       <p>

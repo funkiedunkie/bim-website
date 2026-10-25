@@ -115,28 +115,32 @@ const browseGallery = [
 >
   <section class="section">
     <div class="section__inner prose">
-      <h2 id="kickboxing">Boise fitness kickboxing</h2>
-      <p>
-        Want an effective, fat-burning, muscle-building workout that relieves stress? Each time you strap on the gloves,
-        life takes a backseat for the next 60 minutes while our instructors take you through a kickboxing journey. The
-        skills are designed to be fun and easy to grasp, and are perfect for men and women of all experience levels. Set
-        the pace to the beat of the music and the cadence of the instructor, and punish a 6-foot, 270-pound punching bag
-        in 14-ounce gloves.
-      </p>
-      <ul class="bullets">
-        <li>Improved strength and muscle toning</li>
-        <li>Boosted cardiovascular health</li>
-        <li>Unwavering confidence in your newfound abilities</li>
-      </ul>
-      <p>
-        <strong>Kickboxing trial ($29):</strong> 3 high-energy classes and a brand-new pair of boxing gloves.
-        <a href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book your trial on Calendly</a> or
-        call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
-      </p>
-      <div class="stub-actions">
-        <a class="btn-primary" href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book kickboxing trial</a>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2 id="kickboxing">Boise fitness kickboxing</h2>
+          <p>
+            Want an effective, fat-burning, muscle-building workout that relieves stress? Each time you strap on the gloves,
+            life takes a backseat for the next 60 minutes while our instructors take you through a kickboxing journey. The
+            skills are designed to be fun and easy to grasp, and are perfect for men and women of all experience levels. Set
+            the pace to the beat of the music and the cadence of the instructor, and punish a 6-foot, 270-pound punching bag
+            in 14-ounce gloves.
+          </p>
+          <ul class="bullets">
+            <li>Improved strength and muscle toning</li>
+            <li>Boosted cardiovascular health</li>
+            <li>Unwavering confidence in your newfound abilities</li>
+          </ul>
+          <p>
+            <strong>Kickboxing trial ($29):</strong> 3 high-energy classes and a brand-new pair of boxing gloves.
+            <a href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book your trial on Calendly</a> or
+            call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
+          </p>
+          <div class="stub-actions">
+            <a class="btn-primary" href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book kickboxing trial</a>
+          </div>
+        </div>
+        <ProofPhotos items={proofKick} />
       </div>
-      <ProofPhotos items={proofKick} />
 
       <h2 id="sgx">SGX bootcamp fitness, without the yelling</h2>
       <p>
@@ -183,12 +187,16 @@ const browseGallery = [
         train, and to train harder.
       </p>
 
-      <h2 id="family">Work out while your kids play</h2>
-      <p>
-        Bodies in Motion is a family fitness venue: parents take class while kids play on the indoor play structure. Open play is free for your kids while you exercise;
-        <a href="/open-play">see open play</a>.
-      </p>
-      <ProofPhotos items={proofKidsWhile} />
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2 id="family">Work out while your kids play</h2>
+          <p>
+            Bodies in Motion is a family fitness venue: parents take class while kids play on the indoor play structure. Open play is free for your kids while you exercise;
+            <a href="/open-play">see open play</a>.
+          </p>
+        </div>
+        <ProofPhotos items={proofKidsWhile} />
+      </div>
     </div>
   </section>
   <PhotoGallery eyebrow="See more of class" heading="Kickboxing &amp; SGX" items={browseGallery} />
