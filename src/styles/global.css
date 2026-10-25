@@ -189,7 +189,15 @@ ul, ol {
 }
 
 .section__inner--read {
+  /* Long prose only (blog, privacy, waiver, contact). Program pages use .section__inner. */
   max-width: var(--read-w);
+}
+
+/* Program pages: full desktop column (--max-w). Only continuous body copy /
+   callouts keep a readable measure; headings, lists, proof photos, and price
+   tables use the full section width so desktop doesn't look like a phone column. */
+.section__inner.prose:not(.section__inner--read) > :is(p, .callout) {
+  max-width: min(65ch, 100%);
 }
 
 .section-header {
@@ -673,7 +681,7 @@ h1, h2, h3, .section-title, .faq__title, .reviews__title, .location__title, .pri
   display: grid;
   gap: 18px;
 }
-.proof-photos--1 .proof-photos__list { grid-template-columns: 1fr; max-width: 420px; }
+.proof-photos--1 .proof-photos__list { grid-template-columns: 1fr; max-width: min(960px, 100%); }
 .proof-photos--2 .proof-photos__list { grid-template-columns: 1fr 1fr; }
 .proof-photos--3 .proof-photos__list { grid-template-columns: repeat(3, 1fr); }
 .proof-photos__item {
