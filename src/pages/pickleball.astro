@@ -79,9 +79,10 @@ const browseGallery = [
 >
   <section class="section">
     <div class="section__inner prose">
+      {/* Conversion block: hours / rates / reserve beside proof (ropes Open Ropes pattern). */}
       <div class="two-col care-claim">
         <div class="care-claim__text">
-            <h2>Where fun meets family</h2>
+          <h2>Where fun meets family</h2>
           <p>
             Bodies in Motion is a family recreation center with an indoor playground, ropes course, childcare, camps,
             fitness and ninja warrior classes, and an exclusive pickleball court. Our court is a blend of friendly
@@ -92,32 +93,32 @@ const browseGallery = [
             play and making new friends. Take a break at our Flatbread Cafe for artisanal flatbreads, coffee and more, or
             unwind after a game with a canned cocktail or a beer.
           </p>
+
+          <h3 id="rates">Pickleball rates</h3>
+          <ul class="bullets">
+            <li><strong>Individual:</strong> $12 per person (+ tax)</li>
+            <li><strong>Groups of 2–5:</strong> $10 per person</li>
+            <li><strong>Private groups of 6–12:</strong> $9 per person</li>
+            <li><strong>Monthly membership:</strong> $59 per month</li>
+          </ul>
+          <p>Games are posted courtside for 6 and 12 person play. Kids’ play pricing is on the <a href="/open-play">open play page</a>.</p>
+
+          <h3 id="hours">Hours and reservations</h3>
+          <ul class="bullets">
+            <li><strong>Monday–Friday:</strong> 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm</li>
+            <li><strong>Monday and Thursday only:</strong> 5:00–6:30 pm</li>
+            <li>
+              <strong>Reservation required:</strong> call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or use our
+              <a href="/contact">contact form</a> ({NAP.emailDisplay})
+            </li>
+          </ul>
+          <p>Court times are subject to availability, because other programs sometimes use the court.</p>
+          <div class="stub-actions">
+            <a class="btn-primary" href={NAP.phoneTel}>Call to book a court</a>
+            <a class="btn-outline" href="/hours">See all hours</a>
+          </div>
         </div>
         <ProofPhotos items={proofCourt} />
-      </div>
-
-      <h2 id="rates">Pickleball rates</h2>
-      <ul class="bullets">
-        <li><strong>Individual:</strong> $12 per person (+ tax)</li>
-        <li><strong>Groups of 2–5:</strong> $10 per person</li>
-        <li><strong>Private groups of 6–12:</strong> $9 per person</li>
-        <li><strong>Monthly membership:</strong> $59 per month</li>
-      </ul>
-      <p>Games are posted courtside for 6 and 12 person play. Kids’ play pricing is on the <a href="/open-play">open play page</a>.</p>
-
-      <h2 id="hours">Hours and reservations</h2>
-      <ul class="bullets">
-        <li><strong>Monday–Friday:</strong> 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm</li>
-        <li><strong>Monday and Thursday only:</strong> 5:00–6:30 pm</li>
-      </ul>
-      <p>
-        Court times are subject to availability, because other programs sometimes use the court. To reserve, call
-        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or use our <a href="/contact">contact page</a>. Prefer to type an
-        address? {NAP.emailDisplay}.
-      </p>
-      <div class="stub-actions">
-        <a class="btn-primary" href={NAP.phoneTel}>Call to book a court</a>
-        <a class="btn-outline" href="/hours">See all hours</a>
       </div>
     </div>
   </section>
