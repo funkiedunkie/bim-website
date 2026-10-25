@@ -45,6 +45,15 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/link-spacing` (off `astro-rebuild`)
+
+**Changed:** Duncan (pt65u): run-together link text on preschool (“come on in!Schedule a tour”) and other pages — Astro collapses newline/indent between prose and an inline `<a>` (same pitfall Contact fixed with `{' '}`). Spacing-only pass: inserted explicit `{' '}` before jammed `<a>` (and once after `</a>` into following text on birthday-parties). No copy rewrites, layout, or tour-picker changes.
+**Files:** `preschool`, `after-school-care`, `infant-toddler-care`, `about`, `camps` (2), `fitness-classes` (3), `hours`, `open-play`, `pickleball`, `team-building` (2), `waiver`, `birthday-parties` (after-`</a>`).
+**Evidence:** Before dist had `in!<a`, `Call<a`, `our<a`, `questions.<a`, `</a>ahead`, etc. After rebuild: zero `[wordchar/punct]<a` and zero `</a>[wordchar]` in all dist HTML; preschool body is `come on in! <a …>Schedule a tour`. Build 42 pages; `verify-dist` OK; `check:redirects` OK.
+**Live vs committed:** Preview only once pushed. Merge into `astro-rebuild` per Duncan own-it; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after merge. When writing new prose+`<a>` across a newline, always use `{' '}`.
+
 ## 2026-10-25 — Grok — `grok/tour-trial-picker` (off `astro-rebuild`)
 
 **Changed:** Duncan (pt64u) locked option A: nav **Book a tour** opens an on-page picker (not Contact). New `TourPicker.astro` (native `<dialog>` titled “Book a tour or trial”); five Calendly deep-links from `LINKS` — Infant & Toddler tour, Preschool / Before & After School tour, Ninja free trial 5–8, Ninja free trial 9+, Kickboxing trial ($29). Desktop `.nav__join` + mobile `.nav__mobile-cta` are buttons with `data-open-tour-picker` (no `/contact?program=Tour`). Esc / backdrop / close button dismiss; options open Calendly in a new tab (`rel=noopener`). Birthday/camps/team building stay out. Design B tokens (cream panel, ink border, yellow hover pills). Picker-only pass — no other nav/CTA rewrites; site-wide missing-space-before-`<a` bug deferred to a follow-up pass.
