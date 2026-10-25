@@ -191,98 +191,110 @@ const browseGallery = [
 
   <section class="section section--alt" id="kids-parties">
     <div class="section__inner prose">
-      <h2>Kids birthday parties (ages 0–11)</h2>
-      <p>
-        Our 1½ hour birthday party lets you choose something that might interest your child, and you’ll have your own
-        personal birthday party host to make sure the experience is amazing. The party includes plates, napkins,
-        silverware, a tablecloth and general party decorations.
-      </p>
-      <p>
-        <strong>Play Zone Party:</strong> if you are looking for a party filled with games and fun, kids get some game
-        time in their very own party room before going out to do games and challenges on our indoor play structure.
-      </p>
-      <p>
-        <strong>Ropes party (choose the “Ropes $50+” option):</strong> kids take on 3 Indiana Jones-style bridges on the
-        High Ropes Course. Ropes parties are for ages 10 and up and include two free adult participants to help the
-        kiddos. Booked a different party and want to add ropes later? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>
-        ahead of time so we can make sure we can support it.
-      </p>
-      <p>
-        <strong>Food Package (optional):</strong> add it during registration: your choice of cheese or pepperoni
-        flatbread, with apple or grape juice. $3.00 per child ages 0–6, $4.00 ages 7–8, $5.00 ages 9+. No outside food
-        other than the birthday treat is allowed.
-      </p>
-      <p>Let the kids run around while the parents relax and take pictures. Then we’ll round them up for food and/or cake, and some final activities and play time.</p>
-      <PriceTable caption="Kids birthday party pricing" rows={kidsRows} priceHeading="Price" rowHeading="Party size" />
-      <div class="stub-actions">
-        <a class="btn-primary" href={LINKS.calendlyBirthday} target="_blank" rel="noopener noreferrer">Birthday party RSVP</a>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2>Kids birthday parties (ages 0–11)</h2>
+          <p>
+            Our 1½ hour birthday party lets you choose something that might interest your child, and you’ll have your own
+            personal birthday party host to make sure the experience is amazing. The party includes plates, napkins,
+            silverware, a tablecloth and general party decorations.
+          </p>
+          <p>
+            <strong>Play Zone Party:</strong> if you are looking for a party filled with games and fun, kids get some game
+            time in their very own party room before going out to do games and challenges on our indoor play structure.
+          </p>
+          <p>
+            <strong>Ropes party (choose the “Ropes $50+” option):</strong> kids take on 3 Indiana Jones-style bridges on the
+            High Ropes Course. Ropes parties are for ages 10 and up and include two free adult participants to help the
+            kiddos. Booked a different party and want to add ropes later? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>
+            ahead of time so we can make sure we can support it.
+          </p>
+          <p>
+            <strong>Food Package (optional):</strong> add it during registration: your choice of cheese or pepperoni
+            flatbread, with apple or grape juice. $3.00 per child ages 0–6, $4.00 ages 7–8, $5.00 ages 9+. No outside food
+            other than the birthday treat is allowed.
+          </p>
+          <p>Let the kids run around while the parents relax and take pictures. Then we’ll round them up for food and/or cake, and some final activities and play time.</p>
+          <PriceTable caption="Kids birthday party pricing" rows={kidsRows} priceHeading="Price" rowHeading="Party size" />
+          <div class="stub-actions">
+            <a class="btn-primary" href={LINKS.calendlyBirthday} target="_blank" rel="noopener noreferrer">Birthday party RSVP</a>
+          </div>
+        </div>
+        <ProofPhotos items={proofKids} />
       </div>
-      <ProofPhotos items={proofKids} />
     </div>
   </section>
 
   <section class="section" id="parties-10-16">
     <div class="section__inner prose">
-      <h2>Birthday parties for ages 10–16</h2>
-      <p>
-        Kids, tweens and teens who have moved past character-themed parties can choose from Super and Lock-In
-        parties. Kids must be at least 10 years old.
-      </p>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2>Birthday parties for ages 10–16</h2>
+          <p>
+            Kids, tweens and teens who have moved past character-themed parties can choose from Super and Lock-In
+            parties. Kids must be at least 10 years old.
+          </p>
 
-      <h3>Super Birthday Party</h3>
-      <p>
-        This 2½ hour party is perfect for the active kiddo who loves to move, jump and swing with their friends. Your
-        birthday kiddo and friends compete against each other using our Z Tag gaming technology, swing from the High
-        Ropes and test their agility and strength on the Ninja Warrior Course. Your party agenda includes various games
-        and activities, guided by a private host the whole time. The Super Birthday Party is on Friday nights from
-        5:30–8:00 pm.
-      </p>
-      <PriceTable caption="Super Birthday pricing" rows={superRows} priceHeading="Price" rowHeading="Party size" />
+          <h3>Super Birthday Party</h3>
+          <p>
+            This 2½ hour party is perfect for the active kiddo who loves to move, jump and swing with their friends. Your
+            birthday kiddo and friends compete against each other using our Z Tag gaming technology, swing from the High
+            Ropes and test their agility and strength on the Ninja Warrior Course. Your party agenda includes various games
+            and activities, guided by a private host the whole time. The Super Birthday Party is on Friday nights from
+            5:30–8:00 pm.
+          </p>
+          <PriceTable caption="Super Birthday pricing" rows={superRows} priceHeading="Price" rowHeading="Party size" />
 
-      <h3>Cosmic Birthday Party</h3>
-      <p><strong>Currently unavailable.</strong> Cosmic parties are on hold for now.</p>
+          <h3>Cosmic Birthday Party</h3>
+          <p><strong>Currently unavailable.</strong> Cosmic parties are on hold for now.</p>
 
-      <h3>All Night Lock-In Party</h3>
-      <p>
-        The ultimate birthday party package: 12 hours at Bodies in Motion with multiple hosts. Z Tag throughout the
-        entire facility, High Ropes time, dance competitions, games, group challenges and more. Food includes a
-        late-night snack/dinner and a continental breakfast. Parents are
-        welcome to stay all night but aren’t required to. The overnight host is one of our licensed child care
-        Motioneers, registered through the state of Idaho and background checked. Lock-In parties are booked Friday
-        evenings from 8 pm to 8 am Saturday morning, and all participants must be at least 10 years old.
-      </p>
-      <PriceTable caption="All Night Lock-In pricing" rows={lockInRows} priceHeading="Price" rowHeading="Party size" />
+          <h3>All Night Lock-In Party</h3>
+          <p>
+            The ultimate birthday party package: 12 hours at Bodies in Motion with multiple hosts. Z Tag throughout the
+            entire facility, High Ropes time, dance competitions, games, group challenges and more. Food includes a
+            late-night snack/dinner and a continental breakfast. Parents are
+            welcome to stay all night but aren’t required to. The overnight host is one of our licensed child care
+            Motioneers, registered through the state of Idaho and background checked. Lock-In parties are booked Friday
+            evenings from 8 pm to 8 am Saturday morning, and all participants must be at least 10 years old.
+          </p>
+          <PriceTable caption="All Night Lock-In pricing" rows={lockInRows} priceHeading="Price" rowHeading="Party size" />
 
-      <h3>Book ages 10–16 parties</h3>
-      <p>
-        To book a Super or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
-        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a>.
-      </p>
-      <ProofPhotos items={proofTween} />
+          <h3>Book ages 10–16 parties</h3>
+          <p>
+            To book a Super or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
+            <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a>.
+          </p>
+        </div>
+        <ProofPhotos items={proofTween} />
+      </div>
     </div>
   </section>
 
   <section class="section section--alt" id="adult-parties">
     <div class="section__inner prose">
-      <h2>Adult birthday parties</h2>
-      <p>
-        Celebrate any milestone at Bodies in Motion: a birthday, bachelor/bachelorette party, divorce party, engagement
-        party, bridal shower, over-the-hill party, 80’s party, disco party, or a party-just-to-party party. Theme it
-        however you want and we’ll go right along with it.
-      </p>
-      <p>
-        We’ll organize an array of hilarious, adults-only games, and those who are up for it can take on the Ropes Course
-        or our very own Ninja Warrior Course. For 3 hours we’ll tailor your event to your needs. Have us provide the
-        food, order your own food truck to park just outside, or bring your own food and enjoy some of our adult
-        beverages (no outside alcohol allowed). Adult Super Parties can be booked Friday evenings from 8 pm to 11 pm.
-      </p>
-      <PriceTable caption="Private party pricing" rows={adultPrivateRows} priceHeading="Price" rowHeading="Party size" />
-      <PriceTable caption="Semi-private party pricing" rows={adultSemiRows} priceHeading="Price" rowHeading="Party size" />
-      <div class="stub-actions">
-        <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay} to book</a>
-        <a class="btn-outline" href="/contact">Email or contact us</a>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2>Adult birthday parties</h2>
+          <p>
+            Celebrate any milestone at Bodies in Motion: a birthday, bachelor/bachelorette party, divorce party, engagement
+            party, bridal shower, over-the-hill party, 80’s party, disco party, or a party-just-to-party party. Theme it
+            however you want and we’ll go right along with it.
+          </p>
+          <p>
+            We’ll organize an array of hilarious, adults-only games, and those who are up for it can take on the Ropes Course
+            or our very own Ninja Warrior Course. For 3 hours we’ll tailor your event to your needs. Have us provide the
+            food, order your own food truck to park just outside, or bring your own food and enjoy some of our adult
+            beverages (no outside alcohol allowed). Adult Super Parties can be booked Friday evenings from 8 pm to 11 pm.
+          </p>
+          <PriceTable caption="Private party pricing" rows={adultPrivateRows} priceHeading="Price" rowHeading="Party size" />
+          <PriceTable caption="Semi-private party pricing" rows={adultSemiRows} priceHeading="Price" rowHeading="Party size" />
+          <div class="stub-actions">
+            <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay} to book</a>
+            <a class="btn-outline" href="/contact">Email or contact us</a>
+          </div>
+        </div>
+        <ProofPhotos items={proofAdult} />
       </div>
-      <ProofPhotos items={proofAdult} />
     </div>
   </section>
   <PhotoGallery eyebrow="See more parties" heading="Kids, tweens and adult parties" items={browseGallery} />

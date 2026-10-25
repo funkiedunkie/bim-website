@@ -124,18 +124,22 @@ const browseGallery = [
         active between seasons. Owner Duncan Richardson competed on American Ninja Warrior in 2016.
       </p>
 
-      <h2 id="free-trial">Free private ninja trial</h2>
-      <p>
-        Our free trial is a 30-minute one-on-one session. Your child meets one of our coaches and tries beginner parkour
-        and obstacle skills, just enough to build confidence and spark excitement. It is fun and low pressure. Parents
-        must stay to watch (cheering encouraged), but no participation is needed. Have siblings? Bring them too: register
-        one child and we’ll include the rest.
-      </p>
-      <div class="stub-actions">
-        <a class="btn-primary" href={LINKS.calendlyNinja58} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 5–8)</a>
-        <a class="btn-primary" href={LINKS.calendlyNinja9} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 9+)</a>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2 id="free-trial">Free private ninja trial</h2>
+          <p>
+            Our free trial is a 30-minute one-on-one session. Your child meets one of our coaches and tries beginner parkour
+            and obstacle skills, just enough to build confidence and spark excitement. It is fun and low pressure. Parents
+            must stay to watch (cheering encouraged), but no participation is needed. Have siblings? Bring them too: register
+            one child and we’ll include the rest.
+          </p>
+          <div class="stub-actions">
+            <a class="btn-primary" href={LINKS.calendlyNinja58} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 5–8)</a>
+            <a class="btn-primary" href={LINKS.calendlyNinja9} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 9+)</a>
+          </div>
+        </div>
+        <ProofPhotos items={proofTrial} />
       </div>
-      <ProofPhotos items={proofTrial} />
     </div>
   </section>
 
@@ -154,15 +158,19 @@ const browseGallery = [
       </ul>
       <p>Questions about classes? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or <a href="/contact">contact us</a>.</p>
 
-      <h2 id="ranks">Ranks and obstacles taught</h2>
-      <p>
-        Each band has six obstacles to complete plus a fitness benchmark (push-ups, sit-ups, squats, dead hangs and
-        pull-ups, with age-appropriate targets for ages 5–8 and 9+). Obstacles taught at each rank:
-      </p>
-      <ul class="bullets">
-        {bands.map((b) => <li><strong>{b.band}:</strong> {b.obstacles}</li>)}
-      </ul>
-      <ProofPhotos items={proofProgress} />
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2 id="ranks">Ranks and obstacles taught</h2>
+          <p>
+            Each band has six obstacles to complete plus a fitness benchmark (push-ups, sit-ups, squats, dead hangs and
+            pull-ups, with age-appropriate targets for ages 5–8 and 9+). Obstacles taught at each rank:
+          </p>
+          <ul class="bullets">
+            {bands.map((b) => <li><strong>{b.band}:</strong> {b.obstacles}</li>)}
+          </ul>
+        </div>
+        <ProofPhotos items={proofProgress} />
+      </div>
     </div>
   </section>
 

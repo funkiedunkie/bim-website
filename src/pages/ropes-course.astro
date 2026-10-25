@@ -105,28 +105,32 @@ const browseGallery = [
       </ul>
       <p><strong>Cosmic Ropes is currently on hold.</strong></p>
 
-      <h2 id="open-ropes">Open Ropes</h2>
-      <p>
-        Experience the thrill of the ropes course with free-range swinging and hanging, Tarzan style. Challenge yourself,
-        with a friend, in a 45-minute high aerial ropes adventure. Participants must be 10 years old with an adult, or
-        10 years old and 5 feet tall to go up without an adult.
-      </p>
-      <ul class="bullets">
-        <li><strong>Cost:</strong> $16 (+ tax) per person</li>
-        <li><strong>Monday–Friday:</strong> 4:00–5:00 pm and 5:00–6:00 pm</li>
-        <li><strong>Saturday:</strong> please call for availability</li>
-        <li><strong>Reservation required:</strong> call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or email <a href={`mailto:${NAP.email}`}>{NAP.email}</a></li>
-      </ul>
-      <p>
-        <strong>Size restriction:</strong> weight is not a concern on the course, but our harnesses may not accommodate
-        all guests. All our harnesses are Adult Large (waist 46 inches, thighs 30 inches). We have 2 Adult X-Large
-        harnesses (waist 51 inches, thighs 34 inches).
-      </p>
-      <div class="stub-actions">
-        <a class="btn-primary" href={NAP.phoneTel}>Call to reserve</a>
-        <a class="btn-outline" href="/contact">Email or contact us</a>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2 id="open-ropes">Open Ropes</h2>
+          <p>
+            Experience the thrill of the ropes course with free-range swinging and hanging, Tarzan style. Challenge yourself,
+            with a friend, in a 45-minute high aerial ropes adventure. Participants must be 10 years old with an adult, or
+            10 years old and 5 feet tall to go up without an adult.
+          </p>
+          <ul class="bullets">
+            <li><strong>Cost:</strong> $16 (+ tax) per person</li>
+            <li><strong>Monday–Friday:</strong> 4:00–5:00 pm and 5:00–6:00 pm</li>
+            <li><strong>Saturday:</strong> please call for availability</li>
+            <li><strong>Reservation required:</strong> call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or email <a href={`mailto:${NAP.email}`}>{NAP.email}</a></li>
+          </ul>
+          <p>
+            <strong>Size restriction:</strong> weight is not a concern on the course, but our harnesses may not accommodate
+            all guests. All our harnesses are Adult Large (waist 46 inches, thighs 30 inches). We have 2 Adult X-Large
+            harnesses (waist 51 inches, thighs 34 inches).
+          </p>
+          <div class="stub-actions">
+            <a class="btn-primary" href={NAP.phoneTel}>Call to reserve</a>
+            <a class="btn-outline" href="/contact">Email or contact us</a>
+          </div>
+        </div>
+        <ProofPhotos items={proofOpenRopes} />
       </div>
-      <ProofPhotos items={proofOpenRopes} />
     </div>
   </section>
 

@@ -480,7 +480,7 @@ ul, ol {
   align-items: start;
 }
 
-/* Care pages: claim copy | proof photo(s). Reuses .two-col (stacks ≤900px).
+/* Care + program pages: claim copy | proof photo(s). Reuses .two-col (stacks ≤900px).
    Do not retune proof scale/object-position here — photo-scale + crop passes own that. */
 .care-claim {
   margin: 36px 0;

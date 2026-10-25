@@ -145,12 +145,15 @@ const browseGallery = [
         with you, this could be the start of a very cool relationship.
       </p>
 
-      <h2 id="core-values">Our 7 Core Values</h2>
-      <ol class="steps">
-        {coreValues.map((v) => <li>{v}</li>)}
-      </ol>
-
-      <ProofPhotos items={proofPurpose} />
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2 id="core-values">Our 7 Core Values</h2>
+          <ol class="steps">
+            {coreValues.map((v) => <li>{v}</li>)}
+          </ol>
+        </div>
+        <ProofPhotos items={proofPurpose} />
+      </div>
 
       <h2 id="purpose">Bodies in Motion’s purpose</h2>
       <p>We are committed to igniting activity, and encouraging empowerment.</p>

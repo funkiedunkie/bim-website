@@ -108,18 +108,22 @@ const browseGallery = [
 >
   <section class="section">
     <div class="section__inner prose">
-      <h2>Boise’s indoor playground for families</h2>
-      <p>
-        Walk in, grab a freshly brewed latte, find a cozy spot with free wifi, and watch your little ones unleash their
-        energy on our gigantic play structure. Families come to us from Boise, Meridian and Garden City.
-      </p>
-      <ul class="bullets">
-        <li>Four slides: the Vandal Vortex, Bronco Tsunami, Bengal Bolt and the Warrior Challenge</li>
-        <li>Imagination stations, a costume corner and our Eye Play system</li>
-        <li>Building with trains and Legos</li>
-        <li>Parents can relax, chase their kiddo around the playground, or try <a href="/pickleball">pickleball</a></li>
-      </ul>
-      <ProofPhotos items={proofPlay} />
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2>Boise’s indoor playground for families</h2>
+          <p>
+            Walk in, grab a freshly brewed latte, find a cozy spot with free wifi, and watch your little ones unleash their
+            energy on our gigantic play structure. Families come to us from Boise, Meridian and Garden City.
+          </p>
+          <ul class="bullets">
+            <li>Four slides: the Vandal Vortex, Bronco Tsunami, Bengal Bolt and the Warrior Challenge</li>
+            <li>Imagination stations, a costume corner and our Eye Play system</li>
+            <li>Building with trains and Legos</li>
+            <li>Parents can relax, chase their kiddo around the playground, or try <a href="/pickleball">pickleball</a></li>
+          </ul>
+        </div>
+        <ProofPhotos items={proofPlay} />
+      </div>
 
       <h2>Open play cost</h2>
       <PriceTable caption="Open play admission" subtitle="Per child" rows={priceRows} priceHeading="Price" rowHeading="Age" />

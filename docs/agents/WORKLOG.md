@@ -45,6 +45,14 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/programs-two-col` (off `astro-rebuild`)
+
+**Changed:** Duncan approved (pt53u) rolling the care desktop two-col pattern to other program pages — ONE change only. Wrapped each claim text + `ProofPhotos` pair in `.two-col.care-claim` / `.care-claim__text` on: camps, open-play, ninja-warrior (trial + ranks), birthday-parties (kids / 10–16 / adult), fitness-classes (kickboxing + kids-while-you-train), team-building (formats), pickleball, ropes-course (Open Ropes), parents-night-out (Cosmic Glow), about (founders), jobs (core values). Reused existing `.two-col` / `.care-claim` CSS (stacks ≤900px); CSS comment only broadened to “care + program”. Browse `PhotoGallery` stays full-width below. Care pages (infant/preschool/after-school), nav, home, facts, Cosmic, photo scale/crops untouched.
+**Evidence:** Build 42 pages; `verify-dist` OK; `check:redirects` OK. Metrics @1440 open-play/ninja/fitness first claim: `grid-template-columns: 636px 636px`, claim 1320 centered (left 60); @390: single `342px` column, text+proof same left (stacked); scrollWidth = viewport (no overflow). Shots: `/workspace/programs-two-col-shots/` (open-play, ninja, fitness desktop+mobile claim).
+**Live vs committed:** Preview only once pushed. Merged into `astro-rebuild` per Duncan go; not `main`; production still Weebly; DNS untouched.
+**Open questions:** None for this layout. Real openings status still needed from Rhea/Rachel.
+**Handoff:** Do not merge PR #1 without Duncan. Next visual pass needs a fresh layout contract first — don’t stack more CSS onto this without asking.
+
 ## 2026-10-25 — Grok — `grok/care-two-col` (off `astro-rebuild`)
 
 **Changed:** Duncan signed off + said go on ONE change: care pages get desktop side-by-side (text/facts | proof photo), stack ≤900px. Camps uses ActivityPage — skipped. Wrapped each claim+ProofPhotos pair on `/infant-toddler-care`, `/preschool`, `/after-school-care` in `.two-col.care-claim` (text in `.care-claim__text`). CSS: reuse existing `.two-col` (`1fr 1fr` → `1fr` @900px); `.care-claim` spacing + proof column fills width (`max-width: none`); no photo scale/crop retune (`object-position: center top` + 4/3 kept). Browse `PhotoGallery` stays full-width below rates/CTA. Nav/home/other programs/facts/Cosmic untouched. Also locked working rules into `CLAUDE.md`: one change per pass, layout contract first, signed-off photo order.
