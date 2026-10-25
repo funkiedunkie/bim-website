@@ -45,6 +45,14 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/about-photos` contact follow-up (same PR)
+
+**Changed:** Duncan contact feedback, separate commit after About. (1) Removed duplicate phone / **No Pickup Hotline** list row + FAQ — one phone only (`NAP.phoneDisplay`). (2) Fixed run-together link text (`See our<a` / `your<a`) with explicit `{' '}` before hours + waiver links. (3) Email harvesting: form stays primary (`POST /api/contact` → Mailjet). Removed visible `mailto:` + cleartext `help@…` from contact details and form alt line; show obfuscated `help [at] bodiesinmotionidaho.com` as text. `data-mailto` kept only for JS fallback when API fails (still present in HTML attribute — determined scrapers can find it; not inventing a spam product). FAQ/meta no longer push raw mailto. No other pages.
+**Evidence:** Build + verify-dist + check:redirects. Dist contact: one tel link in details; zero visible `mailto:` in body links; `See our hours` / `your waiver` have spaces; Hotline absent.
+**Live vs committed:** Same PR as about-photos → merge to `astro-rebuild`. Not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None for contact. Family photo higher-res still needed (about).
+**Handoff:** Do not merge PR #1 without Duncan.
+
 ## 2026-10-25 — Grok — `grok/about-photos` (off `astro-rebuild`)
 
 **Changed:** Duncan (pt57u): `/about` only. (1) B&W martial arts dojo (`about-vista-school.jpeg` — filename is mislabeled; image is Vista Ave school floor with heavy bags + kick mural, not a school visit) moved from browse gallery into **Our story** two-col as proof beside the martial-arts origin claim; alt/caption corrected. (2) Aerial/acro yoga (`about-acro-yoga.jpg`) moved from gallery into **Purpose and core values** two-col beside Unique & Innovative / ignite-activity claim. (3) Removed unrelated browse gallery items `values1.jpg` and `values3.jpg` (outdoor park people, not about-story). Browse `PhotoGallery` removed from about — nothing left that belongs. (4) Family photo (`about-richardsons.jpg`) stays with Meet the founders; **no higher-res in repo or Weebly inventory** (md5 match to `about-us-richardsons-web.jpg` at **408×272** only) — cannot invent pixels; logged on backlog. Two-col pattern kept. No other pages.

@@ -12,6 +12,7 @@ const programs = [
   'Waitlist',
   'Other',
 ]
+// Kept for JS mailto fallback when /api/contact is unavailable — not shown as a visible harvestable link.
 const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Website inquiry')}`
 ---
 <form id="contact-form" class="contact-form" method="post" action="/api/contact" data-mailto={mailto}>
@@ -26,7 +27,9 @@ const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Website inquir
   <label>Message* <textarea name="message" required rows="5" maxlength="5000"></textarea></label>
   <label class="contact-form__hp" aria-hidden="true">Company <input name="company" tabindex="-1" autocomplete="off" /></label>
   <button type="submit" class="btn-primary">Send</button>
-  <p class="contact-form__alt">Prefer email? Write to <a href={mailto}>{NAP.email}</a> or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.</p>
+  <p class="contact-form__alt">
+    Prefer to call? <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>. The form above is the best way to email us.
+  </p>
 </form>
 <script>
   const form = document.querySelector<HTMLFormElement>('.contact-form')
@@ -39,7 +42,7 @@ const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Website inquir
     if (pre && sel && [...sel.options].some((o) => o.value === pre)) sel.value = pre
     const q = params.get('status')
     if (q === 'sent') show('Thanks! Your message was sent.')
-    if (q === 'error') show(`Sorry, that didn't send. Please email <a href="${form.dataset.mailto}">us directly</a>.`)
+    if (q === 'error') show(`Sorry, that didn't send. Please call us or try the form again in a moment.`)
     form.addEventListener('submit', async (e) => {
       e.preventDefault()
       const data = Object.fromEntries(new FormData(form))
