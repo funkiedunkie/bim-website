@@ -2,13 +2,10 @@
 import ActivityPage from '../layouts/ActivityPage.astro'
 import { NAP, aboutPageSchema, type FaqItem } from '../lib/site'
 import heroImg from '../assets/values2.jpg'
-import PhotoGallery from '../components/PhotoGallery.astro'
 import ProofPhotos from '../components/ProofPhotos.astro'
-import galleryAbout1 from '../assets/photos/about-richardsons.jpg'
-import galleryAbout2 from '../assets/photos/about-vista-school.jpeg'
-import galleryAbout3 from '../assets/photos/about-acro-yoga.jpg'
-import galleryAbout4 from '../assets/values1.jpg'
-import galleryAbout5 from '../assets/values3.jpg'
+import photoFounders from '../assets/photos/about-richardsons.jpg'
+import photoMartialSchool from '../assets/photos/about-vista-school.jpeg'
+import photoAcroYoga from '../assets/photos/about-acro-yoga.jpg'
 
 const title = 'About Bodies in Motion | Family Fitness & Play in Boise, ID'
 const description =
@@ -68,18 +65,28 @@ const reviews = [
 
 const extraJsonLd = [aboutPageSchema({ description })]
 
-const proofFounders = [
+// Proof beside claims (signed-off order). Browse gallery removed: values1/values3 were unrelated
+// outdoor shots; martial + acro moved up; no remaining about-true browse photos.
+const proofOrigin = [
   {
-    src: galleryAbout1,
-    alt: 'Duncan and Rachel Richardson, founders of Bodies in Motion',
-    caption: 'Duncan and Rachel Richardson — the family behind Bodies in Motion.',
+    src: photoMartialSchool,
+    alt: 'The original Vista Ave martial arts school floor with heavy bags and a kicking mural',
+    caption: 'Where it started — the Vista Ave martial arts school before Bodies in Motion.',
   },
 ]
-const browseGallery = [
-  { src: galleryAbout2, alt: 'Bodies in Motion community involvement with a local school' },
-  { src: galleryAbout3, alt: 'Partners practicing acro yoga at Bodies in Motion' },
-  { src: galleryAbout4, alt: 'Families and members active inside the Bodies in Motion gym' },
-  { src: galleryAbout5, alt: 'Community members moving together at Bodies in Motion' },
+const proofPurpose = [
+  {
+    src: photoAcroYoga,
+    alt: 'Partners practicing aerial acro yoga on the mats at Bodies in Motion',
+    caption: 'Unique & innovative in motion — aerial acro yoga as play and fitness together.',
+  },
+]
+const proofFounders = [
+  {
+    src: photoFounders,
+    alt: 'Duncan and Rachel Richardson with their family',
+    caption: 'Duncan and Rachel Richardson — the family behind Bodies in Motion.',
+  },
 ]
 ---
 
@@ -103,24 +110,33 @@ const browseGallery = [
 >
   <section class="section">
     <div class="section__inner prose">
-      <h2>Our story</h2>
-      <p>
-        Bodies in Motion is a local company that started in a 1,000 sq. ft. space on Vista Ave. over 20 years ago.
-        Except, it wasn’t called Bodies in Motion. We were a martial art school, and our purpose was to Ignite Activity
-        and Encourage Empowerment, with martial arts as the means by which our founders did that.
-      </p>
-      <p>
-        Duncan and Rachel, our founders, have taught thousands of students in the Treasure Valley and have promoted
-        several hundred to Black Belt. Duncan and his sister Mia St. John pioneered the first fitness kickboxing program
-        (Thai-Robics) in Idaho. After empowering kids and adults in Taekwondo and fitness kickboxing classes since 1998,
-        they felt they could make a bigger impact in the community through play, entertainment, learning and fitness.
-      </p>
-      <p>
-        For 2 years Duncan and Rachel brainstormed the perfect facility. They traveled in search of one to emulate but
-        never found a center that resonated with them: they were either all entertainment or all fitness, and none seemed
-        to have the underlying philosophy of empowering people.
-      </p>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>Our story</h2>
+          <p>
+            Bodies in Motion is a local company that started in a 1,000 sq. ft. space on Vista Ave. over 20 years ago.
+            Except, it wasn’t called Bodies in Motion. We were a martial art school, and our purpose was to Ignite Activity
+            and Encourage Empowerment, with martial arts as the means by which our founders did that.
+          </p>
+          <p>
+            Duncan and Rachel, our founders, have taught thousands of students in the Treasure Valley and have promoted
+            several hundred to Black Belt. Duncan and his sister Mia St. John pioneered the first fitness kickboxing program
+            (Thai-Robics) in Idaho. After empowering kids and adults in Taekwondo and fitness kickboxing classes since 1998,
+            they felt they could make a bigger impact in the community through play, entertainment, learning and fitness.
+          </p>
+          <p>
+            For 2 years Duncan and Rachel brainstormed the perfect facility. They traveled in search of one to emulate but
+            never found a center that resonated with them: they were either all entertainment or all fitness, and none seemed
+            to have the underlying philosophy of empowering people.
+          </p>
+        </div>
+        <ProofPhotos items={proofOrigin} />
+      </div>
+    </div>
+  </section>
 
+  <section class="section section--alt">
+    <div class="section__inner prose">
       <h2>Where the name comes from</h2>
       <p>
         Creating our name was one of the toughest challenges for our founders. Having gone to school to become an
@@ -134,17 +150,26 @@ const browseGallery = [
         Motion on Monday, just 2 days after their grand opening. Ever since that opening day, we’ve had the pleasure of
         igniting activity in over 60,000 guests.
       </p>
+    </div>
+  </section>
 
-      <h2>Purpose and core values</h2>
-      <p>
-        <strong>Our purpose:</strong> we are committed to igniting activity and encouraging empowerment. Our long-range
-        goal, our BHAG (Big Hairy Audacious Goal), is “To be the definitive leader in servicing people, in high quality
-        activities, wherever they are.”
-      </p>
-      <p>Duncan and Rachel have fostered a culture centered around 7 core values and a solid purpose:</p>
-      <ol class="bullets">
-        {coreValues.map((v) => <li>{v}</li>)}
-      </ol>
+  <section class="section">
+    <div class="section__inner prose">
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>Purpose and core values</h2>
+          <p>
+            <strong>Our purpose:</strong> we are committed to igniting activity and encouraging empowerment. Our long-range
+            goal, our BHAG (Big Hairy Audacious Goal), is “To be the definitive leader in servicing people, in high quality
+            activities, wherever they are.”
+          </p>
+          <p>Duncan and Rachel have fostered a culture centered around 7 core values and a solid purpose:</p>
+          <ol class="bullets">
+            {coreValues.map((v) => <li>{v}</li>)}
+          </ol>
+        </div>
+        <ProofPhotos items={proofPurpose} />
+      </div>
     </div>
   </section>
 
@@ -179,6 +204,4 @@ const browseGallery = [
       </p>
     </div>
   </section>
-  <PhotoGallery eyebrow="See more of BIM" heading="The people and the place" items={browseGallery} />
 </ActivityPage>
-
