@@ -10,6 +10,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 Template:
 
 ```markdown
+## 2026-10-25 — Grok — `grok/fitness-framing` (off `astro-rebuild`)
+
+**Changed:** Duncan: fitness proof photos looked awkward with white bars beside portrait shots. Root cause: `.proof-photos__img--portrait` used `width: auto; margin-inline: auto` inside a white `.proof-photos__figure`, letterboxing gutters. Fix: portrait proofs now `width: 100%` + `aspect-ratio: 3/4` + `object-fit: cover` (drop auto-centering) with `max-height: 420px` so they fill the card edge-to-edge without becoming a second hero. Verified fitness JPEGs (rhea-kickboxing, rachel-fitness, anna/lisa/kristin/dave) — **no baked-in white borders in pixel data**; the “white border” was CSS letterboxing only, so no asset crops in this PR. AI cleanup (grain/belts/flags) is a separate pass — not in this PR. fitness-classes.astro still uses portrait class on Rhea + Rachel proofs; gallery landscape shots already fill via default proof/gallery rules.
+**Conversion:** Full-bleed proof cards look intentional; letterboxed portraits looked like broken crops and undercut trust in the kickboxing/SGX pitch.
+**Evidence:** Pixel edge samples on all fitness assets (corners/mid-edges dark gym tones, not white). CSS-only framing fix. Build + verify-dist + check:redirects (Node 22).
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild`.
+**Open questions:** AI cleanup of grain + belts/flags still pending Duncan review as a separate pass.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after this merges to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/gallery-cols-spacing` (off `astro-rebuild`)
 
 **Changed:** Duncan approved auto-sizing PhotoGallery columns to photo count + fix jammed fragment spacing on camps. (1) `PhotoGallery.astro` adds `photo-gallery--N` from `items.length` (clamped 1–4) and matching `sizes`. (2) `global.css`: `--1`/`--2`/`--3`/`--4` set column count; breakpoints only shrink (4→3@1100, 3|4→2@900, all→1@560) so pages with 1–3 browse shots never show empty grid cells. Design B look unchanged. (3) Camps PNO note: `{' '}` after “current list.” so Astro no longer emits `list.Looking`. Site-wide fragment audit found only that camps jam (prior PR #22 already fixed `<a>` spacing).

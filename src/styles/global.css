@@ -731,15 +731,14 @@ h1, h2, h3, .section-title, .faq__title, .reviews__title, .location__title, .pri
   object-fit: cover;
   object-position: center top;
 }
-/* Portrait source proofs (e.g. fitness action): keep 3/4 so we don't chop head/stance into 4/3.
-   Cap height so a portrait proof stays proof-sized in the two-col column (not a second hero). */
+/* Portrait source proofs (e.g. fitness action): 3/4 cover box fills the figure edge-to-edge
+   (no width:auto centering / white letterbox gutters). Cap height so proof stays proof-sized. */
 .proof-photos__img.proof-photos__img--portrait {
+  width: 100%;
   aspect-ratio: 3 / 4;
+  object-fit: cover;
   object-position: center center;
   max-height: 420px;
-  width: auto;
-  max-width: 100%;
-  margin-inline: auto;
 }
 .proof-photos__caption {
   padding: 10px 14px 12px;
