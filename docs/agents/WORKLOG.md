@@ -45,6 +45,14 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/contact-one-phone` (off `astro-rebuild`)
+
+**Changed:** Duncan (pt62u): two phone numbers side-by-side still on `/contact`. Root cause: `contact.astro` sets hero primary CTA to Call (`NAP.phoneTel`), and `ActivityPage.astro` always also rendered outline `Call {phone}` beside primary — identical twin buttons. Secondary: `ContactForm` alt line still had `Prefer to call? {phone}` while Contact details already lists Phone. Fix: (1) ActivityPage hero outline Call only when `ctaUrl` and `cta2Url` are not already `NAP.phoneTel` (other pages keep Tour/Book + Call). (2) ContactForm alt → short non-phone note (“The form above is the best way to email us.”). Left Contact details Phone row; left bottom cta-box Call + Contact Us; no Hotline; CarePage untouched.
+**Evidence:** Build 42 pages; `verify-dist` OK; `check:redirects` OK. Dist `/contact.html` hero actions = one `btn-primary` Call only (no outline twin). Form alt has no tel. Details Phone row present. `/open-play` hero still primary + outline Call.
+**Live vs committed:** Preview only once pushed. Merge into `astro-rebuild` per Duncan own-it; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None for this fix.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after merge to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/pickleball-two-col` (off `astro-rebuild`)
 
 **Changed:** Duncan (pt61u) said go on pickleball two-col only. Prior programs-two-col already wrapped the soft intro + one proof; rates/hours/reserve stayed full-width below — weak for pickleball market questions (hours / reserve / cost). Matched ropes Open Ropes conversion block: one `.two-col.care-claim` with claim copy + rates + hours/reserve + Call CTA in `.care-claim__text` beside existing `ProofPhotos` (`proofCourt`). Desktop = copy+CTA | proof; ≤900px stacks via existing `.two-col`. Browse `PhotoGallery` stays full-width below. No photo swaps, no CSS retune, no other pages.
