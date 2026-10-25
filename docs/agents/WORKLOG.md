@@ -45,6 +45,14 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/fix-amp-grain-crops` (off `astro-rebuild`)
+
+**Changed:** Duncan (pt55u): do all three in one PR. (1) Visible `&amp;` / double-escaped entities — root cause: Astro HTML attrs like `heading="… &amp; …"` keep the entity, then `{heading}` escapes `&` again → `&amp;amp;` on screen. Fixed infant + fitness PhotoGallery headings to `heading={"… & …"}`. (2) Grainy pics — ProofPhotos widths `[480,720,960,1280]` + `sizes=(max-width:900px) 92vw, 640px` (was max 720 / 360px, undersized for ~636px two-col proof). PhotoGallery widths `[400,640,960]`. Care/Activity heroes `sizes=(max-width:900px) 100vw, 50vw`. Inventory has no higher-res for anna/lisa/rhea/rachel thumbs (256–311px Weebly); kristin/dave already 1280. (3) Fitness crops — per-image overrides only on fitness: hero `object-pos-center`; proof rhea+rachel `proof-photos__img--portrait` (3/4 aspect, max-height 420 — 4/3 was chopping stance/dumbbell); gallery anna center / lisa left / kristin right. Added `.object-pos-25` util; left/right now `left|right center`. Optional `imgClass` on ProofPhotos/PhotoGallery items; optional `heroImgClass` on ActivityPage.
+**Evidence:** Build 42 pages; `verify-dist` OK; `check:redirects` OK. Infant gallery heading renders `More from infant & toddler care` (zero `&amp;amp;` in dist). Fitness computed: hero `50% 50%`; proofs `3/4` @ 315×420; gallery object-position center/left/right. Shots: `/workspace/fix-amp-grain-crops-shots/` (infant-gallery-heading, fitness-hero, fitness-proof-0/1, fitness-gallery).
+**Live vs committed:** Preview only once pushed. Merged into `astro-rebuild` per Duncan do-them-all; not `main`; production still Weebly; DNS untouched.
+**Open questions:** Grain on anna/lisa/rhea/rachel (and some other Weebly thumbs) needs higher-res originals from Duncan — srcset cannot invent pixels. Same for toddler-proud (346px) etc.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after this merges to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/programs-two-col` (off `astro-rebuild`)
 
 **Changed:** Duncan approved (pt53u) rolling the care desktop two-col pattern to other program pages — ONE change only. Wrapped each claim text + `ProofPhotos` pair in `.two-col.care-claim` / `.care-claim__text` on: camps, open-play, ninja-warrior (trial + ranks), birthday-parties (kids / 10–16 / adult), fitness-classes (kickboxing + kids-while-you-train), team-building (formats), pickleball, ropes-course (Open Ropes), parents-night-out (Cosmic Glow), about (founders), jobs (core values). Reused existing `.two-col` / `.care-claim` CSS (stacks ≤900px); CSS comment only broadened to “care + program”. Browse `PhotoGallery` stays full-width below. Care pages (infant/preschool/after-school), nav, home, facts, Cosmic, photo scale/crops untouched.

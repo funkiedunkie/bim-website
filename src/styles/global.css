@@ -731,6 +731,16 @@ h1, h2, h3, .section-title, .faq__title, .reviews__title, .location__title, .pri
   object-fit: cover;
   object-position: center top;
 }
+/* Portrait source proofs (e.g. fitness action): keep 3/4 so we don't chop head/stance into 4/3.
+   Cap height so a portrait proof stays proof-sized in the two-col column (not a second hero). */
+.proof-photos__img.proof-photos__img--portrait {
+  aspect-ratio: 3 / 4;
+  object-position: center center;
+  max-height: 420px;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+}
 .proof-photos__caption {
   padding: 10px 14px 12px;
   font-size: 0.9rem;
@@ -807,10 +817,11 @@ h1, h2, h3, .section-title, .faq__title, .reviews__title, .location__title, .pri
 }
 /* Opt-in crop anchors for rare photos that still frame badly after the global top bias */
 .object-pos-top { object-position: center top !important; }
+.object-pos-25 { object-position: center 25% !important; }
 .object-pos-center { object-position: center center !important; }
 .object-pos-bottom { object-position: center bottom !important; }
-.object-pos-left { object-position: left 20% !important; }
-.object-pos-right { object-position: right 20% !important; }
+.object-pos-left { object-position: left center !important; }
+.object-pos-right { object-position: right center !important; }
 
 .chip { background: #fff; border: 2px solid var(--ink); color: var(--ink); }
 .chip:nth-child(5n+1) { background: var(--y); } .chip:nth-child(5n+2) { background: var(--bl); } .chip:nth-child(5n+3) { background: var(--lime); } .chip:nth-child(5n+4) { background: var(--lilac); }
