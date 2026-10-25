@@ -20,7 +20,7 @@ const description =
 const faq: FaqItem[] = [
   {
     q: 'How do I contact you about privacy?',
-    a: 'Email help@bodiesinmotionidaho.com or call (208) 381-0587. You can also write to us at Bodies in Motion, 729 W. Diamond St, Boise, ID 83705.',
+    a: `Use our contact form, email ${NAP.emailDisplay}, or call (208) 381-0587. You can also write to us at Bodies in Motion, 729 W. Diamond St, Boise, ID 83705.`,
   },
   {
     q: 'How do I stop text messages?',
@@ -32,7 +32,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'What happens to the message I send through the contact form?',
-    a: 'The form sends your name, email, phone number (if you give one), the program you chose and your message to help@bodiesinmotionidaho.com. It is delivered by email through Mailjet, an email delivery service.',
+    a: `The form sends your name, email, phone number (if you give one), the program you chose and your message to our help inbox (${NAP.emailDisplay}). It is delivered by email through Mailjet, an email delivery service.`,
   },
   {
     q: 'Does this website use cookies?',
@@ -50,11 +50,11 @@ const faq: FaqItem[] = [
   lead="How Bodies in Motion collects, uses and protects the information you give us through this website."
   heroImg={heroImg}
   heroAlt="A laughing child in a red cap with other children in front of a wall of number cards"
-  ctaUrl={`mailto:${NAP.email}`}
-  ctaLabel="Email us about privacy"
+  ctaUrl="/contact"
+  ctaLabel="Contact us about privacy"
   ctaExternal={false}
   ctaHeading="Questions about this policy?"
-  ctaText="Email help@bodiesinmotionidaho.com or call (208) 381-0587."
+  ctaText={`Use our contact form, email ${NAP.emailDisplay}, or call (208) 381-0587.`}
   faq={faq}
 >
   <section class="section">
@@ -85,7 +85,7 @@ const faq: FaqItem[] = [
       <h2 id="forms">Contact form and email</h2>
       <p>
         If you use the form on our <a href="/contact">contact page</a>, we collect the name, email address, phone number
-        (optional), program and message you enter. The form sends them to <a href={`mailto:${NAP.email}`}>{NAP.email}</a>,
+        (optional), program and message you enter. The form sends them to our help inbox ({NAP.emailDisplay}),
         and the email is delivered through Mailjet, an email delivery service. If you email or call us directly, we receive
         whatever you send us.
       </p>
@@ -135,7 +135,7 @@ const faq: FaqItem[] = [
       <h2 id="contact">Contact us</h2>
       <p>If you have any questions or concerns about this policy or our practices, contact us:</p>
       <ul class="bullets">
-        <li><strong>Email:</strong> <a href={`mailto:${NAP.email}`}>{NAP.email}</a></li>
+        <li><strong>Email:</strong> use our <a href="/contact">contact form</a>, or type {NAP.emailDisplay}</li>
         <li><strong>Phone:</strong> <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a></li>
         <li><strong>Mail:</strong> {NAP.name}, {NAP.street}, {NAP.city}, {NAP.state} {NAP.zip}</li>
       </ul>

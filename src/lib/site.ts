@@ -5,6 +5,9 @@ export const SITE_URL = 'https://www.bodiesinmotionidaho.com'
 
 export const NAP = {
   email: 'help@bodiesinmotionidaho.com',
+  // Visitor-facing display only (no @) — keeps harvest bots from scraping a cleartext address in HTML.
+  // API, Mailjet, JSON-LD schema, and ContactForm data-mailto still use NAP.email.
+  emailDisplay: 'help [at] bodiesinmotionidaho.com',
   name: 'Bodies in Motion',
   street: '729 W. Diamond St',
   city: 'Boise',
