@@ -1,7 +1,7 @@
 ---
 import ActivityPage from '../layouts/ActivityPage.astro'
 import PriceTable from '../components/PriceTable.astro'
-import { OPEN_PLAY_HOURS, OPEN_PLAY_HOURS_SPEC, HOLIDAY_TEXT, type FaqItem } from '../lib/site'
+import { LINKS, OPEN_PLAY_HOURS, OPEN_PLAY_HOURS_SPEC, HOLIDAY_TEXT, type FaqItem } from '../lib/site'
 import heroImg from '../assets/open-play.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
 import ProofPhotos from '../components/ProofPhotos.astro'
@@ -97,9 +97,9 @@ const browseGallery = [
   lead="A gigantic play structure, four mega slides, free wifi and fresh coffee for parents."
   heroImg={heroImg}
   heroAlt="Three children laughing as they slide down orange and blue indoor slides"
-  ctaUrl="/waiver"
+  ctaUrl={LINKS.waiverPortal}
   ctaLabel="Sign a waiver"
-  ctaExternal={false}
+  ctaExternal={true}
   ctaHeading="Ready to play?"
   ctaText="Sign your waiver ahead of time, then walk in. Questions? Call (208) 381-0587."
   faq={faq}
