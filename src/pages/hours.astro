@@ -36,7 +36,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'What are the pickleball hours?',
-    a: 'Monday through Friday 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm, plus Monday and Thursday 5:00–6:30 pm. Times are subject to availability; call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve.',
+    a: 'Monday through Friday 10:00–11:30 am, 11:30 am–1:00 pm and 1:00–2:30 pm, plus Monday and Thursday 5:00–6:30 pm. Times are subject to availability; call (208) 381-0587 or use our contact form to reserve.',
   },
   {
     q: 'When are the fitness classes?',
@@ -52,7 +52,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'When can I book team building?',
-    a: 'Team building is by appointment only. Call (208) 381-0587 or email help@bodiesinmotionidaho.com.',
+    a: 'Team building is by appointment only. Call (208) 381-0587 or use our contact form.',
   },
   {
     q: 'Are you open on holidays?',
@@ -78,7 +78,7 @@ const faq: FaqItem[] = [
   ctaLabel={`Call ${NAP.phoneDisplay}`}
   ctaExternal={false}
   ctaHeading="Questions about our hours?"
-  ctaText="Call (208) 381-0587 or email help@bodiesinmotionidaho.com and we will help you plan your visit."
+  ctaText="Call (208) 381-0587 or use our contact form and we will help you plan your visit."
   faq={faq}
   openingHoursSpecification={childcareHours}
 >
@@ -155,8 +155,9 @@ const faq: FaqItem[] = [
 
       <h2 id="team-building">Team building hours</h2>
       <p>
-        By appointment only. Please call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or email
-        <a href={`mailto:${NAP.email}`}>{NAP.email}</a> for more information, or see <a href="/team-building">team building</a>.
+        By appointment only. Please call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or use our{' '}
+        <a href="/contact?program=Team%20Building#contact-form">contact form</a> for more information, or see{' '}
+        <a href="/team-building">team building</a>. Prefer to type an address? {NAP.emailDisplay}.
       </p>
 
       <h2 id="holidays">Holiday closures</h2>

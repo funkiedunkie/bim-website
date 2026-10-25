@@ -45,6 +45,14 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/email-obfuscation` (off `astro-rebuild`)
+
+**Changed:** Duncan (pt60u) approved site-wide email harvest fix matching Contact (PR #17). (1) Added `NAP.emailDisplay` (`help [at] bodiesinmotionidaho.com`); kept `NAP.email` for API/schema/Mailjet/`data-mailto`. (2) Footer: no mailto — link to `/contact` + obfuscated text. (3) Removed static `mailto:` hrefs from privacy, team-building, birthday-parties, hours, pickleball, ropes-course, waiver, jobs; body/FAQ/cta copy now prefer contact form and/or obfuscated display. (4) Jobs: CTA → `/contact` (mention Motioneer); no static mailto. (5) Contact page now uses `NAP.emailDisplay`. ContactForm `data-mailto` + `api/contact.js` + Mailjet unchanged. JSON-LD still has email.
+**Evidence:** Build + verify-dist + check:redirects. Dist: zero `href="mailto:` in page/footer HTML; ContactForm `data-mailto` OK; cleartext `help@` not in footer/body link text (schema/api/docs OK).
+**Live vs committed:** Preview only once pushed. Merge into `astro-rebuild` per Duncan own-it; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None for this pass.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after merge to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/about-photos` contact follow-up (same PR)
 
 **Changed:** Duncan contact feedback, separate commit after About. (1) Removed duplicate phone / **No Pickup Hotline** list row + FAQ — one phone only (`NAP.phoneDisplay`). (2) Fixed run-together link text (`See our<a` / `your<a`) with explicit `{' '}` before hours + waiver links. (3) Email harvesting: form stays primary (`POST /api/contact` → Mailjet). Removed visible `mailto:` + cleartext `help@…` from contact details and form alt line; show obfuscated `help [at] bodiesinmotionidaho.com` as text. `data-mailto` kept only for JS fallback when API fails (still present in HTML attribute — determined scrapers can find it; not inventing a spam product). FAQ/meta no longer push raw mailto. No other pages.

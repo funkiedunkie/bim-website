@@ -114,7 +114,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'How do I book a party?',
-    a: 'Book a kids party with the birthday party RSVP scheduler. For ages 10–16 parties and adult parties, call (208) 381-0587, email help@bodiesinmotionidaho.com or use our contact page.',
+    a: 'Book a kids party with the birthday party RSVP scheduler. For ages 10–16 parties and adult parties, call (208) 381-0587 or use our contact page.',
   },
 ]
 
@@ -261,8 +261,8 @@ const browseGallery = [
 
           <h3>Book ages 10–16 parties</h3>
           <p>
-            To book a Super or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email
-            <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our <a href="/contact">contact page</a>.
+            To book a Super or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or use our{' '}
+            <a href="/contact">contact page</a>. Prefer to type an address? {NAP.emailDisplay}.
           </p>
         </div>
         <ProofPhotos items={proofTween} />

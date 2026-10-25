@@ -43,8 +43,6 @@ const coreValues = [
   'Fun',
 ]
 
-const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Motioneer application')}`
-
 // Verbatim from the old Jobs page.
 const motioneers = [
   {
@@ -94,7 +92,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'How do I apply?',
-    a: 'Email help@bodiesinmotionidaho.com or call (208) 381-0587. Tell us which position or positions you are interested in, how soon you can start, your work history and any experience working with kids.',
+    a: `Use our contact form (mention Motioneer / the position), email ${NAP.emailDisplay}, or call (208) 381-0587. Tell us which position or positions you are interested in, how soon you can start, your work history and any experience working with kids.`,
   },
   {
     q: 'What does the application ask about?',
@@ -129,11 +127,11 @@ const browseGallery = [
   lead="We’re always looking for amazing people to join our team of Motioneers."
   heroImg={heroImg}
   heroAlt="Two Bodies in Motion staff in red shirts giving thumbs up in the gym"
-  ctaUrl={mailto}
-  ctaLabel="Email us to apply"
+  ctaUrl="/contact"
+  ctaLabel="Apply via contact form"
   ctaExternal={false}
   ctaHeading="Ready to become a Motioneer?"
-  ctaText="Email help@bodiesinmotionidaho.com or call (208) 381-0587 and tell us which position interests you."
+  ctaText={`Use our contact form (mention Motioneer), email ${NAP.emailDisplay}, or call (208) 381-0587 and tell us which position interests you.`}
   faq={faq}
 >
   <section class="section">
@@ -166,13 +164,14 @@ const browseGallery = [
 
       <h2 id="apply">How to apply</h2>
       <p>
-        Email <a href={mailto}>{NAP.email}</a> or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>. Tell us which position
+        Send a message through our <a href="/contact">contact form</a> (mention Motioneer and the position), email{' '}
+        {NAP.emailDisplay}, or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>. Tell us which position
         or positions you are interested in and how soon you can start, and include your work history and any experience
         working with kids. Our previous application also asked about your highest level of education, your hobbies and
         interests, and whether you are willing to get a background check.
       </p>
       <div class="stub-actions">
-        <a class="btn-primary" href={mailto}>Email us to apply</a>
+        <a class="btn-primary" href="/contact">Apply via contact form</a>
         <a class="btn-outline" href={NAP.phoneTel}>Call {NAP.phoneDisplay}</a>
       </div>
     </div>

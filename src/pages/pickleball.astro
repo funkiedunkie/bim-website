@@ -29,7 +29,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Do I need to reserve a court time?',
-    a: 'Yes. Court times are by reservation and subject to availability, because other programs sometimes use the court. Call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve a spot.',
+    a: 'Yes. Court times are by reservation and subject to availability, because other programs sometimes use the court. Call (208) 381-0587 or use our contact form to reserve a spot.',
   },
   {
     q: 'What skill levels are welcome?',
@@ -74,7 +74,7 @@ const browseGallery = [
   ctaLabel={`Call ${NAP.phoneDisplay} to book`}
   ctaExternal={false}
   ctaHeading="Ready to hit the court?"
-  ctaText="Call (208) 381-0587 or email help@bodiesinmotionidaho.com to reserve your court time."
+  ctaText="Call (208) 381-0587 or use our contact form to reserve your court time."
   faq={faq}
 >
   <section class="section">
@@ -112,8 +112,8 @@ const browseGallery = [
       </ul>
       <p>
         Court times are subject to availability, because other programs sometimes use the court. To reserve, call
-        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>, email <a href={`mailto:${NAP.email}`}>{NAP.email}</a> or use our
-        <a href="/contact">contact page</a>.
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or use our <a href="/contact">contact page</a>. Prefer to type an
+        address? {NAP.emailDisplay}.
       </p>
       <div class="stub-actions">
         <a class="btn-primary" href={NAP.phoneTel}>Call to book a court</a>

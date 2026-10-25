@@ -23,7 +23,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'What email address should I use?',
-    a: 'Use the contact form on this page — it sends to our help inbox. Prefer to type an address? It is help [at] bodiesinmotionidaho.com (same inbox as the form).',
+    a: `Use the contact form on this page — it sends to our help inbox. Prefer to type an address? It is ${NAP.emailDisplay} (same inbox as the form).`,
   },
   {
     q: 'Do you serve families outside Boise?',
@@ -59,7 +59,7 @@ const faq: FaqItem[] = [
         </li>
         <li><strong>Phone:</strong> <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a></li>
         <li>
-          <strong>Email:</strong> use the form below (goes to our help inbox). Or type help [at] bodiesinmotionidaho.com.
+          <strong>Email:</strong> use the form below (goes to our help inbox). Or type {NAP.emailDisplay}.
         </li>
       </ul>
       <p>
