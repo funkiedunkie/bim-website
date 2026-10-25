@@ -37,6 +37,14 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/photo-scale` (off `astro-rebuild`)
+
+**Changed:** Duncan: after the 1320 desktop widen, proof/gallery photos ballooned and dominated pages (proof tiles measured **954×716** @1440 — second heroes). Senior judgment: facts/CTA win; photos prove, don’t overwhelm. (1) `.page-hero__img` height `clamp(220px, 32vw, 480px)` desktop, `clamp(200px, 55vw, 280px)` ≤900px — strong but not billboard. (2) Proof tiles: image height **300px** desktop / 240 tablet / 200 mobile; `--1` max-width **560px** (was 960); `--2` capped 920px; 2–3 col grid kept. (3) Browse gallery: **4 cols** desktop (3 ≤1100, 2 ≤900, 1 ≤560), thumbnail height **220px** / 200 mobile. (4) Home tiles: `grid-auto-rows` 260→240 (mobile 220) — mosaic didn’t explode; slight densify. (5) `ProofPhotos`/`PhotoGallery` `sizes`/widths tuned down. Methodology + Design B + Cosmic-on-hold untouched; no copy/fact changes.
+**Evidence:** Before→after @1440 infant proofs 954×716→554×300; gallery 422×317→314×220; hero ~463→481 (capped). Fitness same. Home featured tile 532→490. Mobile infant proof/gallery 252→200, hero 275→221. Zero overflow. Build 42 pages; `verify-dist` OK; `check:redirects` OK. Shots: `/workspace/photo-scale-shots/before|after/`.
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild` (merge into rebuild per Duncan own-it; not PR #1).
+**Open questions:** None for scale. Real openings status still needed from Rhea/Rachel.
+**Handoff:** Do not merge PR #1 without Duncan. Note: `grok/desktop-width` + `grok/fix-autoscroll` WORKLOG bodies are still trapped inside the template markdown fence near the top of this file (prior garble); leave them — don’t find-and-replace. Refresh laptop preview after this merges to `astro-rebuild`.
+
 ## 2026-10-24 — Grok — `grok/proof-photos` (off `astro-rebuild`)
 
 **Changed:** Duncan signed off on the proof-photo → browse-gallery methodology (canvas bf6a14f5). Added Design B `ProofPhotos` component (captioned, ≤3, lazy-loaded) + CSS. Applied systematically: care pages first (infant-toddler-care, preschool, after-school-care, camps), then open-play, ninja-warrior, birthday-parties, fitness-classes, team-building, pickleball, ropes-course, parents-night-out, about, jobs. Pattern: facts + primary CTA stay first; 1–3 captioned proof shots beside the claims they support; remaining real inventory photos in labeled `PhotoGallery` after a primary CTA has appeared. No new/stock/wrong-program photos; Cosmic stays on-hold text only (no Cosmic imagery). Design B + P0 conversion patterns kept.
