@@ -162,37 +162,45 @@ const browseGallery = [
         <strong>Before school care:</strong> 7:30 am until we take the kids to school.<br />
         <strong>After school care:</strong> from school pickup until 6:00 pm.
       </p>
-      <h2>This isn’t just childcare. It’s a place to play, grow, and belong.</h2>
-      <p>
-        When school ends, kids don’t need more sitting—they need a place to move, explore, and feel like they belong.
-        At Bodies in Motion, we create an environment where children choose activities that excite them, challenge
-        them, and help them grow—physically, emotionally, and socially.
-      </p>
-      <p>
-        Every child is different—so we built a program that lets them choose. Whether your kid loves to move, create,
-        imagine, or build, there’s a club here they’ll want to come back to.
-      </p>
-      <ul class="chips" aria-label="Clubs and programs">
-        {clubs.map((c) => <li class="chip">{c}</li>)}
-      </ul>
-      <ProofPhotos items={proofBelong} />
 
-      <h2>What does a day look like?</h2>
-      <p>
-        In addition to our clubs and programs, your child will participate in numerous games, activities, and projects.
-        A typical day in our after school program might look like this:
-      </p>
-      <ul class="bullets">
-        {day.map((d) => <li><strong>{d.time}</strong> – {d.what}</li>)}
-      </ul>
-      <p>
-        There are many factors involved in creating an after school program. Each child’s experience is completely
-        unique. Some parents would prefer that their child use our program to burn energy and would prefer not to
-        participate in Homework Club. Some kids may be involved in 3 clubs at a time and others just one. It’s what
-        makes our after school program totally awesome!
-      </p>
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>This isn’t just childcare. It’s a place to play, grow, and belong.</h2>
+          <p>
+            When school ends, kids don’t need more sitting—they need a place to move, explore, and feel like they belong.
+            At Bodies in Motion, we create an environment where children choose activities that excite them, challenge
+            them, and help them grow—physically, emotionally, and socially.
+          </p>
+          <p>
+            Every child is different—so we built a program that lets them choose. Whether your kid loves to move, create,
+            imagine, or build, there’s a club here they’ll want to come back to.
+          </p>
+          <ul class="chips" aria-label="Clubs and programs">
+            {clubs.map((c) => <li class="chip">{c}</li>)}
+          </ul>
+        </div>
+        <ProofPhotos items={proofBelong} />
+      </div>
 
-      <ProofPhotos items={proofDay} />
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>What does a day look like?</h2>
+          <p>
+            In addition to our clubs and programs, your child will participate in numerous games, activities, and projects.
+            A typical day in our after school program might look like this:
+          </p>
+          <ul class="bullets">
+            {day.map((d) => <li><strong>{d.time}</strong> – {d.what}</li>)}
+          </ul>
+          <p>
+            There are many factors involved in creating an after school program. Each child’s experience is completely
+            unique. Some parents would prefer that their child use our program to burn energy and would prefer not to
+            participate in Homework Club. Some kids may be involved in 3 clubs at a time and others just one. It’s what
+            makes our after school program totally awesome!
+          </p>
+        </div>
+        <ProofPhotos items={proofDay} />
+      </div>
 
       <h2>We pick up &amp; drop off at these Boise schools</h2>
       <ul class="chips" aria-label="Schools served">

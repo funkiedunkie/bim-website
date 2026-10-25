@@ -26,6 +26,9 @@ Duncan runs Bodies in Motion and Camps for Kids Idaho. He is not a developer.
 - **Commits:** one per logical change, message explains *why*. If a change alters anything this file documents, update this file in the same commit.
 - **Talking to Duncan:** outcome first, then the why, in plain words. Keep it short. Answer what he asked; don't fix things he didn't ask about.
 - **Secrets:** never print, log or commit a token, key or password, including in commit messages and docs. Secrets live in Vercel env vars (and a gitignored `.env` locally). A secret pushed to GitHub is leaked: rotate it, don't just delete the line.
+- **One change per pass.** One PR = one layout/visual contract. Don't stack width + photo scale + crop (or similar) in back-to-back PRs that undo each other.
+- **Layout contract first.** Before any CSS/layout tweak, state the desktop pattern in one sentence (e.g. "care claim text | proof photo, 2-col → stack ≤900px") and get Duncan's yes. Prefer side-by-side on desktop over stretching a mobile stack. When Duncan reports a layout problem, offer the stronger alternative, not only the narrow fix.
+- **Program-page photo order (signed off):** facts + primary CTA first → 1–3 captioned proof photos beside the claims they support → browse gallery full-width after that CTA. Same order every market; only the 10-second questions change.
 
 ## Working alongside other agents (Claude Code ⇄ Grok)
 

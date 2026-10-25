@@ -45,6 +45,14 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/care-two-col` (off `astro-rebuild`)
+
+**Changed:** Duncan signed off + said go on ONE change: care pages get desktop side-by-side (text/facts | proof photo), stack ≤900px. Camps uses ActivityPage — skipped. Wrapped each claim+ProofPhotos pair on `/infant-toddler-care`, `/preschool`, `/after-school-care` in `.two-col.care-claim` (text in `.care-claim__text`). CSS: reuse existing `.two-col` (`1fr 1fr` → `1fr` @900px); `.care-claim` spacing + proof column fills width (`max-width: none`); no photo scale/crop retune (`object-position: center top` + 4/3 kept). Browse `PhotoGallery` stays full-width below rates/CTA. Nav/home/other programs/facts/Cosmic untouched. Also locked working rules into `CLAUDE.md`: one change per pass, layout contract first, signed-off photo order.
+**Evidence:** Build 42 pages; `verify-dist` OK; `check:redirects` OK. Metrics @1440 infant first claim: `grid-template-columns: 636px 636px`, claim 1320 centered (left 60); @390: single `342px` column, text+proof same left (stacked). Shots: `/workspace/care-two-col-shots/` (infant desktop+mobile claim).
+**Live vs committed:** Preview only once pushed. Merged into `astro-rebuild` per Duncan go (pt51u); not `main`; production still Weebly; DNS untouched.
+**Open questions:** None for this layout. Real openings status still needed from Rhea/Rachel.
+**Handoff:** Do not merge PR #1 without Duncan. Next visual pass needs a fresh layout contract first — don't stack more CSS onto this without asking.
+
 ## 2026-10-25 — Grok — `grok/photo-scale` (off `astro-rebuild`)
 
 **Changed:** Duncan: after the 1320 desktop widen, proof/gallery photos ballooned and dominated pages (proof tiles measured **954×716** @1440 — second heroes). Senior judgment: facts/CTA win; photos prove, don’t overwhelm. (1) `.page-hero__img` height `clamp(220px, 32vw, 480px)` desktop, `clamp(200px, 55vw, 280px)` ≤900px — strong but not billboard. (2) Proof tiles: image height **300px** desktop / 240 tablet / 200 mobile; `--1` max-width **560px** (was 960); `--2` capped 920px; 2–3 col grid kept. (3) Browse gallery: **4 cols** desktop (3 ≤1100, 2 ≤900, 1 ≤560), thumbnail height **220px** / 200 mobile. (4) Home tiles: `grid-auto-rows` 260→240 (mobile 220) — mosaic didn’t explode; slight densify. (5) `ProofPhotos`/`PhotoGallery` `sizes`/widths tuned down. Methodology + Design B + Cosmic-on-hold untouched; no copy/fact changes.
