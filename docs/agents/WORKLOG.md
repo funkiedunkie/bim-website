@@ -7,6 +7,16 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-25 — Grok — `grok/fitness-ai-photos` (off `astro-rebuild`)
+
+**Changed:** Duncan approved AI denoise + décor cleanup candidates 2026-10-25 (“All are great, including Rachel!”). Replaced six fitness JPEGs in `src/assets/photos/` with approved AI candidates (same basenames so Astro imports keep working): `rhea-kickboxing.jpg`, `rachel-fitness.jpg`, `anna-kickboxing.jpg`, `lisa-kickboxing.jpg`, `kristin-kickboxing.jpg`, `dave-kickboxing.jpg` (dave = v2 hero). Grain/denoise + wall belts/flags cleanup; framing CSS already landed in PR #24 (`6dec029`). No page/markup changes.
+**Conversion:** Sharper, cleaner gym photos on `/fitness-classes` — less dojo clutter, less compression grain — so proof shots support the kickboxing/SGX pitch instead of undercutting it.
+**Evidence:** Build (Node 22) + `verify-dist` + `check:redirects` (see commit). Files are JPEG (`FF D8`); sizes ~187–219KB (was ~8–96KB for the tiny thumbs).
+**Live vs committed:** Preview only once pushed. Merge into `astro-rebuild` per Duncan own-it; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None — Duncan approved all six including Rachel.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after this merges to `astro-rebuild`.
+
+
 Template:
 
 ```markdown
