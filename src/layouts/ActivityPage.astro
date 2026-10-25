@@ -52,7 +52,9 @@ const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
       <div class="page-hero__actions">
         <a href={ctaUrl} class="btn-primary" {...ext}>{ctaLabel}</a>
         {cta2Url && cta2Label && <a href={cta2Url} class="btn-primary" {...ext}>{cta2Label}</a>}
-        <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
+        {ctaUrl !== NAP.phoneTel && cta2Url !== NAP.phoneTel && (
+          <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
+        )}
       </div>
     </div>
   </header>
