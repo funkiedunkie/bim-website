@@ -45,6 +45,15 @@ Template:
 
 ---
 
+## 2026-10-25 — Grok — `grok/tour-trial-picker` (off `astro-rebuild`)
+
+**Changed:** Duncan (pt64u) locked option A: nav **Book a tour** opens an on-page picker (not Contact). New `TourPicker.astro` (native `<dialog>` titled “Book a tour or trial”); five Calendly deep-links from `LINKS` — Infant & Toddler tour, Preschool / Before & After School tour, Ninja free trial 5–8, Ninja free trial 9+, Kickboxing trial ($29). Desktop `.nav__join` + mobile `.nav__mobile-cta` are buttons with `data-open-tour-picker` (no `/contact?program=Tour`). Esc / backdrop / close button dismiss; options open Calendly in a new tab (`rel=noopener`). Birthday/camps/team building stay out. Design B tokens (cream panel, ink border, yellow hover pills). Picker-only pass — no other nav/CTA rewrites; site-wide missing-space-before-`<a` bug deferred to a follow-up pass.
+**Conversion impact:** Moms pick which program to tour/trial in one tap from every page, then land on the right calendar. Contact was the wrong funnel for booking.
+**Evidence:** Build 42 pages; `verify-dist` OK; `check:redirects` OK. Dist: dialog `#tour-picker` + title present; two openers (desktop+mobile); zero `contact?program=Tour`; five Calendly URLs with `target=_blank` `rel=noopener noreferrer`; birthday/camps absent from picker chunk.
+**Live vs committed:** Preview only once pushed. Merge into `astro-rebuild` per Duncan own-it; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None for this picker. Follow-up: site-wide missing spaces before inline `<a>` (e.g. preschool “come on in!Schedule a tour”) — separate pass.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after merge to `astro-rebuild`.
+
 ## 2026-10-25 — Grok — `grok/contact-one-phone` (off `astro-rebuild`)
 
 **Changed:** Duncan (pt62u): two phone numbers side-by-side still on `/contact`. Root cause: `contact.astro` sets hero primary CTA to Call (`NAP.phoneTel`), and `ActivityPage.astro` always also rendered outline `Call {phone}` beside primary — identical twin buttons. Secondary: `ContactForm` alt line still had `Prefer to call? {phone}` while Contact details already lists Phone. Fix: (1) ActivityPage hero outline Call only when `ctaUrl` and `cta2Url` are not already `NAP.phoneTel` (other pages keep Tour/Book + Call). (2) ContactForm alt → short non-phone note (“The form above is the best way to email us.”). Left Contact details Phone row; left bottom cta-box Call + Contact Us; no Hotline; CarePage untouched.

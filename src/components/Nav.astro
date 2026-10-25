@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import logo from '../assets/logo.png'
 import { NAP } from '../lib/site'
+import TourPicker from './TourPicker.astro'
 
 const programLinks = [
   { to: '/infant-toddler-care', label: 'Infant & Toddler Care' },
@@ -63,7 +64,7 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
     <div class="nav__actions">
       <a href={NAP.phoneTel} class="nav__login">{NAP.phoneDisplay}</a>
       <a href="/waiver" class="nav__login nav__waiver">Sign a waiver</a>
-      <a href="/contact?program=Tour" class="nav__join">Book a tour</a>
+      <button type="button" class="nav__join" data-open-tour-picker>Book a tour</button>
     </div>
 
     <details class="nav__mobile">
@@ -81,13 +82,15 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
         )}
         <div class="nav__dropdown-divider" role="separator"></div>
         {mainLinks.map((l) => <a href={l.to}>{l.label}</a>)}
-        <a href="/contact?program=Tour" class="nav__mobile-cta">Book a tour</a>
+        <button type="button" class="nav__mobile-cta" data-open-tour-picker>Book a tour</button>
         <a href="/waiver" class="nav__mobile-secondary">Sign a waiver</a>
         <a href={NAP.phoneTel} class="nav__mobile-phone">Call {NAP.phoneDisplay}</a>
       </div>
     </details>
   </div>
 </nav>
+
+<TourPicker />
 
 <style>
   .nav {
@@ -264,10 +267,12 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
     border: 2.5px solid var(--ink);
     box-shadow: 3px 3px 0 var(--ink);
     border-radius: 999px;
+    font: inherit;
     font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.01em;
-    transition: background 0.15s ease, transform 0.15s ease;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
     white-space: nowrap;
   }
 
@@ -322,15 +327,19 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
     padding: 8px 4px;
   }
 
-  .nav__mobile-panel a.nav__mobile-cta {
+  .nav__mobile-panel .nav__mobile-cta {
     margin-top: 12px;
+    padding: 12px 4px;
     background: var(--y);
     color: var(--ink);
     border: 2.5px solid var(--ink);
     box-shadow: 3px 3px 0 var(--ink);
     text-align: center;
     border-radius: 999px;
+    font: inherit;
     font-weight: 700;
+    cursor: pointer;
+    width: 100%;
   }
 
   .nav__mobile-panel a.nav__mobile-phone {
