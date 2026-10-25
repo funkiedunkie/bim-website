@@ -37,7 +37,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* auto: smooth + scroll-driven view() timelines caused a "page pulls itself" feel in Chromium */
+  scroll-behavior: auto;
 }
 
 body {
@@ -780,7 +781,3 @@ h1, h2, h3, .section-title, .faq__title, .reviews__title, .location__title, .pri
   .page-hero__img, .page-hero__inner { grid-column: 1; grid-row: auto; }
   .page-hero__img { rotate: 1deg; }
 }
-@media (prefers-reduced-motion: no-preference) { @supports (animation-timeline: view()) {
-  .reveal { animation: pop linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
-  @keyframes pop { from { opacity: 0; scale: .92; rotate: -2deg } to { opacity: 1; scale: 1; rotate: 0deg } }
-} }

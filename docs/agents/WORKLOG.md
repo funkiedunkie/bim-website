@@ -10,6 +10,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 Template:
 
 ```markdown
+## 2026-10-25 — Grok — `grok/fix-autoscroll` (off `astro-rebuild`)
+
+**Changed:** Duncan reported weird auto-scrolling on the preview. Root cause: Design B scroll-driven `.reveal` rules using `animation-timeline: view()` (homepage program cards, values, review bubbles) plus `html { scroll-behavior: smooth }`, a known Chromium jank / "page pulls itself" combo. Removed the entire `.reveal` / `view()` / `@keyframes pop` block. Set `scroll-behavior: auto` by default. Left `prefers-reduced-motion: reduce` rules intact (still force `auto` + kill animations). Homepage `.reveal` class names left in markup (harmless without CSS). Grep found no `scrollIntoView` / scroll-hijack JS; horizontal marquee in `home.css` is unrelated and already gated by reduced-motion.
+**Evidence:** `npm run build` (42 pages), `node scripts/verify-dist.mjs` OK, `npm run check:redirects` OK. Dist CSS has no `animation-timeline` / `scroll-behavior: smooth`.
+**Live vs committed:** Preview only once pushed. Not merged to `main`; production still Weebly; DNS untouched. PR targets `astro-rebuild`.
+**Open questions:** None for this fix. Confirm with Duncan that home scroll feels normal again (especially Chromium).
+**Handoff:** Do not merge PR #1 (`astro-rebuild` → `main`) without Duncan. After this PR merges to `astro-rebuild`, refresh laptop preview pack.
+
 ## YYYY-MM-DD — <Agent> — `<branch>`
 
 **Changed:** what you did and why, with commit hashes / PR link.
