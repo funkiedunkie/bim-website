@@ -24,6 +24,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 **Open questions:** Duncan to OK merging into `astro-rebuild` after checking the preview. Duncan confirmed 2026-10-26 that AI edits to the 10+ year-old archive photos are fine, and that the pre-#27 Open Play close-up (girl with long hair) was AI-generated, so #27/#35 swapping it out was correct.
 **Handoff:** `origin/astro-rebuild` tip 9236383. Do not merge PR #1 without Duncan.
 
+## 2026-10-26 — Claude Code — `claude/jobs-proof-photo` (off `astro-rebuild` 9236383)
+
+**Changed:** Duncan approved: the Jobs "Motioneers at work" proof becomes the coach spotting a child on the ninja bar (`ninja-warrior-private-class.jpg`, moved up from the gallery). Since #33 the thumbs-up `values2.jpg` was both the hero and the proof, so the page showed one photo twice, and the proof alt ("working with kids and adults") didn't describe it. Gallery is now 2 photos (after-school pals, kickboxing). Fixed two gallery alts that didn't match their photos: after-school pals ("staff supporting kids on the playground" → two kids in paper glasses and mustaches) and kickboxing ("a coach training adults" → adults training on the bags). No layout/CSS change; no image files changed.
+**Evidence:** Build 42 pages; `verify-dist` OK. Dist `/jobs`: proof alt = coach spotting child; `photo-gallery--2`; values2 appears once (hero). Screenshots at 1440 and 390, no horizontal overflow.
+**Live vs committed:** Branch + PR into `astro-rebuild` for preview. Not merged; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None. Duncan confirmed 2026-10-26 that `LINKS.waiverPortal` (GymMaster `/portal/enquiry`) is the correct waiver.
+**Handoff:** `origin/astro-rebuild` tip 9236383. PR #36 (portrait proofs) also open. Do not merge PR #1 without Duncan.
+
 
 ## 2026-10-26 — Grok — `grok/open-play-slide-zoom` (off `astro-rebuild`)
 

@@ -5,8 +5,8 @@ import { NAP, type FaqItem } from '../lib/site'
 import heroImg from '../assets/values2.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
 import ProofPhotos from '../components/ProofPhotos.astro'
+import photoNinjaSpot from '../assets/photos/ninja-warrior-private-class.jpg'
 import galleryJobs2 from '../assets/photos/after-school-pals.jpg'
-import galleryJobs3 from '../assets/photos/ninja-warrior-private-class.jpg'
 import galleryJobs4 from '../assets/photos/dave-kickboxing.jpg'
 
 const title = 'Jobs at Bodies in Motion | Become a Motioneer in Boise, ID'
@@ -105,15 +105,14 @@ const faq: FaqItem[] = [
 
 const proofPurpose = [
   {
-    src: heroImg,
-    alt: 'Team members working with kids and adults at Bodies in Motion',
-    caption: 'Motioneers work with kids and adults across the whole building.',
+    src: photoNinjaSpot,
+    alt: 'A Bodies in Motion coach spotting a child hanging from a ninja bar',
+    caption: 'Motioneers coach hands-on, like spotting a young ninja on the bar.',
   },
 ]
 const browseGallery = [
-  { src: galleryJobs2, alt: 'Staff supporting after-school kids on the playground' },
-  { src: galleryJobs3, alt: 'A coach spotting a child on a ninja obstacle' },
-  { src: galleryJobs4, alt: 'A coach training adults on the kickboxing bags' },
+  { src: galleryJobs2, alt: 'Two after-school kids in paper glasses and mustaches with their arms around each other' },
+  { src: galleryJobs4, alt: 'Adults training on the kickboxing bags' },
 ]
 ---
 
