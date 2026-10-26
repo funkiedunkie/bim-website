@@ -117,7 +117,6 @@ const groups = [
       '/block-party.html',
       '/holiday-challenge.html',
       '/thank-you.html',
-      '/thank-you-infant.html',
       '/circuit-board.html',
       '/rumbling-dice.html',
     ],

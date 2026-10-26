@@ -1,0 +1,52 @@
+---
+// Calendly Infant & Toddler Tour redirect target.
+// Pushes the same GTM dataLayer event as ContactForm (`generate_lead`) so the
+// existing Custom Event → Meta Lead tag fires. Hidden from SEO (noindex).
+import Base from '../layouts/Base.astro'
+import { NAP } from '../lib/site'
+
+const title = 'Tour booked | Bodies in Motion'
+const description =
+  'Thanks for booking an infant & toddler tour at Bodies in Motion in Boise. We look forward to seeing you.'
+const path = '/thank-you-infant'
+---
+
+<Base title={title} description={description} path={path} noindex robots="noindex,nofollow">
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <p class="page-hero__eyebrow">Infant &amp; toddler tour</p>
+      <h1>You’re booked — see you soon</h1>
+      <p class="page-hero__lead">
+        Thanks for scheduling a tour. We’ll see you at {NAP.street}, {NAP.city}. Questions before then? Call{' '}
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
+      </p>
+      <div class="page-hero__actions">
+        <a class="btn-primary" href="/infant-toddler-care">Back to infant &amp; toddler care</a>
+        <a class="btn-outline" href="/">Home</a>
+      </div>
+    </div>
+  </header>
+</Base>
+
+<script>
+  declare global {
+    interface Window {
+      dataLayer?: Record<string, unknown>[]
+      __bimGenerateLeadSent?: boolean
+    }
+  }
+
+  /** Mirror ContactForm.astro — once per load; GTM CE generate_lead → Meta Lead. */
+  function pushGenerateLead() {
+    if (window.__bimGenerateLeadSent) return
+    window.__bimGenerateLeadSent = true
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      event: 'generate_lead',
+      lead_source: 'infant_tour',
+      program: 'Infant',
+    })
+  }
+
+  pushGenerateLead()
+</script>
