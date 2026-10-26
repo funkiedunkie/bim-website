@@ -10,7 +10,7 @@ import { dirname, join } from 'node:path'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
-const SITE = 'https://www.bodiesinmotionidaho.com'
+const SITE = 'https://bodiesinmotionidaho.com'
 const full = {
   index: '/',
   'infant-toddler-care': '/infant-toddler-care',
