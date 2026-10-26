@@ -1,0 +1,70 @@
+---
+// One page per migrated Weebly post (same slug as the old URL, so no redirect is needed).
+// Emits one H1, canonical, BlogPosting JSON-LD, the "Updated ... originally published ..." line,
+// related program links and a call to action chosen from the post's first relatedPages entry.
+import { getCollection, render } from 'astro:content'
+import { Image, getImage } from 'astro:assets'
+import Base from '../../layouts/Base.astro'
+import { SITE_URL } from '../../lib/site'
+import { blogPostingSchema, ctaFor, isoDate, postPath, shortDate } from '../../lib/blog'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+const { title, seoTitle, description, pubDate, updatedDate, heroImage, heroAlt, relatedPages } = post.data
+const path = postPath(post.id)
+const url = SITE_URL + path
+const cta = ctaFor(relatedPages)
+const ctaPath = relatedPages[0]
+const social = heroImage ? await getImage({ src: heroImage, width: 1200 }) : undefined
+const jsonLd = [
+  blogPostingSchema({
+    title,
+    description,
+    url,
+    datePublished: isoDate(pubDate),
+    dateModified: isoDate(updatedDate),
+    image: social ? SITE_URL + social.src : undefined,
+  }),
+]
+---
+
+<Base title={seoTitle ?? `${title} | Bodies in Motion Boise`} description={description} path={path} jsonLd={jsonLd} ogType="article">
+  <header class="page-hero">
+    {heroImage && <Image class="page-hero__img" src={heroImage} alt={heroAlt ?? ''} widths={[640, 1024, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />}
+    <div class="page-hero__inner">
+      <p class="page-hero__eyebrow"><a href="/blog">Empowerment journal</a></p>
+      <h1>{title}</h1>
+      <p class="page-hero__lead post-meta">
+        Updated <time datetime={isoDate(updatedDate)}>{shortDate(updatedDate)}</time> · originally published{' '}
+        <time datetime={isoDate(pubDate)}>{shortDate(pubDate)}</time>
+      </p>
+    </div>
+  </header>
+
+  <article class="section">
+    <div class="section__inner section__inner--read prose blog-post">
+      <Content />
+    </div>
+  </article>
+
+  <section class="section section--surface">
+    <div class="section__inner section__inner--read">
+      <div class="cta-box">
+        <div>
+          <h2>{cta.heading}</h2>
+          <p>{cta.text}</p>
+        </div>
+        <div class="cta-box__buttons">
+          <a href={ctaPath} class="btn-white">{cta.label}</a>
+          {ctaPath !== '/contact' && <a href="/contact" class="btn-white-outline">Contact Us</a>}
+        </div>
+      </div>
+      <p class="post-back"><a href="/blog">← All articles</a></p>
+    </div>
+  </section>
+</Base>

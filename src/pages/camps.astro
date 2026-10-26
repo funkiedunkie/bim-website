@@ -1,0 +1,290 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import PriceTable from '../components/PriceTable.astro'
+import { LINKS, NAP, eventSchema, type FaqItem } from '../lib/site'
+import heroImg from '../assets/hero.png'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoCampGroup from '../assets/photos/camps-web_orig.jpg'
+import photoCampSplash from '../assets/photos/camp-splash.jpg'
+import photoCampSalmon from '../assets/photos/camp-ninja-salmon.jpg'
+import photoCampNinja from '../assets/photos/web-summer-camp-ninja-warrior_orig.jpg'
+
+const title = 'Kids Camps in Boise, ID: Summer, No-School & Holiday Camps | Bodies in Motion'
+const description =
+  'Summer weeks, no-school day camps and holiday camps in Boise, ID for ages 4–12 at Bodies in Motion. Camp is 9 am–3 pm with before and after care. Register at Camps for Kids Idaho.'
+
+// Source of camp facts: read-only export of the Camps for Kids app (active camps, 2026) plus the old Weebly Camps/Hours pages.
+// TODO(Duncan): refresh camp dates/prices each season (source: CFK app). Update `upcomingCamps` below and the 2026 rate
+// notes in "Typical pricing". Past camps (e.g. Summer 2026 weeks, Spring Break, Best of BIM, Nature Explorers Oct 16,
+// No School Fun Day Oct 9) are intentionally not listed as upcoming.
+
+interface CampDay {
+  title: string
+  /** ISO date (YYYY-MM-DD), Boise local time. */
+  date: string
+  /** Event offset: Boise is UTC-7 (MST) after the first Sunday of November, UTC-6 (MDT) before. */
+  offset: string
+  ages: string
+  price: number
+  blurb: string
+}
+
+const upcomingCamps: CampDay[] = [
+  {
+    title: 'The Great Fall Escape – Camp Day',
+    date: '2026-11-03',
+    offset: '-07:00',
+    ages: '5–12',
+    price: 87,
+    blurb:
+      'A Thanksgiving mystery packed with spy challenges, clues, games and undercover fun. Campers become secret agents for the day and work together to track down the stolen Pumpkin Pie and crack the case.',
+  },
+]
+
+const campStart = (c: CampDay) => `${c.date}T09:00:00${c.offset}`
+const campEnd = (c: CampDay) => `${c.date}T15:00:00${c.offset}`
+// Drop days that have already ended at build time; the list is also refreshed by hand each season (see TODO above).
+const upcoming = upcomingCamps.filter((c) => Date.now() < Date.parse(campEnd(c)))
+const glowUpcoming = Date.now() < Date.parse('2026-10-24T21:00:00-06:00')
+const longDate =(iso: string) =>
+  new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(
+    new Date(`${iso}T12:00:00Z`),
+  )
+
+const typicalRows = [
+  { label: 'Summer camp week (Monday–Friday)', price: '$370 / week', note: '2026 rate' },
+  { label: 'Specialty summer weeks', price: '$470 / week', note: '2026 rate' },
+  { label: 'One-day camps (no-school and holiday days)', price: '$84–$87 / day', note: '2026 rate' },
+]
+
+const careRows = [
+  { label: 'Before-camp care, 7:30–9:00 am', price: '$18 / day' },
+  { label: 'After-camp care, 3:00–6:00 pm', price: '$25 / day' },
+  { label: 'Optional lunch', price: '$6 / day' },
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What kinds of camps does Bodies in Motion offer?',
+    a: 'We run week-long summer camps, one-day camps on no-school days, and holiday and break camps (for example Spring Break, winter break and Thanksgiving-week camp days) at our Boise facility. Each camp has its own theme; one-day camps in 2026 included The Great Fall Escape, Best of BIM, Nature Explorers and No School Fun Day.',
+  },
+  {
+    q: 'What ages are camps for?',
+    a: 'Summer camp and Spring Break camp in 2026 were for ages 4 to 12. One-day camps are typically for ages 5 to 12 (Nature Explorers was ages 5 to 11), so check the age range listed for each camp when you register.',
+  },
+  {
+    q: 'What are the camp hours?',
+    a: 'Camp runs Monday through Friday from 9 am to 3 pm. Optional before-camp care starts at 7:30 am and optional after-camp care runs from 3 pm to 6 pm.',
+  },
+  {
+    q: 'How much does extended care cost?',
+    a: 'In 2026, before-camp care (7:30–9:00 am) is $18 per day and after-camp care (3:00–6:00 pm) is $25 per day. Prices can change, so confirm them when you register.',
+  },
+  {
+    q: 'How much does camp cost?',
+    a: 'In 2026, summer camp weeks were $370 per week, with some specialty weeks at $470, and one-day camps were about $84 to $87 per day. These are 2026 rates and may change; the current price is always shown at registration on Camps for Kids Idaho.',
+  },
+  {
+    q: 'Is there a sibling discount?',
+    a: 'Yes. Camps for Kids Idaho applies a 10% sibling discount to camps (Parents’ Night Out has a 20% sibling discount). Ask us if you have questions about your total.',
+  },
+  {
+    q: 'Who looks after the campers?',
+    a: 'Every camper is guided by Motioneers who are childcare certified, background checked, and trained in CPR and first aid.',
+  },
+  {
+    q: 'Is lunch provided?',
+    a: 'Optional lunch can be added for $6 per day when you register at Camps for Kids Idaho.',
+  },
+  {
+    q: 'When is the next camp?',
+    a: upcoming.length
+      ? `The next camp day is ${upcoming[0].title.replace(' – Camp Day', '')} on ${longDate(upcoming[0].date)}, 9 am to 3 pm, for ages ${upcoming[0].ages} at $${upcoming[0].price} per day. Register at Camps for Kids Idaho or call (208) 381-0587 for other upcoming dates.`
+      : 'Check Camps for Kids Idaho for the latest camp dates, or call (208) 381-0587.',
+  },
+  {
+    q: 'How do I register for camp?',
+    a: 'Camp registration is handled through Camps for Kids Idaho at campsforkidsidaho.com. You can also call us at (208) 381-0587.',
+  },
+  {
+    q: 'Where are camps held?',
+    a: 'Camps are held at Bodies in Motion, 729 W. Diamond St, Boise, ID 83705. Families come to us from Boise, Meridian and Garden City.',
+  },
+]
+
+const extraJsonLd = upcoming.map((c) =>
+  eventSchema({
+    name: c.title,
+    description: `${c.blurb} Ages ${c.ages}, 9:00 am–3:00 pm.`,
+    startDate: campStart(c),
+    endDate: campEnd(c),
+    url: LINKS.camps,
+    price: String(c.price),
+    typicalAgeRange: c.ages.replace('–', '-'),
+  }),
+)
+
+const proofCampLife = [
+  {
+    src: photoCampSplash,
+    alt: 'Campers cooling off during a splash day at camp',
+    caption: 'Active camp days — splash, play and movement, not screens.',
+  },
+  {
+    src: photoCampSalmon,
+    alt: 'A camper on the salmon ladder during ninja camp time',
+    caption: 'Ninja course time is part of camp at Bodies in Motion.',
+  },
+]
+const browseGallery = [
+  { src: photoCampGroup, alt: 'Summer campers gathered for a group activity at Bodies in Motion' },
+  { src: photoCampNinja, alt: 'Campers cheering a friend hanging from a ninja warrior bar' },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/camps"
+  eyebrow="Summer · No-school days · Holiday camps"
+  h1="Summer, No-School & Holiday Camps in Boise"
+  lead="Active, hands-on camps for ages 4–12 with before-camp and after-camp care for working families."
+  heroImg={heroImg}
+  heroAlt="A boy with outstretched arms and a big smile at a water play area while other children play behind him"
+  ctaUrl={LINKS.camps}
+  ctaLabel="Register for camps"
+  ctaHeading="Ready to pick a camp?"
+  ctaText="Register through Camps for Kids Idaho, or call us at (208) 381-0587."
+  faq={faq}
+  extraJsonLd={extraJsonLd}
+>
+  <section class="section">
+    <div class="section__inner prose">
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2>Camps at Bodies in Motion</h2>
+          <p>
+            Our camps provide an active, engaging experience filled with movement, teamwork and hands-on fun in a
+            structured, positive environment. Families come to us from Boise, Meridian and Garden City.
+          </p>
+          <ul class="bullets">
+            <li><strong>Summer camp:</strong> week-long sessions through the summer (Summer 2026 camp was ages 4–12). Our summer lineup includes a Learn to Ride camp.</li>
+            <li><strong>No-school day camps:</strong> one-day camps when school is out, with group games like Capture the Flag, Pirate Tag, Z Tag and Speed Ball (ages 5–12).</li>
+            <li><strong>Holiday and break camps:</strong> themed days for Spring Break, winter break and the Thanksgiving holiday, such as <em>The Great Fall Escape</em> mystery day.</li>
+          </ul>
+          <p>
+            <strong>Ages:</strong> 4–12 overall; each camp lists its own range (one-day camps are typically 5–12).
+            <strong>Staff:</strong> every camper is guided by Motioneers who are childcare certified, background checked, and
+            trained in CPR and first aid.
+          </p>
+          <div class="stub-actions">
+            <a class="btn-primary" href={LINKS.camps} target="_blank" rel="noopener noreferrer">Register at Camps for Kids Idaho</a>
+          </div>
+        </div>
+        <ProofPhotos items={proofCampLife} />
+      </div>
+
+      <h2>Camp hours and extended care</h2>
+      <ul class="bullets">
+        <li><strong>Camp day:</strong> Monday–Friday, 9:00 am–3:00 pm</li>
+        <li><strong>Before-camp care (optional):</strong> 7:30–9:00 am, $18 per day</li>
+        <li><strong>After-camp care (optional):</strong> 3:00–6:00 pm, $25 per day</li>
+        <li><strong>Lunch (optional):</strong> $6 per day, added at registration</li>
+        <li><strong>Sibling discount:</strong> 10% on camps</li>
+        <li>Camp is not offered on Saturday or Sunday.</li>
+      </ul>
+      <p>
+        See the <a href="/hours">full hours page</a> for everything else we offer, or call{' '}
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> with questions.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="upcoming-camp-days">
+    <div class="section__inner prose">
+      <h2>Upcoming camp days</h2>
+      {upcoming.length > 0 ? (
+        <ul class="camp-list">
+          {upcoming.map((c) => (
+            <li class="camp-card">
+              <h3>{c.title}</h3>
+              <p class="camp-card__meta">
+                {longDate(c.date)} · 9:00 am–3:00 pm · Ages {c.ages} · ${c.price} per day
+              </p>
+              <p>{c.blurb}</p>
+              <a class="btn-primary" href={LINKS.camps} target="_blank" rel="noopener noreferrer">Register for this camp day</a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No camp days are listed right now. Check Camps for Kids Idaho or call us for the next date.</p>
+      )}
+      <p class="camp-note">
+        Camp dates change every season. Only dates that have not happened yet are listed here; see{' '}
+        <a href={LINKS.camps} target="_blank" rel="noopener noreferrer">Camps for Kids Idaho</a> for the full, current list.{' '}
+        {glowUpcoming
+          ? <>Looking for an evening out? The <a href="/parents-night-out">Cosmic Glow Party – Parents’ Night Out</a> is on Saturday, October 24, 2026.</>
+          : <>Looking for an evening out? See <a href="/parents-night-out">Parents’ Night Out</a>.</>}
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="typical-pricing">
+    <div class="section__inner prose">
+      <h2>Typical pricing</h2>
+      <p class="camp-note">
+        <strong>2026 rates, subject to change.</strong> These are the prices we charged for our 2026 camps. The summer
+        2026 weeks have already run, so use these as a guide and check Camps for Kids Idaho for the current price of any
+        camp you are registering for.
+      </p>
+      <PriceTable
+        caption="Typical camp pricing"
+        subtitle="2026 rates"
+        rows={typicalRows}
+        priceHeading="Price"
+        rowHeading="Camp"
+        footnote="Prices exclude optional extended care and lunch. A 10% sibling discount applies to camps."
+      />
+      <PriceTable caption="Extended care and lunch" subtitle="Per day, optional" rows={careRows} priceHeading="Price" rowHeading="Add-on" />
+    </div>
+  </section>
+  <PhotoGallery eyebrow="See more of camp" heading="School breaks filled with motion" items={browseGallery} />
+</ActivityPage>
+
+<style>
+  .camp-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: grid;
+    gap: 16px;
+  }
+
+  .camp-card {
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+  }
+
+  .camp-card h3 {
+    margin-top: 0;
+  }
+
+  .camp-card__meta {
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .camp-card .btn-primary {
+    margin-top: 8px;
+  }
+
+  .camp-note {
+    border-left: 4px solid var(--o);
+    padding: 4px 0 4px 16px;
+    color: var(--muted);
+  }
+</style>

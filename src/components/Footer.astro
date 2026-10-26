@@ -1,0 +1,296 @@
+---
+import { Image } from 'astro:assets'
+import logo from '../assets/logo.png'
+import { NAP, SOCIAL, LICENSE_NUMBER } from '../lib/site'
+
+const care = [
+  { to: '/infant-toddler-care', label: 'Infant & Toddler Care' },
+  { to: '/preschool', label: 'Preschool' },
+  { to: '/after-school-care', label: 'Before & After School Care' },
+  { to: '/camps', label: 'Camps' },
+]
+
+const play = [
+  { to: '/open-play', label: 'Open Play' },
+  { to: '/ninja-warrior', label: 'Ninja Warrior' },
+  { to: '/fitness-classes', label: 'Fitness Classes' },
+  { to: '/pickleball', label: 'Pickleball' },
+  { to: '/ropes-course', label: 'Ropes Course' },
+  { to: '/birthday-parties', label: 'Birthday Parties' },
+  { to: '/parents-night-out', label: "Parents' Night Out" },
+  { to: '/team-building', label: 'Team Building' },
+]
+
+const company = [
+  { to: '/about', label: 'About Us' },
+  { to: '/hours', label: 'Hours' },
+  { to: '/reviews', label: 'Reviews' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/jobs', label: 'Careers' },
+  { to: '/contact', label: 'Contact' },
+  { to: '/waiver', label: 'Sign a Waiver' },
+]
+
+const year = new Date().getFullYear()
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="Bodies in Motion home">
+          <Image src={logo} alt="Bodies in Motion logo" width={220} height={62} densities={[1, 2]} />
+        </a>
+        <p class="footer__tagline">Serving Boise since 2011. Committed to igniting activity and encouraging empowerment.</p>
+        <ul class="footer__social" aria-label="Social media">
+          {SOCIAL.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener noreferrer" class="footer__social-link">
+                <span class="footer__social-text">{s.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Care &amp; Camps</p>
+        <ul class="footer__col-links">
+          {care.map(({ to, label }) => <li><a href={to} class="footer__col-link">{label}</a></li>)}
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Play &amp; Fitness</p>
+        <ul class="footer__col-links">
+          {play.map(({ to, label }) => <li><a href={to} class="footer__col-link">{label}</a></li>)}
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Company</p>
+        <ul class="footer__col-links">
+          {company.map(({ to, label }) => <li><a href={to} class="footer__col-link">{label}</a></li>)}
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Visit &amp; Contact</p>
+        <address class="footer__address">
+          <p class="footer__hours-label">Location</p>
+          <p class="footer__hours-value">
+            {NAP.name}<br />
+            {NAP.street}<br />
+            {NAP.city}, {NAP.state} {NAP.zip}
+          </p>
+          <p class="footer__hours-label">Phone</p>
+          <p class="footer__hours-value"><a href={NAP.phoneTel} class="footer__contact-accent">{NAP.phoneDisplay}</a></p>
+          <p class="footer__hours-label">Email</p>
+          <p class="footer__hours-value">
+            <a href="/contact" class="footer__contact-accent">Contact form</a>
+            <br />
+            <span>{NAP.emailDisplay}</span>
+          </p>
+          <p class="footer__hours-label">Hours</p>
+          <p class="footer__hours-value"><a href="/hours" class="footer__col-link">See hours by program</a></p>
+        </address>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bar">
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; {year} Bodies in Motion. All rights reserved. Idaho childcare license #{LICENSE_NUMBER}. Idaho STARS provider.</p>
+      <div class="footer__bottom-links">
+        <a href="/privacy" class="footer__bottom-link">Privacy Policy</a>
+        <a href="/waiver" class="footer__bottom-link">Waiver</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    --text: #fff;
+    --muted: rgba(255, 255, 255, 0.72);
+    background: var(--ink);
+    color: #fff;
+    border-top: 3px solid var(--ink);
+    margin-top: clamp(48px, 6vw, 96px);
+    padding: 72px 40px 0;
+  }
+
+  .footer__inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Cream badge so black "MOTION" stays readable on the ink footer. */
+  .footer__logo :global(img) {
+    height: 52px;
+    width: auto;
+    max-width: 220px;
+    background: #fffaf0;
+    border: 2.5px solid rgba(255, 255, 255, 0.35);
+    border-radius: 14px;
+    padding: 8px 12px;
+    box-sizing: content-box;
+    rotate: -2deg;
+  }
+
+  .footer__tagline {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 240px;
+  }
+
+  .footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .footer__social-link {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.65);
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .footer__social-link:hover {
+    color: var(--text);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .footer__col-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--y);
+    font-family: var(--display);
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    margin-bottom: 20px;
+  }
+
+  .footer__col-links {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .footer__col-link {
+    font-size: 0.875rem;
+    color: var(--muted);
+    transition: color 0.15s ease;
+    line-height: 1.4;
+  }
+
+  .footer__col-link:hover {
+    color: var(--text);
+  }
+
+  .footer__address {
+    font-style: normal;
+  }
+
+  .footer__hours-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 3px;
+  }
+
+  .footer__hours-value {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .footer__contact-accent {
+    color: var(--y);
+  }
+
+  .footer__bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .footer__bottom {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer__copyright,
+  .footer__bottom-link {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .footer__bottom-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer__bottom-link:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 1100px) {
+    .footer__top {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer {
+      padding: 56px 24px 0;
+    }
+
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

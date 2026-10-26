@@ -1,0 +1,201 @@
+---
+import CarePage from '../layouts/CarePage.astro'
+import PriceTable from '../components/PriceTable.astro'
+import { LINKS, type FaqItem } from '../lib/site'
+import heroImg from '../assets/strip1.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoInfCuddle from '../assets/photos/infant-cuddle.jpg'
+import photoInfReese from '../assets/photos/infant-reese.jpg'
+import photoToddlerZoey from '../assets/photos/zoey-toddler-2.jpeg'
+import photoToddlerProud from '../assets/photos/toddler-proud.jpg'
+
+const title = 'Infant & Toddler Care in Boise, ID | Bodies in Motion'
+const description =
+  'Infant & toddler care in Boise, ID for ages 6 weeks to 36 months. Small classes (1:4 infants, 1:6 toddlers), recorded classrooms. Book a tour.'
+
+const rows = [
+  { label: 'Full time, Monday–Friday (open 7:30 am, close 6:00 pm)', price: '$1626', note: 'Includes daily snacks and meals' },
+  { label: 'Part time: 3 days (M/W/F)', price: '$975' },
+  { label: 'Part time: 2 days (T/Th)', price: '$650' },
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What ages do you care for?',
+    a: 'Our infant room is for ages 6 weeks to 18 months. Our toddler room is for ages 18 months to 36 months (3 years old).',
+  },
+  {
+    q: 'What are your teacher-to-child ratios and class sizes?',
+    a: 'The infant room keeps 1 teacher for every 4 babies, with a maximum of 8 per room. The toddler room keeps 1 teacher for every 6 children, with a maximum of 12 in the classroom.',
+  },
+  {
+    q: 'What are your infant and toddler care hours?',
+    a: 'Full-time care is Monday through Friday. We open at 7:30 am and close at 6:00 pm.',
+  },
+  {
+    q: 'How much does infant and toddler care cost?',
+    a: 'Tuition is the same for infants (6 weeks to 18 months) and toddlers (18 to 36 months): full-time care Monday through Friday is $1626 per month. Part-time care is $975 per month for 3 days (M/W/F) or $650 per month for 2 days (T/Th).',
+  },
+  {
+    q: 'Is there a discount for paying by ACH?',
+    a: 'Yes. You save 3% on monthly tuition when you use ACH.',
+  },
+  {
+    q: 'Are meals and snacks included?',
+    a: 'Yes. Full-time tuition includes daily snacks and meals.',
+  },
+  {
+    q: 'How do you keep children safe?',
+    a: 'Classrooms have recorded surveillance. Teachers are thoroughly trained to properly feed, change diapers and interact with children, and every teacher is interviewed for patience, background-checked and licensed. The area is professionally designed with developmentally appropriate toys and experiences.',
+  },
+  {
+    q: 'Do toddlers take swim lessons?',
+    a: 'Toddlers can take swim lessons at the Idaho Aquatic Center for an extra fee.',
+  },
+  {
+    q: 'How do I book a tour?',
+    a: 'Use our online scheduler to book an infant & toddler tour, or call (208) 381-0587.',
+  },
+  {
+    q: 'Which areas do families come from?',
+    a: 'Our only location is 729 W. Diamond St. in Boise. We serve families from Boise, Meridian and Garden City.',
+  },
+]
+
+/** Proof (≤3): glued to safety / infant / toddler claims. Browse: rest after tour CTA. */
+const proofSafety = [
+  {
+    src: photoInfCuddle,
+    alt: 'A teacher cuddling with two babies in the infant room',
+    caption: 'Recorded classrooms and teachers who have time for your baby (1:4 infants).',
+  },
+]
+const proofInfant = [
+  {
+    src: photoInfReese,
+    alt: 'One baby and a teacher smiling together',
+    caption: 'Infant room: ages 6 weeks to 18 months.',
+  },
+]
+const proofToddler = [
+  {
+    src: photoToddlerZoey,
+    alt: 'A happy toddler excited to see his teacher',
+    caption: 'Toddler room: ages 18 months to 3 years.',
+  },
+]
+const browseGallery = [
+  { src: photoToddlerProud, alt: 'A proud young child showing off a classroom creation' },
+]
+---
+
+<CarePage
+  title={title}
+  description={description}
+  path="/infant-toddler-care"
+  eyebrow="Boise infant & toddler care · 1 teacher per 4 babies"
+  h1="Infant & Toddler Care in Boise: Small Classes. Real Attention."
+  lead="Your baby gets a teacher who actually has time for them. Our infant room keeps 1 teacher for every 4 babies (max 8 per room), and our toddler room keeps 1 teacher for every 6 (max 12)."
+  heroImg={heroImg}
+  heroAlt="Two toddlers playing on a colorful floor with a toy dump truck and stacking rings"
+  tourUrl={LINKS.calendlyInfant}
+  tourLabel="Book a Tour"
+  faq={faq}
+  openingHours={['Mo-Fr 07:30-18:00']}
+  facts={{
+    ages: '6 weeks – 3 years',
+    hours: 'Mon–Fri · 7:30 am – 6 pm',
+    from: '$650/mo',
+    fromNote: 'part time, 2 days',
+    openingsProgram: 'Infant & Toddler Care',
+  }}
+>
+  <section class="section">
+    <div class="section__inner prose">
+      <ul class="trust" aria-label="Highlights">
+        <li>Licensed (Idaho childcare license #28-11875)</li>
+        <li>Background-checked teachers</li>
+        <li>Recorded classrooms</li>
+      </ul>
+      <p>
+        Every teacher is interviewed for patience, background-checked and licensed. The priority of love and safety is
+        paramount at Bodies in Motion and is present in all of our programs.
+      </p>
+
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>Our commitment to safety</h2>
+          <ol class="steps">
+            <li>Recorded surveillance of classrooms.</li>
+            <li>Thoroughly trained teachers to properly feed, change diapers, and interact.</li>
+            <li>We’ve interviewed to find the most patient and loving teachers that have been background checked, and licensed.</li>
+            <li>Professionally designed area with developmentally appropriate toys and experiences.</li>
+          </ol>
+        </div>
+        <ProofPhotos items={proofSafety} />
+      </div>
+
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>Infants: 6 weeks to 18 months</h2>
+          <p>Aside from our #1 priority of a loving, safe environment, we focus on:</p>
+          <ul class="checks">
+            <li>Timely diaper changes</li>
+            <li>Verbal stimulation by encouraging laughter, cooing, and other sounds your baby feels like making</li>
+            <li>Neurological development by presenting opportunities to choose</li>
+            <li>Mental stimulation through reading, singing, music and conversation</li>
+          </ul>
+        </div>
+        <ProofPhotos items={proofInfant} />
+      </div>
+
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>Toddlers: 18 months to 3 years old</h2>
+          <p>
+            Our teacher to child ratio is 1 to 6 for 18 months to 3 year olds with a maximum of 12 children in the classroom.
+            For our toddlers we are committed to:
+          </p>
+          <ul class="checks">
+            <li>Timely diaper changes &amp; potty communication</li>
+            <li>Potty skills training</li>
+            <li>Neurological development through singing, dancing, and repetition</li>
+            <li>Pattern, color, and letter recognition</li>
+            <li>Social engagement skill development</li>
+            <li>Swim lessons at the Idaho Aquatic Center (extra fee)</li>
+          </ul>
+        </div>
+        <ProofPhotos items={proofToddler} />
+      </div>
+
+      <h3>Getting your child preschool ready</h3>
+      <ul class="checks">
+        <li>Understanding big emotions</li>
+        <li>Learning about personal care</li>
+        <li>Pencil, marker, and crayon holding skills</li>
+        <li>Shape &amp; color recognition</li>
+        <li>Social interaction skills</li>
+        <li>Understand cause and effect</li>
+        <li>Follow simple directions and routines</li>
+        <li>Use problem solving skills</li>
+        <li>Participate and engage in activities and play</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="rates">
+    <div class="section__inner prose">
+      <h2>Infant &amp; toddler care rates</h2>
+      <PriceTable caption="Infant" subtitle="6 weeks to 18 months" rows={rows} footnote="Save 3% when using ACH." />
+      <PriceTable caption="Toddler" subtitle="18 months to 36 months" rows={rows} footnote="Save 3% when using ACH." />
+      <div class="callout">
+        <p>
+          <strong>Book a tour.</strong> See the classrooms and meet the team.{' '}
+          <a href={LINKS.calendlyInfant} target="_blank" rel="noopener noreferrer">Schedule an infant &amp; toddler tour</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+  <PhotoGallery eyebrow="See more of the classroom" heading={"More from infant & toddler care"} items={browseGallery} />
+</CarePage>

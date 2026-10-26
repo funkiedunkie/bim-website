@@ -1,0 +1,216 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { LINKS, NAP, type FaqItem } from '../lib/site'
+import heroImg from '../assets/photos/dave-kickboxing.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoFitRhea from '../assets/photos/rhea-kickboxing.jpg'
+import photoFitAnna from '../assets/photos/anna-kickboxing.jpg'
+import photoFitLisa from '../assets/photos/lisa-kickboxing.jpg'
+import photoFitKristin from '../assets/photos/kristin-kickboxing.jpg'
+import photoFitRachel from '../assets/photos/rachel-fitness.jpg'
+
+const title = 'Kickboxing & Bootcamp Fitness Classes in Boise, ID | Bodies in Motion'
+const description =
+  'Fitness kickboxing and SGX bootcamp classes in Boise, ID at Bodies in Motion: 60-minute classes for all levels, MyZone heart-rate tracking and a family-friendly gym.'
+
+// Prices confirmed by Duncan (2026-10-23): kickboxing trial $29, kickboxing $109/mo, kickboxing + SGX $139/mo.
+// No fitness challenge is scheduled, so the challenge section was removed; old challenge URLs 301 to /fitness-classes.
+
+const faq: FaqItem[] = [
+  {
+    q: 'What fitness classes does Bodies in Motion offer?',
+    a: 'We offer fitness kickboxing and SGX (Spartan Group Exercise), a bootcamp-style strength and conditioning class. Classes are for men and women of all experience levels.',
+  },
+  {
+    q: 'What is the kickboxing class schedule?',
+    a: 'Kickboxing is Monday, Wednesday and Friday at 5:45 am, 7:00 am, 12:15 pm and 6:15 pm, and Saturday at 9 am. Classes are 60 minutes.',
+  },
+  {
+    q: 'When is SGX?',
+    a: 'SGX is Tuesday and Thursday at 12:15 pm.',
+  },
+  {
+    q: 'What is SGX?',
+    a: 'SGX stands for Spartan Group Exercise. It started as training for Spartan Race athletes and became popular with non-racers too. It is a conditioning class designed to increase strength, mobility, flexibility and cardiovascular endurance, in three one-month phases: core development and stability, strength and stamina, and power. You work with the camaraderie of a group but exercise independently at your own pace and ability.',
+  },
+  {
+    q: 'Is there a trial offer?',
+    a: 'Yes. The $29 kickboxing trial includes 3 high-energy classes and a brand-new pair of boxing gloves, and you can book it online. For SGX, call (208) 381-0587 to get started.',
+  },
+  {
+    q: 'How much are fitness memberships?',
+    a: 'Kickboxing is $109 per month. Kickboxing plus SGX is $139 per month. The kickboxing trial is $29.',
+  },
+  {
+    q: 'I haven’t worked out in a long time. Is kickboxing right for me?',
+    a: 'Yes. You are in control of your intensity, and the more conditioned you become, the more you can ramp it up. Classes include students just starting out, students who are halfway there and students who are maintaining. About 70% of our students first signed up after not having worked out in a long time.',
+  },
+  {
+    q: 'How many people are in a class?',
+    a: 'It varies by class time, but classes average 5 to 15 people. We intentionally keep classes smaller to create a community feel and give each student attention.',
+  },
+  {
+    q: 'What should I wear?',
+    a: 'Wear what is comfortable for you. Many students wear shoes, but bare feet are also fine. If you wear shoes, please make sure the bottoms are clean.',
+  },
+  {
+    q: 'How often should I come to class?',
+    a: 'It depends on how active you already are and how fast you want results. For fast results, come up to 5 days a week; if you don’t have the time, 2 to 3 times a week is good.',
+  },
+  {
+    q: 'What is MyZone?',
+    a: 'Bodies in Motion is a MyZone enabled facility, so at no extra monthly charge you can track your heart rate, zone and calorie expenditure in real time. We see calorie burns as high as 1,100 in a single class, with an average of about 700.',
+  },
+  {
+    q: 'Can my kids play while I work out?',
+    a: 'Yes. Many of our members work out while their kids play on our indoor play structure. See the open play page for details and pricing.',
+  },
+]
+
+const reviews = [
+  { quote: 'I enjoy Kickboxing because it’s something new every single time I come. I feel like it’s a good workout. I feel like I have camaraderie with some friends that I’m competing with.', name: 'Anna M.', source: 'Kickboxing student' },
+  { quote: 'I like coming to Kickboxing because it makes me feel better for the whole day. When I’m in my office, I’m not sore from sitting all day. And, I just feel energized!', name: 'Kristin B.', source: 'Kickboxing student' },
+  { quote: 'Bodies in Motion is awesome - The best instructors in Boise and the place to come to succeed with your goals.', name: 'Rick Wold', source: '5 stars, Facebook' },
+  { quote: 'A win win for the whole family... I get to work out while the kids get to play.', name: 'Chris Gaines', source: '5 stars, Facebook' },
+  { quote: 'I highly recommend BIM because they are serious about your health and overall fitness.', name: 'Sheila Moore', source: '5 stars, Facebook' },
+]
+
+const proofKick = [
+  {
+    src: photoFitRhea,
+    alt: 'A woman in pink boxing gloves striking a heavy bag during kickboxing class',
+    caption: 'Adult kickboxing on heavy bags — $29 trial includes 3 classes and gloves.',
+    // Portrait source: use 3/4 proof box so 4/3 cover does not chop head/stance.
+    imgClass: 'proof-photos__img--portrait',
+  },
+]
+const proofKidsWhile = [
+  {
+    src: photoFitRachel,
+    alt: 'Strength and fitness training in the Bodies in Motion gym',
+    caption: 'SGX and strength training while kids play free on open play.',
+    // Portrait source: 3/4 proof box keeps dumbbell + supporting hand in frame.
+    imgClass: 'proof-photos__img--portrait',
+  },
+]
+const browseGallery = [
+  { src: photoFitAnna, alt: 'Kickboxing class member working the heavy bags on the gym floor', imgClass: 'object-pos-center' },
+  { src: photoFitLisa, alt: 'Adult kickboxing training at Bodies in Motion', imgClass: 'object-pos-left' },
+  { src: photoFitKristin, alt: 'A member throwing punches at a freestanding bag in kickboxing', imgClass: 'object-pos-right' },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/fitness-classes"
+  eyebrow="Empowered"
+  h1="Kickboxing & Bootcamp Fitness Classes in Boise"
+  lead="Effective, motivating workouts for all experience levels, at a gym where your kids can play while you train."
+  heroImg={heroImg}
+  heroImgClass="object-pos-center"
+  heroAlt="Adults training on heavy bags in a kickboxing class"
+  ctaUrl={LINKS.calendlyKickboxing}
+  ctaLabel="Book kickboxing trial"
+  ctaHeading="Ready to try a class?"
+  ctaText="Book a kickboxing trial online, or call us at (208) 381-0587 to get started with SGX."
+  faq={faq}
+  reviews={reviews}
+>
+  <section class="section">
+    <div class="section__inner prose">
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2 id="kickboxing">Boise fitness kickboxing</h2>
+          <p>
+            Want an effective, fat-burning, muscle-building workout that relieves stress? Each time you strap on the gloves,
+            life takes a backseat for the next 60 minutes while our instructors take you through a kickboxing journey. The
+            skills are designed to be fun and easy to grasp, and are perfect for men and women of all experience levels. Set
+            the pace to the beat of the music and the cadence of the instructor, and punish a 6-foot, 270-pound punching bag
+            in 14-ounce gloves.
+          </p>
+          <ul class="bullets">
+            <li>Improved strength and muscle toning</li>
+            <li>Boosted cardiovascular health</li>
+            <li>Unwavering confidence in your newfound abilities</li>
+          </ul>
+          <p>
+            <strong>Kickboxing trial ($29):</strong> 3 high-energy classes and a brand-new pair of boxing gloves.{' '}
+            <a href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book your trial on Calendly</a> or
+            call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
+          </p>
+          <div class="stub-actions">
+            <a class="btn-primary" href={LINKS.calendlyKickboxing} target="_blank" rel="noopener noreferrer">Book kickboxing trial</a>
+          </div>
+        </div>
+        <ProofPhotos items={proofKick} />
+      </div>
+
+      <h2 id="sgx">SGX bootcamp fitness, without the yelling</h2>
+      <p>
+        SGX is short for Spartan Group Exercise. Originally intended to train Spartan Race athletes, it became popular
+        with all of our non-racing athletes too. It is a conditioning class designed to increase strength, mobility,
+        flexibility and cardiovascular endurance. Total body conditioning is broken into three phases of one month each,
+        so workouts never get mundane:
+      </p>
+      <ul class="bullets">
+        <li><strong>Phase 1:</strong> core development and stability training</li>
+        <li><strong>Phase 2:</strong> strength and stamina</li>
+        <li><strong>Phase 3:</strong> power</li>
+      </ul>
+      <p>
+        We’ve attracted racers, non-racers and people who haven’t exercised in years. You work with the camaraderie of a
+        group, but exercise independently, at your own pace and ability. To start, call{' '}
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or <a href="/contact">contact us</a> and our Membership Director
+        will help you schedule your first class.
+      </p>
+
+      <h2 id="pricing">Fitness pricing</h2>
+      <ul class="bullets">
+        <li><strong>Kickboxing trial:</strong> $29 (3 classes plus boxing gloves)</li>
+        <li><strong>Kickboxing:</strong> $109 per month</li>
+        <li><strong>Kickboxing + SGX:</strong> $139 per month</li>
+      </ul>
+
+      <h2 id="class-times">Class times</h2>
+      <ul class="bullets">
+        <li><strong>Kickboxing:</strong> Monday, Wednesday and Friday at 5:45 am, 7:00 am, 12:15 pm and 6:15 pm; Saturday at 9 am</li>
+        <li><strong>SGX:</strong> Tuesday and Thursday at 12:15 pm</li>
+      </ul>
+      <p>See the <a href="/hours">full hours page</a> for everything else we offer.</p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="section__inner prose">
+      <h2 id="myzone">MyZone heart-rate tracking</h2>
+      <p>
+        Bodies in Motion is a MyZone enabled facility. For no extra monthly charge, you can track your heart rate, zone
+        and calorie expenditure in real time. Depending on the class and the person wearing the band, we see calorie
+        burns as high as 1,100 in a single class, with an average of about 700. It’s a fun way to motivate yourself to
+        train, and to train harder.
+      </p>
+
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2 id="family">Work out while your kids play</h2>
+          <p>
+            Bodies in Motion is a family fitness venue: parents take class while kids play on the indoor play structure. Open play is free for your kids while you exercise;{' '}
+            <a href="/open-play">see open play</a>.
+          </p>
+        </div>
+        <ProofPhotos items={proofKidsWhile} />
+      </div>
+    </div>
+  </section>
+  <PhotoGallery eyebrow="See more of class" heading={"Kickboxing & SGX"} items={browseGallery} />
+</ActivityPage>
+
+<style>
+  .camp-note {
+    border-left: 4px solid var(--o);
+    padding: 4px 0 4px 16px;
+    color: var(--muted);
+  }
+</style>

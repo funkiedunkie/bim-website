@@ -1,0 +1,209 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import { NAP, aboutPageSchema, type FaqItem } from '../lib/site'
+import heroImg from '../assets/values2.jpg'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoFounders from '../assets/photos/about-richardsons.jpg'
+import photoMartialSchool from '../assets/photos/about-vista-school.jpeg'
+import photoAcroYoga from '../assets/photos/about-acro-yoga.jpg'
+
+const title = 'About Bodies in Motion | Family Fitness & Play in Boise, ID'
+const description =
+  'The story of Bodies in Motion in Boise, ID: founded by Duncan and Rachel Richardson, serving the Treasure Valley since 2011 with a purpose to ignite activity and encourage empowerment.'
+
+// The old About page ends with "You'll be seeing us in a second location very soon!". Intentionally omitted:
+// Boise is the only location.
+// The old Our Team roster (~2020/2021) is intentionally not published (Duncan, 2026-10-23); no staff list on this page.
+
+const coreValues = [
+  'Commitment to Guests',
+  'Commitment to Work',
+  'Unique & Innovative',
+  'Always Learning & Knowing',
+  'Camaraderie',
+  'Motion',
+  'Fun',
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What is Bodies in Motion?',
+    a: 'Bodies in Motion is a local family fitness and play center at 729 W. Diamond St in Boise, Idaho, with childcare, preschool, camps, open play, a ropes course, ninja warrior, fitness classes, pickleball, birthday parties and team building.',
+  },
+  {
+    q: 'Who owns Bodies in Motion?',
+    a: 'Bodies in Motion was founded by Duncan and Rachel Richardson, who are still very active in the company.',
+  },
+  {
+    q: 'How long has Bodies in Motion been around?',
+    a: 'The company started in a 1,000 sq. ft. space on Vista Ave. over 20 years ago, as a martial art school. In January of 2011 the founders closed the martial art school on a Friday and re-opened it as Bodies in Motion on Monday. Since opening day we have had the pleasure of igniting activity in over 60,000 guests.',
+  },
+  {
+    q: 'Where does the name come from?',
+    a: 'It comes from Sir Isaac Newton’s 1st Law of Motion: a body in motion will stay in motion, until acted upon by an external force. Founder Duncan thought of it as a metaphor for life.',
+  },
+  {
+    q: 'What is the Bodies in Motion purpose?',
+    a: 'We are committed to igniting activity and encouraging empowerment. Our long-range goal is “to be the definitive leader in servicing people, in high quality activities, wherever they are.”',
+  },
+  {
+    q: 'What is a Motioneer?',
+    a: 'Motioneers are the Bodies in Motion team members who run our programs. In childcare and camps, Motioneers are childcare certified and background checked.',
+  },
+  {
+    q: 'Where is Bodies in Motion located?',
+    a: 'We have one location: 729 W. Diamond St, Boise, ID 83705. Families come to us from Boise, Meridian and Garden City. Call (208) 381-0587 or use our contact form.',
+  },
+]
+
+const reviews = [
+  { quote: 'Bodies in Motion has figured out how to make fitness fun for all abilities, ages and interests. My kids love this place and so do I.', name: 'Katy Fethke', source: '5 stars, Facebook' },
+  { quote: 'The owners Duncan and Rachel have put together a team of people to rival Disney. They are so focused on ensuring your experience is perfect every time that you almost forget you only drove a few minutes to have so much fun.', name: 'Dave L', source: '5 stars, Yelp' },
+  { quote: 'The “motioneers” are energetic, interactive, and quirky. What a fun atmosphere!', name: 'Clark R', source: 'Groupon' },
+  { quote: 'Bodies In Motion is AWESOME! The environment is friendly and fun, the classes are amazing, and the team there really cares about the people they help.', name: 'Angela Allen', source: '5 stars, Facebook' },
+]
+
+const extraJsonLd = [aboutPageSchema({ description })]
+
+// Proof beside claims (signed-off order). Browse gallery removed: values1/values3 were unrelated
+// outdoor shots; martial + acro moved up; no remaining about-true browse photos.
+const proofOrigin = [
+  {
+    src: photoMartialSchool,
+    alt: 'The original Vista Ave martial arts school floor with heavy bags and a kicking mural',
+    caption: 'Where it started — the Vista Ave martial arts school before Bodies in Motion.',
+  },
+]
+const proofPurpose = [
+  {
+    src: photoAcroYoga,
+    alt: 'Partners practicing aerial acro yoga on the mats at Bodies in Motion',
+    caption: 'Unique & innovative in motion — aerial acro yoga as play and fitness together.',
+    // Portrait source: use 3/4 proof box so 4/3 cover does not chop base-to-flyer stack.
+    imgClass: 'proof-photos__img--portrait',
+  },
+]
+const proofFounders = [
+  {
+    src: photoFounders,
+    alt: 'Duncan and Rachel Richardson with their family',
+    caption: 'Duncan and Rachel Richardson — the family behind Bodies in Motion.',
+  },
+]
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/about"
+  eyebrow="Our story"
+  h1="About Bodies in Motion"
+  lead="A Boise family fitness and play center built on one purpose: ignite activity and encourage empowerment."
+  heroImg={heroImg}
+  heroAlt="Two Bodies in Motion staff in red shirts giving thumbs up in the gym"
+  ctaUrl="/contact"
+  ctaLabel="Contact us"
+  ctaExternal={false}
+  ctaHeading="Come see us in Boise"
+  ctaText="Visit 729 W. Diamond St, call (208) 381-0587 or use our contact form."
+  faq={faq}
+  reviews={reviews}
+  extraJsonLd={extraJsonLd}
+>
+  <section class="section">
+    <div class="section__inner prose">
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>Our story</h2>
+          <p>
+            Bodies in Motion is a local company that started in a 1,000 sq. ft. space on Vista Ave. over 20 years ago.
+            Except, it wasn’t called Bodies in Motion. We were a martial art school, and our purpose was to Ignite Activity
+            and Encourage Empowerment, with martial arts as the means by which our founders did that.
+          </p>
+          <p>
+            Duncan and Rachel, our founders, have taught thousands of students in the Treasure Valley and have promoted
+            several hundred to Black Belt. Duncan and his sister Mia St. John pioneered the first fitness kickboxing program
+            (Thai-Robics) in Idaho. After empowering kids and adults in Taekwondo and fitness kickboxing classes since 1998,
+            they felt they could make a bigger impact in the community through play, entertainment, learning and fitness.
+          </p>
+          <p>
+            For 2 years Duncan and Rachel brainstormed the perfect facility. They traveled in search of one to emulate but
+            never found a center that resonated with them: they were either all entertainment or all fitness, and none seemed
+            to have the underlying philosophy of empowering people.
+          </p>
+        </div>
+        <ProofPhotos items={proofOrigin} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="section__inner prose">
+      <h2>Where the name comes from</h2>
+      <p>
+        Creating our name was one of the toughest challenges for our founders. Having gone to school to become an
+        engineer, Duncan was always fond of Sir Isaac Newton and his Laws of Motion. The 1st Law of Motion: “A body in
+        motion will stay in motion, until acted upon by an external force.” Duncan thought of it as a metaphor for life.
+        When he introduced the name to Rachel, family and friends, it was an instant hit. Coincidentally, Duncan and
+        Rachel’s first born is named Isaac.
+      </p>
+      <p>
+        In January of 2011, Duncan and Rachel closed their martial art school on Friday and re-opened it as Bodies in
+        Motion on Monday, just 2 days after their grand opening. Ever since that opening day, we’ve had the pleasure of
+        igniting activity in over 60,000 guests.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner prose">
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>Purpose and core values</h2>
+          <p>
+            <strong>Our purpose:</strong> we are committed to igniting activity and encouraging empowerment. Our long-range
+            goal, our BHAG (Big Hairy Audacious Goal), is “To be the definitive leader in servicing people, in high quality
+            activities, wherever they are.”
+          </p>
+          <p>Duncan and Rachel have fostered a culture centered around 7 core values and a solid purpose:</p>
+          <ol class="bullets">
+            {coreValues.map((v) => <li>{v}</li>)}
+          </ol>
+        </div>
+        <ProofPhotos items={proofPurpose} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="founders">
+    <div class="section__inner prose">
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+            <h2>Meet the founders</h2>
+          <p>
+            <strong>Duncan Richardson</strong> received his degree in Civil Engineering from Boise State University. He is a
+            5th Degree Black Belt in Taekwondo and spent a decade competing nationally and internationally while trying to
+            secure a spot on the US Team. Duncan also competed on American Ninja Warrior in 2016.
+          </p>
+          <p>
+            <strong>Rachel Richardson</strong> received her degree in Marketing from Boise State University, where she also
+            cheered. During her last two years at BSU she became a professional cheerleader. Rachel is also a Black Belt in
+            Taekwondo.
+          </p>
+          <p>Duncan and Rachel are still very active in the company, with a deep passion for activity and empowering others.</p>
+        </div>
+        <ProofPhotos items={proofFounders} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="join">
+    <div class="section__inner prose">
+      <h2>Join our team</h2>
+      <p>
+        Interested in joining us? See <a href="/jobs">jobs</a>. Questions? Call{' '}
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or <a href="/contact">contact us</a>.
+      </p>
+    </div>
+  </section>
+</ActivityPage>

@@ -1,0 +1,229 @@
+---
+import CarePage from '../layouts/CarePage.astro'
+import PriceTable from '../components/PriceTable.astro'
+import { LINKS, type FaqItem } from '../lib/site'
+import heroImg from '../assets/photos/after-school-pals.jpg'
+import PhotoGallery from '../components/PhotoGallery.astro'
+import ProofPhotos from '../components/ProofPhotos.astro'
+import photoAscWeb from '../assets/photos/after-school-web.jpg'
+import photoAscStructure from '../assets/photos/after-school-structure.jpg'
+import photoAscSlides from '../assets/photos/open-play-web_1.jpg'
+
+const title = 'Before & After School Care in Boise, ID | Bodies in Motion'
+const description =
+  'Before & after school care in Boise, ID with clubs, homework help and transportation from Boise schools. After school K–6, before school 1st–6th. Book a tour.'
+
+const hoursNote =
+  'Before school care runs from 7:30 am until children are taken to school; after school care runs from school pickup until 6:00 pm, Monday through Friday.'
+const best = 'Best deal'
+
+const afterRows = [
+  { label: '1 day a week', price: 'N/A' },
+  { label: '2 days a week', price: '$316' },
+  { label: '3 days a week', price: '$445' },
+  { label: '4 days a week', price: '$520' },
+  { label: '5 days a week', price: '$608', note: best },
+]
+
+const beforeRows = [
+  { label: '1 day a week', price: 'N/A' },
+  { label: '2 days a week', price: '$248' },
+  { label: '3 days a week', price: '$316' },
+  { label: '4 days a week', price: '$397' },
+  { label: '5 days a week', price: '$435', note: best },
+]
+
+const bothRows = [
+  { label: '1 day a week', price: 'N/A' },
+  { label: '2 days a week', price: '$390' },
+  { label: '3 days a week', price: '$557' },
+  { label: '4 days a week', price: '$621' },
+  { label: '5 days a week', price: '$735', note: best },
+]
+
+const clubs = [
+  'Sports Agility Training',
+  'High Ropes Adventure Team',
+  'Homework Club',
+  'Ninja Warrior',
+  'Comic Book Artist',
+  'Drama Club',
+  'Sports Club',
+  'Mini Chefs Lab',
+  'STEM Builders',
+]
+
+const schools = ['Adams', 'Liberty', 'Dallas Harris', 'Roosevelt', 'White Pine', 'Trailwind', 'Riverside']
+
+const day = [
+  { time: '3:30 pm', what: 'Arrive and Snack Time' },
+  { time: '4:30 pm', what: 'Open Play & Structured Games' },
+  { time: '4:45 pm', what: 'Homework Club (homework help available) or Club Activity' },
+  { time: '5:30 pm', what: 'Team Building Contest or Ninja Warrior Class' },
+  { time: '6:00 pm', what: 'Pick up (pick up times vary)' },
+]
+
+const faq: FaqItem[] = [
+  {
+    q: 'What are the before and after school care hours?',
+    a: 'Before school care runs from 7:30 am until we take the kids to school. After school care runs from school pickup until 6:00 pm.',
+  },
+  {
+    q: 'What grades is after school care for?',
+    a: 'After school care is for kindergarten through 6th grade. Before school care and combined before & after school care are for 1st through 6th grade.',
+  },
+  {
+    q: 'Which Boise schools do you pick up from and drop off at?',
+    a: 'We pick up and drop off at these Boise schools: Adams, Liberty, Dallas Harris, Roosevelt, White Pine, Trailwind and Riverside.',
+  },
+  {
+    q: 'Is transportation included?',
+    a: 'Yes. Each after school, before school and before & after school option is priced as care and transportation.',
+  },
+  {
+    q: 'What does a typical after school day look like?',
+    a: 'A typical day starts with arrival and snack time at 3:30 pm, open play and structured games at 4:30 pm, Homework Club (homework help available) or a club activity at 4:45 pm, a team building contest or Ninja Warrior class at 5:30 pm, and pick up at 6:00 pm. Pick up times vary.',
+  },
+  {
+    q: 'What clubs can my child choose from?',
+    a: 'Clubs and programs include Sports Agility Training, High Ropes Adventure Team, Homework Club, Ninja Warrior, Comic Book Artist, Drama Club, Sports Club, Mini Chefs Lab and STEM Builders. Some kids are involved in 3 clubs at a time and others just one.',
+  },
+  {
+    q: 'Does my child have to do homework club?',
+    a: 'No. Some parents would prefer that their child use our program to burn energy and not participate in Homework Club, and each child’s experience is unique.',
+  },
+  {
+    q: 'How much does after school care cost?',
+    a: 'After school care and transportation (K–6th grade) is $316 per month for 2 days a week, $445 for 3 days, $520 for 4 days and $608 for 5 days. One day a week is not available.',
+  },
+  {
+    q: 'How much does before school care cost?',
+    a: 'Before school care and transportation (1st–6th grade) is $248 per month for 2 days a week, $316 for 3 days, $397 for 4 days and $435 for 5 days. One day a week is not available.',
+  },
+  {
+    q: 'How much does combined before & after school care cost?',
+    a: 'Before & after school care and transportation (1st–6th grade) is $390 per month for 2 days a week, $557 for 3 days, $621 for 4 days and $735 for 5 days. One day a week is not available.',
+  },
+  {
+    q: 'Is there a discount for paying by ACH?',
+    a: 'Yes. You save 3% when using ACH.',
+  },
+  {
+    q: 'How do I book a tour?',
+    a: 'Use our online scheduler to book a tour, or call (208) 381-0587. We’ll show you around, introduce you to our team, and answer all your questions.',
+  },
+]
+
+const proofBelong = [
+  {
+    src: photoAscStructure,
+    alt: 'School-age children on the indoor play structure after school',
+    caption: 'After school means movement on the indoor play structure — not more sitting.',
+  },
+]
+const proofDay = [
+  {
+    src: photoAscWeb,
+    alt: 'After-school kids hanging out and playing at Bodies in Motion',
+    caption: 'Clubs, homework help and hangout time after pickup.',
+  },
+]
+const browseGallery = [
+  { src: photoAscSlides, alt: 'Kids on the slides during after-school free play' },
+]
+---
+
+<CarePage
+  title={title}
+  description={description}
+  path="/after-school-care"
+  eyebrow="Ignite Activity · Boise before & after school care"
+  h1="Before & After School Care in Boise"
+  lead="Your child deserves more than a place to wait. Give them a place to grow. Active, confidence-building before & after school care that kids love and parents trust."
+  heroImg={heroImg}
+  heroAlt="Two school-age boys wearing silly glasses and mustache props"
+  tourUrl={LINKS.calendly30}
+  tourLabel="Book a Tour Today"
+  faq={faq}
+  openingHours={['Mo-Fr 07:30-18:00']}
+  schemaDescription={description + ' ' + hoursNote}
+  facts={{
+    ages: 'K – 6th grade',
+    hours: 'From 7:30 am until school · pickup until 6 pm',
+    from: '$248/mo',
+    fromNote: 'before school, 2 days',
+    openingsProgram: 'Before & After School Care',
+  }}
+>
+  <section class="section">
+    <div class="section__inner prose">
+      <h2>Hours</h2>
+      <p>
+        <strong>Before school care:</strong> 7:30 am until we take the kids to school.<br />
+        <strong>After school care:</strong> from school pickup until 6:00 pm.
+      </p>
+
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>This isn’t just childcare. It’s a place to play, grow, and belong.</h2>
+          <p>
+            When school ends, kids don’t need more sitting—they need a place to move, explore, and feel like they belong.
+            At Bodies in Motion, we create an environment where children choose activities that excite them, challenge
+            them, and help them grow—physically, emotionally, and socially.
+          </p>
+          <p>
+            Every child is different—so we built a program that lets them choose. Whether your kid loves to move, create,
+            imagine, or build, there’s a club here they’ll want to come back to.
+          </p>
+          <ul class="chips" aria-label="Clubs and programs">
+            {clubs.map((c) => <li class="chip">{c}</li>)}
+          </ul>
+        </div>
+        <ProofPhotos items={proofBelong} />
+      </div>
+
+      <div class="two-col care-claim">
+        <div class="care-claim__text">
+          <h2>What does a day look like?</h2>
+          <p>
+            In addition to our clubs and programs, your child will participate in numerous games, activities, and projects.
+            A typical day in our after school program might look like this:
+          </p>
+          <ul class="bullets">
+            {day.map((d) => <li><strong>{d.time}</strong> – {d.what}</li>)}
+          </ul>
+          <p>
+            There are many factors involved in creating an after school program. Each child’s experience is completely
+            unique. Some parents would prefer that their child use our program to burn energy and would prefer not to
+            participate in Homework Club. Some kids may be involved in 3 clubs at a time and others just one. It’s what
+            makes our after school program totally awesome!
+          </p>
+        </div>
+        <ProofPhotos items={proofDay} />
+      </div>
+
+      <h2>We pick up &amp; drop off at these Boise schools</h2>
+      <ul class="chips" aria-label="Schools served">
+        {schools.map((s) => <li class="chip">{s}</li>)}
+      </ul>
+      <p>Families come to us from Boise, Meridian and Garden City.</p>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="pricing">
+    <div class="section__inner prose">
+      <h2>Simple pricing. Flexible schedule.</h2>
+      <PriceTable caption="After School Care & Transportation" subtitle="K–6th grade" rows={afterRows} footnote="Save 3% when using ACH." />
+      <PriceTable caption="Before School Care & Transportation" subtitle="1st–6th grade" rows={beforeRows} footnote="Save 3% when using ACH." />
+      <PriceTable caption="Before & After School Care & Transportation" subtitle="1st–6th grade" rows={bothRows} footnote="Save 3% when using ACH." />
+
+      <h2>Ready to take the next step?</h2>
+      <p>
+        Want to experience Bodies in Motion in person before deciding? We’ll show you around, introduce you to our team,
+        and answer all your questions.{' '}
+        <a href={LINKS.calendly30} target="_blank" rel="noopener noreferrer">Book a tour</a>.
+      </p>
+    </div>
+  </section>
+  <PhotoGallery eyebrow="See more after school" heading="Homework, clubs and play" items={browseGallery} />
+</CarePage>
