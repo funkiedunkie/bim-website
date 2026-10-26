@@ -7,6 +7,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `tracking/gtm-lead-contact` (Pass 1: GTM + generate_lead)
+
+**Changed:** Restore Weebly GTM container **GTM-KGR99L7N** sitewide via new `src/components/GoogleTagManager.astro` injected from `Base.astro` (head snippet + body noscript). Default ID is hardcoded for continuity; `PUBLIC_GTM_ID` can override or be set to `off`/`false`/`0` to disable on a preview. Contact form (`ContactForm.astro`) pushes `dataLayer` event **`generate_lead`** once per page load on AJAX success and on `?status=sent` (guard `__bimGenerateLeadSent`). Payload: `lead_source: 'contact_form'`, optional `program`. Privacy Cookies FAQ + section + Google third-party bullet updated so the policy no longer claims “no tag manager.” TODO.md privacy note adjusted. **No** infant CTA/hero/Ad C changes. **Do not merge** without Duncan OK — Muse must still wire Meta Lead in GTM UI to `generate_lead`.
+**Conversion:** Unblocks Meta infant campaign Lead measurement after Astro cutover (pixel/tags still need to exist inside GTM).
+**Evidence:** Local `astro build` after change; PR opened into `main` for Duncan review (not deployed by this pass).
+**Live vs committed:** Live Production still has no GTM until this PR merges.
+**Handoff:** Duncan review PR. Muse: GTM Custom Event trigger on `generate_lead` → Meta Lead (or Element Visibility on `.contact-form__status` as backup). Tip of this branch after push.
+
 ## 2026-10-26 — Grok — `main` (hotfix redirects live)
 
 **Changed:** Merged PR #45. Production deploy READY on tip `b07c94a` (`dpl_7GY6WWsuPES1R7VamBUmr1zPKxbv`). Ledger only here.

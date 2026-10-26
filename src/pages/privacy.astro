@@ -12,8 +12,8 @@ const description =
 // (last updated 6/19/2026). A reviewer may want to add: children's privacy (we serve children), how long information is kept,
 // and any state-law rights. Update this page after review if needed.
 // TODO(Duncan): mailing address. The physical address is used below; if you want a separate mailing address (e.g. a PO box), add it.
-// TODO(Duncan): analytics. The old Weebly site loaded Google Tag Manager (GTM-KGR99L7N). This site loads no analytics or tag manager
-// today, so the policy says so. Update the Cookies section if analytics are added.
+// Analytics: Google Tag Manager (GTM-KGR99L7N, same container as the old Weebly site) loads sitewide via Base/GoogleTagManager.
+// Override or disable with PUBLIC_GTM_ID (see that component). Cookies section below reflects that GTM may load.
 // Dropped on purpose: the old policy's numbered sections about a "GPT application" / Recipe Builder / OpenAI (not this business).
 
 const faq: FaqItem[] = [
@@ -35,7 +35,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Does this website use cookies?',
-    a: 'Our previous website used cookies to improve the experience and track usage patterns. You can accept or decline cookies in your browser settings. This website does not currently load an analytics or tag manager script.',
+    a: 'This website may load Google Tag Manager so we can measure visits and advertising results (for example Meta lead ads). You can accept or decline cookies in your browser settings. Our previous website used the same kind of tools.',
   },
 ]
 ---
@@ -98,9 +98,10 @@ const faq: FaqItem[] = [
 
       <h2 id="cookies">Cookies and analytics</h2>
       <p>
-        Our website may use cookies to enhance your experience and track usage patterns. You can choose to accept or
-        decline cookies through your browser settings. This website does not currently load an analytics or tag manager
-        script; our previous website used Google Tag Manager.
+        Our website may use cookies and similar technologies to enhance your experience and measure how the site is
+        used. We load Google Tag Manager (the same container our previous website used) so advertising and analytics
+        tools — including measurement for ads that send people to this site — can run when configured. You can choose to
+        accept or decline cookies through your browser settings.
       </p>
 
       <h2 id="third-parties">Third-party services and links</h2>
@@ -114,7 +115,7 @@ const faq: FaqItem[] = [
         <li><strong>GymMaster</strong> for the online waiver portal.</li>
         <li><strong>Camps for Kids Idaho</strong> (campsforkidsidaho.com) for camp and event registration.</li>
         <li><strong>Mailjet</strong> for delivering contact form messages by email.</li>
-        <li><strong>Google</strong>, for the map on our pages and the fonts the site loads.</li>
+        <li><strong>Google</strong>, for the map on our pages, fonts the site loads, and Google Tag Manager (which may load other measurement tools such as Meta’s pixel when we configure them there).</li>
         <li>Our <strong>Facebook, Instagram, X (Twitter) and YouTube</strong> pages, which we link to.</li>
       </ul>
 
