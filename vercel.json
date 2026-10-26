@@ -1203,6 +1203,16 @@
       "statusCode": 301
     },
     {
+      "source": "/infant-care",
+      "destination": "/infant-toddler-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/infant-care.html",
+      "destination": "/infant-toddler-care",
+      "statusCode": 301
+    },
+    {
       "source": "/fitness",
       "destination": "/fitness-classes",
       "statusCode": 301

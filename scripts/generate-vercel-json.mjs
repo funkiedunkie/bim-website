@@ -126,7 +126,7 @@ const groups = [
   // bare stems that never existed as .html sources.
   [
     '/infant-toddler-care',
-    ['/infant'],
+    ['/infant', '/infant-care', '/infant-care.html'],
   ],
   [
     '/fitness-classes',
