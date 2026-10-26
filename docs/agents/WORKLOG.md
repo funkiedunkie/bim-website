@@ -7,6 +7,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `main` (hotfix redirects live)
+
+**Changed:** Merged PR #45. Production deploy READY on tip `b07c94a` (`dpl_7GY6WWsuPES1R7VamBUmr1zPKxbv`). Ledger only here.
+**Conversion:** Legacy bare paths work for parents again.
+**Evidence:** Live curl ~3:34 PM MDT America/Denver: /aboutus 301→/about; /openplay 301→/open-play; /childcare 301→/after-school-care; /infant 301→/infant-toddler-care; /aboutus.html 308→/aboutus→301→/about (200); /infant-toddler-care 200.
+**Live vs committed:** Production = main tip with hotfix.
+**Handoff:** Redirect hotfix verified live.
+
 ## 2026-10-26 — Grok — `main` (hotfix: cleanUrls bare-path redirects)
 
 **Changed:** Live parents hit 404 on legacy bare paths after DNS cutover because Vercel `cleanUrls` strips `.html` before redirects match (`/aboutus.html` → `/aboutus` → 404). Updated `scripts/generate-vercel-json.mjs` to emit a companion redirect for every `.html` source without the extension (skip when bare == destination), plus short aliases `/infant`→`/infant-toddler-care`, `/fitness`→`/fitness-classes`, `/ropes`→`/ropes-course`, `/ninja`→`/ninja-warrior`, `/martial-arts`+`/kickboxing`→`/fitness-classes`, `/teambuilding`→`/team-building`. Regenerated `vercel.json` (243 redirects). `check:redirects` OK. No page content, DNS, or env changes.

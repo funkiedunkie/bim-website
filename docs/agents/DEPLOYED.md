@@ -10,15 +10,15 @@ Never paste secrets here; env vars are listed by name only.
 
 ## Current state (2026-10-26)
 
-- **Production (Vercel):** project `bim-website` on team `camps-for-kids-idaho` builds from `main`. Hotfix in flight: bare-path redirects after `cleanUrls` (see log). Production aliases: `bim-website-camps-for-kids-idaho.vercel.app`, `bim-website-eosin.vercel.app`, `bim-website-git-main-camps-for-kids-idaho.vercel.app`.
-- **Custom domain (LIVE on Vercel):** `bodiesinmotionidaho.com` (apex, Production) and `www.bodiesinmotionidaho.com` (301 → apex) verified. GoDaddy DNS cut over 2026-10-26. Live Astro verified ~3:15 PM MDT; redirect hotfix pending merge.
+- **Production (Vercel):** project `bim-website` on team `camps-for-kids-idaho` builds from `main` tip `b07c94a` (PR #45 bare-path redirect hotfix). Deploy `dpl_7GY6WWsuPES1R7VamBUmr1zPKxbv` READY. Production aliases + custom domain attached.
+- **Custom domain (LIVE on Vercel):** `bodiesinmotionidaho.com` + `www` verified; DNS cut over 2026-10-26. Redirect hotfix live (bare paths 301).
 - **Env:** `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM`, `CONTACT_TO` on Production + Preview (names only).
 
 ## Log (newest first)
 
 | Date | What | Kind | Commit | By | Verified live? |
 |---|---|---|---|---|---|
-| 2026-10-26 | Hotfix: companion bare-path redirects for every `.html` source (Vercel cleanUrls strips extension before redirects). Short aliases `/infant`, `/fitness`, `/ropes`, `/ninja`, `/martial-arts`, `/kickboxing`, `/teambuilding`. Regenerated vercel.json (243 redirects). check:redirects OK | production deploy (hotfix PR → main) | pending | Grok | Pending merge + Production READY + live curl |
+| 2026-10-26 | Hotfix PR #45 merged: companion bare-path redirects after cleanUrls + short aliases. vercel.json 243 redirects. Production READY `dpl_7GY6WWsuPES1R7VamBUmr1zPKxbv` (tip `b07c94a`) | production deploy (hotfix) | `b07c94a` | Grok | Yes — live curl ~3:34 PM MDT: /aboutus→/about, /openplay→/open-play, /childcare→/after-school-care, /infant→/infant-toddler-care, /aboutus.html→308→/aboutus→301→/about; /infant-toddler-care 200 |
 | 2026-10-26 | DNS cutover complete. GoDaddy: apex A `@`→`216.198.79.1`+`64.29.17.1` (Weebly `199.34.228.79` removed); CNAME `www`→`88311e8d67d6a49a.vercel-dns-017.com`. MX/TXT/NS untouched. Applied by Duncan via Claude in Chrome (MFA codes by Duncan); verified by Grok | DNS change | n/a | Duncan / Claude in Chrome; verified Grok | Yes — ~3:15 PM MDT https://bodiesinmotionidaho.com serves Astro (server: Vercel), www 301→apex, /privacy effective Oct 26 2026 with no draft banner; Vercel domains verified |
 | 2026-10-26 | Duncan OK **change DNS**. Added Vercel project domains `bodiesinmotionidaho.com` + `www.bodiesinmotionidaho.com` (www 301→apex). GoDaddy DNS **not yet changed** — still Weebly A `199.34.228.79`; public https://bodiesinmotionidaho.com still Weebly. Blocked on GoDaddy `gddy auth login` (box localhost callback). Planned: A `@`→`216.198.79.1`+`64.29.17.1`; CNAME `www`→`88311e8d67d6a49a.vercel-dns-017.com`. Leave MX/TXT alone | domain attach (DNS pending) | n/a | Grok | Partial — Vercel domains attached; live custom domain still Weebly |
 | 2026-10-26 | PR #1 merged (`astro-rebuild` → `main`). Production deploy READY on Vercel for tip `c0ab248`: bim-website-7lnpl8pql-camps-for-kids-idaho.vercel.app (dpl_GLidLbtvpqk8WUbMXhdwud7N5BiS). Aliases include bim-website-camps-for-kids-idaho.vercel.app. DNS / bodiesinmotionidaho.com still Weebly — not cut over | production deploy (git merge to main) | `c0ab248` | Grok | Yes — Vercel Production READY; custom domain untouched |
