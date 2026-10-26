@@ -33,11 +33,18 @@ interface Props {
   schemaDescription?: string
   /** Above-fold Ages · Hours · From $ · License · Openings (published facts only). */
   facts?: CareFacts
+  /**
+   * Meta / cold-traffic care landing: primary = Ask about openings, secondary = tour.
+   * Drops hero Call and the facts-row openings pill (avoids duplicate CTAs).
+   * Default false keeps tour primary + Call for other care pages.
+   */
+  openingsPrimary?: boolean
 }
 
-const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, tourUrl, tourLabel, faq, openingHours, schemaDescription, facts } = Astro.props
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, tourUrl, tourLabel, faq, openingHours, schemaDescription, facts, openingsPrimary = false } = Astro.props
 const jsonLd = [childCareSchema({ description: schemaDescription ?? description, openingHours }), faqSchema(faq)]
 const openingsHref = facts ? `/contact?program=${encodeURIComponent(facts.openingsProgram)}` : undefined
+const askPrimary = Boolean(openingsPrimary && openingsHref)
 ---
 
 <Base title={title} description={description} path={path} jsonLd={jsonLd}>
@@ -53,12 +60,23 @@ const openingsHref = facts ? `/contact?program=${encodeURIComponent(facts.openin
           <li><b>Hours</b> {facts.hours}</li>
           <li><b>From</b> {facts.from}{facts.fromNote ? ` · ${facts.fromNote}` : ''}</li>
           <li><b>License</b> #{LICENSE_NUMBER}</li>
-          <li class="page-hero__facts-cta"><a href={openingsHref}>Ask about openings →</a></li>
+          {!askPrimary && (
+            <li class="page-hero__facts-cta"><a href={openingsHref}>Ask about openings →</a></li>
+          )}
         </ul>
       )}
-      <div class="page-hero__actions">
-        <a href={tourUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">{tourLabel}</a>
-        <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
+      <div class:list={['page-hero__actions', askPrimary && 'page-hero__actions--openings-primary']}>
+        {askPrimary ? (
+          <>
+            <a href={openingsHref} class="btn-primary">Ask about openings</a>
+            <a href={tourUrl} class="btn-outline" target="_blank" rel="noopener noreferrer">{tourLabel}</a>
+          </>
+        ) : (
+          <>
+            <a href={tourUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">{tourLabel}</a>
+            <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
+          </>
+        )}
       </div>
     </div>
   </header>
@@ -126,5 +144,18 @@ const openingsHref = facts ? `/contact?program=${encodeURIComponent(facts.openin
   .page-hero__facts-cta a:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+  /* Phone: one door on top — Ask, then tour — full-width stack for Meta traffic */
+  @media (max-width: 560px) {
+    .page-hero__actions--openings-primary {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .page-hero__actions--openings-primary :global(.btn-primary),
+    .page-hero__actions--openings-primary :global(.btn-outline) {
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+    }
   }
 </style>
