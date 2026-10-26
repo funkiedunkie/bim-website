@@ -7,6 +7,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `grok/infant-spots-ad-c` (spots + Ad C)
+
+**Changed:** Duncan/Muse ship after #49. Infant page only: (1) hero eyebrow **“Infant spots open now · 1 teacher per 4 babies”** (scarcity + ratio; Ad A). (2) Under safety / recorded-rooms list: **“You’ll get daily updates from your baby’s teachers, and an open line any time.”** (Ad C; no brand names). CTAs from #49 unchanged (Ask primary, Tour secondary). No GTM/kickboxing/nav edits.
+**Conversion:** Ad A scarcity + Ad C communication promise on the Meta landing.
+**Evidence:** PR → main; Duncan authorized ship/merge.
+**Live vs committed:** After merge = Production.
+**Handoff:** Tip after push/merge.
+
 ## 2026-10-26 — Grok — `grok/infant-hero-cta-primary` (infant CTA: Ask primary)
 
 **Changed:** Infant/toddler Meta landing only. `CarePage` gains opt-in `openingsPrimary`: hero primary = **Ask about openings** → `/contact?program=…`, secondary = tour (outline); removes hero Call and the facts-row openings pill (no duplicate). Infant page sets `openingsPrimary`. Preschool / after-school unchanged (tour + Call). Global sticky nav untouched (phone / waiver / Book a tour stay sitewide). Phone ≤560px: openings-primary actions column-stack full width. No hero spots-open, Ad C, or GTM edits.
