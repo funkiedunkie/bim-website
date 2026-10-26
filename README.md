@@ -15,9 +15,9 @@ Replaces the Weebly site at https://www.bodiesinmotionidaho.com. Boise is the on
 | `npm run dev` | Dev server at http://localhost:4321 |
 | `npm run build` | Build to `dist/` |
 | `npm run preview` | Preview the build |
-| `npm run check:redirects` | Verify every legacy URL in `/workspace/urls.txt` is redirected, and every old blog URL (`scripts/blog-map.json`, `urls.txt`, `/workspace/bim-site/pages.json`) is a built kept post or redirected. Run after a build. Pass other paths as arguments (urls.txt, pages.json) |
+| `npm run check:redirects` | Verify every legacy URL in `scripts/weebly-crawl/urls.txt` is redirected, and every old blog URL (`scripts/blog-map.json`, `urls.txt`, `scripts/weebly-crawl/pages.json`) is a built kept post or redirected. Run after a build. Pass other paths as arguments (urls.txt, pages.json) |
 | `node scripts/verify-dist.mjs` | After a build: check H1, canonical, JSON-LD, noindex, the blog listing and every blog post, and the sitemap |
-| `node scripts/generate-vercel-json.mjs` | Regenerate `vercel.json` from the redirect map in the script and `scripts/blog-map.json` |
+| `node scripts/generate-vercel-json.mjs` | Regenerate `vercel.json` from the redirect map in the script, `scripts/blog-map.json`, and `scripts/weebly-crawl/inventory/index.md` (obstacle tutorials). Pass other inventory/blog-map paths as arguments |
 
 ## Structure
 ```
@@ -31,7 +31,7 @@ src/
   pages/           one file per route
   styles/          global.css, home.css
 public/            robots.txt, favicon, logo.png (used in JSON-LD)
-scripts/           redirect generator/checker, dist verifier, blog-map.json (approved mapping of all 86 old posts)
+scripts/           redirect generator/checker, dist verifier, blog-map.json (approved mapping of all 86 old posts), weebly-crawl/ (committed crawl inputs for check:redirects)
 ```
 
 ## SEO notes

@@ -7,6 +7,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `grok/weebly-crawl-inputs` (off `astro-rebuild`) — issue #38
+
+**Changed:** Committed Weebly crawl inputs under `scripts/weebly-crawl/` so any agent can run redirect checks without local-only `/workspace/...` files: `urls.txt`, trimmed `pages.json` (`url` fields only; 192 public Weebly URLs), `inventory/index.md`. Defaults in `scripts/check-redirects.mjs` and `scripts/generate-vercel-json.mjs` now resolve those paths from repo `root` (CLI args still override). Updated `README.md`, `CLAUDE.md`, and `TODO.md` path mentions. No page/layout/redirect map changes.
+**Conversion:** Unblocks Claude Code / any clone from verifying the Weebly → Vercel 301 guard before DNS cutover.
+**Evidence:** `npm run build` (42 pages) + `npm run check:redirects` OK (exit 0; 158 URLs / 72 .html / 160 redirects). `node scripts/generate-vercel-json.mjs` left `vercel.json` byte-identical (`git diff --exit-code vercel.json`). Secret scan on committed crawl set: clean.
+**Live vs committed:** Preview only once merged to `astro-rebuild`. Not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None.
+**Handoff:** Closes #38. Tip of `origin/astro-rebuild` after merge will be noted on the issue comment. Do not merge PR #1 without Duncan.
+
 ## 2026-10-26 — Grok — `grok/open-play-slide-zoom` (off `astro-rebuild`)
 
 **Changed:** Duncan approved Open Play slide zooms. Replaced assets with approved candidates (same basenames): `open-play-mom-toddler.jpg` ← mom crop-v4 (tighter geometric zoom; Open Play proof only); `open-play.jpg` + `photos/open-play-web_1.jpg` ← three-kids smiles-v4 (zoom + bigger smiles on kids behind the hat). Those two paths stay **byte-identical** (shared: Open Play hero, Hours hero, Home slide tile, Parents' Night Out hero, After School proof). No layout/CSS/markup changes.

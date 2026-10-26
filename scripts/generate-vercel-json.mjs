@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const inventoryIndex = process.argv[2] ?? '/workspace/bim-site/inventory/index.md'
+const inventoryIndex = process.argv[2] ?? join(root, 'scripts/weebly-crawl/inventory/index.md')
 const blogMapFile = process.argv[3] ?? join(root, 'scripts/blog-map.json')
 const blogMap = JSON.parse(readFileSync(blogMapFile, 'utf8'))
 

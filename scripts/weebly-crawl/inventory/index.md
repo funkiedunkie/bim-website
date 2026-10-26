@@ -1,0 +1,204 @@
+# Bodies in Motion site inventory
+Crawled 2026-10-21. 192 pages.
+
+## core (37)
+- [Bodies in Motion - Home](home.md) `/` HTTP 200 — Bodies in Motion provides open play, martial arts, fitness, preschool, camps, team building, ropes course experiences, p
+- [4x4x48 - Bodies in Motion](4x4x48-html.md) `/4x4x48.html` HTTP 200 — 4x4x48 Challenge at Bodies in Motion, in Boise, Idaho.
+- [About Us - Bodies in Motion](aboutus-html.md) `/aboutus.html` HTTP 200 — History of Bodies in Motion in Boise, Idaho
+- [Adult Parties - Bodies in Motion](adult-parties-html.md) `/adult-parties.html` HTTP 200 — Adult Celebrations of any kind at Bodies in Motion, in Boise, Idaho.
+- [Birthday Parties - Bodies in Motion](birthday-parties-html.md) `/birthday-parties.html` HTTP 200 — Birthday Parties at Bodies in Motion, in Boise, Idaho.
+- [Birthday Parties for 10-16 Year Olds - Bodies in Motion](birthdayparties10-16-html.md) `/birthdayparties10-16.html` HTTP 200 — Lock In Party, Super Party, or Cosmic Party at Bodies in Motion, in Boise, Idaho.
+- [Black Friday Special at Bodies in Motion - Bodies in Motion](black-friday-special-html.md) `/black-friday-special.html` HTTP 200 — Leap into savings this Black Friday! Our indoor playground, pickleball, and ropes course are serving joy with a side of 
+- [Block Party - Bodies in Motion](block-party-html.md) `/block-party.html` HTTP 200 — Rsvp
+- [Boise Bootcamp Fitness - Bodies in Motion](bootcamp-fitness-html.md) `/bootcamp-fitness.html` HTTP 200 — Bootcamp fitness programs at Bodies in Motion, in Boise, Idaho.
+- [Camps - Bodies in Motion](camps-html.md) `/camps.html` HTTP 200 — Camp programs at Bodies in Motion, in Boise, Idaho.
+- [After & Before School Care - Bodies in Motion](childcare-html.md) `/childcare.html` HTTP 200 — Empowering after & before school care at Bodies in Motion! Adventure, education, and flexibility. Choose exciting clubs,
+- [Sorry We're Closed - Bodies in Motion](closed-html.md) `/closed.html` HTTP 200 — open play on us!
+- [Contact Us - Bodies in Motion](contactus-html.md) `/contactus.html` HTTP 200 — Need to get in contact with us?
+- [Fitness Challenge - Bodies in Motion](fitness-challenge-html.md) `/fitness-challenge.html` HTTP 200 — Transformational Fitness Challenge to burn body fat and build muscle mass at Bodies in Motion in Boise, ID
+- [Holiday Fitness Challenge - Bodies in Motion](holiday-challenge-html.md) `/holiday-challenge.html` HTTP 200 — Transformational Fitness Challenge to burn body fat and build muscle mass at Bodies in Motion in Boise, ID
+- [Bodies in Motion - Home](index-html.md) `/index.html` HTTP 200 — Bodies in Motion provides open play, martial arts, fitness, preschool, camps, team building, ropes course experiences, p
+- [Indoor Pickleball - Bodies in Motion](indoor-pickleball-html.md) `/indoor-pickleball.html` HTTP 200 — Join us for thrilling pickleball at Bodies in Motion! Friendly matches for parents, indoor fun for kids. All skill level
+- [Infant & Toddler Care - Bodies in Motion](infant-toddler-care-html.md) `/infant-toddler-care.html` HTTP 200 — Explore our loving and secure Infant & Toddler Care program at Bodies in Motion. Providing a safe environment, skilled t
+- [Join Our Team - Bodies in Motion](jobs-html.md) `/jobs.html` HTTP 200 — Apply for a job at Bodies in Motion today!
+- [Boise Kickboxing - Bodies in Motion](kickboxing-html.md) `/kickboxing.html` HTTP 200 — Empower your life with Boise Kickboxing at Bodies in Motion! Transformative classes for all fitness levels. Boost confid
+- [Kids Birthday Parties - Bodies in Motion](kids-birthday-parties-html.md) `/kids-birthday-parties.html` HTTP 200 — Kids Birthday Parties at Bodies in Motion, in Boise, Idaho.
+- [Log In](members-only-fitness-html.md) `/members-only-fitness.html` HTTP 200 — Log In
+- [Log In](members-only-ninja-warrior-html.md) `/members-only-ninja-warrior.html` HTTP 200 — Log In
+- [Ninja Warrior Competition - Bodies in Motion](ninja-warrior-competition-html.md) `/ninja-warrior-competition.html` HTTP 200 — Ninja Warrior competitions at Bodies in Motion, in Boise, Idaho.
+- [Ninja Warrior Members - Bodies in Motion](ninja-warrior-members-html.md) `/ninja-warrior-members.html` HTTP 200 — Ninja Warrior Rank Requirements 5-8 Yrs Old
+- [Ninja Warrior - Bodies in Motion](ninja-warrior-html.md) `/ninja-warrior.html` HTTP 200 — Boost your child's agility and character with Ninja Warrior classes at Bodies in Motion! For ages 5-13, our program focu
+- [Indoor Playground - Bodies in Motion](openplay-html.md) `/openplay.html` HTTP 200 — Welcome to Boise's Funnest Indoor Playground! Explore our gigantic play structure, thrilling slides, and engaging activi
+- [Our Team - Bodies in Motion](our-team-html.md) `/our-team.html` HTTP 200 — meet our team
+- [Parents Night Out - Bodies in Motion](parents-night-out-html.md) `/parents-night-out.html` HTTP 200 — Parents Night Out programs at Bodies in Motion, in Boise, Idaho.
+- [Boise Preschool - Bodies in Motion](preschool-html.md) `/preschool.html` HTTP 200 — Elevate your child's potential with our empowering preschool! Focus on confidence, independence, and kindergarten readin
+- [Privacy Policy - Bodies in Motion](privacy-policy-html.md) `/privacy-policy.html` HTTP 200 — Location
+- [Ropes Course - Bodies in Motion](ropes-course-html.md) `/ropes-course.html` HTTP 200 — Ropes Course at Bodies in Motion, in Boise, Idaho.
+- [Hours of Operation - Bodies in Motion](schedule-html.md) `/schedule.html` HTTP 200 — Schedule at Bodies in Motion, in Boise, Idaho.
+- [Team Building - Bodies in Motion](teambuilding-html.md) `/teambuilding.html` HTTP 200 — Team Building programs at Bodies in Motion, in Boise, Idaho.
+- [Trunk or Treat - Bodies in Motion](trunk-or-treat-html.md) `/trunk-or-treat.html` HTTP 200 — RSVP for Bodies in Motion's free Trunk or Treat in Boise. Costumes, candy, and family fun. Reserve your spot today.  RSV
+- [Bodies in Motion - Updates](updates-html.md) `/updates.html` HTTP 200 — Author
+- [All Categories - Bodies in Motion](updates-category-all.md) `/updates/category/all` HTTP 200 — Author
+
+## reviews (10)
+- [Birthday Party Reviews - Bodies in Motion](birthday-party-reviews-html.md) `/birthday-party-reviews.html` HTTP 200 — Birthday Party reviews from Bodies in Motion guests
+- [Fitness Reviews - Bodies in Motion](fitness-reviews-html.md) `/fitness-reviews.html` HTTP 200 — Fitness reviews from students within our program
+- [Martial Art Reviews - Bodies in Motion](martial-art-reviews-html.md) `/martial-art-reviews.html` HTTP 200 — Martial art reviews from students and parents within our program
+- [Ninja Warrior Reviews - Bodies in Motion](ninja-warrior-reviews-html.md) `/ninja-warrior-reviews.html` HTTP 200 — Ninja Warrior reviews from Bodies in Motion guests
+- [Open Play Reviews - Bodies in Motion](open-play-reviews-html.md) `/open-play-reviews.html` HTTP 200 — Open Play reviews from Bodies in Motion guests
+- [Parents Night Out Reviews - Bodies in Motion](parents-night-out-reviews-html.md) `/parents-night-out-reviews.html` HTTP 200 — Parents Night Out reviews from Bodies in Motion guests
+- [Preschool Reviews - Bodies in Motion](preschool-reviews-html.md) `/preschool-reviews.html` HTTP 200 — Preschool reviews from Bodies in Motion guests
+- [Ropes Course Reviews - Bodies in Motion](ropes-course-reviews-html.md) `/ropes-course-reviews.html` HTTP 200 — Ropes Course reviews from Bodies in Motion guests
+- [Satff & Community Reviews - Bodies in Motion](staff-community-reviews-html.md) `/staff-community-reviews.html` HTTP 200 — Staff and community reviews of Bodies in Motion.
+- [Team Building Reviews - Bodies in Motion](team-building-reviews-html.md) `/team-building-reviews.html` HTTP 200 — Team Building reviews from Bodies in Motion guests
+
+## thank-you/forms (4)
+- [Kickboxing Trial - Bodies in Motion](kickboxing-trial-html.md) `/kickboxing-trial.html` HTTP 200 — The Fastest Way to Feel Strong Again
+- [Ninja Warrior Trial - Bodies in Motion](ninja-warrior-trial-html.md) `/ninja-warrior-trial.html` HTTP 200 — Discover the Ninja in Your Child
+- [Preschool Tour - Bodies in Motion](preschool-tour-html.md) `/preschool-tour.html` HTTP 200 — Empowerment Starts Early
+- [Online Waiver - Bodies in Motion](waiver-html.md) `/waiver.html` HTTP 200 — Save time and fill out your waiver online.
+
+## obstacle tutorials (22)
+- [Circuit Board Tutorial - Bodies in Motion](circuit-board-html.md) `/circuit-board.html` HTTP 200 — Learn how to do the Ninja Warrior Circuit Board obstacle.
+- [Cliff Hanger Tutorial - Bodies in Motion](cliff-hanger-html.md) `/cliff-hanger.html` HTTP 200 — Learn how to do the Ninja Warrior Cliff Hanger obstacle.
+- [Conveyor Belt Tutorial - Bodies in Motion](conveyor-belt-html.md) `/conveyor-belt.html` HTTP 200 — Learn how to do the Ninja Warrior Conveyor Belt obstacle.
+- [Devil Steps Tutorial - Bodies in Motion](devil-steps-html.md) `/devil-steps.html` HTTP 200 — Learn how to do the Ninja Warrior Devil Steps obstacle.
+- [Flywheel Tutorial - Bodies in Motion](flying-bar-html.md) `/flying-bar.html` HTTP 200 — Learn how to do the Ninja Warrior Flying Bar obstacle.
+- [Flying Squirrel Tutorial - Bodies in Motion](flying-squirrel-360680-168085-328084-705776-html.md) `/flying-squirrel-360680-168085-328084-705776.html` HTTP 200 — Learn how to do the Ninja Warrior Flying Squirrel obstacle.
+- [Flywheel Tutorial - Bodies in Motion](flywheel-html.md) `/flywheel.html` HTTP 200 — Learn how to do the Ninja Warrior Flywheel obstacle.
+- [I-Beam Tutorial - Bodies in Motion](i-beam-360680-168085-html.md) `/i-beam-360680-168085.html` HTTP 200 — Learn how to do the Ninja Warrior I-Beam obstacle.
+- [Invisible Ladder Tutorial - Bodies in Motion](invisible-ladder-360680-168085-328084-html.md) `/invisible-ladder-360680-168085-328084.html` HTTP 200 — Learn how to do the Ninja Warrior Invisible Ladder obstacle.
+- [Lache Tutorial - Bodies in Motion](lache-html.md) `/lache.html` HTTP 200 — Learn how to do the Ninja Warrior and Parkour skill called Lache.
+- [Monkey Bars Tutorial - Bodies in Motion](monkey-bars-html.md) `/monkey-bars.html` HTTP 200 — Learn how to do the Ninja Warrior Monkey Bars obstacle.
+- [Peg Wall Tutorial - Bodies in Motion](peg-wall-html.md) `/peg-wall.html` HTTP 200 — Learn how to do the Ninja Warrior Peg Wall obstacle.
+- [Rock Traverse Tutorial - Bodies in Motion](rock-traverse-360680-168085-328084-705776-646066-215209-556805-html.md) `/rock-traverse-360680-168085-328084-705776-646066-215209-556805.html` HTTP 200 — Learn how to do the Ninja Warrior Rock Traverse obstacle.
+- [Rock Traverse Tutorial - Bodies in Motion](rock-traverse-360680-168085-328084-705776-646066-215209-html.md) `/rock-traverse-360680-168085-328084-705776-646066-215209.html` HTTP 200 — Learn how to do the Ninja Warrior Rock Traverse obstacle.
+- [Rock Traverse Tutorial - Bodies in Motion](rock-traverse-360680-168085-328084-705776-646066-html.md) `/rock-traverse-360680-168085-328084-705776-646066.html` HTTP 200 — Learn how to do the Ninja Warrior Rock Traverse obstacle.
+- [Rock Traverse Tutorial - Bodies in Motion](rock-traverse-html.md) `/rock-traverse.html` HTTP 200 — Learn how to do the Ninja Warrior Rock Traverse obstacle.
+- [Rumbling Dice Tutorial - Bodies in Motion](rumbling-dice-html.md) `/rumbling-dice.html` HTTP 200 — Learn how to do the Ninja Warrior Rumbling Dice obstacle.
+- [Salmon Ladder Tutorial - Bodies in Motion](salmon-ladder-html.md) `/salmon-ladder.html` HTTP 200 — Learn how to do the Ninja Warrior Salmon Ladder obstacle.
+- [Suspended Ladders Tutorial - Bodies in Motion](suspended-ladders-360680-211701-html.md) `/suspended-ladders-360680-211701.html` HTTP 200 — Learn how to do the Ninja Warrior Suspended Ladders obstacle.
+- [Unstable Bridges Tutorial - Bodies in Motion](unstable-bridges-html.md) `/unstable-bridges.html` HTTP 200 — Learn how to do the Ninja Warrior Unstable Bridges obstacle.
+- [Warped Wall Tutorial - Bodies in Motion](warped-wall-360680-html.md) `/warped-wall-360680.html` HTTP 200 — Learn how to do the Ninja Warrior Warped Wall obstacle.
+- [Wingnuts Tutorial - Bodies in Motion](wingnuts-html.md) `/wingnuts.html` HTTP 200 — Learn how to do the Ninja Warrior Wingnuts obstacle.
+
+## blog (119)
+- [Bodies in Motion - Bodies in Motion Blog](blog.md) `/blog` HTTP 200 — Empowerment journal
+- [Bodies in Motion - Bodies in Motion Blog](blog-html.md) `/blog.html` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-5-great-spring-festivals-to-take-kids-along.md) `/blog/5-great-spring-festivals-to-take-kids-along` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-active-ideas-for-mothers-day.md) `/blog/active-ideas-for-mothers-day` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-alternatives-to-boring-team-building.md) `/blog/alternatives-to-boring-team-building` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-an-active-birthday-is-the-best-birthday.md) `/blog/an-active-birthday-is-the-best-birthday` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-02-2019.md) `/blog/archives/02-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-02-2019-2.md) `/blog/archives/02-2019/2` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-02-2024.md) `/blog/archives/02-2024` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-03-2019.md) `/blog/archives/03-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-04-2019.md) `/blog/archives/04-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-05-2019.md) `/blog/archives/05-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-05-2019-2.md) `/blog/archives/05-2019/2` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-06-2019.md) `/blog/archives/06-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-07-2019.md) `/blog/archives/07-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-08-2019.md) `/blog/archives/08-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-08-2019-2.md) `/blog/archives/08-2019/2` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-09-2019.md) `/blog/archives/09-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-09-2019-2.md) `/blog/archives/09-2019/2` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-archives-11-2023.md) `/blog/archives/11-2023` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-are-camps-only-for-summer.md) `/blog/are-camps-only-for-summer` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-at-what-age-can-children-stay-at-home-alone.md) `/blog/at-what-age-can-children-stay-at-home-alone` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-at-what-age-should-i-get-my-kid-into-fitness-classes.md) `/blog/at-what-age-should-i-get-my-kid-into-fitness-classes` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-avas-summer-camp-adventure-turned-passion.md) `/blog/avas-summer-camp-adventure-turned-passion` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-ax-throwing-for-a-perfect-date-night.md) `/blog/ax-throwing-for-a-perfect-date-night` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-best-fall-activities-in-2019-for-a-family.md) `/blog/best-fall-activities-in-2019-for-a-family` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-can-i-get-into-a-last-minute-summer-camp.md) `/blog/can-i-get-into-a-last-minute-summer-camp` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-can-you-do-martial-arts-as-a-family.md) `/blog/can-you-do-martial-arts-as-a-family` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all.md) `/blog/category/all` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all-2.md) `/blog/category/all/2` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all-3.md) `/blog/category/all/3` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all-4.md) `/blog/category/all/4` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all-5.md) `/blog/category/all/5` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all-6.md) `/blog/category/all/6` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all-7.md) `/blog/category/all/7` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all-8.md) `/blog/category/all/8` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-category-all-9.md) `/blog/category/all/9` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-end-of-summer-bucket-list-for-preschool-children.md) `/blog/end-of-summer-bucket-list-for-preschool-children` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-finding-time-for-family-when-homework-is-on-the-table.md) `/blog/finding-time-for-family-when-homework-is-on-the-table` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-bodies-in-motion-classes-and-how-they-help.md) `/blog/five-bodies-in-motion-classes-and-how-they-help` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-great-ways-to-get-into-healthy-eating-slowly.md) `/blog/five-great-ways-to-get-into-healthy-eating-slowly` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-healthy-mom-blogs-you-should-be-reading.md) `/blog/five-healthy-mom-blogs-you-should-be-reading` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-hikes-in-idaho-your-family-will-love.md) `/blog/five-hikes-in-idaho-your-family-will-love` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-reasons-why-a-kids-gym-is-the-perfect-birthday-party-location.md) `/blog/five-reasons-why-a-kids-gym-is-the-perfect-birthday-party-location` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-values-for-your-five-year-old.md) `/blog/five-values-for-your-five-year-old` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-ways-children-can-be-more-active-during-the-school-day.md) `/blog/five-ways-children-can-be-more-active-during-the-school-day` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-ways-martial-arts-is-good-for-the-mind.md) `/blog/five-ways-martial-arts-is-good-for-the-mind` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-ways-to-add-in-hidden-workouts-to-your-day.md) `/blog/five-ways-to-add-in-hidden-workouts-to-your-day` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-ways-to-enjoy-your-parents-night-out.md) `/blog/five-ways-to-enjoy-your-parents-night-out` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-ways-to-get-your-kids-involved-in-the-community.md) `/blog/five-ways-to-get-your-kids-involved-in-the-community` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-five-ways-to-make-spring-break-active.md) `/blog/five-ways-to-make-spring-break-active` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-four-ways-team-building-helps-your-business.md) `/blog/four-ways-team-building-helps-your-business` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-does-martial-arts-help-children.md) `/blog/how-does-martial-arts-help-children` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-important-is-staying-active-during-childhood.md) `/blog/how-important-is-staying-active-during-childhood` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-important-is-staying-active-during-childhood3714593.md) `/blog/how-important-is-staying-active-during-childhood3714593` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-physical-fitness-helps-build-confidence.md) `/blog/how-physical-fitness-helps-build-confidence` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-create-unstructured-playtime-for-kids.md) `/blog/how-to-create-unstructured-playtime-for-kids` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-do-team-building-activities-at-work.md) `/blog/how-to-do-team-building-activities-at-work` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-embrace-your-inner-child-to-live-a-healthier-life.md) `/blog/how-to-embrace-your-inner-child-to-live-a-healthier-life` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-find-the-best-infant-care-for-your-baby.md) `/blog/how-to-find-the-best-infant-care-for-your-baby` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-get-your-children-outside-more.md) `/blog/how-to-get-your-children-outside-more` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-improve-your-childs-focus-on-important-interests-through-activies.md) `/blog/how-to-improve-your-childs-focus-on-important-interests-through-activies` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-integrate-technology-and-fitness.md) `/blog/how-to-integrate-technology-and-fitness` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-know-when-you-can-leave-your-child-alone.md) `/blog/how-to-know-when-you-can-leave-your-child-alone` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-make-an-indoor-obstacle-course-at-home.md) `/blog/how-to-make-an-indoor-obstacle-course-at-home` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-make-your-evenings-more-active.md) `/blog/how-to-make-your-evenings-more-active` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-pick-a-new-school.md) `/blog/how-to-pick-a-new-school` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-pick-the-perfect-summer-camp.md) `/blog/how-to-pick-the-perfect-summer-camp` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-prepare-your-child-for-the-school-year.md) `/blog/how-to-prepare-your-child-for-the-school-year` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-promote-fitness-at-home.md) `/blog/how-to-promote-fitness-at-home` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-promote-fitness-at-home4055393.md) `/blog/how-to-promote-fitness-at-home4055393` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-squeeze-a-little-more-summer-into-life.md) `/blog/how-to-squeeze-a-little-more-summer-into-life` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-how-to-take-part-in-the-american-ninja-warrior.md) `/blog/how-to-take-part-in-the-american-ninja-warrior` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-interview-with-a-student-about-their-experience-in-your-classes.md) `/blog/interview-with-a-student-about-their-experience-in-your-classes` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-july-24th-2019.md) `/blog/july-24th-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-june-19th-2019.md) `/blog/june-19th-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-monkey-see-monkey-do-how-you-influence-your-kids-in-everyday-life.md) `/blog/monkey-see-monkey-do-how-you-influence-your-kids-in-everyday-life` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-one-mothers-thoughts-on-growth-and-exploration-through-bodies-in-motion.md) `/blog/one-mothers-thoughts-on-growth-and-exploration-through-bodies-in-motion` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-planning-time-for-a-workout-when-your-kids-are-back-in-school.md) `/blog/planning-time-for-a-workout-when-your-kids-are-back-in-school` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-previous-2.md) `/blog/previous/2` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-previous-3.md) `/blog/previous/3` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-previous-4.md) `/blog/previous/4` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-previous-5.md) `/blog/previous/5` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-previous-6.md) `/blog/previous/6` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-previous-7.md) `/blog/previous/7` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-previous-8.md) `/blog/previous/8` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-previous-9.md) `/blog/previous/9` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-september-27th-2019.md) `/blog/september-27th-2019` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-seven-places-in-idaho-to-see-animals-with-your-preschooler.md) `/blog/seven-places-in-idaho-to-see-animals-with-your-preschooler` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-seven-rainy-day-activities-your-family-can-enjoy.md) `/blog/seven-rainy-day-activities-your-family-can-enjoy` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-ten-theme-ideas-for-birthdays-parties.md) `/blog/ten-theme-ideas-for-birthdays-parties` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-the-basics-of-ax-throwing.md) `/blog/the-basics-of-ax-throwing` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-the-ultimate-guide-to-the-different-types-of-schooling-for-kids.md) `/blog/the-ultimate-guide-to-the-different-types-of-schooling-for-kids` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-top-five-elementary-schools-in-boise.md) `/blog/top-five-elementary-schools-in-boise` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-top-races-for-runners-this-fall.md) `/blog/top-races-for-runners-this-fall` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-top-tip-pack-an-outing-backpack.md) `/blog/top-tip-pack-an-outing-backpack` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-unforgettable-summer-adventures-a-day-at-bodies-in-motion-camp.md) `/blog/unforgettable-summer-adventures-a-day-at-bodies-in-motion-camp` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-using-an-open-gym-as-a-cold-climate-play-place.md) `/blog/using-an-open-gym-as-a-cold-climate-play-place` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-vital-considerations-when-looking-for-after-school-care.md) `/blog/vital-considerations-when-looking-for-after-school-care` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-volunteering-young-is-the-best-way-to-learn-about-your-community.md) `/blog/volunteering-young-is-the-best-way-to-learn-about-your-community` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-ways-working-on-your-childs-fitness-is-great-for-your-own.md) `/blog/ways-working-on-your-childs-fitness-is-great-for-your-own` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-can-a-ninja-warrior-class-teach-your-child.md) `/blog/what-can-a-ninja-warrior-class-teach-your-child` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-do-you-need-for-parents-night-out.md) `/blog/what-do-you-need-for-parents-night-out` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-does-a-rope-course-teach.md) `/blog/what-does-a-rope-course-teach` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-does-my-child-get-from-summer-camp.md) `/blog/what-does-my-child-get-from-summer-camp` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-fitness-classes-does-bodies-in-motion-offer.md) `/blog/what-fitness-classes-does-bodies-in-motion-offer` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-makes-a-bodies-in-motion-summer-camp-special.md) `/blog/what-makes-a-bodies-in-motion-summer-camp-special` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-should-a-child-be-learning-in-preschool.md) `/blog/what-should-a-child-be-learning-in-preschool` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-should-you-do-if-fitness-is-boring.md) `/blog/what-should-you-do-if-fitness-is-boring` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-should-you-do-if-your-child-is-bullied.md) `/blog/what-should-you-do-if-your-child-is-bullied` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-skills-does-the-ninja-warrior-class-teach-students.md) `/blog/what-skills-does-the-ninja-warrior-class-teach-students` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-to-do-outside-this-month.md) `/blog/what-to-do-outside-this-month` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-what-to-do-with-your-children-during-fall-break.md) `/blog/what-to-do-with-your-children-during-fall-break` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-why-do-children-need-to-stay-active.md) `/blog/why-do-children-need-to-stay-active` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-why-host-a-birthday-party-outside-of-your-home.md) `/blog/why-host-a-birthday-party-outside-of-your-home` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-why-open-play-gyms-are-vital-for-children.md) `/blog/why-open-play-gyms-are-vital-for-children` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-why-playing-pretend-with-your-kid-is-vital.md) `/blog/why-playing-pretend-with-your-kid-is-vital` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-why-should-you-take-a-child-to-an-open-play-gym-session.md) `/blog/why-should-you-take-a-child-to-an-open-play-gym-session` HTTP 200 — Empowerment journal
+- [Bodies in Motion Blog - Bodies in Motion](blog-why-team-builder-courses-are-great-for-sports-teams.md) `/blog/why-team-builder-courses-are-great-for-sports-teams` HTTP 200 — Empowerment journal
