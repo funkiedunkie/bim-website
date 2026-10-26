@@ -34,18 +34,31 @@ Duncan runs Bodies in Motion and Camps for Kids Idaho. He is not a developer.
 
 Claude Code and Grok both work here, never on the same task at the same time. They coordinate through git:
 
-**Before starting any work**
+**Canonical working branch until PR #1 merges: `astro-rebuild`** (not `main`). `main` is still the old Vite starter.
+
+**Before ANY work (mandatory, every session, no exceptions)**
+```bash
+git fetch origin
+git checkout astro-rebuild
+git pull --ff-only origin astro-rebuild
+git log -5 --oneline
+gh pr list --base astro-rebuild --state merged --limit 5
+```
+Then:
 1. Read this file in full.
 2. Read the top entries of `docs/agents/WORKLOG.md` (at least three), plus every entry with open questions or unfinished/unmerged work.
-3. Check open PRs: `gh pr list`.
-4. Run `git status` in the checkout.
+3. Check open PRs: `gh pr list`, and run `git status`.
 
+If your local tip SHA ≠ `origin/astro-rebuild`, **stop and pull** before reviewing or editing.
 If another agent's branch or uncommitted files touch the files you need, **stop and ask Duncan**.
 
 **Branches and PRs**
-- Work on `claude/<short-topic>` or `grok/<short-topic>`, branched from an up-to-date `main` (`git fetch && git checkout -b grok/x origin/main`).
-- Never commit or push straight to `main`. Work lands by pull request, which **Duncan merges**. One logical change per PR.
-- Once the Vercel project's production branch is `main` and DNS points at Vercel, merging is releasing.
+- Work on `claude/<short-topic>` or `grok/<short-topic>`, branched from an up-to-date `origin/astro-rebuild` (`git fetch && git checkout -b grok/x origin/astro-rebuild`), not `main`.
+- One logical change per PR. Ready preview work may be merged into `astro-rebuild` with Duncan's go.
+- **Never** merge PR #1 (`astro-rebuild` → `main`), and never touch production, DNS or spend without Duncan's explicit OK.
+- Once the Vercel project's production branch is `main` and DNS points at Vercel, merging to `main` is releasing.
+
+**End of session:** add a WORKLOG entry, push your branch/PR, and state the tip SHA of `origin/astro-rebuild` in the handoff line.
 
 **Deploy ledger** — any deploy, env var change, redeploy, DNS change or migration gets a row in `docs/agents/DEPLOYED.md` in the same session. GitHub shows what's committed, not what's live.
 

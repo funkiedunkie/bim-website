@@ -7,6 +7,21 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `astro-rebuild` (merged PRs #27–#33)
+
+**Changed:** Catch-up of photo passes merged into `astro-rebuild`:
+- #27 Open Play photo pass
+- #28 Team Building denoise
+- #29 Birthday Parties denoise (Polaroid bubbles)
+- #30 About aerial yoga portrait crop (`proof-photos__img--portrait`)
+- #31 About denoise (classical values2/vista/family + AI aerial yoga); `values2` is shared site-wide (About/Jobs/home)
+- #32 Jobs denoise: purpose + after-school + ninja (Dave skipped)
+- #33 Jobs: Motioneer proof unified onto denoised `values2`
+Also updated CLAUDE.md sync rules (astro-rebuild is canonical; mandatory fetch/pull before work).
+**Live vs committed:** Preview only. Not `main`; Weebly still prod; DNS untouched.
+**Open questions:** Ropes denoise candidates awaiting Duncan. Backlog: photo-jobs (more Jobs pics), jobs-motioneer-link, photo-openplay/pno/teambuild. PR #1 blocked on Duncan.
+**Handoff:** `origin/astro-rebuild` tip 48cfd29 (before this docs PR). Claude Code must `git fetch && git checkout astro-rebuild && git pull` before any review.
+
 ## 2026-10-25 — Grok — `grok/open-play-waiver-direct` (off `astro-rebuild`)
 
 **Changed:** Duncan: Open Play “Sign a waiver” should go straight to the GymMaster waiver portal, not the interstitial `/waiver` page. `open-play.astro` now imports `LINKS` and sets `ctaUrl={LINKS.waiverPortal}` + `ctaExternal={true}` (label/text unchanged). `/waiver` page, footer, and other pages’ waiver CTAs untouched.
