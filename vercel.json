@@ -8,12 +8,27 @@
       "statusCode": 301
     },
     {
+      "source": "/index",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/childcare.html",
       "destination": "/after-school-care",
       "statusCode": 301
     },
     {
+      "source": "/childcare",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
       "source": "/before-after-school-tour.html",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/before-after-school-tour",
       "destination": "/after-school-care",
       "statusCode": 301
     },
@@ -28,7 +43,17 @@
       "statusCode": 301
     },
     {
+      "source": "/infant-toddler-care-624358",
+      "destination": "/infant-toddler-care",
+      "statusCode": 301
+    },
+    {
       "source": "/infant-toddler-tour.html",
+      "destination": "/infant-toddler-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/infant-toddler-tour",
       "destination": "/infant-toddler-care",
       "statusCode": 301
     },
@@ -43,7 +68,17 @@
       "statusCode": 301
     },
     {
+      "source": "/preschool-tour",
+      "destination": "/preschool",
+      "statusCode": 301
+    },
+    {
       "source": "/preschool-reviews.html",
+      "destination": "/preschool",
+      "statusCode": 301
+    },
+    {
+      "source": "/preschool-reviews",
       "destination": "/preschool",
       "statusCode": 301
     },
@@ -58,6 +93,11 @@
       "statusCode": 301
     },
     {
+      "source": "/thank-you-camp-registration",
+      "destination": "/camps",
+      "statusCode": 301
+    },
+    {
       "source": "/birthday-parties.html",
       "destination": "/birthday-parties",
       "statusCode": 301
@@ -68,7 +108,17 @@
       "statusCode": 301
     },
     {
+      "source": "/kids-birthday-parties",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
       "source": "/birthdayparties10-16.html",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/birthdayparties10-16",
       "destination": "/birthday-parties",
       "statusCode": 301
     },
@@ -78,7 +128,17 @@
       "statusCode": 301
     },
     {
+      "source": "/adult-parties",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
       "source": "/birthday-party-reviews.html",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/birthday-party-reviews",
       "destination": "/birthday-parties",
       "statusCode": 301
     },
@@ -93,12 +153,27 @@
       "statusCode": 301
     },
     {
+      "source": "/parents-night-out-reviews",
+      "destination": "/parents-night-out",
+      "statusCode": 301
+    },
+    {
       "source": "/openplay.html",
       "destination": "/open-play",
       "statusCode": 301
     },
     {
+      "source": "/openplay",
+      "destination": "/open-play",
+      "statusCode": 301
+    },
+    {
       "source": "/open-play-reviews.html",
+      "destination": "/open-play",
+      "statusCode": 301
+    },
+    {
+      "source": "/open-play-reviews",
       "destination": "/open-play",
       "statusCode": 301
     },
@@ -113,7 +188,17 @@
       "statusCode": 301
     },
     {
+      "source": "/ninja-warrior-trial",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/ninja-warrior-competition.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior-competition",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -123,7 +208,17 @@
       "statusCode": 301
     },
     {
+      "source": "/ninja-warrior-members",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/members-only-ninja-warrior.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/members-only-ninja-warrior",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -133,7 +228,17 @@
       "statusCode": 301
     },
     {
+      "source": "/ninja-warrior-reviews",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/ninja-warrior1.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja-warrior1",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -143,7 +248,17 @@
       "statusCode": 301
     },
     {
+      "source": "/ninja-warrior-resources",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/thank-you-ninja-warrior.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-ninja-warrior",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -153,7 +268,17 @@
       "statusCode": 301
     },
     {
+      "source": "/circuit-board",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/cliff-hanger.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/cliff-hanger",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -163,7 +288,17 @@
       "statusCode": 301
     },
     {
+      "source": "/conveyor-belt",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/devil-steps.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/devil-steps",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -173,7 +308,17 @@
       "statusCode": 301
     },
     {
+      "source": "/flying-bar",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/flying-squirrel-360680-168085-328084-705776.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/flying-squirrel-360680-168085-328084-705776",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -183,7 +328,17 @@
       "statusCode": 301
     },
     {
+      "source": "/flywheel",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/i-beam-360680-168085.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/i-beam-360680-168085",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -193,7 +348,17 @@
       "statusCode": 301
     },
     {
+      "source": "/invisible-ladder-360680-168085-328084",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/lache.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/lache",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -203,7 +368,17 @@
       "statusCode": 301
     },
     {
+      "source": "/monkey-bars",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/peg-wall.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/peg-wall",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -213,7 +388,17 @@
       "statusCode": 301
     },
     {
+      "source": "/rock-traverse-360680-168085-328084-705776-646066-215209-556805",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/rock-traverse-360680-168085-328084-705776-646066-215209.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/rock-traverse-360680-168085-328084-705776-646066-215209",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -223,7 +408,17 @@
       "statusCode": 301
     },
     {
+      "source": "/rock-traverse-360680-168085-328084-705776-646066",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/rock-traverse.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/rock-traverse",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -233,7 +428,17 @@
       "statusCode": 301
     },
     {
+      "source": "/rumbling-dice",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/salmon-ladder.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/salmon-ladder",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -243,7 +448,17 @@
       "statusCode": 301
     },
     {
+      "source": "/suspended-ladders-360680-211701",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/unstable-bridges.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/unstable-bridges",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -253,7 +468,17 @@
       "statusCode": 301
     },
     {
+      "source": "/warped-wall-360680",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
       "source": "/wingnuts.html",
+      "destination": "/ninja-warrior",
+      "statusCode": 301
+    },
+    {
+      "source": "/wingnuts",
       "destination": "/ninja-warrior",
       "statusCode": 301
     },
@@ -268,7 +493,17 @@
       "statusCode": 301
     },
     {
+      "source": "/fitness-signup",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
       "source": "/fitness-challenge.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/fitness-challenge",
       "destination": "/fitness-classes",
       "statusCode": 301
     },
@@ -278,7 +513,17 @@
       "statusCode": 301
     },
     {
+      "source": "/fitnesschallenge-648156",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
       "source": "/bootcamp-fitness.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/bootcamp-fitness",
       "destination": "/fitness-classes",
       "statusCode": 301
     },
@@ -288,7 +533,17 @@
       "statusCode": 301
     },
     {
+      "source": "/kickboxing",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
       "source": "/kickboxing-trial.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/kickboxing-trial",
       "destination": "/fitness-classes",
       "statusCode": 301
     },
@@ -298,7 +553,17 @@
       "statusCode": 301
     },
     {
+      "source": "/kickboxing-1month",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
       "source": "/thank-you-kickboxing.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-kickboxing",
       "destination": "/fitness-classes",
       "statusCode": 301
     },
@@ -308,7 +573,17 @@
       "statusCode": 301
     },
     {
+      "source": "/4x4x48",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
       "source": "/holiday-challenge.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/holiday-challenge",
       "destination": "/fitness-classes",
       "statusCode": 301
     },
@@ -318,7 +593,17 @@
       "statusCode": 301
     },
     {
+      "source": "/members-only-fitness",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
       "source": "/fitness-reviews.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/fitness-reviews",
       "destination": "/fitness-classes",
       "statusCode": 301
     },
@@ -328,7 +613,17 @@
       "statusCode": 301
     },
     {
+      "source": "/martial-arts",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
       "source": "/martial-art-reviews.html",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/martial-art-reviews",
       "destination": "/fitness-classes",
       "statusCode": 301
     },
@@ -343,7 +638,17 @@
       "statusCode": 301
     },
     {
+      "source": "/ropes-course-reviews",
+      "destination": "/ropes-course",
+      "statusCode": 301
+    },
+    {
       "source": "/teambuilding.html",
+      "destination": "/team-building",
+      "statusCode": 301
+    },
+    {
+      "source": "/teambuilding",
       "destination": "/team-building",
       "statusCode": 301
     },
@@ -353,7 +658,17 @@
       "statusCode": 301
     },
     {
+      "source": "/team-building-reviews",
+      "destination": "/team-building",
+      "statusCode": 301
+    },
+    {
       "source": "/indoor-pickleball.html",
+      "destination": "/pickleball",
+      "statusCode": 301
+    },
+    {
+      "source": "/indoor-pickleball",
       "destination": "/pickleball",
       "statusCode": 301
     },
@@ -363,7 +678,17 @@
       "statusCode": 301
     },
     {
+      "source": "/schedule",
+      "destination": "/hours",
+      "statusCode": 301
+    },
+    {
       "source": "/aboutus.html",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/aboutus",
       "destination": "/about",
       "statusCode": 301
     },
@@ -373,7 +698,17 @@
       "statusCode": 301
     },
     {
+      "source": "/our-team",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
       "source": "/our-company.html",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/our-company",
       "destination": "/about",
       "statusCode": 301
     },
@@ -383,7 +718,17 @@
       "statusCode": 301
     },
     {
+      "source": "/staff-community-reviews",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
       "source": "/contactus.html",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/contactus",
       "destination": "/contact",
       "statusCode": 301
     },
@@ -398,12 +743,22 @@
       "statusCode": 301
     },
     {
+      "source": "/apply",
+      "destination": "/jobs",
+      "statusCode": 301
+    },
+    {
       "source": "/waiver.html",
       "destination": "/waiver",
       "statusCode": 301
     },
     {
       "source": "/privacy-policy.html",
+      "destination": "/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy",
       "destination": "/privacy",
       "statusCode": 301
     },
@@ -418,12 +773,22 @@
       "statusCode": 301
     },
     {
+      "source": "/programs--activities",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/blog.html",
       "destination": "/blog",
       "statusCode": 301
     },
     {
       "source": "/updates.html",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates",
       "destination": "/blog",
       "statusCode": 301
     },
@@ -778,7 +1143,17 @@
       "statusCode": 301
     },
     {
+      "source": "/closed",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/black-friday-special.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/black-friday-special",
       "destination": "/",
       "statusCode": 301
     },
@@ -788,7 +1163,17 @@
       "statusCode": 301
     },
     {
+      "source": "/trunk-or-treat",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/block-party.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/block-party",
       "destination": "/",
       "statusCode": 301
     },
@@ -798,8 +1183,38 @@
       "statusCode": 301
     },
     {
+      "source": "/thank-you",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/thank-you-infant.html",
       "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-infant",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/infant",
+      "destination": "/infant-toddler-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/fitness",
+      "destination": "/fitness-classes",
+      "statusCode": 301
+    },
+    {
+      "source": "/ropes",
+      "destination": "/ropes-course",
+      "statusCode": 301
+    },
+    {
+      "source": "/ninja",
+      "destination": "/ninja-warrior",
       "statusCode": 301
     }
   ]

@@ -1,4 +1,6 @@
 // Regenerates vercel.json from the redirect map below.
+// Every source ending in .html also emits a companion redirect without .html,
+// because Vercel cleanUrls strips the extension before redirects are matched.
 //
 //   node scripts/generate-vercel-json.mjs [path/to/inventory/index.md] [path/to/blog-map.json]
 //
@@ -120,6 +122,28 @@ const groups = [
       '/rumbling-dice.html',
     ],
   ],
+  // Short aliases people (and old menus) hit after cleanUrls strips .html, or
+  // bare stems that never existed as .html sources.
+  [
+    '/infant-toddler-care',
+    ['/infant'],
+  ],
+  [
+    '/fitness-classes',
+    ['/fitness', '/martial-arts', '/kickboxing'],
+  ],
+  [
+    '/ropes-course',
+    ['/ropes'],
+  ],
+  [
+    '/ninja-warrior',
+    ['/ninja'],
+  ],
+  [
+    '/team-building',
+    ['/teambuilding'],
+  ],
 ]
 
 // Kept posts must never be redirected; a slug in two buckets is a mapping error.
@@ -130,11 +154,24 @@ if (new Set(buckets).size !== buckets.length) throw new Error('blog-map: a slug 
 
 const seen = new Set()
 const redirects = []
+
+function addRedirect(source, destination) {
+  if (seen.has(source)) return // first match wins
+  if (source === destination) return // no-op (e.g. /about.html companion would be /about)
+  seen.add(source)
+  redirects.push({ source, destination, statusCode: 301 })
+}
+
 for (const [destination, sources] of groups) {
   for (const source of sources) {
-    if (seen.has(source)) continue // first match wins
-    seen.add(source)
-    redirects.push({ source, destination, statusCode: 301 })
+    addRedirect(source, destination)
+    // Vercel cleanUrls strips .html BEFORE redirects match, so /aboutus.html
+    // becomes /aboutus and never hits the .html rule. Mirror every .html source
+    // with its bare path companion.
+    if (source.endsWith('.html')) {
+      const bare = source.slice(0, -'.html'.length)
+      addRedirect(bare, destination)
+    }
   }
 }
 
