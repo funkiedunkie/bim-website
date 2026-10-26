@@ -7,6 +7,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `astro-rebuild` (cutover prep: merge #36 + #37)
+
+**Changed:** Duncan approved merge of PR #36 (portrait proof layout: desktop 2/3 text | 1/3 photo) and PR #37 (Jobs Motioneer proof → coach spotting kid on ninja bar; gallery alts fixed; values2 no longer duplicated as proof). Both merged into `astro-rebuild` for Weebly→Vercel cutover prep. WORKLOG conflicts resolved by keeping all agent entries (newest on top). No production/DNS/PR #1.
+**Conversion:** Portrait faces no longer chopped on Fitness/About; Jobs proof shows coaching kids instead of a duplicate thumbs-up hero.
+**Evidence:** Local merges of `origin/claude/portrait-proof-layout` + `origin/claude/jobs-proof-photo`; build + verify-dist + check:redirects after merges.
+**Live vs committed:** Preview on `astro-rebuild` only. Not `main`; Weebly still prod; DNS untouched. PR #1 not merged.
+**Open questions:** Cutover still needs: privacy banner decision, Production Mailjet env, green gate, Duncan OK to merge PR #1, then DNS.
+**Handoff:** Tip SHA after push noted for Duncan. Do not merge PR #1 without Duncan.
+
 ## 2026-10-26 — Grok — `grok/weebly-crawl-inputs` (off `astro-rebuild`) — issue #38
 
 **Changed:** Committed Weebly crawl inputs under `scripts/weebly-crawl/` so any agent can run redirect checks without local-only `/workspace/...` files: `urls.txt`, trimmed `pages.json` (`url` fields only; 192 public Weebly URLs), `inventory/index.md`. Defaults in `scripts/check-redirects.mjs` and `scripts/generate-vercel-json.mjs` now resolve those paths from repo `root` (CLI args still override). Updated `README.md`, `CLAUDE.md`, and `TODO.md` path mentions. No page/layout/redirect map changes.
