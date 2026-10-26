@@ -7,6 +7,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Claude Code — `claude/jobs-proof-photo` (off `astro-rebuild` 9236383)
+
+**Changed:** Duncan approved: the Jobs "Motioneers at work" proof becomes the coach spotting a child on the ninja bar (`ninja-warrior-private-class.jpg`, moved up from the gallery). Since #33 the thumbs-up `values2.jpg` was both the hero and the proof, so the page showed one photo twice, and the proof alt ("working with kids and adults") didn't describe it. Gallery is now 2 photos (after-school pals, kickboxing). Fixed two gallery alts that didn't match their photos: after-school pals ("staff supporting kids on the playground" → two kids in paper glasses and mustaches) and kickboxing ("a coach training adults" → adults training on the bags). No layout/CSS change; no image files changed.
+**Evidence:** Build 42 pages; `verify-dist` OK. Dist `/jobs`: proof alt = coach spotting child; `photo-gallery--2`; values2 appears once (hero). Screenshots at 1440 and 390, no horizontal overflow.
+**Live vs committed:** Branch + PR into `astro-rebuild` for preview. Not merged; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None. Duncan confirmed 2026-10-26 that `LINKS.waiverPortal` (GymMaster `/portal/enquiry`) is the correct waiver.
+**Handoff:** `origin/astro-rebuild` tip 9236383. PR #36 (portrait proofs) also open. Do not merge PR #1 without Duncan.
+
 ## 2026-10-26 — Grok — `grok/open-play-slide-zoom` (off `astro-rebuild`)
 
 **Changed:** Duncan approved Open Play slide zooms. Replaced assets with approved candidates (same basenames): `open-play-mom-toddler.jpg` ← mom crop-v4 (tighter geometric zoom; Open Play proof only); `open-play.jpg` + `photos/open-play-web_1.jpg` ← three-kids smiles-v4 (zoom + bigger smiles on kids behind the hat). Those two paths stay **byte-identical** (shared: Open Play hero, Hours hero, Home slide tile, Parents' Night Out hero, After School proof). No layout/CSS/markup changes.
