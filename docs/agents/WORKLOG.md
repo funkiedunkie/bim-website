@@ -372,3 +372,9 @@ Template:
 - Privacy policy legal review.
 - Duncan's review of the preview ("not done" yet), then merge and DNS cutover, only with his OK.
 **Handoff:** Don't merge PR #1 or touch DNS. A real form submission from the preview has not been tested yet.
+
+## 2026-10-26 — Grok — Production Mailjet env
+
+**Changed:** Expanded Vercel env vars `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM`, `CONTACT_TO` to target Production + Preview (branch restriction cleared). Logged in `DEPLOYED.md`.
+**Live vs committed:** No deploy. Production still Weebly; DNS untouched; PR #1 not merged.
+**Handoff:** Production contact env ready for cutover.
