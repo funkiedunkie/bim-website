@@ -7,6 +7,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `main` (cutover: DNS — Vercel domains on, GoDaddy pending)
+
+**Changed:** Duncan approved **change DNS**. Attached Production custom domains on Vercel project `bim-website`: `bodiesinmotionidaho.com` and `www.bodiesinmotionidaho.com` (301 redirect to apex). Installed GoDaddy CLI `gddy` on the box; `gddy auth login --env prod` started but needs interactive OAuth in the **box** browser (callback `http://127.0.0.1:42197/callback`). **Did not** edit GoDaddy zone yet. Public DNS (DoH): apex A still `199.34.228.79` (Weebly, TTL 1800); `www` CNAME → apex. Live site still Weebly (`wsite`/`editmysite`). Planned after auth (leave MX/TXT/Proofpoint alone): replace apex A with `216.198.79.1` + `64.29.17.1`; set `www` CNAME to `88311e8d67d6a49a.vercel-dns-017.com`.
+**Conversion:** Custom hostname registered on Vercel ready for cutover; parents still on Weebly until GoDaddy A/CNAME flip propagates.
+**Evidence:** Vercel `list_project_domains` shows both custom domains verified; Cloudflare DoH A=`199.34.228.79`; curl HTML still Weebly.
+**Live vs committed:** Production `.vercel.app` + custom domains attached on Vercel; GoDaddy DNS still Weebly.
+**Open questions:** Complete GoDaddy `gddy` OAuth on the box, then apply A/CNAME and re-verify Astro on https://bodiesinmotionidaho.com.
+**Handoff:** Do not touch MX/TXT/email DNS. Finish GoDaddy auth → apply planned records → confirm Astro (not Weebly) → update this ledger to verified.
+
 ## 2026-10-26 — Grok — `main` (cutover: merge PR #1 + Production deploy)
 
 **Changed:** Duncan approved exact phrase **merge PR #1**. Merged GitHub PR #1 (`astro-rebuild` → `main`); merge commit `c0ab248`. Vercel auto-built Production from `main` tip; deployment `dpl_GLidLbtvpqk8WUbMXhdwud7N5BiS` READY (url bim-website-7lnpl8pql-camps-for-kids-idaho.vercel.app; production aliases bim-website-camps-for-kids-idaho.vercel.app / bim-website-eosin.vercel.app / bim-website-git-main-…). Updated this ledger. No DNS / GoDaddy changes.
