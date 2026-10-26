@@ -7,6 +7,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `grok/open-play-slide-zoom` (off `astro-rebuild`)
+
+**Changed:** Duncan approved Open Play slide zooms. Replaced assets with approved candidates (same basenames): `open-play-mom-toddler.jpg` ← mom crop-v4 (tighter geometric zoom; Open Play proof only); `open-play.jpg` + `photos/open-play-web_1.jpg` ← three-kids smiles-v4 (zoom + bigger smiles on kids behind the hat). Those two paths stay **byte-identical** (shared: Open Play hero, Hours hero, Home slide tile, Parents' Night Out hero, After School proof). No layout/CSS/markup changes.
+**Conversion:** Subjects fill the frame so parents see kids/faces instead of empty playstructure; rear-kid smiles match the energy of the front hat kid.
+**Evidence:** Candidate hashes match live copies; `cmp` open-play.jpg == open-play-web_1.jpg.
+**Live vs committed:** Preview only once merged to `astro-rebuild`. Not `main`; Weebly still prod; DNS untouched.
+**Open questions:** None for this swap.
+**Handoff:** Do not merge PR #1 without Duncan. Refresh laptop preview after merge to `astro-rebuild`.
+
 ## 2026-10-26 — Grok — `astro-rebuild` (merged PRs #27–#33)
 
 **Changed:** Catch-up of photo passes merged into `astro-rebuild`:
