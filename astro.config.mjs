@@ -38,12 +38,12 @@ const indexable = new Set(
     '/privacy',
     ...blogPaths,
   ].map((p) =>
-    strip('https://www.bodiesinmotionidaho.com' + p),
+    strip('https://bodiesinmotionidaho.com' + p),
   ),
 )
 
 export default defineConfig({
-  site: 'https://www.bodiesinmotionidaho.com',
+  site: 'https://bodiesinmotionidaho.com',
   output: 'static',
   trailingSlash: 'never',
   build: { format: 'file' },

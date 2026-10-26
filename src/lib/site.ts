@@ -1,7 +1,7 @@
 // Single source of truth for name/address/phone (NAP), URLs and JSON-LD builders.
 // All facts come from the crawl of the live Weebly site (/workspace/bim-site/inventory).
 
-export const SITE_URL = 'https://www.bodiesinmotionidaho.com'
+export const SITE_URL = 'https://bodiesinmotionidaho.com'
 
 export const NAP = {
   email: 'help@bodiesinmotionidaho.com',
