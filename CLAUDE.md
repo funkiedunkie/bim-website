@@ -72,6 +72,7 @@ If another agent's branch or uncommitted files touch the files you need, **stop 
 - **Hosting:** Vercel, team `camps-for-kids-idaho`, project `bim-website`. Branch pushes get preview deployments (previews need a Vercel login). Production is still Weebly; DNS is at GoDaddy and untouched.
 - **`vercel.json`** holds 301 redirects for every old Weebly URL. It is generated: edit the map in `scripts/generate-vercel-json.mjs` or `scripts/blog-map.json`, then run `node scripts/generate-vercel-json.mjs`. Don't hand-edit it.
 - **`scripts/blog-map.json`** is Duncan's approved mapping of all 86 old blog posts: `keep` (21 migrated to `src/content/blog/` at the same URL) or a redirect target.
+- **`scripts/weebly-crawl/`** holds the committed Weebly crawl inputs (`urls.txt`, `pages.json` with `url` fields only, `inventory/index.md`) so any agent can run `npm run check:redirects` and `node scripts/generate-vercel-json.mjs` without local-only `/workspace/...` files. CLI args still override the defaults.
 - **`/api/contact`** (`api/contact.js`) is a Vercel Function that sends the contact form to help@ via the Mailjet Send API v3.1, with a mailto fallback when not configured. Env vars (names only): `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM`, `CONTACT_TO`. It uses its own Mailjet subkey ("Bodies in Motion Main Site"), separate from the CFK app's key; don't reuse or disturb the CFK key.
 - **`TODO.md`** lists every fact still waiting on Duncan/staff; each is also marked `TODO(Duncan)` in source (`grep -rn "TODO(Duncan)" src`).
 - Structure: `src/pages` (one file per route), `src/layouts` (Base, CarePage, ActivityPage, Stub), `src/components`, `src/lib/site.ts` (NAP, links, JSON-LD builders), `src/lib/blog.ts`, `src/content/blog`, `public/` (robots.txt etc.).
@@ -83,8 +84,8 @@ npm install
 npm run dev                          # http://localhost:4321
 npm run build                        # build to dist/
 node scripts/verify-dist.mjs         # after build: H1, canonical, JSON-LD, noindex, sitemap, blog, no Sawyer
-npm run check:redirects              # after build: every legacy Weebly URL is redirected or a kept post
-node scripts/generate-vercel-json.mjs  # regenerate vercel.json redirects
+npm run check:redirects              # after build: every legacy Weebly URL is redirected or a kept post (reads scripts/weebly-crawl/)
+node scripts/generate-vercel-json.mjs  # regenerate vercel.json redirects (reads scripts/weebly-crawl/inventory/index.md)
 ```
 
 Run the build and both checks before claiming a change works.

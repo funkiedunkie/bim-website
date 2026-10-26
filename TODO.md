@@ -1,7 +1,7 @@
 # TODO(Duncan)
 
 Everything here is a fact, link or decision that is **not** in the crawl of the live Weebly site
-(`/workspace/bim-site/inventory`) or the Camps for Kids export, so it was left out or flagged rather than invented. Each item is also
+(`scripts/weebly-crawl/inventory`, formerly local `/workspace/bim-site/inventory`) or the Camps for Kids export, so it was left out or flagged rather than invented. Each item is also
 marked in the source with a `TODO(Duncan)` comment.
 
 Find them all: `grep -rn "TODO(Duncan)" src`

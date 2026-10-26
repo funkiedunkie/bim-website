@@ -14,8 +14,8 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const urlsFile = process.argv[2] ?? '/workspace/urls.txt'
-const pagesFile = process.argv[3] ?? '/workspace/bim-site/pages.json'
+const urlsFile = process.argv[2] ?? join(root, 'scripts/weebly-crawl/urls.txt')
+const pagesFile = process.argv[3] ?? join(root, 'scripts/weebly-crawl/pages.json')
 const blogMap = JSON.parse(readFileSync(join(root, 'scripts/blog-map.json'), 'utf8'))
 
 const config = JSON.parse(readFileSync(join(root, 'vercel.json'), 'utf8'))
