@@ -16,6 +16,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 **Open questions:** None.
 **Handoff:** Closes #38. Tip of `origin/astro-rebuild` after merge will be noted on the issue comment. Do not merge PR #1 without Duncan.
 
+## 2026-10-26 — Claude Code — `claude/portrait-proof-layout` (off `astro-rebuild` 9236383)
+
+**Changed:** Duncan approved the contract: "On desktop, when a section pairs text with a tall (portrait) photo, the text takes about two-thirds of the width and the photo one-third, so the whole photo shows with no faces cut off; phones stay stacked as now." Root cause: PR #24 made portrait proofs `width:100%` + `max-height:420px` inside a half-width column, so the cap overrode `aspect-ratio: 3/4` and produced a ~1.5:1 cover box (Rhea's face cut at the eyes on `/fitness-classes`; acro yoga flyer chopped on `/about`, defeating #30). Fix in `global.css`, desktop only (>900px): `.care-claim:has(.proof-photos__img--portrait)` → `2fr 1fr`, and the portrait cap is lifted in that context. Any future portrait proof gets this automatically via the existing `imgClass`; no markup changes.
+**Evidence:** Build 42 pages; `verify-dist` OK. Measured portrait proof box before → after: 1440px 630×420 (1.50) → 418×557 (0.75); 1024px 442×420 (1.05) → 293×390 (0.75); 390px 336×420 → 336×420 (unchanged). Landscape claim sections unchanged (`636px 636px` on about founders/story, open-play, preschool, ninja). No horizontal overflow. `check:redirects` not run: its Weebly crawl inputs (`/workspace/urls.txt`, `/workspace/bim-site/pages.json`) exist only on Grok's machine, so it fails (exit 1) anywhere else.
+**Live vs committed:** Branch pushed for the Vercel preview only. Not merged to `astro-rebuild`; not `main`; Weebly still prod; DNS untouched.
+**Open questions:** Duncan to OK merging into `astro-rebuild` after checking the preview. Duncan confirmed 2026-10-26 that AI edits to the 10+ year-old archive photos are fine, and that the pre-#27 Open Play close-up (girl with long hair) was AI-generated, so #27/#35 swapping it out was correct.
+**Handoff:** `origin/astro-rebuild` tip 9236383. Do not merge PR #1 without Duncan.
+
+
 ## 2026-10-26 — Grok — `grok/open-play-slide-zoom` (off `astro-rebuild`)
 
 **Changed:** Duncan approved Open Play slide zooms. Replaced assets with approved candidates (same basenames): `open-play-mom-toddler.jpg` ← mom crop-v4 (tighter geometric zoom; Open Play proof only); `open-play.jpg` + `photos/open-play-web_1.jpg` ← three-kids smiles-v4 (zoom + bigger smiles on kids behind the hat). Those two paths stay **byte-identical** (shared: Open Play hero, Hours hero, Home slide tile, Parents' Night Out hero, After School proof). No layout/CSS/markup changes.
