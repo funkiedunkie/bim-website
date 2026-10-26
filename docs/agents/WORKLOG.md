@@ -7,6 +7,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `main` (cutover: merge PR #1 + Production deploy)
+
+**Changed:** Duncan approved exact phrase **merge PR #1**. Merged GitHub PR #1 (`astro-rebuild` → `main`); merge commit `c0ab248`. Vercel auto-built Production from `main` tip; deployment `dpl_GLidLbtvpqk8WUbMXhdwud7N5BiS` READY (url bim-website-7lnpl8pql-camps-for-kids-idaho.vercel.app; production aliases bim-website-camps-for-kids-idaho.vercel.app / bim-website-eosin.vercel.app / bim-website-git-main-…). Updated this ledger. No DNS / GoDaddy changes.
+**Conversion:** Astro site is now Production on Vercel `main`; parents still hit Weebly on bodiesinmotionidaho.com until DNS cutover.
+**Evidence:** `gh pr merge 1` → MERGED; Vercel get_deployment readyState READY, target production, githubCommitSha c0ab248.
+**Live vs committed:** Production on Vercel `.vercel.app` aliases only. Custom domain still Weebly; DNS untouched.
+**Open questions:** Next hard stop = Duncan exact phrase **change DNS** (GoDaddy → Vercel). Do not change DNS without that.
+**Handoff:** DNS still Weebly. Do not point bodiesinmotionidaho.com until Duncan says change DNS.
+
 ## 2026-10-26 — Grok — `grok/privacy-live-banner` (off `astro-rebuild`)
 
 **Changed:** Duncan cutover step 2: removed the yellow "Draft — pending legal review" banner from `/privacy` and launched the plain-language rewrite as live. Set effective date to October 26, 2026. Removed unused `.draft-notice` CSS. Updated frontmatter TODOs + `TODO.md`: draft-banner marked done; legal review left as future improvement (page must not show draft). No other page/layout changes.

@@ -10,13 +10,15 @@ Never paste secrets here; env vars are listed by name only.
 
 ## Current state (2026-10-26)
 
-- **Production:** bodiesinmotionidaho.com is still served by Weebly until DNS cutover. GoDaddy DNS untouched. Production env for the contact form (Mailjet) is ready on Vercel.
-- **Preview:** branch `astro-rebuild` (PR #1) on Vercel team `camps-for-kids-idaho`, project `bim-website`. Needs a Vercel login to view.
+- **Production (Vercel):** project `bim-website` on team `camps-for-kids-idaho` builds from `main`. Latest Production deploy READY for merge tip of PR #1. Production aliases: `bim-website-camps-for-kids-idaho.vercel.app`, `bim-website-eosin.vercel.app`, `bim-website-git-main-camps-for-kids-idaho.vercel.app`. Needs a Vercel login to view (SSO).
+- **Custom domain:** bodiesinmotionidaho.com is still served by Weebly. GoDaddy DNS untouched — DNS cutover still needs Duncan's exact phrase "change DNS".
+- **Env:** `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM`, `CONTACT_TO` on Production + Preview (names only).
 
 ## Log (newest first)
 
 | Date | What | Kind | Commit | By | Verified live? |
 |---|---|---|---|---|---|
+| 2026-10-26 | PR #1 merged (`astro-rebuild` → `main`). Production deploy READY on Vercel for tip `c0ab248`: bim-website-7lnpl8pql-camps-for-kids-idaho.vercel.app (dpl_GLidLbtvpqk8WUbMXhdwud7N5BiS). Aliases include bim-website-camps-for-kids-idaho.vercel.app. DNS / bodiesinmotionidaho.com still Weebly — not cut over | production deploy (git merge to main) | `c0ab248` | Grok | Yes — Vercel Production READY; custom domain untouched |
 | 2026-10-26 | Env vars `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM`, `CONTACT_TO` now target Production + Preview (gitBranch restriction cleared). Names only; no values. No deploy, no DNS change | env vars | n/a | Grok | Yes — Vercel env list shows production+preview |
 | 2026-10-24 | Preview deploy of proof-photo → browse-gallery layout (ProofPhotos + program pages): bim-website-git-grok-proof-photos-camps-for-kids-idaho.vercel.app (deployment bim-website-d7rix7aib-camps-for-kids-idaho.vercel.app / D7rix7aiB5wMgNvqwUq52T5yNotz) | preview deploy (git push, branch `grok/proof-photos`) | `774718f` | Grok | Yes — Vercel status Ready |
 | 2026-10-24 | Preview deploy of P0 conversion fixes (tour-first nav, openings CTAs, care fact strips, dual ninja trials): bim-website-git-grok-p0-conversion-camps-for-kids-idaho.vercel.app (deployment bim-website-bj10chhpn-camps-for-kids-idaho.vercel.app) | preview deploy (git push, branch `grok/p0-conversion`) | `7c96314` | Grok | Yes — Vercel status Ready |
