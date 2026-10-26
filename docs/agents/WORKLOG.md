@@ -7,6 +7,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `grok/infant-hero-cta-primary` (infant CTA: Ask primary)
+
+**Changed:** Infant/toddler Meta landing only. `CarePage` gains opt-in `openingsPrimary`: hero primary = **Ask about openings** → `/contact?program=…`, secondary = tour (outline); removes hero Call and the facts-row openings pill (no duplicate). Infant page sets `openingsPrimary`. Preschool / after-school unchanged (tour + Call). Global sticky nav untouched (phone / waiver / Book a tour stay sitewide). Phone ≤560px: openings-primary actions column-stack full width. No hero spots-open, Ad C, or GTM edits.
+**Conversion:** Cold Meta moms get one primary door (ask openings) above the fold.
+**Evidence:** Local `astro build`; PR → main for Duncan review (not merged).
+**Live vs committed:** Live until merge still has tour primary + Call on infant hero.
+**Handoff:** Duncan review. Next Muse passes (spots / Ad C) separate.
+
 ## 2026-10-26 — Grok — `grok/kickboxing-6pm-coming-soon`
 
 **Changed:** Duncan: remove kickboxing **6:15 pm**, replace with **6:00 pm coming soon**. Updated public copy on `/fitness-classes` (FAQ + Class times list) and `/hours` (FAQ + Mon/Wed/Fri fitness bullets). Left ninja 5:30–6:15 pm class times alone (not kickboxing). No other schedule edits; infant CTA PR #49 not included.
@@ -14,6 +22,7 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 **Evidence:** Grep — only fitness/hours held kickboxing 6:15; PR → main for Duncan review.
 **Live vs committed:** Live until merge still shows 6:15 pm kickboxing.
 **Handoff:** Duncan review/merge. Tip after push.
+
 
 ## 2026-10-26 — Grok — `tracking/gtm-lead-contact` (Pass 1: GTM + generate_lead)
 
