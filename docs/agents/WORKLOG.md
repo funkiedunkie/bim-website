@@ -2,18 +2,26 @@
 
 Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rules are in `CLAUDE.md` → "Working alongside other agents".
 
-- **Newest entry on top.** Add yours directly above the first `## 2026-10-26 — Grok — `main` (cutover: DNS live)
+- **Newest entry on top.** Add yours directly above the first `## ` heading. Never edit or delete another agent's entry, and never insert by find-and-replace on another entry's text; add a correcting entry instead.
+- **Read** the top entries before starting. **Add** one before ending a session, and commit it with your work.
+- Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
+- Never paste secrets here.
+
+## 2026-10-26 — Grok — `main` (hotfix: cleanUrls bare-path redirects)
+
+**Changed:** Live parents hit 404 on legacy bare paths after DNS cutover because Vercel `cleanUrls` strips `.html` before redirects match (`/aboutus.html` → `/aboutus` → 404). Updated `scripts/generate-vercel-json.mjs` to emit a companion redirect for every `.html` source without the extension (skip when bare == destination), plus short aliases `/infant`→`/infant-toddler-care`, `/fitness`→`/fitness-classes`, `/ropes`→`/ropes-course`, `/ninja`→`/ninja-warrior`, `/martial-arts`+`/kickboxing`→`/fitness-classes`, `/teambuilding`→`/team-building`. Regenerated `vercel.json` (243 redirects). `check:redirects` OK. No page content, DNS, or env changes.
+**Conversion:** Old Weebly menu/bookmarks (`/aboutus`, `/openplay`, `/childcare`, `/infant`, …) 301 to Astro pages again.
+**Evidence:** `node scripts/generate-vercel-json.mjs`; `npm run check:redirects` OK (158 crawl URLs).
+**Live vs committed:** Will be Production after this PR merges to `main`.
+**Handoff:** After Production READY, smoke `/aboutus`, `/openplay`, `/childcare`, `/infant`, `/aboutus.html` → correct 301s; `/infant-toddler-care` still 200.
+
+## 2026-10-26 — Grok — `main` (cutover: DNS live)
 
 **Changed:** Ledger only. Duncan (via Claude in Chrome) updated GoDaddy DNS: apex A → `216.198.79.1` + `64.29.17.1` (Weebly `199.34.228.79` removed); `www` CNAME → `88311e8d67d6a49a.vercel-dns-017.com`. MX/TXT/NS unchanged. No env or DNS changes by Grok.
 **Conversion:** Parents now reach the Astro site on bodiesinmotionidaho.com.
 **Evidence:** ~3:15 PM MDT: apex serves Astro (server: Vercel, title "Bodies in Motion childcare…"); www 301→apex; /privacy effective Oct 26 2026, no draft banner; Vercel project domains verified.
 **Live vs committed:** Live = `main` Production on custom domain.
 **Handoff:** Cutover done. Watch propagation stragglers and contact form (Mailjet) on Production.
-
-## ` heading. Never edit or delete another agent's entry, and never insert by find-and-replace on another entry's text; add a correcting entry instead.
-- **Read** the top entries before starting. **Add** one before ending a session, and commit it with your work.
-- Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
-- Never paste secrets here.
 
 ## 2026-10-26 — Grok — `main` (cutover: DNS — Vercel domains on, GoDaddy pending)
 
