@@ -7,6 +7,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `grok/privacy-live-banner` (off `astro-rebuild`)
+
+**Changed:** Duncan cutover step 2: removed the yellow "Draft — pending legal review" banner from `/privacy` and launched the plain-language rewrite as live. Set effective date to October 26, 2026. Removed unused `.draft-notice` CSS. Updated frontmatter TODOs + `TODO.md`: draft-banner marked done; legal review left as future improvement (page must not show draft). No other page/layout changes.
+**Conversion:** Privacy page no longer looks unfinished to parents on cutover day.
+**Evidence:** `npm run build` + `verify-dist` + `check:redirects`. Dist `privacy.html` has no "Draft — pending legal review" and includes "Effective date: October 26, 2026".
+**Live vs committed:** Preview on `astro-rebuild` after merge. Not `main`; Weebly still prod; DNS untouched. PR #1 not merged.
+**Open questions:** Cutover still needs: Production Mailjet env, green gate on tip, Duncan OK to merge PR #1, then DNS.
+**Handoff:** Next cutover step = Production Mailjet env vars. Do not merge PR #1 without Duncan.
+
 ## 2026-10-26 — Grok — `astro-rebuild` (cutover prep: merge #36 + #37)
 
 **Changed:** Duncan approved merge of PR #36 (portrait proof layout: desktop 2/3 text | 1/3 photo) and PR #37 (Jobs Motioneer proof → coach spotting kid on ninja bar; gallery alts fixed; values2 no longer duplicated as proof). Both merged into `astro-rebuild` for Weebly→Vercel cutover prep. WORKLOG conflicts resolved by keeping all agent entries (newest on top). No production/DNS/PR #1.

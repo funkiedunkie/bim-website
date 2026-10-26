@@ -7,11 +7,10 @@ const title = 'Website Privacy Policy | Bodies in Motion, Boise, ID'
 const description =
   'Privacy policy for the Bodies in Motion website in Boise, Idaho: what we collect, how we use it, third-party tools we link to and how to opt out of text messages.'
 
-// TODO(Duncan): LEGAL REVIEW. This is a plain-language rewrite of the old Weebly policy (last updated 6/19/2026), keeping only the parts
-// relevant to this business and website, and it is marked "Draft — pending legal review" on the page. Have it reviewed, then remove the
-// draft notice. Things the old policy does not cover and a reviewer may want added: children's privacy (we serve children), how long
-// information is kept, and any state-law rights.
-// TODO(Duncan): set the effective date (the old policy said "Last updated: 6/19/2026").
+// CUTOVER 2026-10-26: Draft banner removed; rewrite launched as live with effective date 2026-10-26 (Duncan OK).
+// TODO(Duncan): LEGAL REVIEW (future improvement — page is live, not draft). Plain-language rewrite of the old Weebly policy
+// (last updated 6/19/2026). A reviewer may want to add: children's privacy (we serve children), how long information is kept,
+// and any state-law rights. Update this page after review if needed.
 // TODO(Duncan): mailing address. The physical address is used below; if you want a separate mailing address (e.g. a PO box), add it.
 // TODO(Duncan): analytics. The old Weebly site loaded Google Tag Manager (GTM-KGR99L7N). This site loads no analytics or tag manager
 // today, so the policy says so. Update the Cookies section if analytics are added.
@@ -59,11 +58,10 @@ const faq: FaqItem[] = [
 >
   <section class="section">
     <div class="section__inner section__inner--read prose">
-      <p class="draft-notice" role="note"><strong>Draft — pending legal review</strong></p>
       <p>
         This policy explains how Bodies in Motion collects, uses and protects any personal information you provide while
         using our website. We are committed to ensuring that your privacy is protected. It replaces the policy on our
-        previous website (last updated 6/19/2026). Effective date: to be announced.
+        previous website (last updated 6/19/2026). Effective date: October 26, 2026.
       </p>
 
       <h2 id="collect">Information we collect</h2>
@@ -143,15 +141,3 @@ const faq: FaqItem[] = [
   </section>
 </ActivityPage>
 
-<style>
-  .draft-notice {
-    border: 3px solid var(--ink);
-    border-radius: var(--radius-sm);
-    padding: 12px 18px;
-    color: var(--ink);
-    background: var(--y);
-    box-shadow: var(--shadow);
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-</style>
