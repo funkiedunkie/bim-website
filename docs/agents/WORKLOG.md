@@ -7,6 +7,14 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-26 — Grok — `grok/thank-you-infant-calendly` (Calendly tour → generate_lead)
+
+**Changed:** New `/thank-you-infant` page (noindex,nofollow) for Calendly Infant & Toddler Tour confirmation redirect. On load pushes `dataLayer` `{ event: 'generate_lead', lead_source: 'infant_tour', program: 'Infant' }` (same event name/guard pattern as `ContactForm.astro`; no second Meta Lead tag in code). Removed `/thank-you-infant` + `/thank-you-infant.html` 301→`/` from `scripts/generate-vercel-json.mjs` / regenerated `vercel.json` so the real page serves; `/thank-you` still 301→`/`. Optional `robots` prop on `Base.astro` for the nofollow override. Not in sitemap (indexable allowlist unchanged).
+**Conversion:** Book a Tour → Calendly → thank-you page → existing GTM CE `generate_lead` → Meta Lead (Marketing Bot sets Calendly redirect after merge).
+**Evidence:** `astro build` (43 pages), `check:redirects` OK; dist has `thank-you-infant.html` with robots + dataLayer push.
+**Live vs committed:** Live until merge: `/thank-you-infant` still 301→`/`.
+**Handoff:** Duncan review/merge PR. Marketing Bot: set Calendly redirect for `calendly.com/bodiesinmotion1/infant-toddler-tour` to `https://bodiesinmotionidaho.com/thank-you-infant` after Production READY. Tip after push.
+
 ## 2026-10-26 — Grok — `grok/infant-spots-ad-c` (spots + Ad C)
 
 **Changed:** Duncan/Muse ship after #49. Infant page only: (1) hero eyebrow **“Infant spots open now · 1 teacher per 4 babies”** (scarcity + ratio; Ad A). (2) Under safety / recorded-rooms list: **“You’ll get daily updates from your baby’s teachers, and an open line any time.”** (Ad C; no brand names). CTAs from #49 unchanged (Ask primary, Tour secondary). No GTM/kickboxing/nav edits.

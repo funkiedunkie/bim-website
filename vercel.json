@@ -1188,16 +1188,6 @@
       "statusCode": 301
     },
     {
-      "source": "/thank-you-infant.html",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/thank-you-infant",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
       "source": "/infant",
       "destination": "/infant-toddler-care",
       "statusCode": 301

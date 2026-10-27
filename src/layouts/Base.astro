@@ -11,12 +11,15 @@ interface Props {
   /** Path of this page, e.g. "/preschool" ("/" for home). Used for the canonical URL. */
   path: string
   noindex?: boolean
+  /** Override robots meta (e.g. "noindex,nofollow"). Defaults from noindex. */
+  robots?: string
   jsonLd?: object[]
   /** Open Graph type, "article" for blog posts. */
   ogType?: string
 }
 
-const { title, description, path, noindex = false, jsonLd = [], ogType = 'website' } = Astro.props
+const { title, description, path, noindex = false, robots, jsonLd = [], ogType = 'website' } = Astro.props
+const robotsContent = robots ?? (noindex ? 'noindex,follow' : 'index,follow')
 const canonical = absoluteUrl(path)
 ---
 
@@ -28,7 +31,7 @@ const canonical = absoluteUrl(path)
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {noindex ? <meta name="robots" content="noindex,follow" /> : <meta name="robots" content="index,follow" />}
+    <meta name="robots" content={robotsContent} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
