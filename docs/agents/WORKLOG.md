@@ -7,6 +7,13 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-28 — Grok — `grok/nov-open-play-pno` (PNO: drop evening gallery)
+
+**Changed:** Duncan merge OK for #54 with edit: remove PNO page PhotoGallery (“See more evening events” / “Drop them off. We handle the fun.” + two browse photos). Heroes & Ninjas Nov 14 + Rhea flyer + Open Play Nov specials unchanged.
+**Evidence:** edit + push; then merge #54 → main after preview.
+**Live vs committed:** Production after merge.
+**Handoff:** Tip after merge.
+
 ## 2026-10-27 — Grok — `grok/nov-open-play-pno` (Rhea Nov specials + Heroes & Ninjas PNO)
 
 **Changed:** Rhea email (2026-10-27): Open Play gains a **November specials & activities** list (Great Fall Escape Nov 3, Happy Hour 50% Nov 12, PNO Heroes & Ninjas Nov 14, National Espresso Day Nov 23, Thanksgiving Break Camp Nov 23–25) with CFK / camps / PNO links. Parents’ Night Out featured event swapped from Cosmic Glow (Oct 24, past) to **Heroes & Ninjas** Nov 14 with Rhea’s flyer (`src/assets/photos/heroes-ninjas-pno.jpg`), Event schema, FAQ, and CTAs. `LINKS.pnoRegister` now points at the general CFK camp listing (old `/camp/41` was Cosmic Glow). Camps page evening cross-link updated to Heroes & Ninjas. Spelling: Heroes (not Heros), November.

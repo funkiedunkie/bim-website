@@ -2,11 +2,8 @@
 import ActivityPage from '../layouts/ActivityPage.astro'
 import { LINKS, eventSchema, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/open-play-web_1.jpg'
-import PhotoGallery from '../components/PhotoGallery.astro'
 import ProofPhotos from '../components/ProofPhotos.astro'
 import photoHeroesNinjas from '../assets/photos/heroes-ninjas-pno.jpg'
-import photoPnoParty from '../assets/photos/birthday-party-web.jpeg'
-import photoPnoSuper from '../assets/photos/super-birthday-party.jpg'
 
 const title = 'Parents’ Night Out in Boise, ID | Bodies in Motion'
 const description =
@@ -88,10 +85,6 @@ const proofHeroes = [
     caption: 'Heroes & Ninjas: dress up and play while you get a night out.',
   },
 ]
-const browseGallery = [
-  { src: photoPnoParty, alt: 'Children celebrating together in a Bodies in Motion party room' },
-  { src: photoPnoSuper, alt: 'Kids racing through games during an evening kids event' },
-]
 ---
 
 <ActivityPage
@@ -159,5 +152,4 @@ const browseGallery = [
       </p>
     </div>
   </section>
-  <PhotoGallery eyebrow="See more evening events" heading="Drop them off. We handle the fun." items={browseGallery} />
 </ActivityPage>
