@@ -1,0 +1,80 @@
+---
+import { NAP } from '../lib/site'
+const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Trunk or Treat RSVP')}`
+---
+<form id="trunk-rsvp-form" class="contact-form trunk-rsvp" method="post" action="/api/trunk-or-treat" data-mailto={mailto}>
+  <h2>RSVP — it’s free</h2>
+  <p class="trunk-rsvp__intro">Tell us you’re coming and how many. Costumes encouraged.</p>
+  <p class="contact-form__status" role="status" aria-live="polite" hidden></p>
+  <label>Name* <input name="name" required maxlength="120" autocomplete="name" /></label>
+  <label>How many are coming?*
+    <input name="howMany" type="number" required min="1" max="99" inputmode="numeric" />
+  </label>
+  <label>Email (optional) <input name="email" type="email" maxlength="200" autocomplete="email" /></label>
+  <label>Phone (optional) <input name="phone" type="tel" maxlength="40" autocomplete="tel" /></label>
+  <label class="contact-form__hp" aria-hidden="true">Company <input name="company" tabindex="-1" autocomplete="off" /></label>
+  <button type="submit" class="btn-primary">Reserve my spot</button>
+  <p class="contact-form__alt">Or call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.</p>
+</form>
+<script>
+  declare global {
+    interface Window {
+      dataLayer?: Record<string, unknown>[]
+      __bimGenerateLeadSent?: boolean
+    }
+  }
+
+  function pushGenerateLead() {
+    if (window.__bimGenerateLeadSent) return
+    window.__bimGenerateLeadSent = true
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      event: 'generate_lead',
+      lead_source: 'trunk_or_treat_rsvp',
+      program: 'Trunk or Treat',
+    })
+  }
+
+  const form = document.querySelector<HTMLFormElement>('#trunk-rsvp-form')
+  if (form) {
+    const status = form.querySelector<HTMLElement>('.contact-form__status')!
+    const show = (html: string) => { status.hidden = false; status.innerHTML = html }
+    const q = new URLSearchParams(location.search).get('status')
+    if (q === 'sent') {
+      show('Thanks! You’re on the list for Trunk or Treat.')
+      pushGenerateLead()
+    }
+    if (q === 'error') show(`Sorry, that didn’t send. Please call us or try again in a moment.`)
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const data = Object.fromEntries(new FormData(form))
+      try {
+        const r = await fetch('/api/trunk-or-treat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data),
+        })
+        const j = await r.json().catch(() => ({}))
+        if (r.ok && j.ok) {
+          form.reset()
+          show('Thanks! You’re on the list for Trunk or Treat. See you October 30.')
+          pushGenerateLead()
+          return
+        }
+        if (r.status === 400) { show(j.message || 'Please check the form.'); return }
+        throw new Error()
+      } catch {
+        const body = `Name: ${data.name}\nHow many: ${data.howMany}\nPhone: ${data.phone || ''}\nEmail: ${data.email || ''}`
+        const href = `${form.dataset.mailto}&body=${encodeURIComponent(body)}`
+        show(`Our form couldn’t send right now. <a href="${href}">Open your email app</a> to RSVP instead.`)
+      }
+    })
+  }
+</script>
+<style>
+  .trunk-rsvp__intro {
+    margin: 0 0 4px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+</style>

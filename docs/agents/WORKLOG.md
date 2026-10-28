@@ -1,3 +1,8 @@
+
+## 2026-10-28 — Trunk or Treat RSVP restore
+
+Restored `/trunk-or-treat` (removed 301→home). Free event Oct 30 6–8 PM; RSVP form Name + How Many (+ optional email/phone) posts to `/api/trunk-or-treat` → help@ via Mailjet. Weebly registrant recovery: no 2026 Trunk form emails found in duncan@ (Inbox/Weebly Contacts/BIM Registrations/Deleted/Junk); only General Request for Info Weebly entries. GymMaster blast (2026-10-12) linked RSVP to old Weebly URL. Wait for Duncan merge OK.
+
 # Agent work log
 
 Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rules are in `CLAUDE.md` → "Working alongside other agents".

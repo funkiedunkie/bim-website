@@ -66,7 +66,7 @@ Each post's `reviewNotes` frontmatter (`src/content/blog/<slug>.md`) holds the s
 ## Intentionally omitted (not sourced, or conflicts with the brief)
 - "Second location very soon" from the old About page (Boise is the only location).
 - Any Meridian or Garden City location/address; they appear only as `areaServed` and "families from Boise, Meridian and Garden City".
-- Old Weebly seasonal items (Trunk or Treat RSVP banner, etc.); member codes; camp dates that have already passed.
+- Old Weebly seasonal items other than Trunk or Treat (member codes; camp dates that have already passed). Trunk or Treat restored 2026-10-28 as `/trunk-or-treat` with Mailjet RSVP.
 - Axe-throwing team building (appears only in old reviews, not as a current workshop).
 - Open play kids' prices from the old pickleball page ($6 / $9.60 / $12); `/open-play` has the confirmed prices.
 

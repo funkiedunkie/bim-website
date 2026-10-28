@@ -1158,16 +1158,6 @@
       "statusCode": 301
     },
     {
-      "source": "/trunk-or-treat.html",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/trunk-or-treat",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
       "source": "/block-party.html",
       "destination": "/",
       "statusCode": 301
@@ -1185,6 +1175,11 @@
     {
       "source": "/thank-you",
       "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/trunk-or-treat.html",
+      "destination": "/trunk-or-treat",
       "statusCode": 301
     },
     {
