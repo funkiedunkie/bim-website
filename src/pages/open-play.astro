@@ -21,7 +21,7 @@ const priceRows = [
 // Open play hours (summer and fall/winter) confirmed by Duncan (2026-10-23).
 const hoursText = `${OPEN_PLAY_HOURS.fallWinter} ${OPEN_PLAY_HOURS.summer}`
 
-// TODO(Duncan): the "monthly specials" calendar on the old Open Play page is October-specific and was not migrated.
+// November specials from Rhea (2026-10-27 email). Refresh this list each month; past dates can stay until the next refresh.
 // TODO(Duncan): confirm how "open play free when you exercise" works (which classes/memberships qualify).
 const faq: FaqItem[] = [
   {
@@ -130,6 +130,31 @@ const browseGallery = [
       <h2>Open play hours</h2>
       <p>{OPEN_PLAY_HOURS.fallWinter}</p>
       <p>{OPEN_PLAY_HOURS.summer} <a href="/hours#holidays">Holiday closures</a> and <a href="/hours">all hours</a>.</p>
+
+      <h2 id="november-specials">November specials &amp; activities</h2>
+      <p>
+        What’s on this month at open play and around the gym. Camp days and Parents’ Night Out register through{' '}
+        <a href={LINKS.camps} target="_blank" rel="noopener noreferrer">Camps for Kids Idaho</a>.
+      </p>
+      <ul class="bullets">
+        <li>
+          <strong>November 3</strong> — The Great Fall Escape — Camp Day.{' '}
+          <a href="/camps">Camp details</a> ·{' '}
+          <a href={LINKS.camps} target="_blank" rel="noopener noreferrer">Register</a>
+        </li>
+        <li><strong>November 12</strong> — Happy Hour Day — 50% admission all day long!</li>
+        <li>
+          <strong>November 14</strong> — Parents’ Night Out — Heroes &amp; Ninjas.{' '}
+          <a href="/parents-night-out">Event details</a> ·{' '}
+          <a href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register</a>
+        </li>
+        <li><strong>November 23</strong> — National Espresso Day</li>
+        <li>
+          <strong>November 23–25</strong> — Thanksgiving Break Camp.{' '}
+          <a href="/camps">Camp details</a> ·{' '}
+          <a href={LINKS.camps} target="_blank" rel="noopener noreferrer">Register</a>
+        </li>
+      </ul>
 
       <h2>Good to know</h2>
       <p>
