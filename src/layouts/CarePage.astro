@@ -2,11 +2,11 @@
 // Shared shell for the three full, indexable care pages (infant/toddler, preschool,
 // before & after school). Emits one H1, canonical, ChildCare + FAQPage JSON-LD and
 // a visible FAQ that is built from the same items as the FAQPage markup.
-import { Image } from 'astro:assets'
+import { Image, getImage } from 'astro:assets'
 import Base from './Base.astro'
 import Faq from '../components/Faq.astro'
 import Location from '../components/Location.astro'
-import { NAP, LICENSE_NUMBER, childCareSchema, faqSchema, type FaqItem } from '../lib/site'
+import { NAP, LICENSE_NUMBER, SITE_URL, childCareSchema, faqSchema, breadcrumbSchema, type FaqItem } from '../lib/site'
 
 interface CareFacts {
   ages: string
@@ -39,15 +39,26 @@ interface Props {
    * Default false keeps tour primary + Call for other care pages.
    */
   openingsPrimary?: boolean
+  /** Short breadcrumb label; defaults to h1. */
+  breadcrumbName?: string
 }
 
-const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, tourUrl, tourLabel, faq, openingHours, schemaDescription, facts, openingsPrimary = false } = Astro.props
-const jsonLd = [childCareSchema({ description: schemaDescription ?? description, openingHours }), faqSchema(faq)]
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, tourUrl, tourLabel, faq, openingHours, schemaDescription, facts, openingsPrimary = false, breadcrumbName } = Astro.props
+const og = await getImage({ src: heroImg, width: 1200 })
+const ogImage = SITE_URL + og.src
+const jsonLd = [
+  childCareSchema({ description: schemaDescription ?? description, openingHours }),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: breadcrumbName ?? h1, path },
+  ]),
+  faqSchema(faq),
+]
 const openingsHref = facts ? `/contact?program=${encodeURIComponent(facts.openingsProgram)}` : undefined
 const askPrimary = Boolean(openingsPrimary && openingsHref)
 ---
 
-<Base title={title} description={description} path={path} jsonLd={jsonLd}>
+<Base title={title} description={description} path={path} jsonLd={jsonLd} ogImage={ogImage} ogImageAlt={heroAlt}>
   <header class="page-hero">
     <Image class="page-hero__img" src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="(max-width:900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
     <div class="page-hero__inner">

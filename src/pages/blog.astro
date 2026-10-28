@@ -3,7 +3,7 @@
 // JSON-LD are all derived from the `blog` content collection.
 import { getCollection } from 'astro:content'
 import Base from '../layouts/Base.astro'
-import { NAP, SITE_URL } from '../lib/site'
+import { NAP, SITE_URL, breadcrumbSchema } from '../lib/site'
 import { isoDate, postPath, publisher, shortDate } from '../lib/blog'
 
 const title = 'Kids Activity & Family Blog | Bodies in Motion Boise'
@@ -13,6 +13,10 @@ const description =
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 
 const jsonLd = [
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+  ]),
   {
     '@context': 'https://schema.org',
     '@type': ['CollectionPage', 'Blog'],

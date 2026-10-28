@@ -7,6 +7,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-28 — Grok — `grok/seo-p0-p1-aeo` (P0/P1 SEO + AEO draft PR)
+
+**Changed:** Draft-only SEO/AEO pass (do not merge until Duncan OK).
+- **P0:** Home H1 + About title/meta/lead/FAQ → childcare-first; home ChildCare schema gains childcare `openingHours`. PNO Event schema already live from #54 (left alone). Bare HTTP→HTTPS: Vercel already 308s when hit on Vercel IPs; Pingora 500 seen from this box is DNS interceptor (`198.18.0.1`), not a repo fix — **deferred** (no DNS changes).
+- **P1:** Unified JSON-LD `ENTITY_ID` `#bim`; `summary_large_image` + per-page OG from heroes; BreadcrumbList on Care/Activity/blog; sitemap `lastmod`; camps title trimmed (~57 chars); `public/llms.txt`.
+**Evidence:** `astro build` + `verify-dist` + `check:redirects` on this branch before PR.
+**Live vs committed:** Draft PR only.
+**Handoff:** Preview + checklist in PR body. Tip after push.
+
 ## 2026-10-28 — Grok — `main` (ledger: PR #54 Production)
 
 **Changed:** Ledger only. Merged PR #54 (after PNO gallery removal). Production tip `f197582`, deploy id `7386150518` READY. Verified live `/parents-night-out` and `/open-play`.

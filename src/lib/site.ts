@@ -3,6 +3,9 @@
 
 export const SITE_URL = 'https://bodiesinmotionidaho.com'
 
+/** Single primary entity for ChildCare / LocalBusiness / activity aliases (JSON-LD graph). */
+export const ENTITY_ID = `${SITE_URL}/#bim`
+
 export const NAP = {
   email: 'help@bodiesinmotionidaho.com',
   // Visitor-facing display only (no @) — keeps harvest bots from scraping a cleartext address in HTML.
@@ -66,6 +69,9 @@ export const OPEN_PLAY_HOURS_SPEC = [
 
 export const AREA_SERVED = ['Boise', 'Meridian', 'Garden City']
 
+/** Licensed childcare hours (infant/toddler, preschool & care, before/after school). */
+export const CHILDCARE_OPENING_HOURS = ['Mo-Fr 07:30-18:00'] as const
+
 export interface FaqItem {
   q: string
   a: string
@@ -84,8 +90,8 @@ interface ChildCareOptions {
 export function childCareSchema({ openingHours, description }: ChildCareOptions) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'ChildCare',
-    '@id': `${SITE_URL}/#childcare`,
+    '@type': ['ChildCare', 'LocalBusiness'],
+    '@id': ENTITY_ID,
     name: NAP.name,
     description,
     url: SITE_URL + '/',
@@ -121,8 +127,8 @@ interface ActivityOptions {
 export function activityBusinessSchema({ description, openingHoursSpecification }: ActivityOptions) {
   return {
     '@context': 'https://schema.org',
-    '@type': ['EntertainmentBusiness', 'SportsActivityLocation'],
-    '@id': `${SITE_URL}/#business`,
+    '@type': ['EntertainmentBusiness', 'SportsActivityLocation', 'LocalBusiness'],
+    '@id': ENTITY_ID,
     name: NAP.name,
     description,
     url: SITE_URL + '/',
@@ -153,7 +159,7 @@ export function contactPageSchema({ description }: ActivityOptions) {
     url: `${SITE_URL}/contact`,
     name: `Contact ${NAP.name}`,
     description,
-    about: { '@id': `${SITE_URL}/#business` },
+    about: { '@id': ENTITY_ID },
   }
 }
 
@@ -192,7 +198,7 @@ export function eventSchema({ name, description, startDate, endDate, url, price,
         addressCountry: 'US',
       },
     },
-    organizer: { '@type': 'Organization', name: NAP.name, url: SITE_URL + '/' },
+    organizer: { '@type': 'Organization', '@id': ENTITY_ID, name: NAP.name, url: SITE_URL + '/' },
     offers: { '@type': 'Offer', url, price, priceCurrency: 'USD' },
   }
 }
@@ -206,9 +212,10 @@ export function aboutPageSchema({ description }: ActivityOptions) {
     url: `${SITE_URL}/about`,
     name: `About ${NAP.name}`,
     description,
+    // Same @id as ChildCare / activity LocalBusiness so crawlers merge one entity graph.
     mainEntity: {
       '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization`,
+      '@id': ENTITY_ID,
       name: NAP.name,
       url: SITE_URL + '/',
       logo: `${SITE_URL}/logo.png`,
@@ -231,6 +238,27 @@ export function aboutPageSchema({ description }: ActivityOptions) {
       areaServed: AREA_SERVED.map((name) => ({ '@type': 'City', name })),
       sameAs: SOCIAL.map((s) => s.href),
     },
+  }
+}
+
+
+export interface BreadcrumbItem {
+  name: string
+  /** Site path, e.g. "/preschool" or "/" for home. */
+  path: string
+}
+
+/** BreadcrumbList for program and blog pages (Home → section → page). */
+export function breadcrumbSchema(items: BreadcrumbItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
   }
 }
 

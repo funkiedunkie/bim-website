@@ -5,7 +5,7 @@
 import { getCollection, render } from 'astro:content'
 import { Image, getImage } from 'astro:assets'
 import Base from '../../layouts/Base.astro'
-import { SITE_URL } from '../../lib/site'
+import { SITE_URL, breadcrumbSchema } from '../../lib/site'
 import { blogPostingSchema, ctaFor, isoDate, postPath, shortDate } from '../../lib/blog'
 
 export async function getStaticPaths() {
@@ -21,6 +21,7 @@ const url = SITE_URL + path
 const cta = ctaFor(relatedPages)
 const ctaPath = relatedPages[0]
 const social = heroImage ? await getImage({ src: heroImage, width: 1200 }) : undefined
+const ogImage = social ? SITE_URL + social.src : undefined
 const jsonLd = [
   blogPostingSchema({
     title,
@@ -28,12 +29,17 @@ const jsonLd = [
     url,
     datePublished: isoDate(pubDate),
     dateModified: isoDate(updatedDate),
-    image: social ? SITE_URL + social.src : undefined,
+    image: ogImage,
   }),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: title, path },
+  ]),
 ]
 ---
 
-<Base title={seoTitle ?? `${title} | Bodies in Motion Boise`} description={description} path={path} jsonLd={jsonLd} ogType="article">
+<Base title={seoTitle ?? `${title} | Bodies in Motion Boise`} description={description} path={path} jsonLd={jsonLd} ogType="article" ogImage={ogImage} ogImageAlt={heroAlt ?? title}>
   <header class="page-hero">
     {heroImage && <Image class="page-hero__img" src={heroImage} alt={heroAlt ?? ''} widths={[640, 1024, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />}
     <div class="page-hero__inner">

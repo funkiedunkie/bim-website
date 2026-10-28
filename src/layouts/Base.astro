@@ -16,11 +16,21 @@ interface Props {
   jsonLd?: object[]
   /** Open Graph type, "article" for blog posts. */
   ogType?: string
+  /** Absolute or site-root path for og:image / twitter:image. Defaults to the site icon. */
+  ogImage?: string
+  /** Optional alt text for the social share image. */
+  ogImageAlt?: string
 }
 
-const { title, description, path, noindex = false, robots, jsonLd = [], ogType = 'website' } = Astro.props
+const { title, description, path, noindex = false, robots, jsonLd = [], ogType = 'website', ogImage, ogImageAlt } = Astro.props
 const robotsContent = robots ?? (noindex ? 'noindex,follow' : 'index,follow')
 const canonical = absoluteUrl(path)
+const shareImage = ogImage
+  ? ogImage.startsWith('http')
+    ? ogImage
+    : `${SITE_URL}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`
+  : `${SITE_URL}/icon-512.png`
+const shareAlt = ogImageAlt ?? title
 ---
 
 <!doctype html>
@@ -42,8 +52,13 @@ const canonical = absoluteUrl(path)
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={`${SITE_URL}/icon-512.png`} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:alt" content={shareAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={shareImage} />
+    <meta name="twitter:image:alt" content={shareAlt} />
 
     <link rel="preload" href="/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />

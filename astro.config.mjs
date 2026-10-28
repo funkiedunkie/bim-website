@@ -50,6 +50,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => indexable.has(strip(page)),
+      // Build-time lastmod for all indexable URLs (AEO/SEO freshness signal).
+      lastmod: new Date(),
     }),
   ],
 })
