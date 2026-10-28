@@ -7,6 +7,15 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-27 — Grok — `grok/nov-open-play-pno` (Rhea Nov specials + Heroes & Ninjas PNO)
+
+**Changed:** Rhea email (2026-10-27): Open Play gains a **November specials & activities** list (Great Fall Escape Nov 3, Happy Hour 50% Nov 12, PNO Heroes & Ninjas Nov 14, National Espresso Day Nov 23, Thanksgiving Break Camp Nov 23–25) with CFK / camps / PNO links. Parents’ Night Out featured event swapped from Cosmic Glow (Oct 24, past) to **Heroes & Ninjas** Nov 14 with Rhea’s flyer (`src/assets/photos/heroes-ninjas-pno.jpg`), Event schema, FAQ, and CTAs. `LINKS.pnoRegister` now points at the general CFK camp listing (old `/camp/41` was Cosmic Glow). Camps page evening cross-link updated to Heroes & Ninjas. Spelling: Heroes (not Heros), November.
+**Judgment:** PNO price/ages/time kept as standing product ($51 / 20% sibling / ages 5–12 / 5–9 PM / dinner) matching Cosmic Glow & Ahoy; Rhea confirmed theme+date only. BMI logo from email not added (site logo already used). Thanksgiving Break Camp listed on Open Play only (no CFK price yet for `/camps` upcomingCamps).
+**Conversion:** Parents see current Nov calendar on Open Play; PNO page books the live Nov 14 theme with flyer art.
+**Evidence:** Local `astro build` + `verify-dist` / `check:redirects` after change.
+**Live vs committed:** Draft PR only — do not merge until Duncan OK.
+**Handoff:** Confirm Heroes & Ninjas CFK session URL + price when listed; then set `LINKS.pnoRegister`. Tip after push.
+
 ## 2026-10-26 — Grok — `grok/thank-you-infant-calendly` (Calendly tour → generate_lead)
 
 **Changed:** New `/thank-you-infant` page (noindex,nofollow) for Calendly Infant & Toddler Tour confirmation redirect. On load pushes `dataLayer` `{ event: 'generate_lead', lead_source: 'infant_tour', program: 'Infant' }` (same event name/guard pattern as `ContactForm.astro`; no second Meta Lead tag in code). Removed `/thank-you-infant` + `/thank-you-infant.html` 301→`/` from `scripts/generate-vercel-json.mjs` / regenerated `vercel.json` so the real page serves; `/thank-you` still 301→`/`. Optional `robots` prop on `Base.astro` for the nofollow override. Not in sitemap (indexable allowlist unchanged).

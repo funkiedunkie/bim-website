@@ -33,7 +33,8 @@ export const LINKS = {
   calendlyKickboxing: 'https://calendly.com/bodiesinmotion1/kickboxing',
   calendlyNinja9: 'https://calendly.com/bodiesinmotion1/ninja-warrior-trial-9-yrs-old',
   camps: 'https://www.campsforkidsidaho.com/camp',
-  pnoRegister: 'https://www.campsforkidsidaho.com/camp/41',
+  // General CFK camp listing until Heroes & Ninjas (Nov 14) has its own session URL; TODO(Duncan) swap to /camp/<id>.
+  pnoRegister: 'https://www.campsforkidsidaho.com/camp',
   waiverPortal: 'https://bodiesinmotion.gymmasteronline.com/portal/enquiry',
 } as const
 

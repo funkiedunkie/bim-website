@@ -4,25 +4,26 @@ import { LINKS, eventSchema, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/open-play-web_1.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
 import ProofPhotos from '../components/ProofPhotos.astro'
-import photoPnoGlow from '../assets/photos/parents-night-glow.jpg'
+import photoHeroesNinjas from '../assets/photos/heroes-ninjas-pno.jpg'
 import photoPnoParty from '../assets/photos/birthday-party-web.jpeg'
 import photoPnoSuper from '../assets/photos/super-birthday-party.jpg'
 
 const title = 'Parents’ Night Out in Boise, ID | Bodies in Motion'
 const description =
-  'Parents’ Night Out at Bodies in Motion in Boise, ID: drop the kids off for a fun-filled evening. Cosmic Glow Party (ages 5–12) and Family Night Out.'
+  'Parents’ Night Out at Bodies in Motion in Boise, ID: drop the kids off for a fun-filled evening. Heroes & Ninjas (Nov 14) and Family Night Out.'
 
-// Oct 24, 2026 (year confirmed by Duncan; matches the Camps for Kids app). After the cutoff below the build drops the
+// Nov 14, 2026 Heroes & Ninjas (Rhea 2026-10-27). After the cutoff below the build drops the
 // Event schema and shows "next date to be announced", so rebuild/update this page once the date passes.
-const glowStart = '2026-10-24T17:00:00-06:00'
-const glowEnd = '2026-10-24T21:00:00-06:00'
-const glowUpcoming = Date.now() < Date.parse(glowEnd)
+// Boise is on MST (UTC-7) after the first Sunday of November.
+const heroesStart = '2026-11-14T17:00:00-07:00'
+const heroesEnd = '2026-11-14T21:00:00-07:00'
+const heroesUpcoming = Date.now() < Date.parse(heroesEnd)
 
-// Cosmic Glow ($51, 20% sibling discount = $40.80, ages 5–12) matches the Camps for Kids app.
-// Family Night Out prices ($49 / $39.20) confirmed by Duncan (2026-10-23). Next date TBA: the program is being revamped.
-// TODO(Duncan): add the Family Night Out date and an Event schema when the revamped program is scheduled.
-const glowFacts =
-  'The Cosmic Glow Party – Parents’ Night Out includes a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza and a sweet treat. It is for ages 5–12, 5:00–9:00 PM, at $51 per child, with a 20% sibling discount ($40.80 for additional siblings) and dinner included.'
+// Standing PNO product (Cosmic Glow / Ahoy Adventures on CFK): $51, 20% sibling = $40.80, ages 5–12, 5–9 PM, dinner included.
+// Rhea’s email confirmed theme + date only; TODO(Duncan/Rhea): confirm price/ages once Heroes & Ninjas is listed on CFK,
+// and update LINKS.pnoRegister to the specific CFK session URL.
+const heroesFacts =
+  'Heroes & Ninjas – Parents’ Night Out is a themed evening for ages 5–12, 5:00–9:00 PM, at $51 per child, with a 20% sibling discount ($40.80 for additional siblings) and dinner included. Kids dress as heroes or ninjas for a fun-filled night while parents get a kidless evening.'
 
 const faq: FaqItem[] = [
   {
@@ -30,13 +31,13 @@ const faq: FaqItem[] = [
     a: 'Parents’ Night Out is an opportunity for you and the sweetness in your life to enjoy a kidless evening. Drop the kids off at Bodies in Motion and we’ll treat them to a fun-filled night.',
   },
   {
-    q: 'What is the Cosmic Glow Party?',
-    a: glowFacts,
+    q: 'What is Heroes & Ninjas?',
+    a: heroesFacts,
   },
-  glowUpcoming
+  heroesUpcoming
     ? {
         q: 'When is the next Parents’ Night Out?',
-        a: 'The Cosmic Glow Party is on Saturday, October 24, 2026 from 5:00 to 9:00 PM. Register through Camps for Kids Idaho or call (208) 381-0587.',
+        a: 'Heroes & Ninjas is on Saturday, November 14, 2026 from 5:00 to 9:00 PM. Register through Camps for Kids Idaho or call (208) 381-0587.',
       }
     : {
         q: 'When is the next Parents’ Night Out?',
@@ -44,7 +45,7 @@ const faq: FaqItem[] = [
       },
   {
     q: 'What ages is Parents’ Night Out for?',
-    a: 'The Cosmic Glow Party is for ages 5–12. Family Night Out is for ages 3 (potty trained) up to adults.',
+    a: 'Heroes & Ninjas is for ages 5–12. Family Night Out is for ages 3 (potty trained) up to adults.',
   },
   {
     q: 'What is Family Night Out?',
@@ -52,11 +53,11 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Is dinner included?',
-    a: 'Yes. The Cosmic Glow Party includes pizza and a sweet treat, and the price includes dinner.',
+    a: 'Yes. Heroes & Ninjas includes dinner in the price.',
   },
   {
     q: 'How do I register?',
-    a: 'Register for the Cosmic Glow Party through Camps for Kids Idaho using the registration link on this page, or call (208) 381-0587.',
+    a: 'Register for Heroes & Ninjas through Camps for Kids Idaho using the registration link on this page, or call (208) 381-0587.',
   },
 ]
 
@@ -66,13 +67,13 @@ const reviews = [
   { quote: 'Been going for years and love the family atmosphere! Great workouts! Kick butt parents nights out! Great play area!', name: 'Susan L.', source: '5 stars, Facebook' },
 ]
 
-const extraJsonLd = glowUpcoming
+const extraJsonLd = heroesUpcoming
   ? [
       eventSchema({
-        name: 'Cosmic Glow Party – Parents’ Night Out',
-        description: glowFacts,
-        startDate: glowStart,
-        endDate: glowEnd,
+        name: 'Heroes & Ninjas – Parents’ Night Out',
+        description: heroesFacts,
+        startDate: heroesStart,
+        endDate: heroesEnd,
         url: LINKS.pnoRegister,
         price: '51',
         typicalAgeRange: '5-12',
@@ -80,11 +81,11 @@ const extraJsonLd = glowUpcoming
     ]
   : []
 
-const proofGlow = [
+const proofHeroes = [
   {
-    src: photoPnoGlow,
-    alt: 'Kids glowing under blacklights at a Parents Night Out event',
-    caption: 'Cosmic Glow Party: kids play under blacklights while you get a night out.',
+    src: photoHeroesNinjas,
+    alt: 'Cartoon kids dressed as superheroes and ninjas celebrating together on a city rooftop',
+    caption: 'Heroes & Ninjas: dress up and play while you get a night out.',
   },
 ]
 const browseGallery = [
@@ -103,7 +104,7 @@ const browseGallery = [
   heroImg={heroImg}
   heroAlt="Kids racing down orange and blue indoor slides"
   ctaUrl={LINKS.pnoRegister}
-  ctaLabel="Register for Cosmic Glow Party"
+  ctaLabel="Register for Heroes & Ninjas"
   ctaHeading="Ready for a kidless evening?"
   ctaText="Register through Camps for Kids Idaho, or call us at (208) 381-0587."
   faq={faq}
@@ -121,24 +122,24 @@ const browseGallery = [
 
       <div class="two-col care-claim">
         <div class="care-claim__text">
-            <h2>Cosmic Glow Party – Parents’ Night Out</h2>
+            <h2>Heroes &amp; Ninjas – Parents’ Night Out</h2>
           <p>
-            Get ready to glow, groove and play! Enjoy a Cosmic Silent Disco, Glow Scavenger Hunt, Cosmic Ring Toss, pizza
-            and a sweet treat.
+            Capes, masks and ninja moves! Kids dress as heroes or ninjas for a themed evening of play, games, pizza and a
+            sweet treat while you enjoy a kidless night out.
           </p>
           <ul class="bullets">
-            {glowUpcoming
-              ? <li><strong>Date:</strong> Saturday, October 24, 2026</li>
+            {heroesUpcoming
+              ? <li><strong>Date:</strong> Saturday, November 14, 2026</li>
               : <li><strong>Date:</strong> the next date is to be announced. Call us or check the registration link.</li>}
             <li><strong>Time:</strong> 5:00–9:00 PM</li>
             <li><strong>For:</strong> ages 5–12</li>
             <li><strong>Cost:</strong> $51 per child; 20% sibling discount ($40.80 per additional sibling); dinner included</li>
           </ul>
           <div class="stub-actions">
-            <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Cosmic Glow Party</a>
+            <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Heroes &amp; Ninjas</a>
           </div>
         </div>
-        <ProofPhotos items={proofGlow} />
+        <ProofPhotos items={proofHeroes} />
       </div>
 
       <h2>Family Night Out</h2>
