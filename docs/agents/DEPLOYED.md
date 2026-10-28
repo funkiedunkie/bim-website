@@ -8,16 +8,17 @@ Every agent that deploys, redeploys, changes Vercel env vars or project settings
 
 Never paste secrets here; env vars are listed by name only.
 
-## Current state (2026-10-26)
+## Current state (2026-10-28)
 
-- **Production (Vercel):** project `bim-website` on team `camps-for-kids-idaho` builds from `main` tip `b07c94a` (PR #45 bare-path redirect hotfix). Deploy `dpl_7GY6WWsuPES1R7VamBUmr1zPKxbv` READY. Production aliases + custom domain attached.
-- **Custom domain (LIVE on Vercel):** `bodiesinmotionidaho.com` + `www` verified; DNS cut over 2026-10-26. Redirect hotfix live (bare paths 301).
+- **Production (Vercel):** project `bim-website` on team `camps-for-kids-idaho` builds from `main` tip `f197582` (PR #54 Nov Open Play specials + Heroes & Ninjas PNO). Production deploy READY (deployment id `7386150518`). Production aliases + custom domain attached.
+- **Custom domain (LIVE on Vercel):** `bodiesinmotionidaho.com` + `www` verified; DNS cut over 2026-10-26.
 - **Env:** `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM`, `CONTACT_TO` on Production + Preview (names only).
 
 ## Log (newest first)
 
 | Date | What | Kind | Commit | By | Verified live? |
 |---|---|---|---|---|---|
+| 2026-10-28 | PR #54 merged: Nov Open Play specials + Heroes & Ninjas PNO (Rhea flyer); removed PNO “See more evening events” gallery before merge. Production READY tip `f197582` (deploy id `7386150518`) | production deploy (git merge to main) | `f197582` | Grok | Yes — live curl /parents-night-out: Heroes & Ninjas + flyer present; “See more evening events” / Drop-them-off gallery gone; /open-play November specials present |
 | 2026-10-26 | Hotfix PR #45 merged: companion bare-path redirects after cleanUrls + short aliases. vercel.json 243 redirects. Production READY `dpl_7GY6WWsuPES1R7VamBUmr1zPKxbv` (tip `b07c94a`) | production deploy (hotfix) | `b07c94a` | Grok | Yes — live curl ~3:34 PM MDT: /aboutus→/about, /openplay→/open-play, /childcare→/after-school-care, /infant→/infant-toddler-care, /aboutus.html→308→/aboutus→301→/about; /infant-toddler-care 200 |
 | 2026-10-26 | DNS cutover complete. GoDaddy: apex A `@`→`216.198.79.1`+`64.29.17.1` (Weebly `199.34.228.79` removed); CNAME `www`→`88311e8d67d6a49a.vercel-dns-017.com`. MX/TXT/NS untouched. Applied by Duncan via Claude in Chrome (MFA codes by Duncan); verified by Grok | DNS change | n/a | Duncan / Claude in Chrome; verified Grok | Yes — ~3:15 PM MDT https://bodiesinmotionidaho.com serves Astro (server: Vercel), www 301→apex, /privacy effective Oct 26 2026 with no draft banner; Vercel domains verified |
 | 2026-10-26 | Duncan OK **change DNS**. Added Vercel project domains `bodiesinmotionidaho.com` + `www.bodiesinmotionidaho.com` (www 301→apex). GoDaddy DNS **not yet changed** — still Weebly A `199.34.228.79`; public https://bodiesinmotionidaho.com still Weebly. Blocked on GoDaddy `gddy auth login` (box localhost callback). Planned: A `@`→`216.198.79.1`+`64.29.17.1`; CNAME `www`→`88311e8d67d6a49a.vercel-dns-017.com`. Leave MX/TXT alone | domain attach (DNS pending) | n/a | Grok | Partial — Vercel domains attached; live custom domain still Weebly |

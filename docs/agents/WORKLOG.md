@@ -7,6 +7,12 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-28 — Grok — `main` (ledger: PR #54 Production)
+
+**Changed:** Ledger only. Merged PR #54 (after PNO gallery removal). Production tip `f197582`, deploy id `7386150518` READY. Verified live `/parents-night-out` and `/open-play`.
+**Live vs committed:** Production = main tip with Nov content.
+**Handoff:** Done.
+
 ## 2026-10-28 — Grok — `grok/nov-open-play-pno` (PNO: drop evening gallery)
 
 **Changed:** Duncan merge OK for #54 with edit: remove PNO page PhotoGallery (“See more evening events” / “Drop them off. We handle the fun.” + two browse photos). Heroes & Ninjas Nov 14 + Rhea flyer + Open Play Nov specials unchanged.
