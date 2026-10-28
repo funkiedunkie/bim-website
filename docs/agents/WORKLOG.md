@@ -7,6 +7,13 @@ Shared log for every AI agent working on this repo (Claude Code, Grok, …). Rul
 - Deploys, env var changes and DNS changes also go in `docs/agents/DEPLOYED.md`.
 - Never paste secrets here.
 
+## 2026-10-28 — Grok — `main` (ledger: PR #56 Production)
+
+**Changed:** Ledger only. Duncan OK merge PR #56 (SEO/AEO P0+P1). Production tip `75f4982`, deploy id `7393365960` READY. Live: home H1 “Boise childcare…”, About childcare title, `#bim` entity, `summary_large_image`.
+**Also investigated (no code):** Trunk or Treat — Weebly `/trunk-or-treat.html` existed (crawl 2026-10-21: free event Oct 30 6–8 pm, Weebly formSubmit RSVP). Astro intentionally omitted (`TODO.md`); `/trunk-or-treat` 301→`/`. Event likely still Thu Oct 30 2026 — waiting on Duncan before any restore.
+**Live vs committed:** Production = main tip with SEO.
+**Handoff:** Done for #56. Trunk or Treat: report only unless Duncan asks to restore.
+
 ## 2026-10-28 — Grok — `grok/seo-p0-p1-aeo` (P0/P1 SEO + AEO draft PR)
 
 **Changed:** Draft-only SEO/AEO pass (do not merge until Duncan OK).
