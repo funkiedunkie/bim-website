@@ -93,5 +93,9 @@ Run the build and both checks before claiming a change works.
 ### SEO / AEO conventions
 
 - Indexable pages carry one `<h1>`, a canonical, business JSON-LD (`ChildCare` or `EntertainmentBusiness`) plus `FAQPage`; blog posts carry `BlogPosting`. Stub pages are `noindex,follow` and stay out of the sitemap.
+- One primary JSON-LD entity `@id`: `https://bodiesinmotionidaho.com/#bim` (`ENTITY_ID` in `src/lib/site.ts`). ChildCare, activity LocalBusiness, About Organization, and blog publisher/author all use that id (aliases, not three separate businesses).
+- Program + blog pages emit `BreadcrumbList`. `Base.astro` uses `twitter:card=summary_large_image` and per-page `og:image` (hero via `getImage`, not always `/icon-512.png`).
+- Sitemap gets build-time `lastmod`. Public `llms.txt` lists key care/camp/PNO URLs for answer engines.
+- Childcare-first framing on home + About (title/meta/H1 lead). One location only: 729 W. Diamond St, Boise (Meridian = area served).
 - Every removed or renamed URL needs a 301 in `vercel.json`.
 - SEO findings that affect marketing direction go to Marketing Bot; agents don't set marketing direction.

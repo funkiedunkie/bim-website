@@ -3,12 +3,12 @@
 // Parents' Night Out, open play). Emits one H1, canonical, business + FAQPage JSON-LD
 // (plus any page-specific nodes such as Event), a visible FAQ built from the same
 // items, optional reviews and the location block.
-import { Image } from 'astro:assets'
+import { Image, getImage } from 'astro:assets'
 import Base from './Base.astro'
 import Faq from '../components/Faq.astro'
 import Reviews from '../components/Reviews.astro'
 import Location from '../components/Location.astro'
-import { NAP, activityBusinessSchema, faqSchema, type FaqItem } from '../lib/site'
+import { NAP, SITE_URL, activityBusinessSchema, faqSchema, breadcrumbSchema, type FaqItem } from '../lib/site'
 
 interface Props {
   title: string
@@ -35,14 +35,26 @@ interface Props {
   extraJsonLd?: object[]
   /** Sourced, non-conflicting hours only (see activityBusinessSchema). */
   openingHoursSpecification?: object[]
+  /** Short breadcrumb label; defaults to h1. */
+  breadcrumbName?: string
 }
 
-const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, heroImgClass, ctaUrl, ctaLabel, cta2Url, cta2Label, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification } = Astro.props
-const jsonLd = [activityBusinessSchema({ description, openingHoursSpecification }), ...extraJsonLd, faqSchema(faq)]
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, heroImgClass, ctaUrl, ctaLabel, cta2Url, cta2Label, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification, breadcrumbName } = Astro.props
+const og = await getImage({ src: heroImg, width: 1200 })
+const ogImage = SITE_URL + og.src
+const jsonLd = [
+  activityBusinessSchema({ description, openingHoursSpecification }),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: breadcrumbName ?? h1, path },
+  ]),
+  ...extraJsonLd,
+  faqSchema(faq),
+]
 const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 ---
 
-<Base title={title} description={description} path={path} jsonLd={jsonLd}>
+<Base title={title} description={description} path={path} jsonLd={jsonLd} ogImage={ogImage} ogImageAlt={heroAlt}>
   <header class="page-hero">
     <Image class:list={["page-hero__img", heroImgClass]} src={heroImg} alt={heroAlt} widths={[640, 1024, 1600]} sizes="(max-width:900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
     <div class="page-hero__inner">

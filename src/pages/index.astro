@@ -1,9 +1,9 @@
 ---
-import { Image } from 'astro:assets'
+import { Image, getImage } from 'astro:assets'
 import Base from '../layouts/Base.astro'
 import Faq from '../components/Faq.astro'
 import Location from '../components/Location.astro'
-import { NAP, LINKS, LICENSE_NUMBER, childCareSchema, faqSchema, type FaqItem } from '../lib/site'
+import { NAP, LINKS, LICENSE_NUMBER, SITE_URL, CHILDCARE_OPENING_HOURS, childCareSchema, faqSchema, type FaqItem } from '../lib/site'
 import ninjaImg from '../assets/photos/web-summer-camp-ninja-warrior_orig.jpg'
 import ropesImg from '../assets/photos/super-birthday-ropes-web_1_orig.jpg'
 import zoeyImg from '../assets/photos/zoey-toddler-2.jpeg'
@@ -120,13 +120,18 @@ const faq: FaqItem[] = [
   },
 ]
 
-const jsonLd = [childCareSchema({ description }), faqSchema(faq)]
+const jsonLd = [
+  childCareSchema({ description, openingHours: [...CHILDCARE_OPENING_HOURS] }),
+  faqSchema(faq),
+]
+const homeOg = await getImage({ src: zoeyImg, width: 1200 })
+const ogImage = SITE_URL + homeOg.src
 const bubbleColors = ['var(--o)', 'var(--bl)', 'var(--lime)']
 ---
 
-<Base title={title} description={description} path="/" jsonLd={jsonLd}>
+<Base title={title} description={description} path="/" jsonLd={jsonLd} ogImage={ogImage} ogImageAlt="A teacher hugging a smiling toddler at Bodies in Motion">
   <section class="hero">
-    <h1><span>Boise’s home</span> <span class="l2">for kids who</span> <span>never <em>stop</em></span> <span>moving.</span></h1>
+    <h1><span>Boise childcare</span> <span class="l2">for kids who</span> <span>never <em>stop</em></span> <span>moving.</span></h1>
     <div class="hero__pics">
       <Image class="p1" src={ninjaImg} alt="Campers cheering on a friend hanging from a ninja warrior bar" widths={[480, 800]} sizes="(max-width:900px) 70vw, 34vw" loading="eager" fetchpriority="high" />
       <Image class="p2" src={ropesImg} alt="Kids in helmets smiling on the ropes course" widths={[320, 560]} sizes="(max-width:900px) 45vw, 20vw" loading="eager" />

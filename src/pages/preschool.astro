@@ -1,7 +1,7 @@
 ---
 import CarePage from '../layouts/CarePage.astro'
 import PriceTable from '../components/PriceTable.astro'
-import { LINKS, type FaqItem } from '../lib/site'
+import { LINKS, CHILDCARE_OPENING_HOURS, type FaqItem } from '../lib/site'
 import heroImg from '../assets/strip2.jpg'
 import PhotoGallery from '../components/PhotoGallery.astro'
 import ProofPhotos from '../components/ProofPhotos.astro'
@@ -115,7 +115,7 @@ const browseGallery = [
   tourUrl={LINKS.calendly30}
   tourLabel="Schedule a Tour"
   faq={faq}
-  openingHours={['Mo-Fr 07:30-18:00']}
+  openingHours={[...CHILDCARE_OPENING_HOURS]}
   facts={{
     ages: 'Ages 3 – 6',
     hours: 'Morning 9 am – 12 pm, or care 7:30 am – 6 pm',

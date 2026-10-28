@@ -1,5 +1,5 @@
 // Helpers shared by the blog listing and post pages.
-import { NAP, SITE_URL } from './site'
+import { ENTITY_ID, NAP, SITE_URL } from './site'
 
 /** "Oct 21, 2026". Dates are stored as UTC midnight, so format in UTC to avoid off-by-one days. */
 export function shortDate(date: Date) {
@@ -30,6 +30,7 @@ export const ctaFor = (relatedPages: string[]) => CTAS[relatedPages[0]] ?? CTAS[
 
 export const publisher = {
   '@type': 'Organization',
+  '@id': ENTITY_ID,
   name: NAP.name,
   url: SITE_URL + '/',
   logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
@@ -56,7 +57,7 @@ export function blogPostingSchema({ title, description, url, datePublished, date
     dateModified,
     inLanguage: 'en-US',
     ...(image ? { image } : {}),
-    author: { '@type': 'Organization', name: NAP.name, url: SITE_URL + '/', logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` } },
+    author: { '@type': 'Organization', '@id': ENTITY_ID, name: NAP.name, url: SITE_URL + '/' },
     publisher,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   }
