@@ -17,6 +17,25 @@ async function readBody(req) {
 // RSVPs close Oct 31 2026 00:00 America/Denver (keep in sync with src/lib/events.ts)
 const CLOSES_AT = Date.parse('2026-10-31T06:00:00Z')
 const CLOSED_MSG = 'Trunk or Treat RSVPs are closed. Thanks for coming — see you next year!'
+// Durable copy in Supabase (optional, insert-only). Calls the SECURITY DEFINER RPC
+// public.bim_submit_rsvp in project camp-register with the publishable/anon key; anon
+// cannot read the table. Env: BIM_SUPABASE_URL, BIM_SUPABASE_ANON_KEY. Never blocks email.
+async function saveRsvp(row) {
+  const url = process.env.BIM_SUPABASE_URL, k = process.env.BIM_SUPABASE_ANON_KEY
+  if (!url || !k) return
+  try {
+    const r = await fetch(`${url.replace(/\/$/, '')}/rest/v1/rpc/bim_submit_rsvp`, {
+      method: 'POST',
+      headers: { apikey: k, Authorization: `Bearer ${k}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        p_event: row.event, p_name: row.name, p_party_size: row.party_size,
+        p_email: row.email, p_phone: row.phone, p_user_agent: row.user_agent,
+      }),
+      signal: AbortSignal.timeout(4000),
+    })
+    if (!r.ok) console.error('TRUNK_RSVP_DB_ERROR ' + r.status + ' ' + (await r.text()).slice(0, 300))
+  } catch (e) { console.error('TRUNK_RSVP_DB_ERROR ' + (e?.message || e)) }
+}
 
 export default async function handler(req, res) {
   const wantsJson = (req.headers.accept || '').includes('application/json')
@@ -57,10 +76,16 @@ export default async function handler(req, res) {
   // (search "TRUNK_RSVP"). No extra storage service needed.
   console.log('TRUNK_RSVP ' + JSON.stringify({ at: new Date().toISOString(), name, howMany: Number(howMany), email: email || null, phone: phone || null }))
 
+  const saved = saveRsvp({
+    event: 'trunk-or-treat-2026', name, party_size: howMany,
+    email: email || null, phone: phone || null,
+    user_agent: String(req.headers['user-agent'] || '').slice(0, 300) || null,
+  })
+
   const key = process.env.MAILJET_API_KEY
   const secret = process.env.MAILJET_SECRET_KEY
   const fromRaw = process.env.CONTACT_FROM
-  if (!key || !secret || !fromRaw) return done(503, false, 'Form delivery is not configured yet.')
+  if (!key || !secret || !fromRaw) { await saved; return done(503, false, 'Form delivery is not configured yet.') }
   const m = fromRaw.match(/^\s*(?:"?([^"<]*?)"?\s*)?<([^>]+)>\s*$/)
   const from = m ? { Email: m[2].trim(), Name: (m[1] || 'Bodies in Motion Website').trim() } : { Email: fromRaw.trim(), Name: 'Bodies in Motion Website' }
 
@@ -92,7 +117,8 @@ export default async function handler(req, res) {
       }] }),
     })
     const j = await r.json().catch(() => ({}))
-    if (!r.ok || j?.Messages?.[0]?.Status !== 'success') return done(502, false, 'Delivery failed.')
-  } catch { return done(502, false, 'Delivery failed.') }
+    if (!r.ok || j?.Messages?.[0]?.Status !== 'success') { await saved; return done(502, false, 'Delivery failed.') }
+  } catch { await saved; return done(502, false, 'Delivery failed.') }
+  await saved
   return done(200, true, 'Thanks! You’re on the list.')
 }
