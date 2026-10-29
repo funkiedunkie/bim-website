@@ -1,0 +1,161 @@
+---
+import { NAP } from '../lib/site'
+const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Trunk or Treat RSVP')}`
+---
+<form id="trunk-rsvp-form" class="rsvp-card" method="post" action="/api/trunk-or-treat" data-mailto={mailto}>
+  <p class="rsvp-card__badge">🎃 Free · Thu Oct 30 · 6–8 PM</p>
+  <h2>Save your family a spot</h2>
+  <p class="rsvp-card__intro">Just your name and how many are coming. Costumes encouraged!</p>
+  <p class="rsvp-card__status" role="status" aria-live="polite" hidden></p>
+  <div class="rsvp-card__row">
+    <label class="rsvp-card__field rsvp-card__field--grow">
+      <span>Your name</span>
+      <input name="name" required maxlength="120" autocomplete="name" placeholder="e.g. Jamie Smith" />
+    </label>
+    <label class="rsvp-card__field rsvp-card__field--count">
+      <span>How many coming?</span>
+      <input name="howMany" type="number" required min="1" max="99" inputmode="numeric" placeholder="4" />
+    </label>
+  </div>
+  <details class="rsvp-card__more">
+    <summary>Add email or phone (optional)</summary>
+    <div class="rsvp-card__row">
+      <label class="rsvp-card__field rsvp-card__field--grow"><span>Email</span><input name="email" type="email" maxlength="200" autocomplete="email" /></label>
+      <label class="rsvp-card__field rsvp-card__field--grow"><span>Phone</span><input name="phone" type="tel" maxlength="40" autocomplete="tel" /></label>
+    </div>
+  </details>
+  <div class="rsvp-card__hp" aria-hidden="true"><input name="hp_field" tabindex="-1" autocomplete="off" /></div>
+  <button type="submit" class="btn-primary rsvp-card__submit">Reserve my spot</button>
+  <p class="rsvp-card__alt">Prefer to call? <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a></p>
+</form>
+<script>
+  declare global {
+    interface Window {
+      dataLayer?: Record<string, unknown>[]
+      __bimGenerateLeadSent?: boolean
+    }
+  }
+
+  function pushGenerateLead() {
+    if (window.__bimGenerateLeadSent) return
+    window.__bimGenerateLeadSent = true
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      event: 'generate_lead',
+      lead_source: 'trunk_or_treat_rsvp',
+      program: 'Trunk or Treat',
+    })
+  }
+
+  const form = document.querySelector<HTMLFormElement>('#trunk-rsvp-form')
+  if (form) {
+    const status = form.querySelector<HTMLElement>('.rsvp-card__status')!
+    const show = (html: string) => { status.hidden = false; status.innerHTML = html }
+    const q = new URLSearchParams(location.search).get('status')
+    if (q === 'sent') {
+      show('Thanks! You’re on the list for Trunk or Treat.')
+      pushGenerateLead()
+    }
+    if (q === 'error') show(`Sorry, that didn’t send. Please call us or try again in a moment.`)
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const data = Object.fromEntries(new FormData(form))
+      try {
+        const r = await fetch('/api/trunk-or-treat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data),
+        })
+        const j = await r.json().catch(() => ({}))
+        if (r.ok && j.ok) {
+          form.reset()
+          show('Thanks! You’re on the list for Trunk or Treat. See you October 30.')
+          pushGenerateLead()
+          return
+        }
+        if (r.status === 400) { show(j.message || 'Please check the form.'); return }
+        throw new Error()
+      } catch {
+        const body = `Name: ${data.name}\nHow many: ${data.howMany}\nPhone: ${data.phone || ''}\nEmail: ${data.email || ''}`
+        const href = `${form.dataset.mailto}&body=${encodeURIComponent(body)}`
+        show(`Our form couldn’t send right now. <a href="${href}">Open your email app</a> to RSVP instead.`)
+      }
+    })
+  }
+</script>
+<style>
+  .rsvp-card {
+    position: relative;
+    display: grid;
+    gap: 1.1rem;
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 3px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 6px 6px 0 var(--o);
+    padding: clamp(22px, 5vw, 36px);
+  }
+  .rsvp-card__badge {
+    justify-self: start;
+    margin: 0;
+    padding: 6px 14px;
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    background: var(--o);
+    color: var(--ink);
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+  .rsvp-card h2 {
+    font-family: var(--display);
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin: 0;
+  }
+  .rsvp-card__intro { margin: -4px 0 0; color: var(--muted); font-weight: 500; }
+  .rsvp-card__row { display: grid; gap: 1rem; }
+  @media (min-width: 560px) {
+    .rsvp-card__row { grid-template-columns: 1fr 1fr; }
+    .rsvp-card__row:has(.rsvp-card__field--count) { grid-template-columns: 1fr 170px; }
+  }
+  .rsvp-card__field { display: grid; gap: 0.4rem; font-weight: 700; font-size: 0.95rem; }
+  .rsvp-card input {
+    font: inherit;
+    font-weight: 500;
+    font-size: 1.05rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 2.5px solid var(--ink);
+    background: var(--cream);
+    color: var(--ink);
+    transition: box-shadow 0.15s, background 0.15s;
+  }
+  .rsvp-card input::placeholder { color: rgba(20, 18, 58, 0.4); }
+  .rsvp-card input:focus { outline: none; background: #fff; box-shadow: 3px 3px 0 var(--o); }
+  .rsvp-card__more summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--accent-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .rsvp-card__more[open] summary { margin-bottom: 0.9rem; }
+  .rsvp-card__hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .rsvp-card__status {
+    margin: 0;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 2.5px solid var(--ink);
+    background: var(--y);
+    font-weight: 600;
+  }
+  .rsvp-card__submit { width: 100%; justify-content: center; font-size: 1.05rem; }
+  @media (min-width: 560px) { .rsvp-card__submit { width: auto; justify-self: start; } }
+  .rsvp-card__alt { font-size: 0.92rem; color: var(--muted); margin: 0; }
+  .rsvp-card__alt a { color: var(--accent-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+</style>

@@ -1,0 +1,127 @@
+---
+import ActivityPage from '../layouts/ActivityPage.astro'
+import TrunkRsvpForm from '../components/TrunkRsvpForm.astro'
+import { SITE_URL, eventSchema, type FaqItem } from '../lib/site'
+import { Image } from 'astro:assets'
+import heroImg from '../assets/photos/trunk-or-treat-2024-crowd.jpg'
+import vanImg from '../assets/photos/trunk-or-treat-monsters-van.jpg'
+
+const title = 'Free Trunk or Treat in Boise, ID | Bodies in Motion'
+const description =
+  'RSVP for Bodies in Motion’s free Trunk or Treat in Boise. Thursday, October 30, 2026, 6–8 PM at 729 W. Diamond St. Costumes, candy, and family fun.'
+
+// Boise is still on MDT (UTC-6) on Oct 30; DST ends the first Sunday of November.
+const start = '2026-10-30T18:00:00-06:00'
+const end = '2026-10-30T20:00:00-06:00'
+const upcoming = Date.now() < Date.parse(end)
+
+const facts =
+  'Free Trunk or Treat at Bodies in Motion, 729 W. Diamond St, Boise, ID 83705, on Thursday, October 30, 2026 from 6:00 to 8:00 PM. Costumes encouraged. RSVP so we know how many are coming.'
+
+const faq: FaqItem[] = [
+  {
+    q: 'When is Trunk or Treat?',
+    a: upcoming
+      ? 'Thursday, October 30, 2026 from 6:00 to 8:00 PM.'
+      : 'This year’s Trunk or Treat has ended. Call (208) 381-0587 for the next family event.',
+  },
+  {
+    q: 'Where is it?',
+    a: 'Bodies in Motion, 729 W. Diamond St, Boise, ID 83705.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'It’s free. RSVP so we know how many people are coming.',
+  },
+  {
+    q: 'Do I need to RSVP?',
+    a: 'Yes — please use the form on this page (or call us) so we can plan for costumes, candy and space.',
+  },
+  {
+    q: 'Should we wear costumes?',
+    a: 'Yes. Costumes are encouraged for kids and adults.',
+  },
+]
+
+const extraJsonLd = upcoming
+  ? [
+      eventSchema({
+        name: 'Trunk or Treat at Bodies in Motion',
+        description: facts,
+        startDate: start,
+        endDate: end,
+        url: `${SITE_URL}/trunk-or-treat`,
+        price: '0',
+        typicalAgeRange: '0-99',
+      }),
+    ]
+  : []
+---
+
+<ActivityPage
+  title={title}
+  description={description}
+  path="/trunk-or-treat"
+  eyebrow="Free family Halloween night"
+  h1="Trunk or Treat in Boise"
+  lead="Costumes, candy and family fun — free at Bodies in Motion. Thursday, October 30, 6–8 PM."
+  heroImg={heroImg}
+  heroAlt="Families and kids in costumes trick-or-treating between decorated car trunks in the Bodies in Motion parking lot in Boise at the 2024 Trunk or Treat"
+  ctaUrl="#rsvp"
+  ctaLabel="RSVP free"
+  ctaExternal={false}
+  ctaHeading="See you October 30?"
+  ctaText="RSVP with your name and how many are coming, or call (208) 381-0587."
+  faq={faq}
+  extraJsonLd={extraJsonLd}
+  breadcrumbName="Trunk or Treat"
+>
+  <section class="section">
+    <div class="section__inner trunk-intro">
+      <div class="prose">
+        <h2>Free Trunk or Treat</h2>
+        <p>
+          Join us for a free Halloween night at Bodies in Motion. Bring the family, wear your costumes, and
+          trick-or-treat from decorated trunks in our parking lot.
+        </p>
+        <ul>
+          <li><strong>When:</strong> Thursday, October 30, 2026 · 6:00–8:00 PM</li>
+          <li><strong>Where:</strong> Bodies in Motion, 729 W. Diamond St, Boise, ID 83705</li>
+          <li><strong>Cost:</strong> Free</li>
+        </ul>
+        <p>Families come to us from Boise, Meridian and Garden City.</p>
+      </div>
+      <figure class="trunk-intro__photo">
+        <Image src={vanImg} alt="Bodies in Motion van decorated with a Monsters, Inc. theme, door and monster cutouts, at Trunk or Treat in Boise" widths={[360, 720]} sizes="(max-width:900px) 100vw, 420px" loading="lazy" />
+        <figcaption>Our Monsters, Inc. trunk from last year</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="rsvp" class="section section--tint">
+    <div class="section__inner">
+      {upcoming ? (
+        <TrunkRsvpForm />
+      ) : (
+        <div class="prose">
+          <h2>RSVP closed</h2>
+          <p>
+            This year’s Trunk or Treat has ended. Call <a href="tel:+12083810587">(208) 381-0587</a> for
+            the next family event, or see <a href="/parents-night-out">Parents’ Night Out</a>.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</ActivityPage>
+
+<style>
+  .trunk-intro { display: grid; gap: 2rem; align-items: center; }
+  @media (min-width: 900px) { .trunk-intro { grid-template-columns: 1fr 420px; } }
+  .trunk-intro__photo { margin: 0; }
+  .trunk-intro__photo img {
+    display: block; width: 100%; height: auto; max-width: 480px;
+    border: 3px solid var(--ink); border-radius: var(--radius); box-shadow: 6px 6px 0 var(--o);
+  }
+  .trunk-intro__photo figcaption { margin-top: 0.6rem; font-size: 0.9rem; font-weight: 600; color: var(--muted); }
+</style>

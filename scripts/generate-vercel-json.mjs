@@ -113,13 +113,18 @@ const groups = [
     [
       '/closed.html',
       '/black-friday-special.html',
-      '/trunk-or-treat.html',
       '/block-party.html',
       '/holiday-challenge.html',
       '/thank-you.html',
       '/circuit-board.html',
       '/rumbling-dice.html',
     ],
+  ],
+  // Restored seasonal pages (Astro route exists). Keep .html → clean path so
+  // check:redirects stays green and old GymMaster / email links still work.
+  [
+    '/trunk-or-treat',
+    ['/trunk-or-treat.html'],
   ],
   // Short aliases people (and old menus) hit after cleanUrls strips .html, or
   // bare stems that never existed as .html sources.
