@@ -14,6 +14,10 @@ async function readBody(req) {
   return Object.fromEntries(new URLSearchParams(raw))
 }
 
+// RSVPs close Oct 31 2026 00:00 America/Denver (keep in sync with src/lib/events.ts)
+const CLOSES_AT = Date.parse('2026-10-31T06:00:00Z')
+const CLOSED_MSG = 'Trunk or Treat RSVPs are closed. Thanks for coming — see you next year!'
+
 export default async function handler(req, res) {
   const wantsJson = (req.headers.accept || '').includes('application/json')
   const done = (status, ok, msg) => {
@@ -23,6 +27,12 @@ export default async function handler(req, res) {
     return res.end()
   }
   if (req.method !== 'POST') return res.status(405).setHeader('Allow', 'POST').end()
+  if (Date.now() >= CLOSES_AT) {
+    if (wantsJson) return res.status(410).json({ ok: false, closed: true, message: CLOSED_MSG })
+    res.statusCode = 303
+    res.setHeader('Location', '/trunk-or-treat?status=closed')
+    return res.end()
+  }
 
   let b
   try { b = await readBody(req) } catch { return done(400, false, 'Invalid request') }

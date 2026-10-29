@@ -3,6 +3,10 @@ import { Image } from 'astro:assets'
 import logo from '../assets/logo.png'
 import { NAP } from '../lib/site'
 import TourPicker from './TourPicker.astro'
+import ExpiryScript from './ExpiryScript.astro'
+import { liveNavItems } from '../lib/events'
+
+const eventLinks = liveNavItems()
 
 const programLinks = [
   { to: '/infant-toddler-care', label: 'Infant & Toddler Care' },
@@ -59,6 +63,12 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
       {mainLinks.map((l) => (
         <a href={l.to} class="nav__link" aria-current={current === l.to ? 'page' : undefined}>{l.label}</a>
       ))}
+
+      {eventLinks.map((e) => (
+        <a href={e.to} class="nav__event" data-expires={e.expires} aria-label={e.label} title={e.label} aria-current={current === e.to ? 'page' : undefined}>
+          {e.emoji && <span aria-hidden="true">{e.emoji}</span>}<span class="nav__event-label">{e.label}</span>
+        </a>
+      ))}
     </div>
 
     <div class="nav__actions">
@@ -76,6 +86,11 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
         </svg>
       </summary>
       <div class="nav__mobile-panel">
+        {eventLinks.map((e) => (
+          <a href={e.to} class="nav__mobile-event" data-expires={e.expires}>
+            {e.emoji && <span aria-hidden="true">{e.emoji} </span>}{e.label}
+          </a>
+        ))}
         <p class="nav__mobile-title">Programs</p>
         {programLinks.map((item) =>
           item === null ? <div class="nav__dropdown-divider" role="separator" /> : <a href={item.to}>{item.label}</a>
@@ -89,6 +104,7 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
     </details>
   </div>
 </nav>
+<ExpiryScript />
 
 <TourPicker />
 
@@ -281,6 +297,42 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
     box-shadow: 5px 5px 0 var(--ink);
   }
 
+  /* Time-limited event pill (see src/lib/events.ts) */
+  .nav__event {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 6px;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: #ff9a3c;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .nav__event:hover,
+  .nav__event[aria-current='page'] {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .nav__mobile-panel a.nav__mobile-event {
+    margin: 4px 0 8px;
+    padding: 10px 14px;
+    font-weight: 700;
+    color: var(--ink);
+    background: #ff9a3c;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    border-radius: 999px;
+    text-align: center;
+  }
+
   /* Mobile menu: native <details>, no JavaScript needed */
   .nav__mobile {
     display: none;
@@ -357,6 +409,26 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/'
     .nav__actions .nav__login {
       display: none;
     }
+  }
+
+  /* While an event pill is showing, drop the secondary actions a bit sooner instead of shrinking links */
+  @media (max-width: 1360px) {
+    .nav__inner:has(.nav__event:not([hidden])) .nav__actions .nav__waiver { display: none; }
+  }
+  @media (max-width: 1200px) {
+    .nav__inner:has(.nav__event:not([hidden])) .nav__actions .nav__login { display: none; }
+  }
+  @media (max-width: 1100px) {
+    .nav__event { margin-left: 2px; padding: 4px 9px; font-size: 0.8rem; }
+  }
+
+  @media (max-width: 1023px) {
+    .nav__event .nav__event-label { display: none; }
+    .nav__event { padding: 4px 8px; font-size: 1rem; }
+  }
+  @media (max-width: 960px) {
+    .nav__inner:has(.nav__event:not([hidden])) { padding: 0 24px; }
+    .nav__inner:has(.nav__event:not([hidden])) .nav__logo { margin-right: 24px; }
   }
 
   @media (max-width: 900px) {

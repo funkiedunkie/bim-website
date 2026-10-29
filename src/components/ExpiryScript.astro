@@ -1,0 +1,16 @@
+---
+// Hides [data-expires] and reveals [data-after] once the visitor's clock passes the timestamp.
+// Inline + synchronous, so placing it right after the elements avoids a flash.
+---
+<script is:inline>
+  (function () {
+    var q = new URLSearchParams(location.search).get('now')
+    var now = q && !isNaN(Date.parse(q)) ? Date.parse(q) : Date.now()
+    document.querySelectorAll('[data-expires]').forEach(function (el) {
+      if (now >= Date.parse(el.getAttribute('data-expires'))) { el.hidden = true; el.style.display = 'none' }
+    })
+    document.querySelectorAll('[data-after]').forEach(function (el) {
+      if (now >= Date.parse(el.getAttribute('data-after'))) { el.hidden = false; el.style.display = '' }
+    })
+  })()
+</script>
