@@ -95,12 +95,12 @@ export default async function handler(req, res) {
     `Email: ${email || '(not provided)'}`,
     `Phone: ${phone || '(not provided)'}`,
     '',
-    'Event: Free Trunk or Treat — Thu Oct 30, 2026, 6:00–8:00 PM',
+    'Event: Free Trunk or Treat — Fri Oct 30, 2026, 6:00–8:00 PM',
     'Location: Bodies in Motion, 729 W. Diamond St, Boise, ID 83705',
     note ? `\nNote:\n${note}` : '',
   ].filter((x) => x !== undefined)
   const text = lines.join('\n')
-  const html = `<p><b>Name:</b> ${esc(name)}<br><b>How many coming:</b> ${esc(howMany)}<br><b>Email:</b> ${esc(email || '(not provided)')}<br><b>Phone:</b> ${esc(phone || '(not provided)')}</p><p><b>Event:</b> Free Trunk or Treat — Thu Oct 30, 2026, 6:00–8:00 PM<br><b>Location:</b> Bodies in Motion, 729 W. Diamond St, Boise, ID 83705</p>${note ? `<p>${esc(note).replace(/\n/g, '<br>')}</p>` : ''}`
+  const html = `<p><b>Name:</b> ${esc(name)}<br><b>How many coming:</b> ${esc(howMany)}<br><b>Email:</b> ${esc(email || '(not provided)')}<br><b>Phone:</b> ${esc(phone || '(not provided)')}</p><p><b>Event:</b> Free Trunk or Treat — Fri Oct 30, 2026, 6:00–8:00 PM<br><b>Location:</b> Bodies in Motion, 729 W. Diamond St, Boise, ID 83705</p>${note ? `<p>${esc(note).replace(/\n/g, '<br>')}</p>` : ''}`
 
   try {
     const r = await fetch('https://api.mailjet.com/v3.1/send', {
