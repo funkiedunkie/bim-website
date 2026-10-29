@@ -14,6 +14,22 @@ async function readBody(req) {
   return Object.fromEntries(new URLSearchParams(raw))
 }
 
+// Durable copy in Supabase (optional). Env: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY.
+// Never blocks or breaks the email path.
+async function saveRsvp(row) {
+  const url = process.env.SUPABASE_URL, k = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!url || !k) return
+  try {
+    const r = await fetch(`${url.replace(/\/$/, '')}/rest/v1/event_rsvps`, {
+      method: 'POST',
+      headers: { apikey: k, Authorization: `Bearer ${k}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify(row),
+      signal: AbortSignal.timeout(4000),
+    })
+    if (!r.ok) console.error('TRUNK_RSVP_DB_ERROR ' + r.status + ' ' + (await r.text()).slice(0, 300))
+  } catch (e) { console.error('TRUNK_RSVP_DB_ERROR ' + (e?.message || e)) }
+}
+
 export default async function handler(req, res) {
   const wantsJson = (req.headers.accept || '').includes('application/json')
   const done = (status, ok, msg) => {
@@ -47,10 +63,17 @@ export default async function handler(req, res) {
   // (search "TRUNK_RSVP"). No extra storage service needed.
   console.log('TRUNK_RSVP ' + JSON.stringify({ at: new Date().toISOString(), name, howMany: Number(howMany), email: email || null, phone: phone || null }))
 
+  const saved = saveRsvp({
+    event: 'trunk-or-treat-2026', source: 'site', name, party_size: howMany,
+    email: email || null, phone: phone || null,
+    user_agent: String(req.headers['user-agent'] || '').slice(0, 300) || null,
+    ip: String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || null,
+  })
+
   const key = process.env.MAILJET_API_KEY
   const secret = process.env.MAILJET_SECRET_KEY
   const fromRaw = process.env.CONTACT_FROM
-  if (!key || !secret || !fromRaw) return done(503, false, 'Form delivery is not configured yet.')
+  if (!key || !secret || !fromRaw) { await saved; return done(503, false, 'Form delivery is not configured yet.') }
   const m = fromRaw.match(/^\s*(?:"?([^"<]*?)"?\s*)?<([^>]+)>\s*$/)
   const from = m ? { Email: m[2].trim(), Name: (m[1] || 'Bodies in Motion Website').trim() } : { Email: fromRaw.trim(), Name: 'Bodies in Motion Website' }
 
@@ -82,7 +105,8 @@ export default async function handler(req, res) {
       }] }),
     })
     const j = await r.json().catch(() => ({}))
-    if (!r.ok || j?.Messages?.[0]?.Status !== 'success') return done(502, false, 'Delivery failed.')
-  } catch { return done(502, false, 'Delivery failed.') }
+    if (!r.ok || j?.Messages?.[0]?.Status !== 'success') { await saved; return done(502, false, 'Delivery failed.') }
+  } catch { await saved; return done(502, false, 'Delivery failed.') }
+  await saved
   return done(200, true, 'Thanks! You’re on the list.')
 }
