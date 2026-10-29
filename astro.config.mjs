@@ -28,6 +28,7 @@ const indexable = new Set(
     '/fitness-classes',
     '/ropes-course',
     '/pickleball',
+    '/trunk-or-treat',
     '/team-building',
     '/about',
     '/hours',

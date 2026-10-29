@@ -35,3 +35,11 @@ Never paste secrets here; env vars are listed by name only.
 | 2026-10-23 | Preview deploy of homepage design concepts (`/concepts`, noindex): bim-website-git-grok-design-concepts-camps-for-kids-idaho.vercel.app | preview deploy (git push, branch `grok/design-concepts`) | `b1d521c` | Grok | Yes — Vercel status Ready |
 | 2026-10-23 | Preview deploy of staff-answer content updates: bim-website-b8s4q8pqm-camps-for-kids-idaho.vercel.app | preview deploy (git push) | `cd4e5fe` | Grok | Yes — Vercel status Ready |
 | 2026-10-21 | Preview env vars `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `CONTACT_FROM`, `CONTACT_TO` added (Preview, branch `astro-rebuild`) and preview redeployed: bim-website-55ple7m8t-camps-for-kids-idaho.vercel.app | env vars + preview deploy | `3726f78` | Grok | Yes — Mailjet test send to help@ received 2026-10-21 (sent via API, not the form) |
+
+## Trunk or Treat RSVPs (/trunk-or-treat → /api/trunk-or-treat)
+- Each RSVP emails help@bodiesinmotionidaho.com via Mailjet (subject "Trunk or Treat RSVP: Name (N coming)").
+- Each RSVP is also logged as one JSON line prefixed `TRUNK_RSVP` in the Vercel function runtime logs
+  (project bim-website, function /api/trunk-or-treat). Pull with:
+  `vercel logs --prod` / Vercel MCP get_runtime_logs filtered on "TRUNK_RSVP", or Vercel dashboard → Logs → search TRUNK_RSVP.
+  Note: Vercel runtime log retention is limited (about 1 day on Hobby), so export soon after the event; help@ email is the durable copy.
+- Older (2025 Weebly) RSVPs: /workspace/trunk-or-treat/trunk-or-treat-rsvps-2026.csv on the bot box.

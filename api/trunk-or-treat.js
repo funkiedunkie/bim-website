@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
   let b
   try { b = await readBody(req) } catch { return done(400, false, 'Invalid request') }
-  if (b.company) return done(200, true, 'Thanks!') // honeypot
+  if (b.hp_field || b.company) return done(200, true, 'Thanks!') // honeypot
 
   const name = String(b.name || '').trim().slice(0, 120)
   const howManyRaw = String(b.howMany || b.how_many || '').trim().slice(0, 40)
@@ -42,6 +42,10 @@ export default async function handler(req, res) {
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return done(400, false, 'Please enter a valid email, or leave it blank.')
   }
+
+  // Structured log line so RSVPs can be pulled later from Vercel runtime logs
+  // (search "TRUNK_RSVP"). No extra storage service needed.
+  console.log('TRUNK_RSVP ' + JSON.stringify({ at: new Date().toISOString(), name, howMany: Number(howMany), email: email || null, phone: phone || null }))
 
   const key = process.env.MAILJET_API_KEY
   const secret = process.env.MAILJET_SECRET_KEY
