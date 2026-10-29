@@ -56,6 +56,7 @@ const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Trunk or Treat
       show('Thanks! You’re on the list for Trunk or Treat.')
       pushGenerateLead()
     }
+    if (q === 'closed') show('RSVPs are closed. Thanks for coming — see you next year!')
     if (q === 'error') show(`Sorry, that didn’t send. Please call us or try again in a moment.`)
     form.addEventListener('submit', async (e) => {
       e.preventDefault()
@@ -73,6 +74,7 @@ const mailto = `mailto:${NAP.email}?subject=${encodeURIComponent('Trunk or Treat
           pushGenerateLead()
           return
         }
+        if (r.status === 410) { show(j.message || 'RSVPs are closed. See you next year!'); return }
         if (r.status === 400) { show(j.message || 'Please check the form.'); return }
         throw new Error()
       } catch {

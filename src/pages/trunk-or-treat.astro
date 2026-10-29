@@ -3,6 +3,8 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import TrunkRsvpForm from '../components/TrunkRsvpForm.astro'
 import { SITE_URL, eventSchema, type FaqItem } from '../lib/site'
 import { Image } from 'astro:assets'
+import ExpiryScript from '../components/ExpiryScript.astro'
+import { TRUNK_OR_TREAT_EXPIRES, isLive } from '../lib/events'
 import heroImg from '../assets/photos/trunk-or-treat-2024-crowd.jpg'
 import vanImg from '../assets/photos/trunk-or-treat-monsters-van.jpg'
 
@@ -13,7 +15,7 @@ const description =
 // Boise is still on MDT (UTC-6) on Oct 30; DST ends the first Sunday of November.
 const start = '2026-10-30T18:00:00-06:00'
 const end = '2026-10-30T20:00:00-06:00'
-const upcoming = Date.now() < Date.parse(end)
+const upcoming = isLive(TRUNK_OR_TREAT_EXPIRES) // RSVPs close Oct 31 00:00 Boise time
 
 const facts =
   'Free Trunk or Treat at Bodies in Motion, 729 W. Diamond St, Boise, ID 83705, on Thursday, October 30, 2026 from 6:00 to 8:00 PM. Costumes encouraged. RSVP so we know how many are coming.'
@@ -100,17 +102,19 @@ const extraJsonLd = upcoming
 
   <section id="rsvp" class="section section--tint">
     <div class="section__inner">
-      {upcoming ? (
-        <TrunkRsvpForm />
-      ) : (
-        <div class="prose">
-          <h2>RSVP closed</h2>
-          <p>
-            This year’s Trunk or Treat has ended. Call <a href="tel:+12083810587">(208) 381-0587</a> for
-            the next family event, or see <a href="/parents-night-out">Parents’ Night Out</a>.
-          </p>
+      {upcoming && (
+        <div data-expires={TRUNK_OR_TREAT_EXPIRES}>
+          <TrunkRsvpForm />
         </div>
       )}
+      <div class="prose trunk-closed" data-after={TRUNK_OR_TREAT_EXPIRES} hidden={upcoming}>
+        <h2>🎃 Thanks for coming — see you next year!</h2>
+        <p>
+          RSVPs for this year’s Trunk or Treat are closed. Call <a href="tel:+12083810587">(208) 381-0587</a> for
+          our next family event, or check out <a href="/parents-night-out">Parents’ Night Out</a>.
+        </p>
+      </div>
+      <ExpiryScript />
     </div>
   </section>
 </ActivityPage>
