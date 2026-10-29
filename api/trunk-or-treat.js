@@ -14,16 +14,20 @@ async function readBody(req) {
   return Object.fromEntries(new URLSearchParams(raw))
 }
 
-// Durable copy in Supabase (optional). Env: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY.
-// Never blocks or breaks the email path.
+// Durable copy in Supabase (optional, insert-only). Calls the SECURITY DEFINER RPC
+// public.bim_submit_rsvp in project camp-register with the publishable/anon key; anon
+// cannot read the table. Env: BIM_SUPABASE_URL, BIM_SUPABASE_ANON_KEY. Never blocks email.
 async function saveRsvp(row) {
-  const url = process.env.SUPABASE_URL, k = process.env.SUPABASE_SERVICE_ROLE_KEY
+  const url = process.env.BIM_SUPABASE_URL, k = process.env.BIM_SUPABASE_ANON_KEY
   if (!url || !k) return
   try {
-    const r = await fetch(`${url.replace(/\/$/, '')}/rest/v1/event_rsvps`, {
+    const r = await fetch(`${url.replace(/\/$/, '')}/rest/v1/rpc/bim_submit_rsvp`, {
       method: 'POST',
-      headers: { apikey: k, Authorization: `Bearer ${k}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify(row),
+      headers: { apikey: k, Authorization: `Bearer ${k}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        p_event: row.event, p_name: row.name, p_party_size: row.party_size,
+        p_email: row.email, p_phone: row.phone, p_user_agent: row.user_agent,
+      }),
       signal: AbortSignal.timeout(4000),
     })
     if (!r.ok) console.error('TRUNK_RSVP_DB_ERROR ' + r.status + ' ' + (await r.text()).slice(0, 300))
@@ -64,10 +68,9 @@ export default async function handler(req, res) {
   console.log('TRUNK_RSVP ' + JSON.stringify({ at: new Date().toISOString(), name, howMany: Number(howMany), email: email || null, phone: phone || null }))
 
   const saved = saveRsvp({
-    event: 'trunk-or-treat-2026', source: 'site', name, party_size: howMany,
+    event: 'trunk-or-treat-2026', name, party_size: howMany,
     email: email || null, phone: phone || null,
     user_agent: String(req.headers['user-agent'] || '').slice(0, 300) || null,
-    ip: String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || null,
   })
 
   const key = process.env.MAILJET_API_KEY

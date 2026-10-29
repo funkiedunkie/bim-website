@@ -41,5 +41,13 @@ Never paste secrets here; env vars are listed by name only.
 - Each RSVP is also logged as one JSON line prefixed `TRUNK_RSVP` in the Vercel function runtime logs
   (project bim-website, function /api/trunk-or-treat). Pull with:
   `vercel logs --prod` / Vercel MCP get_runtime_logs filtered on "TRUNK_RSVP", or Vercel dashboard → Logs → search TRUNK_RSVP.
-  Note: Vercel runtime log retention is limited (about 1 day on Hobby), so export soon after the event; help@ email is the durable copy.
-- Older (2025 Weebly) RSVPs: /workspace/trunk-or-treat/trunk-or-treat-rsvps-2026.csv on the bot box.
+  Note: Vercel runtime log retention is limited (about 1 day on Hobby).
+- Durable copy: Supabase project camp-register (ref rvlvlwpbndrsopsjwvku, shared with Camps for Kids Idaho),
+  table public.bim_event_rsvps (RLS on, no policies). The site writes only via insert-only RPC
+  public.bim_submit_rsvp (SECURITY DEFINER, anon EXECUTE only; event allow-list 'trunk-or-treat-2026').
+  Env on Vercel bim-website: BIM_SUPABASE_URL, BIM_SUPABASE_ANON_KEY (publishable key). Missing env = no-op;
+  DB failures log TRUNK_RSVP_DB_ERROR and the email still sends. Migration: supabase/migrations/20261029_bim_event_rsvps.sql.
+  The 27 Weebly RSVPs (Oct 8–23) are backfilled with source='weebly'.
+  Pull RSVPs: Supabase MCP execute_sql on project rvlvlwpbndrsopsjwvku:
+  `select created_at at time zone 'America/Denver' as submitted, name, party_size, email, phone, source from public.bim_event_rsvps where event='trunk-or-treat-2026' order by created_at;`
+- Original Weebly export CSV: /workspace/trunk-or-treat/trunk-or-treat-rsvps-2026.csv on the bot box.
