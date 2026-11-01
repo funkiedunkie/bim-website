@@ -733,6 +733,16 @@
       "statusCode": 301
     },
     {
+      "source": "/contact-us.html",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
       "source": "/jobs.html",
       "destination": "/jobs",
       "statusCode": 301
@@ -1205,6 +1215,61 @@
     {
       "source": "/ropes",
       "destination": "/ropes-course",
+      "statusCode": 301
+    },
+    {
+      "source": "/before-after-school",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/before-after-school.html",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/after-school",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/before-school",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/before-and-after-school",
+      "destination": "/after-school-care",
+      "statusCode": 301
+    },
+    {
+      "source": "/parties",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/birthday",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/birthday-party",
+      "destination": "/birthday-parties",
+      "statusCode": 301
+    },
+    {
+      "source": "/pno",
+      "destination": "/parents-night-out",
+      "statusCode": 301
+    },
+    {
+      "source": "/parents-night",
+      "destination": "/parents-night-out",
+      "statusCode": 301
+    },
+    {
+      "source": "/pre-school",
+      "destination": "/preschool",
       "statusCode": 301
     },
     {

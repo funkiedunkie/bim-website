@@ -8,9 +8,11 @@ import { TRUNK_OR_TREAT_EXPIRES, isLive } from '../lib/events'
 import heroImg from '../assets/photos/trunk-or-treat-2024-crowd.jpg'
 import vanImg from '../assets/photos/trunk-or-treat-monsters-van.jpg'
 
-const title = 'Free Trunk or Treat in Boise, ID | Bodies in Motion'
+// Event is over: neutral title/description, noindex until next year's event. The page stays
+// reachable and the expiry mechanism (isLive / ExpiryScript) is unchanged.
+const title = 'Trunk or Treat at Bodies in Motion – see you next year'
 const description =
-  'RSVP for Bodies in Motion’s free Trunk or Treat in Boise. Friday, October 30, 2026, 6–8 PM at 729 W. Diamond St. Costumes, candy, and family fun.'
+  'Thanks to every Boise family who came to Trunk or Treat at Bodies in Motion, 729 W. Diamond St. See you next year for more costumes, candy and fun.'
 
 // Boise is still on MDT (UTC-6) on Oct 30; DST ends the first Sunday of November.
 const start = '2026-10-30T18:00:00-06:00'
@@ -61,6 +63,7 @@ const extraJsonLd = upcoming
 ---
 
 <ActivityPage
+  noindex
   title={title}
   description={description}
   path="/trunk-or-treat"
