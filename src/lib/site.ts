@@ -109,6 +109,7 @@ export function childCareSchema({ openingHours, description }: ChildCareOptions)
     geo: { '@type': 'GeoCoordinates', latitude: NAP.lat, longitude: NAP.lng },
     areaServed: AREA_SERVED.map((name) => ({ '@type': 'City', name })),
     sameAs: SOCIAL.map((s) => s.href),
+    priceRange: '$$',
     ...(openingHours ? { openingHours } : {}),
   }
 }
@@ -146,6 +147,7 @@ export function activityBusinessSchema({ description, openingHoursSpecification 
     geo: { '@type': 'GeoCoordinates', latitude: NAP.lat, longitude: NAP.lng },
     areaServed: AREA_SERVED.map((name) => ({ '@type': 'City', name })),
     sameAs: SOCIAL.map((s) => s.href),
+    priceRange: '$$',
     ...(openingHoursSpecification ? { openingHoursSpecification } : {}),
   }
 }

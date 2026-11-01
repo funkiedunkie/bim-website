@@ -5,6 +5,10 @@
  * Override with PUBLIC_GTM_ID (another GTM-… id).
  * Disable on a preview with PUBLIC_GTM_ID=off (or false / 0).
  * Production can omit the env var — the default ID loads.
+ *
+ * Perf: gtm.js (and the GA4/UA/Meta tags it pulls, ~650 KB) is deferred until the first user
+ * interaction or ~1.5 s after window load, so it no longer competes with the LCP image.
+ * gtm.start is still pushed immediately so tag timing stays correct.
  */
 interface Props {
   placement: 'head' | 'body'
@@ -21,9 +25,11 @@ const gtmId = /^GTM-[A-Z0-9]+$/.test(candidate) ? candidate : ''
   <script
     is:inline
     set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+new Date().getTime(),event:'gtm.js'});var done=0;function go(){if(done)return;done=1;
+var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}
+['pointerdown','keydown','scroll','touchstart'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});
+w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallback||function(c){c()})(go,{timeout:2000})},1500)});
 })(window,document,'script','dataLayer','${gtmId}');`}
   />
 )}

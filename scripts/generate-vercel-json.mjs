@@ -83,7 +83,7 @@ const groups = [
   ['/pickleball', ['/indoor-pickleball.html']],
   ['/hours', ['/schedule.html']],
   ['/about', ['/aboutus.html', '/our-team.html', '/our-company.html', '/staff-community-reviews.html']],
-  ['/contact', ['/contactus.html']],
+  ['/contact', ['/contactus.html', '/contact-us.html']],
   ['/jobs', ['/jobs.html', '/apply.html']],
   ['/waiver', ['/waiver.html']],
   ['/privacy', ['/privacy-policy.html']],
@@ -139,6 +139,26 @@ const groups = [
   [
     '/ropes-course',
     ['/ropes'],
+  ],
+  [
+    '/after-school-care',
+    ['/before-after-school', '/before-after-school.html', '/after-school', '/before-school', '/before-and-after-school'],
+  ],
+  [
+    '/birthday-parties',
+    ['/parties', '/birthday', '/birthday-party'],
+  ],
+  [
+    '/parents-night-out',
+    ['/pno', '/parents-night'],
+  ],
+  [
+    '/preschool',
+    ['/pre-school'],
+  ],
+  [
+    '/contact',
+    ['/contact-us'],
   ],
   [
     '/ninja-warrior',

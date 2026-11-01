@@ -24,19 +24,18 @@ const full = {
   'fitness-classes': '/fitness-classes',
   'ropes-course': '/ropes-course',
   pickleball: '/pickleball',
-  'trunk-or-treat': '/trunk-or-treat',
   'team-building': '/team-building',
   about: '/about',
   hours: '/hours',
   reviews: '/reviews',
   contact: '/contact',
   jobs: '/jobs',
-  waiver: '/waiver',
-  privacy: '/privacy',
 }
-// Care pages carry ChildCare JSON-LD; the activity pages carry the EntertainmentBusiness node instead.
+// Indexable full pages that are deliberately left out of the sitemap (utility pages).
+const notInSitemap = { waiver: '/waiver', privacy: '/privacy' }
+Object.assign(full, notInSitemap)
+// Care pages (incl. camps) carry ChildCare JSON-LD; the activity pages carry the EntertainmentBusiness node instead.
 const activity = new Set([
-  'camps',
   'birthday-parties',
   'parents-night-out',
   'open-play',
@@ -44,7 +43,6 @@ const activity = new Set([
   'fitness-classes',
   'ropes-course',
   'pickleball',
-  'trunk-or-treat',
   'team-building',
   'about',
   'hours',
@@ -172,7 +170,7 @@ for (const slug of postSlugs) {
 const sitemap = readFileSync(join(dist, 'sitemap-0.xml'), 'utf8')
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
 console.log('sitemap:', urls.join(', '))
-const want = [...Object.values(full), '/blog', ...postSlugs.map((s) => `/blog/${s}`)].map((p) => SITE + p)
+const want = [...Object.values(full).filter((p) => !Object.values(notInSitemap).includes(p)), '/blog', ...postSlugs.map((s) => `/blog/${s}`)].map((p) => SITE + p)
 for (const u of urls) if (!want.map((w) => w.replace(/\/$/, '')).includes(u.replace(/\/$/, ''))) errors.push(`sitemap includes ${u}`)
 if (urls.length !== want.length) errors.push(`sitemap has ${urls.length} URLs, expected ${want.length}`)
 

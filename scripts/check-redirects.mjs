@@ -82,6 +82,34 @@ if (!existsSync(urlsFile)) {
   console.log(`Checked ${paths.length} URLs from ${urlsFile} (${legacy.length} .html) against ${redirects.length} redirects.`)
 }
 
+// 1b. every legacy URL (any extension) ends on a live page in ONE hop: either it is a real page,
+// a kept blog post, or a redirect whose destination is a real page that is not itself redirected
+// (no chains, so nothing can chain into a 404).
+{
+  const keepSet = new Set(blogMap.keep)
+  const allLegacy = new Set(urlPaths)
+  if (existsSync(pagesFile)) for (const p of JSON.parse(readFileSync(pagesFile, 'utf8'))) allLegacy.add(new URL(p.url).pathname)
+  const isLive = (p) => {
+    const clean = p.replace(/\.html$/, '').replace(/\/$/, '') || '/'
+    return pages.has(clean) || (clean.startsWith('/blog/') && keepSet.has(clean.slice(6)))
+  }
+  let ok = 0
+  for (const raw of allLegacy) {
+    const p = raw.replace(/\/$/, '') || '/'
+    const bare = p.replace(/\.html$/, '')
+    const hit = redirectFor(p) || redirectFor(bare)
+    if (hit) {
+      if (redirectFor(hit.destination)) errors.push(`${p} -> ${hit.destination} is a redirect chain`)
+      else if (!isLive(hit.destination)) errors.push(`${p} -> ${hit.destination} ends on a 404`)
+      else ok++
+    } else if (isLive(p)) ok++
+    else errors.push(`legacy URL ${p} is neither a live page nor redirected (would 404)`)
+  }
+  // No redirect anywhere may point at another redirect.
+  for (const r of redirects) if (redirectFor(r.destination)) errors.push(`chain: ${r.source} -> ${r.destination} -> ${redirectFor(r.destination).destination}`)
+  console.log(`Legacy URLs (urls.txt + pages.json): ${allLegacy.size} checked, ${ok} resolve to a live page in one hop.`)
+}
+
 // 4. blog: every old post is a built kept page or a redirect
 const keep = new Set(blogMap.keep)
 const toProgram = blogMap.to_program
