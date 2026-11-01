@@ -45,7 +45,7 @@ export default async function handler(req, res) {
   const key = process.env.MAILJET_API_KEY
   const secret = process.env.MAILJET_SECRET_KEY
   const fromRaw = process.env.CONTACT_FROM
-  if (!key || !secret || !fromRaw) return done(503, false, 'Form delivery is not configured yet.')
+  if (!key || !secret || !fromRaw) { console.error('[contact] not configured', { key: !!key, secret: !!secret, from: !!fromRaw }); return done(503, false, 'Form delivery is not configured yet.') }
   const m = fromRaw.match(/^\s*(?:"?([^"<]*?)"?\s*)?<([^>]+)>\s*$/)
   const from = m ? { Email: m[2].trim(), Name: (m[1] || 'Bodies in Motion Website').trim() } : { Email: fromRaw.trim(), Name: 'Bodies in Motion Website' }
 
@@ -66,7 +66,13 @@ export default async function handler(req, res) {
       }] }),
     })
     const j = await r.json().catch(() => ({}))
-    if (!r.ok || j?.Messages?.[0]?.Status !== 'success') return done(502, false, 'Delivery failed.')
-  } catch { return done(502, false, 'Delivery failed.') }
+    const m0 = j?.Messages?.[0]
+    const toDomain = String(process.env.CONTACT_TO || TO_DEFAULT).split('@')[1]
+    if (!r.ok || m0?.Status !== 'success') {
+      console.error('[contact] mailjet failed', { http: r.status, status: m0?.Status, errors: m0?.Errors || j?.ErrorMessage || null, toDomain })
+      return done(502, false, 'Delivery failed.')
+    }
+    console.log('[contact] mailjet accepted', { program, toDomain, messageId: m0?.To?.[0]?.MessageID, messageUuid: m0?.To?.[0]?.MessageUUID })
+  } catch (err) { console.error('[contact] mailjet request error', String(err)); return done(502, false, 'Delivery failed.') }
   return done(200, true, 'Thanks! We will get back to you soon.')
 }
