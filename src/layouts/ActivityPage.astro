@@ -39,11 +39,13 @@ interface Props {
   breadcrumbName?: string
   /** 'childcare' emits the ChildCare node (same @id) instead of EntertainmentBusiness, e.g. camps. */
   businessType?: 'activity' | 'childcare'
+  /** Hide the hero Call button (form-only pages, e.g. team building). */
+  hideCall?: boolean
   /** Pass-through to Base (noindex,follow), e.g. an expired seasonal page. */
   noindex?: boolean
 }
 
-const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, heroImgClass, ctaUrl, ctaLabel, cta2Url, cta2Label, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification, breadcrumbName, businessType = 'activity', noindex = false } = Astro.props
+const { title, description, path, eyebrow, h1, lead, heroImg, heroAlt, heroImgClass, ctaUrl, ctaLabel, cta2Url, cta2Label, ctaExternal = true, ctaHeading, ctaText, faq, reviews, extraJsonLd = [], openingHoursSpecification, breadcrumbName, businessType = 'activity', noindex = false, hideCall = false } = Astro.props
 const og = await getImage({ src: heroImg, width: 1200 })
 const ogImage = SITE_URL + og.src
 const jsonLd = [
@@ -70,7 +72,7 @@ const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
       <div class="page-hero__actions">
         <a href={ctaUrl} class="btn-primary" {...ext}>{ctaLabel}</a>
         {cta2Url && cta2Label && <a href={cta2Url} class="btn-primary" {...ext}>{cta2Label}</a>}
-        {ctaUrl !== NAP.phoneTel && cta2Url !== NAP.phoneTel && (
+        {!hideCall && ctaUrl !== NAP.phoneTel && cta2Url !== NAP.phoneTel && (
           <a href={NAP.phoneTel} class="btn-outline">Call {NAP.phoneDisplay}</a>
         )}
       </div>
