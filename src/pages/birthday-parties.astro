@@ -114,7 +114,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'How do I book a party?',
-    a: 'Book a kids party with the birthday party RSVP scheduler. For ages 10–16 parties and adult parties, call (208) 381-0587 or use our contact page.',
+    a: 'Book a kids party with the Book my Party scheduler. For ages 10–16 parties and adult parties, call (208) 381-0587 or use our contact page.',
   },
 ]
 
@@ -172,9 +172,10 @@ const browseGallery = [
   heroImg={heroImg}
   heroAlt="Two girls smiling among pink and yellow birthday balloons"
   ctaUrl={LINKS.calendlyBirthday}
-  ctaLabel="Birthday party RSVP"
+  ctaLabel="Book my Party"
+  hideCall
   ctaHeading="Ready to book a party?"
-  ctaText="RSVP for a kids party online, or call us at (208) 381-0587 for ages 10–16 and adult parties. Families come to us from Boise, Meridian and Garden City."
+  ctaText="Book a kids party online, or use our contact page for ages 10–16 and adult parties. Families come to us from Boise, Meridian and Garden City."
   faq={faq}
   reviews={reviews}
 >
@@ -217,7 +218,7 @@ const browseGallery = [
           <p>Let the kids run around while the parents relax and take pictures. Then we’ll round them up for food and/or cake, and some final activities and play time.</p>
           <PriceTable caption="Kids birthday party pricing" rows={kidsRows} priceHeading="Price" rowHeading="Party size" />
           <div class="stub-actions">
-            <a class="btn-primary" href={LINKS.calendlyBirthday} target="_blank" rel="noopener noreferrer">Birthday party RSVP</a>
+            <a class="btn-primary" href={LINKS.calendlyBirthday} target="_blank" rel="noopener noreferrer">Book my Party</a>
           </div>
         </div>
         <ProofPhotos items={proofKids} />
@@ -262,7 +263,7 @@ const browseGallery = [
           <h3>Book ages 10–16 parties</h3>
           <p>
             To book a Super or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or use our{' '}
-            <a href="/contact">contact page</a>. Prefer to type an address? {NAP.emailDisplay}.
+            <a href="/contact">contact page</a>. Prefer to type an address? <a href="mailto:help@bodiesinmotionidaho.com">help@bodiesinmotionidaho.com</a>.
           </p>
         </div>
         <ProofPhotos items={proofTween} />
@@ -289,8 +290,7 @@ const browseGallery = [
           <PriceTable caption="Private party pricing" rows={adultPrivateRows} priceHeading="Price" rowHeading="Party size" />
           <PriceTable caption="Semi-private party pricing" rows={adultSemiRows} priceHeading="Price" rowHeading="Party size" />
           <div class="stub-actions">
-            <a class="btn-primary" href={NAP.phoneTel}>Call {NAP.phoneDisplay} to book</a>
-            <a class="btn-outline" href="/contact">Email or contact us</a>
+            <a class="btn-primary" href="/contact">Email or contact us</a>
           </div>
         </div>
         <ProofPhotos items={proofAdult} />
