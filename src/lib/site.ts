@@ -8,9 +8,8 @@ export const ENTITY_ID = `${SITE_URL}/#bim`
 
 export const NAP = {
   email: 'help@bodiesinmotionidaho.com',
-  // Visitor-facing display only (no @) — keeps harvest bots from scraping a cleartext address in HTML.
-  // API, Mailjet, JSON-LD schema, and ContactForm data-mailto still use NAP.email.
-  emailDisplay: 'help [at] bodiesinmotionidaho.com',
+  // Visitor-facing email (shown as a real mailto link in page markup).
+  emailDisplay: 'help@bodiesinmotionidaho.com',
   name: 'Bodies in Motion',
   street: '729 W. Diamond St',
   city: 'Boise',
@@ -54,7 +53,7 @@ export const SOCIAL = [
 export const LICENSE_NUMBER = '28-11875'
 export const HOLIDAYS_CLOSED = ['Easter', 'Memorial Day', 'July 4th', 'Labor Day', 'Thanksgiving Day', 'Christmas Day', "New Year's Day"]
 export const HOLIDAYS_EARLY_CLOSE = ['Halloween', 'Christmas Eve', "New Year's Eve"]
-export const HOLIDAY_TEXT = `We are closed on ${HOLIDAYS_CLOSED.join(', ')}. We close early on ${HOLIDAYS_EARLY_CLOSE.join(', ')}; call (208) 381-0587 for that day's hours.`
+export const HOLIDAY_TEXT = `We are closed on ${HOLIDAYS_CLOSED.join(', ')}. We close at 3 pm on ${HOLIDAYS_EARLY_CLOSE.join(', ')}.`
 export const OPEN_PLAY_HOURS = {
   summer: 'Summer hours: Monday–Friday 9:30 am–6:00 pm, Saturday and Sunday 9:30 am–5:00 pm.',
   fallWinter: 'Fall and winter hours: Monday–Thursday 9:30 am–7:00 pm, Friday 9:30 am–6:00 pm, Saturday and Sunday 9:30 am–5:00 pm.',
