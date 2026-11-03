@@ -1,7 +1,7 @@
 ---
 import ActivityPage from '../layouts/ActivityPage.astro'
 import PriceTable from '../components/PriceTable.astro'
-import { LINKS, NAP, type FaqItem } from '../lib/site'
+import { LINKS, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/birthday-party-web.jpeg'
 import PhotoGallery from '../components/PhotoGallery.astro'
 import ProofPhotos from '../components/ProofPhotos.astro'
@@ -19,7 +19,7 @@ const description =
   'Birthday parties in Boise, ID at Bodies in Motion: 1½-hour kids parties, ages 10–16 super and lock-in parties, and adult parties. See pricing and book.'
 
 // Prices/packages confirmed current by Duncan (2026-10-21). Booking: kids parties via the Calendly RSVP
-// scheduler; ages 10–16 and adult parties by phone, email or /contact.
+// scheduler; ages 10–16 and adult parties by email or /contact (no phone numbers on party pages, Rachel 2026-11-03).
 // 2026-10-23 (Duncan): Cosmic Ropes is on hold (staffing + cosmic light system), so the Cosmic Birthday Party is shown as
 // currently unavailable with no prices. Lock-in food: late-night snack/dinner and continental breakfast. Ropes add-on:
 // choose the "Ropes $50+" option; other packages call ahead.
@@ -94,7 +94,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Can I add the ropes course to a kids party?',
-    a: 'Yes. Choose the Ropes ($50+) party option when you book. If you choose a different party and want to add ropes later, call (208) 381-0587 ahead of time so we can make sure we can support it.',
+    a: 'Yes. Choose the Ropes ($50+) party option when you book. If you choose a different party and want to add ropes later, contact us ahead of time so we can make sure we can support it.',
   },
   {
     q: 'How much is an All Night Lock-In Party?',
@@ -114,7 +114,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'How do I book a party?',
-    a: 'Book a kids party with the Book my Party scheduler. For ages 10–16 parties and adult parties, call (208) 381-0587 or use our contact page.',
+    a: 'Book a kids party with the Book my Party scheduler. For ages 10–16 parties and adult parties, use our contact page or email help@bodiesinmotionidaho.com.',
   },
 ]
 
@@ -207,7 +207,7 @@ const browseGallery = [
           <p>
             <strong>Ropes party (choose the “Ropes $50+” option):</strong> kids take on 3 Indiana Jones-style bridges on the
             High Ropes Course. Ropes parties are for ages 10 and up and include two free adult participants to help the
-            kiddos. Booked a different party and want to add ropes later? Call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>{' '}
+            kiddos. Booked a different party and want to add ropes later? <a href="/contact">Contact us</a>
             ahead of time so we can make sure we can support it.
           </p>
           <p>
@@ -262,9 +262,12 @@ const browseGallery = [
 
           <h3>Book ages 10–16 parties</h3>
           <p>
-            To book a Super or Lock-In party, call <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a> or use our{' '}
-            <a href="/contact">contact page</a>. Prefer to type an address? <a href="mailto:help@bodiesinmotionidaho.com">help@bodiesinmotionidaho.com</a>.
+            To book a Super or Lock-In party, use our <a href="/contact">contact page</a>. Prefer to type an address?
+            <a href="mailto:help@bodiesinmotionidaho.com">help@bodiesinmotionidaho.com</a>.
           </p>
+          <div class="stub-actions">
+            <a class="btn-primary" href="/contact">Contact us to book</a>
+          </div>
         </div>
         <ProofPhotos items={proofTween} />
       </div>
