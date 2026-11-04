@@ -23,6 +23,8 @@ interface CampDay {
   title: string
   /** ISO date (YYYY-MM-DD), Boise local time. */
   date: string
+  /** Last day for multi-day camps (YYYY-MM-DD). Omit for one-day camps. */
+  endDate?: string
   /** Event offset: Boise is UTC-7 (MST) after the first Sunday of November, UTC-6 (MDT) before. */
   offset: string
   ages: string
@@ -32,18 +34,19 @@ interface CampDay {
 
 const upcomingCamps: CampDay[] = [
   {
-    title: 'The Great Fall Escape – Camp Day',
-    date: '2026-11-03',
+    title: 'Thanksgiving Break Camp',
+    date: '2026-11-23',
+    endDate: '2026-11-25',
     offset: '-07:00',
     ages: '5–12',
     price: 87,
     blurb:
-      'A Thanksgiving mystery packed with spy challenges, clues, games and undercover fun. Campers become secret agents for the day and work together to track down the stolen Pumpkin Pie and crack the case.',
+      'Thanksgiving Break Camp is packed with festive fun. Campers search for hidden treasures, race through a Turkey Trot obstacle course, and team up for holiday-themed games and challenges like the Feather Frenzy Team Challenge. Sign up for one, two or all three days.',
   },
 ]
 
 const campStart = (c: CampDay) => `${c.date}T09:00:00${c.offset}`
-const campEnd = (c: CampDay) => `${c.date}T15:00:00${c.offset}`
+const campEnd = (c: CampDay) => `${c.endDate ?? c.date}T15:00:00${c.offset}`
 // Drop days that have already ended at build time; the list is also refreshed by hand each season (see TODO above).
 const upcoming = upcomingCamps.filter((c) => Date.now() < Date.parse(campEnd(c)))
 const heroesUpcoming = Date.now() < Date.parse('2026-11-14T21:00:00-07:00')
@@ -67,7 +70,7 @@ const careRows = [
 const faq: FaqItem[] = [
   {
     q: 'What kinds of camps does Bodies in Motion offer?',
-    a: 'We run week-long summer camps, one-day camps on no-school days, and holiday and break camps (for example Spring Break, winter break and Thanksgiving-week camp days) at our Boise facility. Each camp has its own theme; one-day camps in 2026 included The Great Fall Escape, Best of BIM, Nature Explorers and No School Fun Day.',
+    a: 'We run week-long summer camps, one-day camps on no-school days, and holiday and break camps (for example Spring Break, winter break and Thanksgiving-week camp days) at our Boise facility. Each camp has its own theme; one-day camps in 2026 included Best of BIM, Nature Explorers and No School Fun Day, and Thanksgiving Break Camp runs November 23–25, 2026.',
   },
   {
     q: 'What ages are camps for?',
@@ -100,7 +103,7 @@ const faq: FaqItem[] = [
   {
     q: 'When is the next camp?',
     a: upcoming.length
-      ? `The next camp day is ${upcoming[0].title.replace(' – Camp Day', '')} on ${longDate(upcoming[0].date)}, 9 am to 3 pm, for ages ${upcoming[0].ages} at $${upcoming[0].price} per day. Register at Camps for Kids Idaho or call (208) 381-0587 for other upcoming dates.`
+      ? `The next camp is ${upcoming[0].title.replace(' – Camp Day', '')} on ${upcoming[0].endDate ? `${longDate(upcoming[0].date)} through ${longDate(upcoming[0].endDate)}` : longDate(upcoming[0].date)}, 9 am to 3 pm, for ages ${upcoming[0].ages} at $${upcoming[0].price} per day. Register at Camps for Kids Idaho or call (208) 381-0587 for other upcoming dates.`
       : 'Check Camps for Kids Idaho for the latest camp dates, or call (208) 381-0587.',
   },
   {
@@ -173,7 +176,7 @@ const browseGallery = [
           <ul class="bullets">
             <li><strong>Summer camp:</strong> week-long sessions through the summer (Summer 2026 camp was ages 4–12). Our summer lineup includes a Learn to Ride camp.</li>
             <li><strong>No-school day camps:</strong> one-day camps when school is out, with group games like Capture the Flag, Pirate Tag, Z Tag and Speed Ball (ages 5–12).</li>
-            <li><strong>Holiday and break camps:</strong> themed days for Spring Break, winter break and the Thanksgiving holiday, such as <em>The Great Fall Escape</em> mystery day.</li>
+            <li><strong>Holiday and break camps:</strong> themed days for Spring Break, winter break and the Thanksgiving holiday, such as our three-day Thanksgiving Break Camp.</li>
           </ul>
           <p>
             <strong>Ages:</strong> 4–12 overall; each camp lists its own range (one-day camps are typically 5–12).
@@ -212,10 +215,10 @@ const browseGallery = [
             <li class="camp-card">
               <h3>{c.title}</h3>
               <p class="camp-card__meta">
-                {longDate(c.date)} · 9:00 am–3:00 pm · Ages {c.ages} · ${c.price} per day
+                {c.endDate ? `${longDate(c.date)} – ${longDate(c.endDate)}` : longDate(c.date)} · 9:00 am–3:00 pm · Ages {c.ages} · ${c.price} per day
               </p>
               <p>{c.blurb}</p>
-              <a class="btn-primary" href={LINKS.camps} target="_blank" rel="noopener noreferrer">Register for this camp day</a>
+              <a class="btn-primary" href={LINKS.camps} target="_blank" rel="noopener noreferrer">{c.endDate ? 'Register for this camp' : 'Register for this camp day'}</a>
             </li>
           ))}
         </ul>
