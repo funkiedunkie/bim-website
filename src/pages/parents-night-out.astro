@@ -16,11 +16,11 @@ const heroesStart = '2026-11-14T17:00:00-07:00'
 const heroesEnd = '2026-11-14T21:00:00-07:00'
 const heroesUpcoming = Date.now() < Date.parse(heroesEnd)
 
-// Standing PNO product (Cosmic Glow / Ahoy Adventures on CFK): $51, 20% sibling = $40.80, ages 5–12, 5–9 PM, dinner included.
+// Standing PNO product (Cosmic Glow / Ahoy Adventures on CFK): $51, 20% sibling = $40.80, ages 4–11, 5–9 PM, dinner included.
 // Rhea’s email confirmed theme + date only; TODO(Duncan/Rhea): confirm price/ages once Heroes & Ninjas is listed on CFK,
 // and update LINKS.pnoRegister to the specific CFK session URL.
 const heroesFacts =
-  'Heroes & Ninjas – Parents’ Night Out is a themed evening for ages 5–12, 5:00–9:00 PM, at $51 per child, with a 20% sibling discount ($40.80 for additional siblings) and dinner included. Kids dress as heroes or ninjas for a fun-filled night while parents get a kidless evening.'
+  'Heroes & Ninjas – Parents’ Night Out is a themed evening for ages 4–11, 5:00–9:00 PM, at $51 per child, with a 20% sibling discount ($40.80 for additional siblings) and dinner included. Kids dress as heroes or ninjas for a fun-filled night while parents get a kidless evening.'
 
 const faq: FaqItem[] = [
   {
@@ -42,7 +42,7 @@ const faq: FaqItem[] = [
       },
   {
     q: 'What ages is Parents’ Night Out for?',
-    a: 'Heroes & Ninjas is for ages 5–12. Family Night Out is for ages 3 (potty trained) up to adults.',
+    a: 'Heroes & Ninjas is for ages 4–11. Family Night Out is for ages 3 (potty trained) up to adults.',
   },
   {
     q: 'What is Family Night Out?',
@@ -73,7 +73,7 @@ const extraJsonLd = heroesUpcoming
         endDate: heroesEnd,
         url: LINKS.pnoRegister,
         price: '51',
-        typicalAgeRange: '5-12',
+        typicalAgeRange: '4-11',
       }),
     ]
   : []
@@ -125,7 +125,7 @@ const proofHeroes = [
               ? <li><strong>Date:</strong> Saturday, November 14, 2026</li>
               : <li><strong>Date:</strong> the next date is to be announced. Call us or check the registration link.</li>}
             <li><strong>Time:</strong> 5:00–9:00 PM</li>
-            <li><strong>For:</strong> ages 5–12</li>
+            <li><strong>For:</strong> ages 4–11</li>
             <li><strong>Cost:</strong> $51 per child; 20% sibling discount ($40.80 per additional sibling); dinner included</li>
           </ul>
           <div class="stub-actions">

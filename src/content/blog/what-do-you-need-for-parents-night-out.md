@@ -36,6 +36,6 @@ Each Parents’ Night Out is packed with games and activities that follow the ni
 
 ## Who Can Come?
 
-The Cosmic Glow Party is for ages 5 to 12. We also offer Family Night Out, for ages 3 (potty trained) up to adults, so the whole family can laugh, play and make memories together. Spaces are limited, so register ahead of time.
+The Cosmic Glow Party is for ages 4 to 11. We also offer Family Night Out, for ages 3 (potty trained) up to adults, so the whole family can laugh, play and make memories together. Spaces are limited, so register ahead of time.
 
 If you are looking for a Parents’ Night Out, [see our Parents’ Night Out page](/parents-night-out) for the latest event or [contact us](/contact). We are in Boise, Idaho, and our events run from 5 to 9 at night.
