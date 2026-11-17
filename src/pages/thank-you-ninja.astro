@@ -1,0 +1,52 @@
+---
+// Calendly Ninja Warrior trial (5–8 and 9+) redirect target.
+// Pushes GTM dataLayer `start_trial` (NOT generate_lead) so a GTM Custom Event
+// trigger can fire Meta StartTrial without inflating Lead. Hidden from SEO (noindex).
+import Base from '../layouts/Base.astro'
+import { NAP } from '../lib/site'
+
+const title = 'Trial class booked | Bodies in Motion'
+const description =
+  'Thanks for booking a free ninja trial class at Bodies in Motion in Boise. We look forward to seeing you.'
+const path = '/thank-you-ninja'
+---
+
+<Base title={title} description={description} path={path} noindex robots="noindex,nofollow">
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <p class="page-hero__eyebrow">Ninja Warrior trial class</p>
+      <h1>You’re booked — see you soon</h1>
+      <p class="page-hero__lead">
+        Thanks for booking a free ninja trial class. We’ll see you at {NAP.street}, {NAP.city}. Questions before then? Call{' '}
+        <a href={NAP.phoneTel}>{NAP.phoneDisplay}</a>.
+      </p>
+      <div class="page-hero__actions">
+        <a class="btn-primary" href="/ninja-warrior">Back to Ninja Warrior</a>
+        <a class="btn-outline" href="/">Home</a>
+      </div>
+    </div>
+  </header>
+</Base>
+
+<script>
+  declare global {
+    interface Window {
+      dataLayer?: Record<string, unknown>[]
+      __bimStartTrialSent?: boolean
+    }
+  }
+
+  /** Once per load; GTM Custom Event start_trial → Meta StartTrial. Never generate_lead. */
+  function pushStartTrial() {
+    if (window.__bimStartTrialSent) return
+    window.__bimStartTrialSent = true
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      event: 'start_trial',
+      trial_source: 'ninja_trial',
+      program: 'Ninja Warrior',
+    })
+  }
+
+  pushStartTrial()
+</script>
