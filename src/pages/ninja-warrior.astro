@@ -11,7 +11,7 @@ import photoNinjaNunchuk from '../assets/photos/ninja-nunchuk.jpg'
 
 const title = 'Kids Ninja Warrior Classes in Boise, ID | Bodies in Motion'
 const description =
-  'Kids Ninja Warrior classes (ages 5–13), a free 30-minute ninja trial, open gym and competitions at Bodies in Motion in Boise, ID. See the schedule and tuition.'
+  'Kids Ninja Warrior classes (ages 5–13), a free ninja trial class, open gym and competitions at Bodies in Motion in Boise, ID. See the schedule and tuition.'
 
 // Class schedule and tuition confirmed by Duncan (2026-10-23). Saturday open gym ends at 5 pm (confirmed).
 // TODO(Duncan): Sunday open gym hours (old pages said 5:00 pm or 3:00 pm); shown as "call" until confirmed.
@@ -41,7 +41,7 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Is there a free trial?',
-    a: 'Yes. The free private trial is a 30-minute one-on-one session where your child meets one of our coaches and tries beginner parkour and obstacle skills. Parents must stay to watch but do not need to participate. Have siblings? Register one child and we’ll include the rest.',
+    a: 'Yes. Your child can join one regular ninja class for free. Book a spot for ages 5–8 or 9+, and they’ll train with the group and a coach.',
   },
   {
     q: 'How does the rank system work?',
@@ -75,8 +75,8 @@ const reviews = [
 const proofTrial = [
   {
     src: photoNinjaCoach,
-    alt: 'Coach and child working one-on-one on a ninja obstacle',
-    caption: 'Free private trial: 30 minutes one-on-one with a coach.',
+    alt: 'Coach and child working on a ninja obstacle',
+    caption: 'Free trial class: train with a coach and kids your age.',
   },
 ]
 const proofProgress = [
@@ -106,7 +106,7 @@ const browseGallery = [
   cta2Url={LINKS.calendlyNinja9}
   cta2Label="Free trial ages 9+"
   ctaHeading="Ready to try Ninja Warrior?"
-  ctaText="Book a free 30-minute private trial for ages 5–8 or 9+, or call us at (208) 381-0587. Families come to us from Boise, Meridian and Garden City."
+  ctaText="Book a free trial class for ages 5–8 or 9+, or call us at (208) 381-0587. Families come to us from Boise, Meridian and Garden City."
   faq={faq}
   reviews={reviews}
 >
@@ -126,12 +126,11 @@ const browseGallery = [
 
       <div class="two-col care-claim">
         <div class="care-claim__text">
-            <h2 id="free-trial">Free private ninja trial</h2>
+            <h2 id="free-trial">Free ninja trial class</h2>
           <p>
-            Our free trial is a 30-minute one-on-one session. Your child meets one of our coaches and tries beginner parkour
-            and obstacle skills, just enough to build confidence and spark excitement. It is fun and low pressure. Parents
-            must stay to watch (cheering encouraged), but no participation is needed. Have siblings? Bring them too: register
-            one child and we’ll include the rest.
+            Your child’s first ninja class is on us. They’ll join a real class with kids their age and learn beginner parkour
+            and obstacle skills from our coaches. It’s fun, low pressure, and a great way to see if ninja is a good fit.
+            Parents stay to watch, and cheering is encouraged.
           </p>
           <div class="stub-actions">
             <a class="btn-primary" href={LINKS.calendlyNinja58} target="_blank" rel="noopener noreferrer">Book Ninja Trial (Ages 5–8)</a>
