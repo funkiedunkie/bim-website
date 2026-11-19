@@ -49,7 +49,7 @@ const campStart = (c: CampDay) => `${c.date}T09:00:00${c.offset}`
 const campEnd = (c: CampDay) => `${c.endDate ?? c.date}T15:00:00${c.offset}`
 // Drop days that have already ended at build time; the list is also refreshed by hand each season (see TODO above).
 const upcoming = upcomingCamps.filter((c) => Date.now() < Date.parse(campEnd(c)))
-const heroesUpcoming = Date.now() < Date.parse('2026-11-14T21:00:00-07:00')
+const pnoUpcoming = Date.now() < Date.parse('2026-12-12T21:00:00-07:00')
 const longDate =(iso: string) =>
   new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(
     new Date(`${iso}T12:00:00Z`),
@@ -228,8 +228,8 @@ const browseGallery = [
       <p class="camp-note">
         Camp dates change every season. Only dates that have not happened yet are listed here; see{' '}
         <a href={LINKS.camps} target="_blank" rel="noopener noreferrer">Camps for Kids Idaho</a> for the full, current list.{' '}
-        {heroesUpcoming
-          ? <>Looking for an evening out? <a href="/parents-night-out">Heroes &amp; Ninjas – Parents’ Night Out</a> is on Saturday, November 14, 2026.</>
+        {pnoUpcoming
+          ? <>Looking for an evening out? <a href="/parents-night-out">Pajama Jam – Parents’ Night Out</a> is on Saturday, December 12, 2026.</>
           : <>Looking for an evening out? See <a href="/parents-night-out">Parents’ Night Out</a>.</>}
       </p>
     </div>

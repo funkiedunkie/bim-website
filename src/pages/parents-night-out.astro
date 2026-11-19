@@ -3,24 +3,23 @@ import ActivityPage from '../layouts/ActivityPage.astro'
 import { LINKS, eventSchema, type FaqItem } from '../lib/site'
 import heroImg from '../assets/photos/open-play-web_1.jpg'
 import ProofPhotos from '../components/ProofPhotos.astro'
-import photoHeroesNinjas from '../assets/photos/heroes-ninjas-pno.jpg'
+import photoPajamaJam from '../assets/photos/pajama-jam-pno.jpg'
 
 const title = 'Parents’ Night Out in Boise, ID | Bodies in Motion'
 const description =
-  'Parents’ Night Out at Bodies in Motion in Boise, ID: drop the kids off for a fun-filled evening. Heroes & Ninjas (Nov 14) and Family Night Out.'
+  'Parents’ Night Out at Bodies in Motion in Boise, ID: drop the kids off for a fun-filled evening. Pajama Jam (Dec 12) and Family Night Out.'
 
-// Nov 14, 2026 Heroes & Ninjas (Rhea 2026-10-27). After the cutoff below the build drops the
+// Dec 12, 2026 Pajama Jam (Rhea 2026-11-19). After the cutoff below the build drops the
 // Event schema and shows "next date to be announced", so rebuild/update this page once the date passes.
 // Boise is on MST (UTC-7) after the first Sunday of November.
-const heroesStart = '2026-11-14T17:00:00-07:00'
-const heroesEnd = '2026-11-14T21:00:00-07:00'
-const heroesUpcoming = Date.now() < Date.parse(heroesEnd)
+const pnoStart = '2026-12-12T17:00:00-07:00'
+const pnoEnd = '2026-12-12T21:00:00-07:00'
+const pnoUpcoming = Date.now() < Date.parse(pnoEnd)
 
-// Standing PNO product (Cosmic Glow / Ahoy Adventures on CFK): $51, 20% sibling = $40.80, ages 4–11, 5–9 PM, dinner included.
-// Rhea’s email confirmed theme + date only; TODO(Duncan/Rhea): confirm price/ages once Heroes & Ninjas is listed on CFK,
-// and update LINKS.pnoRegister to the specific CFK session URL.
-const heroesFacts =
-  'Heroes & Ninjas – Parents’ Night Out is a themed evening for ages 4–11, 5:00–9:00 PM, at $51 per child, with a 20% sibling discount ($40.80 for additional siblings) and dinner included. Kids dress as heroes or ninjas for a fun-filled night while parents get a kidless evening.'
+// Standing PNO product: $51, 20% sibling = $40.80, ages 4–11, 5–9 PM, dinner included.
+// Confirmed on CFK camp/46 (Pajama Jam, Sat Dec 12, 2026).
+const pnoFacts =
+  'Pajama Jam – Parents’ Night Out is a themed evening for ages 4–11, 5:00–9:00 PM, at $51 per child, with a 20% sibling discount ($40.80 for additional siblings) and dinner included. Kids will create their own sleep mask, take on the Snowball Avalanche, decorate cookies, and enjoy pizza with friends.'
 
 const faq: FaqItem[] = [
   {
@@ -28,13 +27,13 @@ const faq: FaqItem[] = [
     a: 'Parents’ Night Out is an opportunity for you and the sweetness in your life to enjoy a kidless evening. Drop the kids off at Bodies in Motion and we’ll treat them to a fun-filled night.',
   },
   {
-    q: 'What is Heroes & Ninjas?',
-    a: heroesFacts,
+    q: 'What is Pajama Jam?',
+    a: pnoFacts,
   },
-  heroesUpcoming
+  pnoUpcoming
     ? {
         q: 'When is the next Parents’ Night Out?',
-        a: 'Heroes & Ninjas is on Saturday, November 14, 2026 from 5:00 to 9:00 PM. Register through Camps for Kids Idaho or call (208) 381-0587.',
+        a: 'Pajama Jam is on Saturday, December 12, 2026 from 5:00 to 9:00 PM. Register through Camps for Kids Idaho or call (208) 381-0587.',
       }
     : {
         q: 'When is the next Parents’ Night Out?',
@@ -42,7 +41,7 @@ const faq: FaqItem[] = [
       },
   {
     q: 'What ages is Parents’ Night Out for?',
-    a: 'Heroes & Ninjas is for ages 4–11. Family Night Out is for ages 3 (potty trained) up to adults.',
+    a: 'Pajama Jam is for ages 4–11. Family Night Out is for ages 3 (potty trained) up to adults.',
   },
   {
     q: 'What is Family Night Out?',
@@ -50,11 +49,11 @@ const faq: FaqItem[] = [
   },
   {
     q: 'Is dinner included?',
-    a: 'Yes. Heroes & Ninjas includes dinner in the price.',
+    a: 'Yes. Pajama Jam includes dinner in the price.',
   },
   {
     q: 'How do I register?',
-    a: 'Register for Heroes & Ninjas through Camps for Kids Idaho using the registration link on this page, or call (208) 381-0587.',
+    a: 'Register for Pajama Jam through Camps for Kids Idaho using the registration link on this page, or call (208) 381-0587.',
   },
 ]
 
@@ -64,13 +63,13 @@ const reviews = [
   { quote: 'Been going for years and love the family atmosphere! Great workouts! Kick butt parents nights out! Great play area!', name: 'Susan L.', source: '5 stars, Facebook' },
 ]
 
-const extraJsonLd = heroesUpcoming
+const extraJsonLd = pnoUpcoming
   ? [
       eventSchema({
-        name: 'Heroes & Ninjas – Parents’ Night Out',
-        description: heroesFacts,
-        startDate: heroesStart,
-        endDate: heroesEnd,
+        name: 'Pajama Jam – Parents’ Night Out',
+        description: pnoFacts,
+        startDate: pnoStart,
+        endDate: pnoEnd,
         url: LINKS.pnoRegister,
         price: '51',
         typicalAgeRange: '4-11',
@@ -78,11 +77,11 @@ const extraJsonLd = heroesUpcoming
     ]
   : []
 
-const proofHeroes = [
+const proofPno = [
   {
-    src: photoHeroesNinjas,
-    alt: 'Cartoon kids dressed as superheroes and ninjas celebrating together on a city rooftop',
-    caption: 'Heroes & Ninjas: dress up and play while you get a night out.',
+    src: photoPajamaJam,
+    alt: 'Comic-book style Pajama Jam logo in dotted blue letters on a yellow burst, on a purple background',
+    caption: 'Pajama Jam: a cozy night of crafts, games, cookies and pizza.',
   },
 ]
 ---
@@ -97,7 +96,7 @@ const proofHeroes = [
   heroImg={heroImg}
   heroAlt="Kids racing down orange and blue indoor slides"
   ctaUrl={LINKS.pnoRegister}
-  ctaLabel="Register for Heroes & Ninjas"
+  ctaLabel="Register for Pajama Jam"
   ctaHeading="Ready for a kidless evening?"
   ctaText="Register through Camps for Kids Idaho, or call us at (208) 381-0587."
   faq={faq}
@@ -115,24 +114,23 @@ const proofHeroes = [
 
       <div class="two-col care-claim">
         <div class="care-claim__text">
-            <h2>Heroes &amp; Ninjas – Parents’ Night Out</h2>
+            <h2>Pajama Jam – Parents’ Night Out</h2>
           <p>
-            Capes, masks and ninja moves! Kids dress as heroes or ninjas for a themed evening of play, games, pizza and a
-            sweet treat while you enjoy a kidless night out.
+            Get ready for a cozy night of fun! Kids will create their own sleep mask, take on the Snowball Avalanche, decorate cookies, and enjoy pizza with friends.
           </p>
           <ul class="bullets">
-            {heroesUpcoming
-              ? <li><strong>Date:</strong> Saturday, November 14, 2026</li>
+            {pnoUpcoming
+              ? <li><strong>Date:</strong> Saturday, December 12, 2026</li>
               : <li><strong>Date:</strong> the next date is to be announced. Call us or check the registration link.</li>}
             <li><strong>Time:</strong> 5:00–9:00 PM</li>
             <li><strong>For:</strong> ages 4–11</li>
             <li><strong>Cost:</strong> $51 per child; 20% sibling discount ($40.80 per additional sibling); dinner included</li>
           </ul>
           <div class="stub-actions">
-            <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Heroes &amp; Ninjas</a>
+            <a class="btn-primary" href={LINKS.pnoRegister} target="_blank" rel="noopener noreferrer">Register for Pajama Jam</a>
           </div>
         </div>
-        <ProofPhotos items={proofHeroes} />
+        <ProofPhotos items={proofPno} />
       </div>
 
       <h2>Family Night Out</h2>

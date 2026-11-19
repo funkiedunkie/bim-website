@@ -35,8 +35,8 @@ export const LINKS = {
   calendlyKickboxing: 'https://calendly.com/bodiesinmotion1/kickboxing',
   calendlyNinja9: 'https://calendly.com/bodiesinmotion1/ninja-warrior-trial-9-yrs-old',
   camps: 'https://www.campsforkidsidaho.com/camp',
-  // General CFK camp listing until Heroes & Ninjas (Nov 14) has its own session URL; TODO(Duncan) swap to /camp/<id>.
-  pnoRegister: 'https://www.campsforkidsidaho.com/camp',
+  // Pajama Jam – Parents’ Night Out, Sat Dec 12, 2026 (CFK camp 46; Rhea 2026-11-19).
+  pnoRegister: 'https://www.campsforkidsidaho.com/camp/46',
   waiverPortal: 'https://bodiesinmotion.gymmasteronline.com/portal/enquiry',
 } as const
 
